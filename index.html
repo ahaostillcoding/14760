@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -15,19 +15,21 @@
     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
       :root {
-        --bg: #f4efe6;
-        --bg-accent: #efe4d0;
-        --panel: rgba(255, 252, 247, 0.88);
-        --panel-strong: #fffdf8;
-        --text: #14212b;
-        --muted: #566675;
-        --line: rgba(20, 33, 43, 0.1);
-        --brand: #0d6b6f;
-        --brand-soft: rgba(13, 107, 111, 0.1);
-        --warn: #9a4d16;
-        --warn-soft: rgba(154, 77, 22, 0.12);
-        --shadow: 0 24px 60px rgba(36, 47, 56, 0.12);
-        --radius: 22px;
+        --bg: #f5f1e8;
+        --bg-2: #efe8dc;
+        --panel: rgba(255, 251, 245, 0.84);
+        --panel-strong: #fffdfa;
+        --text: #18212b;
+        --muted: #5f6c77;
+        --line: rgba(24, 33, 43, 0.1);
+        --brand: #0f6b68;
+        --brand-soft: rgba(15, 107, 104, 0.1);
+        --gold: #bc6f17;
+        --gold-soft: rgba(188, 111, 23, 0.12);
+        --danger: #9a4b37;
+        --danger-soft: rgba(154, 75, 55, 0.12);
+        --shadow: 0 24px 80px rgba(34, 44, 56, 0.12);
+        --radius: 24px;
       }
 
       * {
@@ -36,49 +38,53 @@
 
       body {
         margin: 0;
-        font-family: "IBM Plex Sans", system-ui, sans-serif;
+        font-family: "Noto Sans SC", system-ui, sans-serif;
         color: var(--text);
         background:
-          radial-gradient(circle at top left, rgba(13, 107, 111, 0.18), transparent 28%),
-          radial-gradient(circle at top right, rgba(196, 124, 45, 0.2), transparent 30%),
-          linear-gradient(180deg, #fbf7f0 0%, var(--bg) 52%, #ece3d7 100%);
+          radial-gradient(circle at top left, rgba(15, 107, 104, 0.18), transparent 28%),
+          radial-gradient(circle at top right, rgba(188, 111, 23, 0.18), transparent 30%),
+          linear-gradient(180deg, #fbf8f2 0%, var(--bg) 52%, var(--bg-2) 100%);
       }
 
       a {
         color: inherit;
+        text-decoration: none;
       }
 
       .page {
-        width: min(1180px, calc(100% - 32px));
+        width: min(1200px, calc(100% - 32px));
         margin: 0 auto;
-        padding: 28px 0 64px;
+        padding: 24px 0 72px;
       }
 
       .hero {
         position: relative;
         overflow: hidden;
-        background: linear-gradient(135deg, rgba(8, 52, 66, 0.96), rgba(12, 95, 103, 0.9));
-        color: #f8f6f0;
-        border-radius: 32px;
+        border-radius: 34px;
         padding: 32px;
+        color: #f7f6f2;
+        background:
+          radial-gradient(circle at 75% 20%, rgba(255, 202, 130, 0.3), transparent 22%),
+          linear-gradient(135deg, rgba(10, 40, 58, 0.98), rgba(12, 98, 101, 0.92));
         box-shadow: var(--shadow);
       }
 
       .hero::after {
         content: "";
         position: absolute;
-        inset: auto -10% -35% 35%;
-        height: 280px;
+        inset: auto -10% -42% 36%;
+        height: 300px;
         border-radius: 999px;
-        background: radial-gradient(circle, rgba(245, 170, 74, 0.34), transparent 62%);
+        background: radial-gradient(circle, rgba(255, 209, 143, 0.34), transparent 64%);
         pointer-events: none;
       }
 
       .eyebrow,
-      .meta-strip span,
-      .chip,
-      .card-top span {
-        font-family: "IBM Plex Mono", monospace;
+      .meta-chip,
+      .tag,
+      .card-kicker,
+      .link-pill {
+        font-family: "Space Grotesk", sans-serif;
         letter-spacing: 0.02em;
       }
 
@@ -95,52 +101,95 @@
 
       h1 {
         margin: 18px 0 14px;
-        font-size: clamp(34px, 5vw, 58px);
+        font-size: clamp(34px, 5vw, 62px);
         line-height: 1.02;
         letter-spacing: -0.04em;
       }
 
-      .hero p {
+      .hero-summary {
+        max-width: 780px;
         margin: 0;
-        max-width: 760px;
         font-size: 17px;
-        line-height: 1.7;
-        color: rgba(248, 246, 240, 0.9);
+        line-height: 1.75;
+        color: rgba(247, 246, 242, 0.9);
       }
 
-      .meta-strip {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 24px;
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.35fr 0.9fr;
+        gap: 18px;
+        margin-top: 26px;
       }
 
-      .meta-strip span {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 12px;
-        border-radius: 14px;
-        font-size: 12px;
-        color: rgba(248, 246, 240, 0.9);
+      .hero-panel {
+        position: relative;
+        z-index: 1;
+        padding: 18px;
+        border-radius: 22px;
         background: rgba(255, 255, 255, 0.08);
         border: 1px solid rgba(255, 255, 255, 0.12);
       }
 
+      .hero-panel h3 {
+        margin: 0 0 12px;
+        font-size: 18px;
+      }
+
+      .hero-points,
+      .signal-list,
+      .source-list {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .hero-points li,
+      .signal-list li,
+      .source-list li {
+        margin-bottom: 10px;
+        line-height: 1.7;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .stat-card {
+        padding: 16px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .stat-card strong {
+        display: block;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 28px;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .stat-card span {
+        color: rgba(247, 246, 242, 0.86);
+        line-height: 1.6;
+        font-size: 14px;
+      }
+
       .section {
         margin-top: 24px;
-        background: var(--panel);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 28px;
         padding: 24px;
+        border-radius: 28px;
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.5);
         box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
       }
 
       .section-header {
         display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
+        align-items: flex-end;
         gap: 16px;
         margin-bottom: 20px;
       }
@@ -153,9 +202,9 @@
 
       .section-header p {
         margin: 0;
-        max-width: 760px;
         color: var(--muted);
-        line-height: 1.7;
+        line-height: 1.75;
+        max-width: 760px;
       }
 
       .grid {
@@ -166,14 +215,14 @@
 
       .card {
         grid-column: span 6;
-        background: var(--panel-strong);
-        border-radius: var(--radius);
-        border: 1px solid var(--line);
-        padding: 18px;
         display: flex;
         flex-direction: column;
         gap: 14px;
         min-height: 100%;
+        padding: 18px;
+        border-radius: var(--radius);
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
       }
 
       .card.compact {
@@ -192,152 +241,153 @@
       }
 
       .card-top h3 {
-        margin: 0;
+        margin: 4px 0 0;
         font-size: 22px;
-        line-height: 1.2;
+        line-height: 1.22;
         letter-spacing: -0.03em;
       }
 
-      .card-top span {
-        flex: none;
-        padding: 6px 10px;
-        border-radius: 999px;
-        font-size: 11px;
+      .card-kicker {
+        font-size: 12px;
         color: var(--brand);
-        background: var(--brand-soft);
       }
 
-      .chips {
+      .status {
+        flex: none;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        background: var(--brand-soft);
+        color: var(--brand);
+      }
+
+      .status.verify {
+        background: var(--gold-soft);
+        color: var(--gold);
+      }
+
+      .status.caution {
+        background: var(--danger-soft);
+        color: var(--danger);
+      }
+
+      .tags {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
       }
 
-      .chip {
+      .tag {
         padding: 6px 10px;
-        font-size: 11px;
         border-radius: 999px;
+        font-size: 11px;
         color: var(--muted);
         background: #f2ede3;
-        border: 1px solid rgba(20, 33, 43, 0.06);
+        border: 1px solid rgba(24, 33, 43, 0.06);
       }
 
-      .summary,
-      .judgment,
-      .audience,
-      .reason {
-        margin: 0;
-        line-height: 1.7;
-        color: var(--text);
+      .copy-block {
+        display: grid;
+        gap: 10px;
       }
 
       .label {
         display: block;
-        margin-bottom: 6px;
+        margin-bottom: 5px;
         font-size: 12px;
         color: var(--muted);
       }
 
-      .insight {
-        padding: 14px 16px;
-        border-radius: 18px;
-        background: linear-gradient(180deg, rgba(13, 107, 111, 0.07), rgba(13, 107, 111, 0.03));
-        border: 1px solid rgba(13, 107, 111, 0.1);
+      .copy-block p {
+        margin: 0;
+        line-height: 1.75;
       }
 
-      .insight.warn {
-        background: linear-gradient(180deg, rgba(154, 77, 22, 0.1), rgba(154, 77, 22, 0.04));
-        border-color: rgba(154, 77, 22, 0.14);
+      .link-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: auto;
+        padding-top: 4px;
       }
 
-      .footer-link {
+      .link-pill {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        margin-top: auto;
-        text-decoration: none;
-        font-weight: 600;
-        color: var(--brand);
-      }
-
-      .trend-list,
-      .summary-list {
-        display: grid;
-        gap: 14px;
-      }
-
-      .trend-item {
-        padding: 16px 18px;
-        border-radius: 18px;
-        background: var(--panel-strong);
-        border: 1px solid var(--line);
-      }
-
-      .trend-item h3 {
-        margin: 0 0 8px;
-        font-size: 18px;
-      }
-
-      .trend-item p,
-      .summary-list p {
-        margin: 0;
-        line-height: 1.7;
-        color: var(--muted);
-      }
-
-      .closing {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 16px;
-      }
-
-      .sources {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 14px;
-      }
-
-      .sources a {
-        text-decoration: none;
-        padding: 8px 10px;
+        padding: 9px 12px;
         border-radius: 999px;
         font-size: 12px;
-        border: 1px solid var(--line);
-        background: #f5f1ea;
-        color: var(--muted);
+        color: var(--brand);
+        background: var(--brand-soft);
       }
 
-      @media (max-width: 900px) {
-        .card,
-        .card.compact,
-        .closing > * {
-          grid-column: span 12;
-        }
+      .muted-note {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
 
-        .closing {
+      .trend-box {
+        padding: 18px;
+        border-radius: 22px;
+        background: linear-gradient(180deg, rgba(15, 107, 104, 0.08), rgba(15, 107, 104, 0.02));
+        border: 1px solid rgba(15, 107, 104, 0.12);
+      }
+
+      .trend-box h3,
+      .judgment-box h3 {
+        margin: 0 0 12px;
+        font-size: 20px;
+      }
+
+      .judgment-box {
+        padding: 24px;
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at top right, rgba(188, 111, 23, 0.14), transparent 28%),
+          linear-gradient(180deg, rgba(12, 98, 101, 0.08), rgba(255, 255, 255, 0.65));
+        border: 1px solid rgba(24, 33, 43, 0.08);
+      }
+
+      .footer {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .stats {
           grid-template-columns: 1fr;
         }
+
+        .card,
+        .card.compact {
+          grid-column: span 12;
+        }
       }
 
-      @media (max-width: 640px) {
+      @media (max-width: 720px) {
         .page {
-          width: min(100% - 20px, 100%);
-          padding-top: 18px;
+          width: min(100% - 20px, 1200px);
+          padding-top: 10px;
         }
 
         .hero,
         .section {
-          padding: 18px;
+          padding: 20px;
           border-radius: 24px;
         }
 
-        .card-top {
-          flex-direction: column;
+        h1 {
+          font-size: 34px;
         }
 
-        .card-top h3 {
-          font-size: 20px;
+        .section-header {
+          align-items: flex-start;
         }
       }
     </style>
@@ -346,483 +396,611 @@
     <div id="root"></div>
     <script type="text/babel">
       const report = {
-        date: "2026-06-09",
+        date: "2026-06-10",
         title: "每日 GitHub + 科技新闻热点简报",
-        brief:
-          "今天最明显的共振是：AI 竞争正在从“谁能做 agent”转向“谁能把 agent 装进真实工作流、终端、前端、硬件和企业预算里”。GitHub 热门项目、开发者大会和产业资本动作，几乎都围绕这条线展开。",
-        meta: [
-          "GitHub 项目 7 个",
-          "科技热点 6 条",
-          "新闻热点 6 条",
-          "Vibe Coding 建议 4 个",
+        overview:
+          "今天最清晰的主线不是单一爆款项目，而是三条正在汇流的基础趋势：一是 terminal-first coding agent 继续强势，二是 browser execution 与 agent UI 正在从演示层走向工程层，三是 AI 商业化已经明显进入资本市场、监管博弈和边缘设备三线并进阶段。",
+        keyTakeaways: [
+          "GitHub 热点高度集中在可执行 agent：CLI、浏览器控制、前端代理层、技能与 MCP 能力组合正成为默认形态。",
+          "科技新闻里，Apple、Microsoft、Meta、NVIDIA、OpenAI 都在把 AI 往系统级产品和基础设施层推进，而不是只讲模型参数。",
+          "综合新闻层面，AI 资本化、监管外溢、能源与地缘冲击对市场情绪的影响开始同步显性化。"
+        ],
+        stats: [
+          { value: "6", label: "今日重点 GitHub 项目" },
+          { value: "6", label: "科技热点" },
+          { value: "6", label: "综合新闻热点" }
         ],
         githubProjects: [
           {
-            name: "Odysseus",
-            link: "https://github.com/pewdiepie-archdaemon/odysseus",
-            tag: "自托管 AI Workspace",
-            tags: ["63.6k stars", "本地优先", "多工具 Agent"],
-            summary:
-              "一个把聊天、Agent、深度研究、文档、记忆、邮件、日历和任务整合到本地工作台里的自托管 AI workspace。",
-            highlight:
-              "不是单点 agent demo，而是完整“个人 AI 操作系统”路线，支持本地模型、MCP、文件、shell、memory 与移动端体验。",
+            name: "openai/codex",
+            link: "https://github.com/openai/codex",
+            kicker: "Coding Agent / Terminal",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["89.9k Stars", "2026-06-09 发布 0.139.0", "CLI + App + IDE"],
+            purpose: "OpenAI 的轻量级本地 coding agent，覆盖终端、桌面和 IDE 场景。",
+            highlights:
+              "最新版本继续补全插件市场、MCP schema、web search 与 sandbox 能力，说明它已经不只是代码补全，而是在做完整工作流容器。",
             whyNow:
-              "GitTrend 近日本周持续高位，说明开发者兴趣已从单轮问答转向长期工作台。对想做私有化 AI 产品的人，这类仓库的产品边界很值得拆解。",
+              "6 月 9 日刚发版，且 release 内容明显围绕真实开发环境细节打磨。值得看的不是模型，而是 agent 产品形态已经进入“工具链兼容性”阶段。",
+            note: "来源：GitHub 仓库主页与 Releases。"
           },
           {
-            name: "OpenHands",
+            name: "google-gemini/gemini-cli",
+            link: "https://github.com/google-gemini/gemini-cli",
+            kicker: "Open Agent CLI",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["105k Stars", "2026-06-09 发布 v0.45.3", "MCP Client/Server"],
+            purpose: "Google 开源的 Gemini 终端 agent，把大模型工作流直接塞进 CLI。",
+            highlights:
+              "仓库热度极高，且 release 频率很快，说明它不是一次性营销仓库，而是在持续迭代命令行代理体验和集成边界。",
+            whyNow:
+              "Gemini CLI 已经成为 terminal-first agent 的主流参照物之一。开发者现在要关注的是不同厂商如何争夺“本地入口”。",
+            note: "来源：GitHub 仓库主页与 Releases。"
+          },
+          {
+            name: "OpenHands/OpenHands",
             link: "https://github.com/OpenHands/OpenHands",
-            tag: "AI 驱动开发",
-            tags: ["76.3k stars", "CLI + GUI + SDK", "持续发布"],
-            summary:
-              "面向开发者的开源 agent 平台，覆盖 SDK、CLI、本地 GUI、云端与企业版，强调 AI-driven development。",
-            highlight:
-              "仓库已经不再只强调“会写代码”，而是把 SDK、桌面、本地 GUI、协作与企业托管一起打包成产品矩阵。",
+            kicker: "Open Agent Platform",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["社区驱动", "2026-05-01 发布 1.7.0", "CLI + GUI + SDK"],
+            purpose: "开源 AI 驱动开发平台，既能当 agent SDK，也能当本地 GUI 或云部署基础。",
+            highlights:
+              "项目把 SDK、CLI、本地 GUI、Cloud、Enterprise 分层摆清楚了，说明开源 agent 正在从“单一助手”变成可部署产品线。",
             whyNow:
-              "OSSInsight 显示其仍处于 28 天增长榜前列，且 2026-05-01 仍有新版本。它代表开源 coding agent 正在从实验品向产品线演进。",
+              "最近版本开始把 KVM、MCP 设置、企业部署与 UI 修复一起推进，这类基础设施信号通常比单次 benchmark 更说明长期潜力。",
+            note: "来源：GitHub 仓库主页与 Releases。"
           },
           {
-            name: "last30days-skill",
-            link: "https://github.com/mvanhorn/last30days-skill",
-            tag: "研究型 Skill",
-            tags: ["34.4k stars", "最近 30 天", "HTML brief"],
-            summary:
-              "一个面向 agent 的研究技能，能从 Reddit、X、YouTube、HN、Polymarket 和 Web 汇总最近 30 天话题，并输出 grounded summary。",
-            highlight:
-              "把“研究能力”做成可安装、可复用的 skill，而且直接支持生成 shareable HTML brief，这种产品化细节很适合内容、投研和运营团队。",
+            name: "browser-use/browser-use",
+            link: "https://github.com/browser-use/browser-use",
+            kicker: "Browser Automation for Agents",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["98k Stars", "最新版本 0.13.0 beta", "Rust-backed Agent"],
+            purpose: "让 AI agent 真正能操作网页，覆盖表单、购物、调研、代理执行等场景。",
+            highlights:
+              "最新版本开始强调 Rust-backed beta agent，意味着团队正在把 browser agent 从 Python demo 迁移到更稳的执行内核。",
             whyNow:
-              "技能生态最近明显升温，这个项目代表“agent 插件/skill 化”不再是提示词合集，而是开始具备交付格式、版本节奏和安装心智。",
+              "浏览器能力已经成为 agent 落地的刚需模块。现在值得看的不是“能不能点按钮”，而是能否把执行稳定性和速度工程化。",
+            note: "来源：GitHub 仓库主页与 Releases。"
           },
           {
-            name: "CopilotKit",
+            name: "CopilotKit/CopilotKit",
             link: "https://github.com/CopilotKit/CopilotKit",
-            tag: "Agent Frontend",
-            tags: ["34.1k stars", "AG-UI", "React 友好"],
-            summary:
-              "面向 React、Angular、Vue、移动端和 Slack 的 agent-native 前端栈，主打 generative UI、shared state 和 human-in-the-loop workflows。",
-            highlight:
-              "它把 AI 前端从“聊天框嵌入”推进到“界面即工作流”，尤其适合做带审批、协作和多状态可视化的 agent 产品。",
+            kicker: "Generative UI / Agent Frontend",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["34.4k Stars", "React/Angular/Mobile", "AG-UI Protocol"],
+            purpose: "把 agent 前端接入变成工程化栈，面向聊天 UI、任务 UI、生成式工作流界面。",
+            highlights:
+              "它不只是组件库，而是在推动 AG-UI protocol 这类接口层标准，核心价值是让 agent 结果可视化、可操作、可嵌入业务系统。",
             whyNow:
-              "近 28 天增长稳定，且 2026-06-05 仍在发版。前端层开始成为独立竞争位，值得关注其协议和状态管理思路。",
+              "下一轮竞争点不只是谁回答得更像人，而是谁能把 agent 做成真正可交互的产品界面。CopilotKit 正踩在这个拐点上。",
+            note: "来源：GitHub 仓库主页与 Releases。最新页仅明确看到 6 月 4 日版本时间，最新 tag 页面加载部分内容有限。"
           },
           {
-            name: "goose",
+            name: "aaif-goose/goose",
             link: "https://github.com/aaif-goose/goose",
-            tag: "通用桌面 Agent",
-            tags: ["48k stars", "Linux Foundation", "MCP"],
-            summary:
-              "桌面 app、CLI 和 API 一体的本地开源 AI agent，可接 15+ 模型提供方和 70+ MCP 扩展。",
-            highlight:
-              "从 Block 迁移到 Agentic AI Foundation，说明通用 agent 基础设施开始朝基金会与开放标准靠拢，而不是只依赖单公司路线。",
+            kicker: "Extensible Agent Runtime",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["48.5k Stars", "2026-06-03 发布 v1.37.0", "Skills + Providers + ACP"],
+            purpose: "可扩展开源 agent，强调安装、执行、编辑、测试，以及多模型与技能系统。",
+            highlights:
+              "最新版本直接把 skills token、MCP extension、provider 扩展这些工程化细节做进 CLI，说明其重点在“怎么把 agent 运维起来”。",
             whyNow:
-              "2026-06-03 仍在发版，且项目定位从“代码助手”扩展到研究、自动化、数据分析，说明 agent 的通用工位化趋势在加深。",
-          },
-          {
-            name: "whichllm",
-            link: "https://github.com/Andyyyy64/whichllm",
-            tag: "本地模型选型",
-            tags: ["3.4k stars", "硬件感知", "最新 6 月发版"],
-            summary:
-              "自动识别 GPU/CPU/RAM，按真实、带时效性的 benchmark 给出最适合本机运行的本地模型，并支持直接运行。",
-            highlight:
-              "把“选模型”这件事从论坛经验活变成命令行工具，覆盖 GPU 模拟、升级规划、模型反推硬件等实用场景。",
-            whyNow:
-              "本地推理热度回来了，但用户真正痛点是成本/速度/显存匹配。这个项目切中的正是“跑得起、值不值”的决策层。",
-          },
-          {
-            name: "turbovec",
-            link: "https://github.com/RyanCodrai/turbovec",
-            tag: "向量检索降本",
-            tags: ["8.8k stars", "Rust + Python", "TurboQuant"],
-            summary:
-              "基于 TurboQuant 的向量索引实现，主打无需训练阶段的压缩和更便宜的向量检索成本。",
-            highlight:
-              "项目直接拿 FAISS 做对比，强调在 OpenAI 1536/3072 维嵌入上的召回和速度，这比泛泛讲“更快更省”更有工程说服力。",
-            whyNow:
-              "当越来越多 AI 应用回到 RAG 和嵌入检索，真正能省内存、降推理外部成本的索引工具会重新变成热点基础件。",
-          },
+              "如果说 Codex/Gemini CLI 在抢入口，Goose 更像在抢 agent runtime 的生态位，适合关注团队化、插件化与自托管方向。",
+            note: "来源：GitHub 仓库主页与 Releases。"
+          }
         ],
         githubTrends: [
-          {
-            title: "趋势 1：Agent 不再只是写代码，而是变成完整工作台",
-            body:
-              "Odysseus、OpenHands、goose 都在往“桌面 + CLI + 工作流 + 本地数据 + 协作”方向扩展。说明 2026 年中期的竞争焦点，不是谁先做出 agent，而是谁先把 agent 变成稳定、可持续使用的生产环境。",
-          },
-          {
-            title: "趋势 2：Skills / Plugins 正在成为新分发层",
-            body:
-              "last30days-skill 的爆发不是偶然。开发者开始接受“先装一个能力包，再把它塞进 agent 工作流”的模式，这会催生更细分的 research skill、ops skill、design skill 市场。",
-          },
-          {
-            title: "趋势 3：前端和推理成本开始成为第二战场",
-            body:
-              "CopilotKit 代表 agent UI 协议化；whichllm 与 turbovec 代表本地推理选型和向量检索压缩正在升温。换句话说，热点开始从“有无模型能力”转向“交互形态”和“单位成本”。",
-          },
-        ],
-        techNews: [
-          {
-            title: "OpenAI 把 Codex 明确推向“知识工作”而非只服务程序员",
-            link: "https://openai.com/index/codex-for-every-role-tool-workflow/",
-            source: "OpenAI，2026-06-02",
-            tags: ["AI", "企业软件", "工作流"],
-            summary:
-              "OpenAI 发布面向不同角色的新插件、注释能力和可分享的网站能力，强调分析师、运营、设计、研究等非开发者也在快速使用 Codex。",
-            impact:
-              "这很重要，因为它意味着 AI coding 工具的 TAM 正从工程师席位扩展到整个知识工作团队。后续竞争将越来越像“工作流操作系统”，而不是 IDE 功能竞赛。",
-            audience: "产品团队、企业 IT、知识工作者、做垂直 AI SaaS 的团队",
-          },
-          {
-            title: "Microsoft Build 2026 把 GitHub Copilot App 推到更靠前的位置",
-            link: "https://blogs.microsoft.com/blog/2026/06/02/microsoft-build-2026-be-yourself-at-work/",
-            source: "Microsoft 官方博客，2026-06-02",
-            tags: ["开发者工具", "Copilot", "平台"],
-            summary:
-              "微软在 Build 2026 中强调 GitHub Copilot App 预览版、MAI-Thinking-1 及更广泛的 agentic development 叙事。",
-            impact:
-              "微软的信号很明确：未来开发者入口不会只在 IDE，而会扩展到桌面端、跨角色任务和模型编排层。GitHub 与 Windows 的结合会继续加深。",
-            audience: "开发平台团队、企业研发管理者、AI 工具创业者",
-          },
-          {
-            title: "Google AI Studio 开始主打原生 Android vibe coding",
-            link: "https://blog.google/innovation-and-ai/technology/developers-tools/google-ai-studio-io-2026/",
-            source: "Google Blog，2026-05-19",
-            tags: ["Google", "Android", "开发者工具"],
-            summary:
-              "Google 在 I/O 2026 后继续推进 AI Studio，新增原生 Android 应用生成、Workspace 集成与移动端入口。",
-            impact:
-              "如果这条线跑通，Google 会把 Android 开发门槛进一步下探，形成“从 idea 到可运行 app”的闭环，对独立开发者和非专业开发者都很有吸引力。",
-            audience: "Android 开发者、独立开发者、低代码产品团队",
-          },
-          {
-            title: "NVIDIA 与微软联合推进 RTX Spark，把本地 agent PC 变成产品方向",
-            link: "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx",
-            source: "NVIDIA 新闻稿，2026-06-01",
-            tags: ["硬件", "本地 AI", "PC"],
-            summary:
-              "NVIDIA 发布 RTX Spark，主打个人 AI agent PC、最高 128GB unified memory、本地运行超大上下文模型和 Windows 原生 agent 体验。",
-            impact:
-              "这说明本地 AI 不是边缘爱好，而是芯片和操作系统级的新叙事。对软件团队来说，要开始考虑“哪些工作负载能回到端侧”。",
-            audience: "硬件厂商、桌面应用团队、本地推理开发者",
-          },
-          {
-            title: "Apple WWDC26 进入 AI 与开发工具周，重点仍是平台级整合",
-            link: "https://www.apple.com/newsroom/2026/05/apple-kicks-off-worldwide-developers-conference-on-june-8/",
-            source: "Apple Newsroom，2026-05-18",
-            tags: ["Apple", "WWDC", "平台"],
-            summary:
-              "Apple 表示 WWDC26 将集中展示 Apple 平台更新、AI 进展以及新的开发工具和软件，会议从 6 月 8 日开启。",
-            impact:
-              "苹果目前更像在补平台能力，而不是用单点模型功能抢头条。对开发者来说，真正有价值的是它是否进一步开放端侧 intelligence 能力与相关框架。",
-            audience: "iOS/macOS 开发者、消费电子团队、生态产品经理",
-          },
-          {
-            title: "微软多个开源工具被植入窃密恶意代码，AI 开发链安全风险上升",
-            link: "https://techcrunch.com/2026/06/08/microsofts-open-source-tools-were-hacked-to-steal-passwords-of-ai-developers/",
-            source: "TechCrunch，2026-06-08",
-            tags: ["安全", "开源", "供应链"],
-            summary:
-              "TechCrunch 报道微软已切断多个 GitHub 开源项目访问，以调查被注入恶意代码、从 AI 编码工具窃取密码与凭证的事件。",
-            impact:
-              "这不是普通依赖污染新闻。它直接打到 AI coding 链条上的身份和秘钥安全，预计会推动 MCP、插件、CLI 工具的签名、隔离和权限治理进一步收紧。",
-            audience: "安全团队、平台工程、使用 AI coding 工具的开发者",
-          },
-        ],
-        newsHotspots: [
-          {
-            title: "Google 与 Blackstone 联手做 TPU 云业务，AI 算力开始更深绑定金融资本",
-            link: "https://www.nasdaq.com/press-release/blackstone-announces-joint-venture-google-create-new-tpu-cloud-2026-05-19",
-            source: "Nasdaq / Blackstone 新闻稿，2026-05-19",
-            tags: ["资本", "云计算", "AI 基础设施"],
-            summary:
-              "Blackstone 与 Google 设立新 TPU Cloud 合资业务，直接瞄准高涨的数据中心与 AI 算力需求。",
-            impact:
-              "这意味着 AI 基础设施投入已不是科技公司单独承担，而是开始与私募资本深度耦合。算力供给会更金融化，价格与容量分配也会更像大型基础设施生意。",
-          },
-          {
-            title: "Benchmark 募集 20 亿美元并首次设立 growth fund",
-            link: "https://techcrunch.com/2026/06/03/benchmark-raises-its-first-ever-growth-fund-as-part-of-2b-capital-raise/",
-            source: "TechCrunch，2026-06-03",
-            tags: ["VC", "融资", "创业生态"],
-            summary:
-              "Benchmark 完成约 20 亿美元募资，并首次引入成长基金，这对一向以早期投资著称的机构是明显转向。",
-            impact:
-              "资本开始接受 AI 时代项目更快进入中后期扩张的现实。对创业公司来说，这意味着早期到成长阶段的资金通道可能更连贯，但也会更强调收入和分发效率。",
-          },
-          {
-            title: "OPEC+ 再次上调纸面配额，但能源供给紧张并未根本缓解",
-            link: "https://www.brecorder.com/news/40424464",
-            source: "Business Recorder 转引 Reuters，2026-06-08",
-            tags: ["能源", "大宗商品", "地缘风险"],
-            summary:
-              "Reuters 报道 OPEC+ 在霍尔木兹危机背景下再次提高产量目标，但实际供给仍受限，纸面增产并不能完全修复市场。",
-            impact:
-              "对企业经营最现实的影响是能源、物流与化工相关成本预期仍不稳。通胀与供应链判断不能只看名义增产，需要看实际可交付供给。",
-          },
-          {
-            title: "欧洲央行本周加息预期升温，能源冲击正重新改变利率路径",
-            link: "https://www.investing.com/news/economy-news/time-to-nip-inflation-in-the-bud-five-questions-for-the-ecb-4729902",
-            source: "Investing 转引 Reuters，2026-06-08",
-            tags: ["宏观", "利率", "欧洲"],
-            summary:
-              "Reuters 预期欧洲央行将在 6 月会议上加息，以应对因中东能源冲击带来的通胀抬头。",
-            impact:
-              "这对全球科技和风险资产都重要。去年市场的乐观假设是“降息周期会逐步展开”，但新的能源冲击正在让这个剧本变脆弱。",
-          },
-          {
-            title: "Marvell 将纳入标普 500，芯片板块波动中仍被当作 AI 基础设施代表",
-            link: "https://ca.investing.com/news/economy-news/sp-500-nasdaq-futures-climb-as-chip-stocks-stabilize-4679450",
-            source: "Investing 转引 Reuters，2026-06-08",
-            tags: ["资本市场", "芯片", "指数"],
-            summary:
-              "Reuters 提到芯片股在短线回调后企稳，同时 Marvell 将在 6 月 22 日前加入标普 500。",
-            impact:
-              "进入核心指数会进一步强化 AI 基础设施公司在被动资金中的权重。对产业观察者来说，资本市场仍把网络、互连和数据中心配套视作 AI 主线。",
-          },
-          {
-            title: "Lovable 与 Google Cloud 的扩容合作，说明 AI 原生应用开始进入基础设施重投入期",
-            link: "https://techcrunch.com/2026/06/09/lovable-signs-multiyear-deal-with-google-cloud-to-up-usage-5x-source-says/",
-            source: "TechCrunch，2026-06-09",
-            tags: ["企业软件", "云", "AI 应用"],
-            summary:
-              "TechCrunch 报道 Lovable 与 Google Cloud 达成多年合作，预计将使用量提升到 5 倍左右；具体财务与交付细节待进一步确认。",
-            impact:
-              "值得关注的不是单个公司，而是信号本身：AI 原生应用一旦进入规模化阶段，成本中心会快速转向推理、云资源和交付 SLA。",
-          },
+          "Agent 不再只拼模型，开始拼执行环境、插件安装、技能分发、工作流连续性。",
+          "Browser automation 正从演示型能力转向基础设施层，Rust 化、稳定性和执行速度成为新焦点。",
+          "Generative UI / AG-UI 开始成形，说明下一步不是更多聊天窗口，而是把 agent 嵌进产品交互层。",
+          "主流项目几乎都在强化多模型、多 provider、MCP 或工具协议兼容，平台战已经开始。"
         ],
         vibeIdeas: [
           {
-            title: "本机模型选型顾问",
-            tags: ["React", "whichllm", "Ollama", "Electron"],
-            summary:
-              "做一个面向普通开发者的“本地模型装机顾问”，输入显卡/预算/用途，直接推荐模型、量化格式和一键运行命令。",
+            title: "个人工作流 Agent 控制台",
+            tags: ["React", "CopilotKit", "browser-use", "Supabase"],
+            what:
+              "做一个能统一发起“网页调研、表单填写、日报生成、竞品快扫”的个人操作台。",
+            stack:
+              "前端用 React + CopilotKit，任务执行用 browser-use，存储和日志用 Supabase。",
             mvp:
-              "MVP 先做静态表单 + 规则引擎 + 模型推荐结果页，再补 `whichllm` CLI 调用和 Ollama 一键启动。",
+              "先做 3 个按钮型任务：抓取某主题新闻、汇总某 GitHub topic、把结果导出成 markdown 卡片。"
           },
           {
-            title: "Agent Skill 雷达站",
-            tags: ["Next.js", "GitHub API", "SQLite", "Cron"],
-            summary:
-              "追踪最近 7/30 天增长最快的 skills、MCP servers、agent plugins，按研究/设计/运营/开发四类做可订阅榜单。",
+            title: "仓库入门伴读机器人",
+            tags: ["Next.js", "OpenHands SDK", "Shadcn UI", "RAG"],
+            what:
+              "输入一个 GitHub 仓库 URL，自动生成“项目用途、目录结构、启动方式、首个可改点”。",
+            stack:
+              "Next.js 做界面，OpenHands 或 Codex 风格 agent 负责读取仓库，向量检索层可接轻量 RAG。",
             mvp:
-              "先抓 GitHub Trending、OSSInsight 和仓库 README 标签，生成每日榜单卡片页和邮件摘要。",
+              "先只支持 README + package.json / pyproject.toml 解析，再输出 5 分钟 onboarding 卡片。"
           },
           {
-            title: "本地研究简报生成器",
-            tags: ["React", "last30days-skill", "Markdown", "静态导出"],
-            summary:
-              "输入主题后，自动生成类似今天这种“可分享 HTML 简报”，适合投研、增长、产品和行业追踪。",
+            title: "增长团队网页 QA Agent",
+            tags: ["Playwright", "browser-use", "Node.js", "SQLite"],
+            what:
+              "让 agent 每天自动巡检落地页、表单、支付流程和埋点是否异常。",
+            stack:
+              "执行层用 browser-use 或 Playwright，结果存 SQLite，前端用简单 React 面板查看失败截图。",
             mvp:
-              "先支持输入关键词、人工贴入多条链接，再输出结构化 HTML。第二阶段再接 skill/搜索能力做自动抓取。",
+              "从三个关键页面开始：访问、点击、截图、断言标题和按钮存在，失败时发飞书/Slack 通知。"
           },
           {
-            title: "Agent UI Patternbook",
-            tags: ["CopilotKit", "React", "Tailwind 或 CSS Variables", "Storybook"],
-            summary:
-              "做一个展示 agent 前端交互范式的组件库样板：审批流、工具执行日志、多轮计划卡、结果 diff、人工接管。",
+            title: "本地可控的 SMB 任务助手",
+            tags: ["Tauri", "Goose", "Gemini CLI", "Postgres"],
+            what:
+              "为小团队做一个能本地运行的 agent 桌面工具，统一处理文档整理、邮件草稿、报价单生成。",
+            stack:
+              "桌面壳可用 Tauri，agent runtime 用 Goose 或 Gemini CLI，数据存 Postgres 或 SQLite。",
             mvp:
-              "先做 6 个关键组件和 2 个完整 demo 场景，让团队能快速复制到内部产品。",
-          },
+              "先做本地知识库 + 模板生成：读入客户需求文档，输出报价摘要和后续跟进清单。"
+          }
         ],
-        closing:
-          "今天的共同趋势是：AI 行业的重心正在从“模型能力展示”切向“可部署、可协作、可计费、可控成本”的真实系统建设。GitHub 热门项目在做 skills、workspace、frontend、inference cost；大厂在把 Codex、Copilot、AI Studio、Apple 平台工具推向更广角色；资本和能源市场则提醒我们，AI 的下一阶段竞争不仅看模型，还看基础设施、供应链和单位经济性。短期最值得盯的是三件事：agent skill/插件生态会不会形成标准分发层；本地 AI PC 与端侧推理能否跑出真实用户场景；以及 AI 应用扩张后，云和算力成本会不会吞掉产品毛利。",
-        sourceLinks: [
-          ["GitHub Trending", "https://github.com/trending"],
-          ["OSSInsight AI Trending", "https://ossinsight.io/trending/ai"],
-          ["OpenAI Codex", "https://openai.com/index/codex-for-every-role-tool-workflow/"],
-          ["Microsoft Build 2026", "https://blogs.microsoft.com/blog/2026/06/02/microsoft-build-2026-be-yourself-at-work/"],
-          ["Google AI Studio", "https://blog.google/innovation-and-ai/technology/developers-tools/google-ai-studio-io-2026/"],
-          ["NVIDIA RTX Spark", "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx"],
-          ["Apple WWDC26", "https://www.apple.com/newsroom/2026/05/apple-kicks-off-worldwide-developers-conference-on-june-8/"],
-          ["TechCrunch 微软开源安全事件", "https://techcrunch.com/2026/06/08/microsofts-open-source-tools-were-hacked-to-steal-passwords-of-ai-developers/"],
+        techNews: [
+          {
+            title: "Apple 在 WWDC 2026 正式推进 Siri AI，AI 终于进入系统级入口",
+            source: "The Verge",
+            link: "https://www.theverge.com/ai-artificial-intelligence/946780/apples-ai-promises-are-finally-almost-sort-of-here",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["AI", "消费电子", "系统平台"],
+            summary:
+              "Apple 在 2026 年 WWDC 上展示新版 Siri AI，强调跨消息、照片、日历、网页内容的上下文理解，并继续主打 on-device 与 Private Cloud Compute 的隐私路径。",
+            impact:
+              "重要性不在于功能惊艳，而在于 Apple 终于把 AI 放进系统入口层。只要这个入口成立，后续开发者生态、设备换机与默认用户习惯都会被重新定义。",
+            audience: "适合关注 Apple 生态、终端入口和消费级 AI 渗透的人。",
+            note: "来源为 The Verge 当日报道。"
+          },
+          {
+            title: "Microsoft Project Solara 指向“agent-first 设备”新形态",
+            source: "Tom's Hardware",
+            link: "https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-unveils-project-solara-ai-a-chip-to-cloud-platform-built-to-power-a-new-generation-of-agent-first-enterprise-devices-hardware-designed-to-run-ai-agents-instead-of-traditional-apps",
+            status: "待进一步确认",
+            statusTone: "verify",
+            tags: ["AI 设备", "企业软件", "边缘计算"],
+            summary:
+              "微软在 Build 2026 上展示 Project Solara，核心是把 agent 状态放到 Azure，把设备当作执行和交互终端，配套 Android/AOSP 系统内核与参考硬件形态。",
+            impact:
+              "如果这条路线跑通，企业终端将不再以 App 为核心，而是以 agent 会话和任务状态为核心。它的意义接近一次轻量版“后 PC 设备模型”试探。",
+            audience: "适合关注企业 AI 终端、边缘设备、行业解决方案的人。",
+            note: "目前可见来源为媒体对 Build 发布的整理，具体产品落地节奏仍需后续官方文档确认。"
+          },
+          {
+            title: "欧盟要求 Meta 向竞争对手开放 WhatsApp 的 AI 接入",
+            source: "AP",
+            link: "https://apnews.com/article/8b4b48acb23acf5686f141a276bb868d",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["监管", "AI 助手", "平台竞争"],
+            summary:
+              "欧盟对 Meta 采取临时措施，要求其在调查期间恢复竞争对手 AI 聊天助手对 WhatsApp 的访问，防止 Meta 通过平台控制提前锁死市场。",
+            impact:
+              "这说明 AI 助手竞争已经从模型层打到分发层。未来最值钱的不只是模型能力，而是谁掌握用户入口、联系人关系和默认触达链路。",
+            audience: "适合关注 AI 分发、平台反垄断和超级 App 生态的人。",
+            note: "来源为 AP 当日报道。"
+          },
+          {
+            title: "OpenAI 机密提交 IPO 申请，AI 商业化进入资本市场主舞台",
+            source: "MarketWatch",
+            link: "https://www.marketwatch.com/story/openai-files-confidentially-for-ipo-but-theres-a-catch-3f13fc13",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["AI", "资本市场", "企业战略"],
+            summary:
+              "OpenAI 在 2026-06-08 披露已向 SEC 机密提交上市草案，市场将其与 Anthropic 和 SpaceX 的 IPO 预期并列看待。",
+            impact:
+              "AI 公司开始从估值神话转向公开市场约束，这会逼迫行业更重视收入质量、毛利结构、算力资本开支和产品留存，而不只是 demo 热度。",
+            audience: "适合关注 AI 商业模式、一级二级市场联动的人。",
+            note: "MarketWatch 基于公司披露与市场跟进报道。"
+          },
+          {
+            title: "欧盟推出 tech sovereignty 计划，芯片、云和 AI 本土化再加码",
+            source: "AP",
+            link: "https://apnews.com/article/b16729f7758120260c7005bfba0774c3",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["云计算", "半导体", "欧洲政策"],
+            summary:
+              "欧盟宣布新的“技术主权”计划，希望降低对美国云与 AI 服务、亚洲芯片生产的依赖，并提出扩容数据中心与推进本土芯片生产的措施。",
+            impact:
+              "这意味着欧洲正在把 AI 看成供应链和主权议题，而不只是创新议题。未来企业选云、选模型、选部署地会更多受政策牵引。",
+            audience: "适合关注跨境云服务、数据主权、欧洲市场进入策略的人。",
+            note: "来源为 AP 6 月 3 日报道，仍需跟踪后续立法进展。"
+          },
+          {
+            title: "NVIDIA Cosmos 3 押注 Physical AI，世界模型从概念走向平台化",
+            source: "Axios",
+            link: "https://www.axios.com/2026/06/01/nvidia-ai-push-cosmos-3-world-model",
+            status: "待进一步确认",
+            statusTone: "verify",
+            tags: ["机器人", "自动驾驶", "Physical AI"],
+            summary:
+              "NVIDIA 发布 Cosmos 3 世界模型，瞄准机器人、自动驾驶和物理环境预测，强调开放、可定制以及多模态训练规模。",
+            impact:
+              "这件事的重要性在于 AI 竞争正在从“会说”转到“会感知、会预测、会行动”。只要世界模型工具链成熟，机器人与工业软件会明显受益。",
+            audience: "适合关注机器人、自动驾驶、仿真训练和 embodied AI 的人。",
+            note: "目前主要可见 Axios 与论文摘要信息，建议持续观察 NVIDIA 官方研究页和开发者文档。"
+          }
         ],
+        generalNews: [
+          {
+            title: "中国 5 月出口同比增长 19.4%，汽车与科技品类继续托底",
+            source: "AP",
+            link: "https://apnews.com/article/33ee2ae323cb9bd8189bf1b13fbe9edf",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["中国经济", "出口", "产业链"],
+            summary:
+              "中国海关数据显示，2026 年 5 月出口同比增长 19.4%，半导体、计算设备、汽车等技术和制造业品类仍然强势。",
+            impact:
+              "这说明全球需求虽受地缘冲击扰动，但制造链条并未明显降温。对企业判断而言，科技制造仍是宏观里最有韧性的部分之一。",
+            note: "适合关注出海、供应链、制造业需求的人。"
+          },
+          {
+            title: "油价再次逼近 100 美元，地缘冲突重新压制市场风险偏好",
+            source: "AP",
+            link: "https://apnews.com/article/c1bbda07dfff9f35be657b65f344202b",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["能源", "资本市场", "国际局势"],
+            summary:
+              "AP 报道显示，因美国与伊朗停火脆弱、冲突再起风险升温，国际油价回升并拖累美股从历史高位回落。",
+            impact:
+              "油价不是单一商品问题，它会重新抬高通胀预期、压制降息想象、冲击运输与制造成本，也会让 AI 以外的高估值资产承压。",
+            note: "适合关注宏观、物流、制造成本和市场波动的人。"
+          },
+          {
+            title: "OpenAI 机密提交 IPO，AI IPO 窗口可能被彻底打开",
+            source: "MarketWatch",
+            link: "https://www.marketwatch.com/story/as-spacex-ipo-anticipation-heats-up-what-2026s-biggest-ipos-say-about-investor-demand-f38ad821",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["IPO", "AI", "二级市场"],
+            summary:
+              "MarketWatch 认为 OpenAI、Anthropic 与 SpaceX 的连续 IPO 预期，正在把 2026 年推向新一轮科技 IPO 大年。",
+            impact:
+              "这对企业和投资人的意义是：AI 故事要开始接受公开市场审计。未来融资叙事会越来越看重可持续收入，而不是纯愿景。",
+            note: "适合关注 IPO、科技估值和资本市场情绪的人。"
+          },
+          {
+            title: "美国将试点 750 美元的加急签证面试服务",
+            source: "AP",
+            link: "https://apnews.com/article/38a7143ba665f87fc1bb416e05e45a7d",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["出入境", "商业流动", "政策"],
+            summary:
+              "美国国务院计划从 2026-07-01 到 2026-12-31 试点加急签证面试服务，费用 750 美元，目标是在 10 天内安排面试。",
+            impact:
+              "它释放出的信号并不友好：跨境商务流动正在变得更贵、更分层。对国际销售、商务拜访和会展行业都会有额外摩擦成本。",
+            note: "适合关注跨境商务、留学、签证服务和海外拓展的人。"
+          },
+          {
+            title: "芯片股从暴跌中快速反弹，AI 交易仍是市场主轴",
+            source: "MarketWatch",
+            link: "https://www.marketwatch.com/livecoverage/stock-market-today-dow-set-to-weaken-nasdaq-to-rise-after-worst-day-for-stocks-in-ten-months/card/chip-stocks-bounce-back-sharply-after-friday-s-rout-UcA7UApGaA8Vlc2rgmX0",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["半导体", "市场情绪", "AI 交易"],
+            summary:
+              "在经历六年来最差单日下跌后，费城半导体指数次日即大幅反弹，说明资金对 AI 主线仍极度敏感。",
+            impact:
+              "这反映出市场并未放弃 AI，只是在重新定价波动。对企业融资和产品判断来说，AI 仍是主叙事，但估值波动会更频繁。",
+            note: "适合关注科技股、半导体周期和市场风险偏好的人。"
+          },
+          {
+            title: "Apple 与欧盟围绕 Siri AI 延期公开互相指责",
+            source: "AP",
+            link: "https://apnews.com/article/5d18df90b03e4e98ac528c8802e2b531",
+            status: "已核实",
+            statusTone: "ok",
+            tags: ["监管", "平台博弈", "欧洲市场"],
+            summary:
+              "Apple 表示欧盟 DMA 让 Siri AI 无法如期在欧盟上线，欧盟则公开回应称法规并未禁止 Apple 发布产品，责任在 Apple 自身。",
+            impact:
+              "这说明 AI 产品的国际化不再只是翻译和本地化问题，而是监管适配问题。大厂的全球上线节奏会越来越受地区制度差异影响。",
+            note: "适合关注全球化产品、隐私合规和欧盟数字监管的人。"
+          }
+        ],
+        finalJudgment: {
+          headline: "今日总趋势判断：AI 正从“能力竞赛”进入“基础设施、入口和监管”的硬碰硬阶段。",
+          paragraphs: [
+            "GitHub 热点说明开发者侧的竞争焦点已经从“谁能写代码”转到“谁能真正执行工作流”。CLI、browser、skills、MCP、agent UI 这些原来像配套层的东西，正在变成主产品。",
+            "科技新闻则进一步证明，大公司已经不满足于模型发布，而是在抢系统入口、边缘设备、企业终端和资本市场叙事。也就是说，AI 的下一轮壁垒很可能不是模型本身，而是默认入口、部署效率、合规能力和生态掌控力。",
+            "综合新闻层面的油价、出口、签证、欧盟监管与 IPO 节奏放在一起看，能得出的结论是：2026 年的 AI 判断不能脱离宏观。真正值得重视的是那些既能创造产品价值、又能穿越政策和成本波动的“可执行基础设施”项目。"
+          ],
+          signals: [
+            "值得持续跟踪：terminal-first agent 是否继续替代传统 IDE 插件入口。",
+            "值得持续跟踪：browser execution 是否会出现更明确的事实标准或协议层。",
+            "值得持续跟踪：AI 商业化进入公开市场后，哪些公司能证明收入质量而非只证明热度。"
+          ]
+        },
+        sources: [
+          { label: "openai/codex", url: "https://github.com/openai/codex" },
+          { label: "openai/codex releases", url: "https://github.com/openai/codex/releases" },
+          { label: "OpenHands/OpenHands", url: "https://github.com/OpenHands/OpenHands" },
+          { label: "OpenHands releases", url: "https://github.com/OpenHands/OpenHands/releases" },
+          { label: "browser-use/browser-use", url: "https://github.com/browser-use/browser-use" },
+          { label: "browser-use releases", url: "https://github.com/browser-use/browser-use/releases" },
+          { label: "CopilotKit/CopilotKit", url: "https://github.com/CopilotKit/CopilotKit" },
+          { label: "CopilotKit releases", url: "https://github.com/CopilotKit/CopilotKit/releases" },
+          { label: "aaif-goose/goose", url: "https://github.com/aaif-goose/goose" },
+          { label: "goose releases", url: "https://github.com/aaif-goose/goose/releases" },
+          { label: "google-gemini/gemini-cli", url: "https://github.com/google-gemini/gemini-cli" },
+          { label: "gemini-cli releases", url: "https://github.com/google-gemini/gemini-cli/releases" },
+          { label: "The Verge: Apple AI promises", url: "https://www.theverge.com/ai-artificial-intelligence/946780/apples-ai-promises-are-finally-almost-sort-of-here" },
+          { label: "AP: Meta WhatsApp AI antitrust", url: "https://apnews.com/article/8b4b48acb23acf5686f141a276bb868d" },
+          { label: "AP: China exports", url: "https://apnews.com/article/33ee2ae323cb9bd8189bf1b13fbe9edf" },
+          { label: "AP: Visa premium service", url: "https://apnews.com/article/38a7143ba665f87fc1bb416e05e45a7d" },
+          { label: "AP: EU tech sovereignty", url: "https://apnews.com/article/b16729f7758120260c7005bfba0774c3" },
+          { label: "AP: Oil prices", url: "https://apnews.com/article/c1bbda07dfff9f35be657b65f344202b" },
+          { label: "AP: Apple vs EU on Siri AI", url: "https://apnews.com/article/5d18df90b03e4e98ac528c8802e2b531" },
+          { label: "MarketWatch: OpenAI IPO", url: "https://www.marketwatch.com/story/openai-files-confidentially-for-ipo-but-theres-a-catch-3f13fc13" },
+          { label: "MarketWatch: AI IPO demand", url: "https://www.marketwatch.com/story/as-spacex-ipo-anticipation-heats-up-what-2026s-biggest-ipos-say-about-investor-demand-f38ad821" },
+          { label: "MarketWatch: chip stocks rebound", url: "https://www.marketwatch.com/livecoverage/stock-market-today-dow-set-to-weaken-nasdaq-to-rise-after-worst-day-for-stocks-in-ten-months/card/chip-stocks-bounce-back-sharply-after-friday-s-rout-UcA7UApGaA8Vlc2rgmX0" },
+          { label: "Tom's Hardware: Project Solara", url: "https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-unveils-project-solara-ai-a-chip-to-cloud-platform-built-to-power-a-new-generation-of-agent-first-enterprise-devices-hardware-designed-to-run-ai-agents-instead-of-traditional-apps" },
+          { label: "Axios: Cosmos 3", url: "https://www.axios.com/2026/06/01/nvidia-ai-push-cosmos-3-world-model" }
+        ]
       };
 
-      function Section({ id, title, intro, children, extra }) {
-        return (
-          <section className="section" id={id}>
-            <div className="section-header">
-              <div>
-                <h2>{title}</h2>
-                <p>{intro}</p>
-              </div>
-              {extra}
-            </div>
-            {children}
-          </section>
-        );
-      }
+      const Status = ({ text, tone }) => (
+        <span className={`status ${tone === "verify" ? "verify" : tone === "caution" ? "caution" : ""}`}>{text}</span>
+      );
 
-      function InfoCard({ item, kind }) {
-        return (
-          <article className={`card ${kind === "idea" ? "compact" : ""}`}>
-            <div className="card-top">
-              <h3>{item.name || item.title}</h3>
-              <span>{item.tag || item.source}</span>
-            </div>
-            {item.tags && (
-              <div className="chips">
-                {item.tags.map((tag) => (
-                  <span className="chip" key={tag}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
+      const SectionHeader = ({ title, description, aside }) => (
+        <div className="section-header">
+          <div>
+            <h2>{title}</h2>
+            <p>{description}</p>
+          </div>
+          {aside ? <div className="muted-note">{aside}</div> : null}
+        </div>
+      );
+
+      const ProjectCard = ({ item }) => (
+        <article className="card">
+          <div className="card-top">
             <div>
-              <span className="label">摘要</span>
-              <p className="summary">{item.summary}</p>
+              <div className="card-kicker">{item.kicker}</div>
+              <h3>{item.name}</h3>
             </div>
-            {(item.highlight || item.impact || item.mvp) && (
-              <div className={`insight ${item.summary.includes("待进一步确认") ? "warn" : ""}`}>
-                <span className="label">
-                  {item.highlight ? "核心亮点" : item.impact ? "影响判断" : "MVP 思路"}
-                </span>
-                <p className="judgment">{item.highlight || item.impact || item.mvp}</p>
-              </div>
-            )}
-            {item.whyNow && (
-              <div>
-                <span className="label">为什么现在值得看</span>
-                <p className="reason">{item.whyNow}</p>
-              </div>
-            )}
-            {item.audience && (
+            <Status text={item.status} tone={item.statusTone} />
+          </div>
+          <div className="tags">
+            {item.tags.map((tag) => (
+              <span className="tag" key={tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div className="copy-block">
+            <div>
+              <span className="label">主要用途</span>
+              <p>{item.purpose}</p>
+            </div>
+            <div>
+              <span className="label">核心亮点</span>
+              <p>{item.highlights}</p>
+            </div>
+            <div>
+              <span className="label">为什么现在值得看</span>
+              <p>{item.whyNow}</p>
+            </div>
+          </div>
+          <div className="link-row">
+            <a className="link-pill" href={item.link} target="_blank" rel="noreferrer">
+              打开项目主页
+            </a>
+            <span className="muted-note">{item.note}</span>
+          </div>
+        </article>
+      );
+
+      const NewsCard = ({ item, compact = false }) => (
+        <article className={`card ${compact ? "compact" : ""}`}>
+          <div className="card-top">
+            <div>
+              <div className="card-kicker">{item.source}</div>
+              <h3>{item.title}</h3>
+            </div>
+            <Status text={item.status} tone={item.statusTone} />
+          </div>
+          <div className="tags">
+            {item.tags.map((tag) => (
+              <span className="tag" key={tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div className="copy-block">
+            <div>
+              <span className="label">事件摘要</span>
+              <p>{item.summary}</p>
+            </div>
+            <div>
+              <span className="label">影响判断</span>
+              <p>{item.impact}</p>
+            </div>
+            {item.audience ? (
               <div>
                 <span className="label">适合关注的人群</span>
-                <p className="audience">{item.audience}</p>
+                <p>{item.audience}</p>
               </div>
-            )}
-            <a className="footer-link" href={item.link} target="_blank" rel="noreferrer">
-              查看链接
-            </a>
-          </article>
-        );
-      }
-
-      function TrendBlock({ item }) {
-        return (
-          <div className="trend-item">
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
+            ) : null}
           </div>
-        );
-      }
+          <div className="link-row">
+            <a className="link-pill" href={item.link} target="_blank" rel="noreferrer">
+              查看来源
+            </a>
+            <span className="muted-note">{item.note}</span>
+          </div>
+        </article>
+      );
 
-      function App() {
-        return (
-          <main className="page">
-            <header className="hero">
-              <div className="eyebrow">DAILY SIGNAL / {report.date}</div>
-              <h1>{report.title}</h1>
-              <p>{report.brief}</p>
-              <div className="meta-strip">
-                {report.meta.map((item) => (
-                  <span key={item}>{item}</span>
+      const VibeCard = ({ item }) => (
+        <article className="card compact">
+          <div className="card-top">
+            <div>
+              <div className="card-kicker">Vibe Coding Idea</div>
+              <h3>{item.title}</h3>
+            </div>
+          </div>
+          <div className="tags">
+            {item.tags.map((tag) => (
+              <span className="tag" key={tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div className="copy-block">
+            <div>
+              <span className="label">可以做什么</span>
+              <p>{item.what}</p>
+            </div>
+            <div>
+              <span className="label">适合技术栈 / 组件</span>
+              <p>{item.stack}</p>
+            </div>
+            <div>
+              <span className="label">MVP 起步方式</span>
+              <p>{item.mvp}</p>
+            </div>
+          </div>
+        </article>
+      );
+
+      const App = () => (
+        <div className="page">
+          <section className="hero">
+            <div className="eyebrow">Daily Brief / {report.date}</div>
+            <h1>{report.title}</h1>
+            <p className="hero-summary">{report.overview}</p>
+
+            <div className="hero-grid">
+              <div className="hero-panel">
+                <h3>日报内容摘要</h3>
+                <ol className="hero-points">
+                  {report.keyTakeaways.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ol>
+              </div>
+              <div className="stats">
+                {report.stats.map((stat) => (
+                  <div className="stat-card" key={stat.label}>
+                    <strong>{stat.value}</strong>
+                    <span>{stat.label}</span>
+                  </div>
                 ))}
               </div>
-            </header>
+            </div>
+          </section>
 
-            <Section
-              id="github"
+          <section className="section">
+            <SectionHeader
               title="GitHub 开源项目观察"
-              intro="今天值得看的项目，集中在三个方向：可持续使用的 agent 工作台、可安装的 skill/插件生态，以及帮助端侧推理降本增效的底层工具。"
-              extra={<span className="chip">今日关注 7 个项目</span>}
-            >
-              <div className="grid">
-                {report.githubProjects.map((item) => (
-                  <InfoCard item={item} key={item.name} />
-                ))}
-              </div>
-            </Section>
-
-            <Section
-              id="github-trends"
-              title="项目趋势观察"
-              intro="不要把这些仓库看成互不相关的热点。它们共同指向的是 agent 产业链的分层与工程化。"
-            >
-              <div className="trend-list">
-                {report.githubTrends.map((item) => (
-                  <TrendBlock item={item} key={item.title} />
-                ))}
-              </div>
-            </Section>
-
-            <Section
-              id="tech"
-              title="每日科技热点"
-              intro="今天的科技新闻并不只是发布会罗列，而是很清楚地展示了大厂在“把 AI 接进真实工作流程”上的路线差异。"
-              extra={<span className="chip">科技动态 6 条</span>}
-            >
-              <div className="grid">
-                {report.techNews.map((item) => (
-                  <InfoCard item={item} key={item.title} />
-                ))}
-              </div>
-            </Section>
-
-            <Section
-              id="news"
-              title="每日新闻热点"
-              intro="综合新闻部分重点看资本、能源、利率和云基础设施，因为这些因素会直接决定 AI 产品的成本结构和融资节奏。"
-              extra={<span className="chip">综合新闻 6 条</span>}
-            >
-              <div className="grid">
-                {report.newsHotspots.map((item) => (
-                  <InfoCard item={item} key={item.title} />
-                ))}
-              </div>
-            </Section>
-
-            <Section
-              id="vibe"
-              title="Vibe Coding 项目建议"
-              intro="下面这 4 个方向都能在一两天内做出可演示 MVP，而且都能直接借今天的热点形成清晰叙事。"
-              extra={<span className="chip">可执行建议 4 个</span>}
-            >
-              <div className="grid">
-                {report.vibeIdeas.map((item) => (
-                  <InfoCard item={item} key={item.title} kind="idea" />
-                ))}
-              </div>
-            </Section>
-
-            <Section
-              id="closing"
-              title="今日总趋势判断"
-              intro="如果只记一个判断，那就是：AI 的价值正在从“生成结果”迁移到“连接工作流、控制成本、建立长期使用习惯”。"
-            >
-              <div className="closing">
-                <article className="card wide">
-                  <div className="card-top">
-                    <h3>总判断</h3>
-                    <span>面向接下来 2-6 周</span>
-                  </div>
-                  <p className="summary">{report.closing}</p>
-                </article>
-                <article className="card">
-                  <div className="card-top">
-                    <h3>主要来源</h3>
-                    <span>权威 / 官方 / 高可信媒体</span>
-                  </div>
-                  <div className="sources">
-                    {report.sourceLinks.map(([label, link]) => (
-                      <a href={link} target="_blank" rel="noreferrer" key={label}>
-                        {label}
-                      </a>
+              description="今天的高价值项目几乎都围绕“可执行 agent”展开，但侧重点已经从大模型本身转向执行环境、浏览器能力、前端协议和插件生态。"
+              aside="优先选择仍在活跃发版、容易快速理解、适合继续拆成 side project 的项目。"
+            />
+            <div className="grid">
+              {report.githubProjects.map((item) => (
+                <ProjectCard item={item} key={item.name} />
+              ))}
+              <article className="card wide">
+                <div className="trend-box">
+                  <h3>项目之间的趋势观察</h3>
+                  <ul className="signal-list">
+                    {report.githubTrends.map((trend) => (
+                      <li key={trend}>{trend}</li>
                     ))}
-                  </div>
-                  <div className="insight warn">
-                    <span className="label">说明</span>
-                    <p className="judgment">
-                      Lovable 与 Google Cloud 合作细节目前主要见于媒体报道，文中已标注“待进一步确认”。
-                    </p>
-                  </div>
-                </article>
-              </div>
-            </Section>
-          </main>
-        );
-      }
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section className="section">
+            <SectionHeader
+              title="每日科技热点"
+              description="科技动态的共同特征是：AI 被进一步推进到系统入口、企业终端、硬件平台和监管分发层，而不再只是模型更新。"
+            />
+            <div className="grid">
+              {report.techNews.map((item) => (
+                <NewsCard item={item} key={item.title} compact />
+              ))}
+            </div>
+          </section>
+
+          <section className="section">
+            <SectionHeader
+              title="每日新闻热点"
+              description="综合新闻重点放在商业、资本市场、国际局势与产业链变化，避免低价值噪音。"
+            />
+            <div className="grid">
+              {report.generalNews.map((item) => (
+                <NewsCard item={item} key={item.title} compact />
+              ))}
+            </div>
+          </section>
+
+          <section className="section">
+            <SectionHeader
+              title="Vibe Coding 项目建议"
+              description="下面这些方向都能直接从今天的 GitHub 项目里借力，不需要先做大平台，适合先跑通一个可演示 MVP。"
+            />
+            <div className="grid">
+              {report.vibeIdeas.map((item) => (
+                <VibeCard item={item} key={item.title} />
+              ))}
+            </div>
+          </section>
+
+          <section className="section">
+            <SectionHeader
+              title="今日总趋势判断"
+              description="把 GitHub 热点、科技动态和综合新闻叠在一起看，今天最值得抓住的不是单条消息，而是背后的结构变化。"
+            />
+            <div className="judgment-box">
+              <h3>{report.finalJudgment.headline}</h3>
+              {report.finalJudgment.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+              <ul className="signal-list">
+                {report.finalJudgment.signals.map((signal) => (
+                  <li key={signal}>{signal}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <section className="section">
+            <SectionHeader
+              title="来源索引"
+              description="页面内所有链接均可点击并在新窗口打开。对来源不够官方、但具备较高信息价值的条目，已标注“待进一步确认”。"
+            />
+            <ol className="source-list">
+              {report.sources.map((source) => (
+                <li key={source.url}>
+                  <a href={source.url} target="_blank" rel="noreferrer">
+                    {source.label}
+                  </a>
+                </li>
+              ))}
+            </ol>
+            <div className="footer">
+              说明：本页使用 React 18 UMD + Babel 直出，无需后端，可直接部署到 GitHub Pages。
+            </div>
+          </section>
+        </div>
+      );
 
       ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     </script>
