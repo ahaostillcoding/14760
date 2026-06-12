@@ -6,7 +6,7 @@
     <title>每日 GitHub + 科技新闻热点简报</title>
     <meta
       name="description"
-      content="2026-06-11 每日 GitHub 开源项目观察、科技热点、新闻热点与 Vibe Coding 建议。"
+      content="2026-06-12 每日 GitHub 开源项目观察、科技热点、新闻热点与 Vibe Coding 建议。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,24 +19,24 @@
     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
       :root {
-        --bg: #f3efe6;
-        --bg-deep: #e7ddcf;
-        --panel: rgba(255, 252, 247, 0.88);
-        --panel-strong: #fffdfa;
-        --text: #17212b;
-        --muted: #62707d;
-        --line: rgba(23, 33, 43, 0.09);
-        --line-strong: rgba(23, 33, 43, 0.16);
-        --brand: #0c6d63;
-        --brand-soft: rgba(12, 109, 99, 0.1);
-        --accent: #b86a22;
-        --accent-soft: rgba(184, 106, 34, 0.1);
-        --warning: #9d4737;
-        --warning-soft: rgba(157, 71, 55, 0.1);
-        --shadow: 0 20px 55px rgba(31, 42, 54, 0.12);
-        --radius-xl: 32px;
-        --radius-lg: 24px;
-        --radius-md: 18px;
+        --bg: #f6f3ed;
+        --bg-deep: #ece4d7;
+        --panel: rgba(255, 252, 248, 0.88);
+        --panel-strong: #fffdf9;
+        --text: #172129;
+        --muted: #63707d;
+        --line: rgba(23, 33, 41, 0.1);
+        --line-strong: rgba(23, 33, 41, 0.18);
+        --brand: #0b6b63;
+        --brand-soft: rgba(11, 107, 99, 0.12);
+        --accent: #c56e2e;
+        --accent-soft: rgba(197, 110, 46, 0.12);
+        --danger: #a64d3e;
+        --danger-soft: rgba(166, 77, 62, 0.12);
+        --shadow: 0 24px 55px rgba(30, 41, 53, 0.12);
+        --radius-xl: 30px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
       }
 
       * {
@@ -52,9 +52,9 @@
         color: var(--text);
         font-family: "Noto Sans SC", system-ui, sans-serif;
         background:
-          radial-gradient(circle at 10% 0%, rgba(12, 109, 99, 0.16), transparent 24%),
-          radial-gradient(circle at 90% 0%, rgba(184, 106, 34, 0.14), transparent 26%),
-          linear-gradient(180deg, #fbf8f2 0%, var(--bg) 52%, var(--bg-deep) 100%);
+          radial-gradient(circle at 0% 0%, rgba(11, 107, 99, 0.14), transparent 24%),
+          radial-gradient(circle at 100% 0%, rgba(197, 110, 46, 0.12), transparent 22%),
+          linear-gradient(180deg, #fbf8f3 0%, var(--bg) 55%, var(--bg-deep) 100%);
       }
 
       a {
@@ -63,9 +63,9 @@
       }
 
       .page {
-        width: min(1240px, calc(100% - 32px));
+        width: min(1220px, calc(100% - 28px));
         margin: 0 auto;
-        padding: 22px 0 80px;
+        padding: 22px 0 84px;
       }
 
       .mono {
@@ -77,339 +77,445 @@
         overflow: hidden;
         padding: 34px;
         border-radius: var(--radius-xl);
-        color: #fbf8f3;
+        color: #fbf8f2;
         background:
-          radial-gradient(circle at 78% 14%, rgba(255, 219, 168, 0.24), transparent 24%),
-          linear-gradient(135deg, #0b1826, #0f5c62 55%, #14413f);
+          linear-gradient(135deg, rgba(7, 29, 44, 0.96), rgba(14, 76, 92, 0.92) 54%, rgba(177, 100, 45, 0.88)),
+          #0f2231;
         box-shadow: var(--shadow);
       }
 
+      .hero::before,
       .hero::after {
         content: "";
         position: absolute;
-        right: -80px;
-        bottom: -120px;
-        width: 360px;
-        height: 360px;
         border-radius: 999px;
-        background: radial-gradient(circle, rgba(255, 226, 185, 0.26), transparent 68%);
         pointer-events: none;
       }
 
-      .eyebrow,
-      .chip,
-      .jump-link,
-      .pill,
-      .tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        border-radius: 999px;
+      .hero::before {
+        width: 300px;
+        height: 300px;
+        top: -140px;
+        right: -90px;
+        background: rgba(255, 255, 255, 0.08);
       }
 
-      .eyebrow {
-        padding: 8px 12px;
-        font-size: 12px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-      }
-
-      h1 {
-        margin: 16px 0 14px;
-        max-width: 860px;
-        font-size: clamp(34px, 5vw, 62px);
-        line-height: 1.02;
-        letter-spacing: -0.05em;
-      }
-
-      .hero-summary {
-        max-width: 860px;
-        margin: 0;
-        line-height: 1.82;
-        font-size: 17px;
-        color: rgba(251, 248, 243, 0.9);
-      }
-
-      .meta-row,
-      .jump-row,
-      .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .meta-row {
-        margin-top: 18px;
-      }
-
-      .chip {
-        padding: 8px 12px;
-        font-size: 12px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-      }
-
-      .jump-row {
-        margin-top: 16px;
-      }
-
-      .jump-link {
-        padding: 10px 14px;
-        color: #10202d;
-        font-size: 13px;
-        background: rgba(255, 247, 235, 0.94);
+      .hero::after {
+        width: 220px;
+        height: 220px;
+        bottom: -120px;
+        left: -80px;
+        background: rgba(255, 255, 255, 0.06);
       }
 
       .hero-grid {
+        position: relative;
+        z-index: 1;
         display: grid;
-        grid-template-columns: minmax(0, 1.22fr) minmax(280px, 0.78fr);
-        gap: 18px;
+        grid-template-columns: minmax(0, 1.7fr) minmax(320px, 1fr);
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .hero h1 {
+        margin: 12px 0 14px;
+        font-size: clamp(2.4rem, 4vw, 4.2rem);
+        line-height: 0.98;
+        letter-spacing: -0.05em;
+      }
+
+      .hero-intro {
+        max-width: 760px;
+        color: rgba(251, 248, 242, 0.86);
+        font-size: 1.02rem;
+        line-height: 1.76;
+      }
+
+      .hero-meta,
+      .hero-tags,
+      .section-nav,
+      .mini-grid,
+      .card-grid,
+      .trend-grid,
+      .suggestion-grid,
+      .source-grid,
+      .summary-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .hero-meta {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         margin-top: 24px;
       }
 
-      .hero-panel {
-        position: relative;
-        z-index: 1;
-        padding: 20px;
-        border-radius: 22px;
-        background: rgba(255, 255, 255, 0.08);
+      .hero-meta-card,
+      .hero-side,
+      .section-shell,
+      .card,
+      .summary-card,
+      .trend-card,
+      .source-card {
         border: 1px solid rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(14px);
       }
 
-      .hero-panel h2,
-      .section-head h2 {
+      .hero-meta-card {
+        padding: 16px 18px;
+        border-radius: var(--radius-md);
+      }
+
+      .hero-meta-card span {
+        display: block;
+      }
+
+      .hero-meta-card .label {
+        margin-bottom: 8px;
+        font-size: 0.8rem;
+        color: rgba(251, 248, 242, 0.66);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .hero-meta-card .value {
+        font-size: 1.15rem;
+        line-height: 1.45;
+        font-weight: 700;
+      }
+
+      .hero-side {
+        padding: 24px;
+        border-radius: var(--radius-lg);
+      }
+
+      .hero-side h2,
+      .section-head h2,
+      .footer-note h2 {
         margin: 0;
-        font-size: 18px;
-        letter-spacing: -0.03em;
+        font-size: 1rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
       }
 
-      .hero-panel ul,
-      .trend-list,
-      .summary-list {
-        margin: 12px 0 0;
-        padding-left: 18px;
-        line-height: 1.82;
+      .hero-side ul {
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 16px;
       }
 
-      .section {
-        margin-top: 22px;
-        padding: 28px;
-        border-radius: var(--radius-xl);
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.52));
-        border: 1px solid rgba(255, 255, 255, 0.5);
+      .hero-side li {
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .hero-side li:first-child {
+        padding-top: 0;
+        border-top: 0;
+      }
+
+      .hero-side strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 1rem;
+      }
+
+      .hero-side p {
+        margin: 0;
+        color: rgba(251, 248, 242, 0.76);
+        line-height: 1.65;
+        font-size: 0.94rem;
+      }
+
+      .section-nav {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        margin: 18px 0 26px;
+      }
+
+      .section-nav a {
+        padding: 14px 16px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.56);
+        color: var(--muted);
+        font-size: 0.95rem;
+        text-align: center;
+        transition: transform 180ms ease, border-color 180ms ease, color 180ms ease;
+      }
+
+      .section-nav a:hover {
+        transform: translateY(-2px);
+        border-color: var(--brand);
+        color: var(--brand);
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-bottom: 26px;
+      }
+
+      .summary-card {
+        padding: 20px 22px;
+        border-radius: var(--radius-lg);
+        background: var(--panel);
+        border: 1px solid var(--line);
         box-shadow: var(--shadow);
-        backdrop-filter: blur(10px);
+      }
+
+      .summary-card .pill {
+        margin-bottom: 14px;
+      }
+
+      .summary-card h3,
+      .card h3,
+      .trend-card h3,
+      .source-card h3 {
+        margin: 0;
+        font-size: 1.15rem;
+        line-height: 1.45;
+      }
+
+      .summary-card p,
+      .card p,
+      .trend-card p,
+      .source-card p,
+      .footer-note p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .section-shell {
+        margin-top: 20px;
+        padding: 26px;
+        border-radius: var(--radius-xl);
+        background: var(--panel);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
       }
 
       .section-head {
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
         gap: 16px;
-        margin-bottom: 18px;
+        align-items: flex-end;
+        margin-bottom: 20px;
       }
 
-      .section-copy {
+      .section-head p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.72;
         max-width: 780px;
       }
 
-      .section-copy p,
-      .footer p,
-      .line,
-      .card-note {
-        margin: 10px 0 0;
-        line-height: 1.8;
+      .section-count {
+        flex-shrink: 0;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.72);
+        font-size: 0.88rem;
         color: var(--muted);
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
       }
 
       .pill {
-        padding: 8px 12px;
-        font-size: 12px;
-        color: var(--brand);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        line-height: 1;
         background: var(--brand-soft);
-        border: 1px solid rgba(12, 109, 99, 0.14);
+        color: var(--brand);
       }
 
-      .pill.warning {
-        color: var(--accent);
+      .pill.warn {
+        background: var(--danger-soft);
+        color: var(--danger);
+      }
+
+      .pill.accent {
         background: var(--accent-soft);
-        border-color: rgba(184, 106, 34, 0.16);
+        color: var(--accent);
       }
 
-      .pill.risk {
-        color: var(--warning);
-        background: var(--warning-soft);
-        border-color: rgba(157, 71, 55, 0.16);
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-        gap: 16px;
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .card {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        min-height: 100%;
-        padding: 20px;
+        padding: 22px;
         border-radius: var(--radius-lg);
-        background: var(--panel);
-        border: 1px solid var(--line);
-      }
-
-      .span-12 {
-        grid-column: span 12;
-      }
-
-      .span-6 {
-        grid-column: span 6;
-      }
-
-      .span-4 {
-        grid-column: span 4;
-      }
-
-      .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 12px;
-      }
-
-      .card h3 {
-        margin: 0;
-        font-size: 20px;
-        line-height: 1.34;
-        letter-spacing: -0.03em;
-      }
-
-      .subhead {
-        margin: 6px 0 0;
-        font-size: 13px;
-        color: var(--muted);
-      }
-
-      .tag {
-        padding: 7px 10px;
-        font-size: 11px;
-        background: rgba(23, 33, 43, 0.06);
-        color: #152331;
-      }
-
-      .box {
-        padding: 14px 16px;
-        border-radius: var(--radius-md);
         background: var(--panel-strong);
         border: 1px solid var(--line);
+        display: grid;
+        gap: 14px;
       }
 
-      .box strong,
-      .mini-title {
-        display: block;
-        margin-bottom: 6px;
-        font-size: 13px;
-      }
-
-      .box p,
-      .box li {
-        margin: 0;
-        font-size: 14px;
-        line-height: 1.76;
-        color: var(--muted);
-      }
-
-      .box ul {
-        margin: 0;
-        padding-left: 18px;
-      }
-
-      .source-row {
+      .card-top {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        margin-top: auto;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .card-top a {
+        color: inherit;
+      }
+
+      .card-top a:hover h3 {
+        color: var(--brand);
       }
 
       .source-link {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 10px 14px;
-        border-radius: 999px;
-        font-size: 13px;
         color: var(--brand);
-        background: rgba(12, 109, 99, 0.08);
+        font-weight: 700;
+        font-size: 0.93rem;
       }
 
-      .source-link:hover {
-        background: rgba(12, 109, 99, 0.14);
+      .source-link::after {
+        content: "↗";
+        font-size: 0.96rem;
       }
 
-      .score {
-        font-size: 12px;
+      .card-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .mini-tag {
+        padding: 7px 10px;
+        border-radius: 10px;
+        background: rgba(23, 33, 41, 0.05);
         color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1;
       }
 
-      .panel-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-        margin-top: 18px;
+      .card-block {
+        padding: 14px 15px;
+        border-radius: 14px;
+        background: rgba(11, 107, 99, 0.06);
+        border: 1px solid rgba(11, 107, 99, 0.1);
       }
 
-      .footer {
+      .card-block strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--text);
+        font-size: 0.96rem;
+      }
+
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        padding-top: 4px;
+      }
+
+      .card-footer .source-note {
+        color: var(--muted);
+        font-size: 0.84rem;
+      }
+
+      .trend-grid,
+      .suggestion-grid,
+      .source-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .trend-card,
+      .source-card {
+        padding: 20px;
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--line);
+      }
+
+      .footer-note {
         margin-top: 22px;
-        padding: 24px 28px;
-        border-radius: 28px;
+        padding: 26px;
+        border-radius: var(--radius-xl);
         color: #fbf8f3;
-        background:
-          radial-gradient(circle at 80% 16%, rgba(255, 214, 150, 0.2), transparent 24%),
-          linear-gradient(135deg, #102333, #224c5f);
+        background: linear-gradient(135deg, #17212b, #0e4459);
         box-shadow: var(--shadow);
       }
 
-      .footer p {
-        color: rgba(251, 248, 243, 0.88);
+      .footer-note p {
+        margin-top: 12px;
+        color: rgba(251, 248, 243, 0.8);
       }
 
-      @media (max-width: 980px) {
+      .footer-note .pill {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fbf8f3;
+      }
+
+      .muted-line {
+        margin-top: 12px;
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
+
+      @media (max-width: 1100px) {
         .hero-grid,
-        .panel-row {
+        .summary-grid,
+        .trend-grid,
+        .suggestion-grid,
+        .source-grid {
           grid-template-columns: 1fr;
         }
 
-        .span-6,
-        .span-4 {
-          grid-column: span 12;
+        .section-nav {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
 
-      @media (max-width: 720px) {
+      @media (max-width: 860px) {
         .page {
-          width: min(100% - 20px, 1240px);
-          padding-top: 10px;
+          width: min(100% - 20px, 1220px);
+          padding-top: 14px;
         }
 
         .hero,
-        .section,
-        .footer {
+        .section-shell,
+        .footer-note {
           padding: 22px;
-          border-radius: 24px;
         }
 
-        h1 {
-          font-size: 34px;
+        .hero-meta,
+        .card-grid {
+          grid-template-columns: 1fr;
         }
 
         .section-head,
-        .card-header,
-        .source-row {
-          flex-direction: column;
-          align-items: flex-start;
+        .card-top,
+        .card-footer {
+          display: grid;
+        }
+
+        .section-count {
+          justify-self: start;
+        }
+
+        .section-nav {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -417,401 +523,434 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-      const report = {
-        meta: {
-          title: "2026-06-11 每日 GitHub + 科技新闻热点简报",
-          date: "2026-06-11",
-          issue: "自动化日报 / 第 1 期",
-          summary:
-            "今天最值得看的不是又出现了多少新模型，而是 AI 正在更明确地进入“工程化与现实约束”阶段。GitHub 热点从单点 Agent 转向 skills、研究工作流和开发者基础设施；科技公司继续争夺 agent 入口；而宏观与地缘变量已经开始真实影响算力、预算和市场情绪。",
-          chips: ["7 个 GitHub 项目", "6 条科技热点", "6 条新闻热点", "4 个 Vibe Coding 建议"],
-          highlights: [
-            "GitHub 今日高热项目仍以 AI 为主，但热度中心正在从“会不会生成”切到“能不能装进团队工作流”。",
-            "Apple、Microsoft、Nvidia、Meta、Oracle 这几条线都指向同一个方向：Agent 正在从功能升级成平台级入口。",
-            "宏观层面，通胀、能源、关税和中东风险开始更直接影响 AI 基础设施节奏，这比单个模型跑分更值得企业盯紧。"
-          ],
-          readingTips: [
-            "想找开源机会，优先看 skills、工作流、知识管理和本地开发基础设施。",
-            "想找业务机会，关注谁在争夺企业预算入口，以及谁在承受算力成本压力。",
-            "想今天就开工，先做“信息采集 + 自动判断 + 结果交付”的轻量 MVP。"
-          ]
-        },
-        github: [
-          {
-            name: "mvanhorn / last30days-skill",
-            link: "https://github.com/mvanhorn/last30days-skill",
-            source: "GitHub Trending Today",
-            tags: ["Research Agent", "多源检索", "39.3k stars", "今日 +2535"],
-            use: "把 Reddit、X、YouTube、Hacker News、Polymarket 和网页搜索整合成一个可调用的研究技能。",
-            highlight: "价值不在“再多搜一个源”，而在把跨平台调研动作标准化，适合做信息密度更高的 Agent。",
-            why: "今天增星极高，说明开发者开始重视“上下文质量”而不是只追模型本身；这类研究层工具更容易转成产品能力。"
-          },
-          {
-            name: "addyosmani / agent-skills",
-            link: "https://github.com/addyosmani/agent-skills",
-            source: "GitHub Trending Today",
-            tags: ["Agent Skills", "工程工作流", "52.6k stars", "今日 +821"],
-            use: "为 AI coding agent 提供生产级工程技能包，覆盖 spec、plan、build、test、review 等环节。",
-            highlight: "它把 prompt 经验升级成可安装、可复用、可协作的工程资产，比单个技巧帖更适合团队沉淀。",
-            why: "今天仍在高位增长，说明“给 Agent 安装能力”正在成为新的开发分发层，值得所有 AI IDE 和平台团队关注。"
-          },
-          {
-            name: "google / skills",
-            link: "https://github.com/google/skills",
-            source: "GitHub Trending Today",
-            tags: ["Google", "Skills", "13.4k stars", "今日 +211"],
-            use: "Google 官方发布的产品与技术相关 Agent Skills 集合。",
-            highlight: "官方入场意味着 skills 不再只是社区玩法，而是在向平台原生能力、生态规范和产品入口靠拢。",
-            why: "它给出的信号比星数更重要：大厂开始把“可复用能力包”当成正式生态部件，而不是附属 demo。"
-          },
-          {
-            name: "refactoringhq / tolaria",
-            link: "https://github.com/refactoringhq/tolaria",
-            source: "GitHub Trending Today",
-            tags: ["Knowledge Base", "Desktop", "15.1k stars", "今日 +612"],
-            use: "桌面端 Markdown 知识库管理工具，帮助整理、浏览和操作本地知识资产。",
-            highlight: "相比纯聊天入口，它代表另一条更务实的方向：把知识整理、检索和工作空间体验做厚。",
-            why: "个人知识管理再次升温，说明开发者在寻找可控、本地、可沉淀的上下文容器，这很适合衔接 AI 助手。"
-          },
-          {
-            name: "apple / container",
-            link: "https://github.com/apple/container",
-            source: "GitHub Trending Today",
-            tags: ["Mac DevInfra", "Container", "30.2k stars", "今日 +1611"],
-            use: "在 Apple silicon Mac 上创建和运行 Linux 容器的官方工具。",
-            highlight: "Apple 在本地开发基础设施上明显补课，这对 AI 开发、轻量 devbox 和本地推理都很关键。",
-            why: "今天增长非常快，说明开发者不仅关心模型，也在补齐本地运行环境；这类基础设施常常比上层功能更持久。"
-          },
-          {
-            name: "roboflow / supervision",
-            link: "https://github.com/roboflow/supervision",
-            source: "GitHub Trending Today",
-            tags: ["Computer Vision", "工具库", "43.7k stars", "今日 +695"],
-            use: "为计算机视觉任务提供可视化、后处理、评估与数据操作工具。",
-            highlight: "它代表的不是新模型，而是让视觉工作流真正能交付的“中间层工具”。",
-            why: "如果 2026 年 AI 真要从文本走向物理世界和视频世界，这类工具的复用价值会持续抬高。"
-          },
-          {
-            name: "harry0703 / MoneyPrinterTurbo",
-            link: "https://github.com/harry0703/MoneyPrinterTurbo",
-            source: "GitHub Trending Today",
-            tags: ["短视频", "内容流水线", "85.4k stars", "今日 +1389"],
-            use: "用大模型一键生成短视频，直接面向内容生产结果。",
-            highlight: "它把 AI 从“辅助创作”推到“直接产出内容资产”，更贴近增长和变现场景。",
-            why: "国内开发者容易快速理解和复用，适合继续观察其是否会从热门项目进化成成熟内容工具链。"
-          }
-        ],
-        githubTrends: [
-          "趋势一：GitHub 热点仍被 AI 主导，但“skills / workflow / infra”比“再来一个模型壳”更热。",
-          "趋势二：上下文与研究能力成为新焦点，说明开发者开始意识到信息质量直接决定 Agent 上限。",
-          "趋势三：知识管理、本地容器和视觉工具层同时升温，AI 叙事正从聊天界面往真实生产链条外扩。"
-        ],
-        vibeProjects: [
-          {
-            title: "开发者情报台",
-            stack: "React + Vite + Tailwind + 搜索聚合 API + OpenAI Responses API",
-            idea: "每天抓 GitHub 热门、公司官方博客和宏观新闻，自动生成可编辑日报。MVP 先做“采集、去重、归类、输出 HTML”四步。",
-            why: "适合复用 `last30days-skill` 的研究思路，价值点清晰，也容易接入订阅和多主题版本。"
-          },
-          {
-            title: "团队 Skills 控制台",
-            stack: "Next.js + Supabase + GitHub API + MDX",
-            idea: "把团队的 agent skills、命令模板和评审规则做成内部后台，支持版本管理、启用禁用和项目绑定。",
-            why: "直接承接 `agent-skills` 和 `google/skills` 这条趋势，容易形成组织级效率工具。"
-          },
-          {
-            title: "热点转短视频流水线",
-            stack: "React + FFmpeg + TTS + 图像生成 API",
-            idea: "输入一个科技热点，自动生成脚本、镜头分段、配音与封面。MVP 先做“60 秒科技快讯”模板。",
-            why: "受 `MoneyPrinterTurbo` 启发，最容易快速看到结果，也最适合做增长向 side project。"
-          },
-          {
-            title: "视觉工作流调试台",
-            stack: "FastAPI + supervision + YOLO/RT-DETR + React",
-            idea: "上传视频或图片后，展示检测结果、阈值变化、错误样本和批量回放，帮助调模型和规则。",
-            why: "比单纯做推理 demo 更接近真实交付，适合工业视觉、零售识别和安防场景。"
-          }
-        ],
-        tech: [
-          {
-            title: "Apple 把 Siri 与 Xcode 同时推向 agent 化",
-            link: "https://developer.apple.com/",
-            source: "Apple Developer / WWDC26",
-            tags: ["AI", "Apple", "Developer"],
-            summary: "Apple Developer 首页已展示 WWDC26 重点，包括“Apple’s next big step for Siri and iPhone”以及“Discover agentic coding in Xcode 26.3”。",
-            impact: "这意味着 Apple 不只是在补 Siri，而是在同时改用户入口与开发工具链。对 Apple 生态开发者来说，这比单个新 API 更重要。",
-            audience: "iOS/macOS 开发者、Apple 平台产品团队、关注本地 AI 的工具公司"
-          },
-          {
-            title: "微软在 Build 2026 明牌押注 agent-first 平台",
-            link: "https://news.microsoft.com/build-2026/",
-            source: "Microsoft Build 2026",
-            tags: ["Microsoft", "Agent-first", "Platform"],
-            summary: "官方 Build 页面集中展示 Project Solara、GitHub App for agentic development、Agent Control Specification、Foundry IQ 等多条产品线。",
-            impact: "微软不是在卖单点 Copilot，而是在搭一整套企业级 agent 运行时、治理层和设备入口，这会持续影响企业采购与生态绑定。",
-            audience: "企业软件团队、平台工程、AI 治理、安全和开发工具公司"
-          },
-          {
-            title: "Nvidia 开始把 AI PC 从概念推向量产路线",
-            link: "https://apnews.com/article/c807f7333b93b9927b62b1240dcf65a1",
-            source: "AP News",
-            tags: ["Nvidia", "AI PC", "Edge AI"],
-            summary: "Nvidia 发布 RTX Spark 超级芯片，瞄准本地 AI PC，微软与戴尔等厂商计划在 2026 年晚些时候推出相关设备。",
-            impact: "本地推理和本地 Agent 体验会进一步升温，开发者需要重新考虑“哪些任务必须上云，哪些应该前置到终端”。",
-            audience: "终端软件团队、AI 应用开发者、硬件厂商、边缘计算创业者"
-          },
-          {
-            title: "Oracle 云增长很快，但 AI 数据中心投入也开始压利润",
-            link: "https://www.wsj.com/business/earnings/oracle-reports-higher-profit-on-surging-cloud-revenue-5f7d25eb",
-            source: "The Wall Street Journal",
-            tags: ["Cloud", "Oracle", "Capex"],
-            summary: "据 WSJ，Oracle 云收入继续受 AI 拉动，但高于预期的数据中心资本开支让市场开始担心回报周期。",
-            impact: "AI 基础设施故事已经进入“收入增长能否覆盖资本强度”的阶段。对云厂商和模型公司，这是更现实的财务约束。",
-            audience: "云计算从业者、基础设施投资人、企业 IT 采购、模型平台团队"
-          },
-          {
-            title: "欧盟要求 Meta 恢复 WhatsApp 对竞争 AI 机器人的接入",
-            link: "https://apnews.com/article/8b4b48acb23acf5686f141a276bb868d",
-            source: "AP News",
-            tags: ["Meta", "EU", "Competition"],
-            summary: "欧盟对 Meta 采取临时措施，要求其在反垄断调查期间恢复 WhatsApp 对竞争 AI 助手的接入。",
-            impact: "AI 入口之争正在进入监管阶段。谁能控制消息入口、社交图谱和用户触点，谁就更有机会拿下下一轮分发权。",
-            audience: "AI 产品经理、平台战略团队、政策与合规负责人"
-          },
-          {
-            title: "Apple 与欧盟围绕 Siri AI 上线延迟公开交锋",
-            link: "https://apnews.com/article/5d18df90b03e4e98ac528c8802e2b531",
-            source: "AP News",
-            tags: ["Apple", "Regulation", "DMA"],
-            summary: "Apple 将欧盟地区 Siri AI 延迟归因于 DMA 规则，欧盟则公开反驳，称法规并未阻止产品上线。",
-            impact: "这不是公关口水战那么简单。AI 产品是否能快速全球上线，越来越受制于平台互操作、数据权限和地区监管。",
-            audience: "国际化产品团队、法务合规、关注欧盟数字监管的企业"
-          }
-        ],
-        news: [
-          {
-            title: "美国 5 月 CPI 同比升至 4.2%，能源再次成为主推手",
-            link: "https://www.bls.gov/news.release/cpi.nr0.htm",
-            source: "美国劳工统计局 BLS / AP",
-            tags: ["宏观", "通胀", "官方数据"],
-            summary: "美国劳工统计局于 2026 年 6 月 10 日发布 5 月 CPI，AP 报道指出同比涨幅升至 4.2%，能源价格是主要驱动项。",
-            impact: "对企业来说，这直接影响利率预期、消费者支出和 AI 基础设施成本判断。高估值科技股也更容易受情绪反噬。"
-          },
-          {
-            title: "美伊冲突升级，油运与能源风险重新抬高",
-            link: "https://apnews.com/article/b7ec462890f3c2afa12bd5c0672f2b6b",
-            source: "AP News",
-            tags: ["地缘政治", "能源", "中东"],
-            summary: "AP 2026 年 6 月 10 日报道称，美国对伊朗目标发动新一轮打击，伊朗则对海湾地区反击，局势继续升级。",
-            impact: "这不只是国际新闻，它会继续通过油价、航运、保险与风险偏好传导到全球企业经营端。"
-          },
-          {
-            title: "特朗普称“不打算续签” USMCA，北美供应链再添不确定性",
-            link: "https://apnews.com/article/d67daaffd060aaafc038d9ee6584e9a8",
-            source: "AP News",
-            tags: ["贸易", "北美供应链", "政策风险"],
-            summary: "AP 在 2026 年 6 月 10 日的直播稿中提到，特朗普公开表示不打算续签美墨加协定，相关安排若无新承诺将进入年度审视。",
-            impact: "如果这一表态继续推进，汽车、制造、物流和跨境电商的北美布局都要重新评估。当前仍需等待后续政策确认。"
-          },
-          {
-            title: "美国调整钢铝铜关税，说明成本压力已逼出政策修正",
-            link: "https://apnews.com/article/7ca5a76dbe13db7e732fa48462ccde92",
-            source: "AP News",
-            tags: ["关税", "制造业", "供应链"],
-            summary: "美国于 2026 年 6 月 2 日调整部分钢、铝、铜相关关税，下调部分农机和 HVAC 设备税率，并扩展较低税率范围。",
-            impact: "这反映出产业保护与制造业成本之间的矛盾正在变得更尖锐。对重制造和设备行业，这是直接的利润变量。"
-          },
-          {
-            title: "中国 5 月出口同比增长 19.4%，汽车与科技品类继续强势",
-            link: "https://apnews.com/article/33ee2ae323cb9bd8189bf1b13fbe9edf",
-            source: "AP News",
-            tags: ["中国经济", "出口", "产业趋势"],
-            summary: "AP 2026 年 6 月 9 日报道，中国 5 月出口同比增长 19.4%，汽车、半导体和 AI 相关技术产品需求强劲。",
-            impact: "这说明全球对技术制造品的需求仍然强，先进制造和 AI 供应链仍是全球贸易中最有韧性的部分。"
-          },
-          {
-            title: "美国就业仍强，但高物价让“强数据”难转化为乐观情绪",
-            link: "https://apnews.com/article/94068a0f4e441024b05e72eb370b3a15",
-            source: "AP News",
-            tags: ["就业", "消费", "经济情绪"],
-            summary: "AP 2026 年 6 月 4 日报道称，美国 5 月新增就业 17.2 万，失业率维持 4.3%，但通胀与油价压力仍在拖累民众感受。",
-            impact: "这类“硬数据不差、体感很差”的组合会让企业更谨慎，尤其在招聘、定价和扩张节奏上。"
-          }
-        ],
-        totalTrend:
-          "今天的共同趋势很清楚：AI 正在从“模型热闹期”进入“系统约束期”。GitHub 最热的是 skills、研究工作流和基础设施，不再只是聊天壳；科技大厂争的是 agent 入口、运行时和生态锁定；而新闻侧持续提醒市场，通胀、能源、监管、关税与地缘政治已经成为 AI 叙事不可分割的一部分。接下来真正值得做的产品，不是简单接一个模型，而是能在这些现实约束下把信息、工作流、成本和交付闭环跑通。"
-      };
+      const briefDate = "2026-06-12";
 
-      function Hero({ meta }) {
-        return (
-          <section className="hero">
-            <div className="eyebrow mono">
-              <span>{meta.issue}</span>
-              <span>·</span>
-              <span>{meta.date}</span>
-            </div>
-            <h1>{meta.title}</h1>
-            <p className="hero-summary">{meta.summary}</p>
-            <div className="meta-row">
-              {meta.chips.map((chip) => (
-                <span className="chip mono" key={chip}>
-                  {chip}
-                </span>
-              ))}
-            </div>
-            <div className="jump-row">
-              <a className="jump-link mono" href="#github">
-                GitHub 观察
-              </a>
-              <a className="jump-link mono" href="#tech">
-                科技热点
-              </a>
-              <a className="jump-link mono" href="#news">
-                新闻热点
-              </a>
-              <a className="jump-link mono" href="#vibe">
-                Vibe Coding
-              </a>
-              <a className="jump-link mono" href="#trend">
-                总趋势
-              </a>
-            </div>
-            <div className="hero-grid">
-              <div className="hero-panel">
-                <h2>日报摘要</h2>
-                <ul>
-                  {meta.highlights.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="hero-panel">
-                <h2>阅读建议</h2>
-                <ul>
-                  {meta.readingTips.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </section>
-        );
+      const summaryCards = [
+        {
+          label: "GitHub 开源项目观察",
+          title: "MCP、Browser Automation、Agent Frontend 仍是最强主线",
+          body:
+            "今天入选项目几乎都围绕『让 agent 真能接入工具、理解界面、完成交付』展开，纯聊天 agent 的注意力正在继续向执行层迁移。",
+          tone: "brand",
+        },
+        {
+          label: "每日科技热点",
+          title: "AI 产业从模型竞赛转向分发、成本与入口控制",
+          body:
+            "OpenAI IPO、Meta/WhatsApp 接入争议、Cloudflare 收购 VoidZero、AI 路由创业潮，说明竞争点正从模型能力扩展到渠道、成本与开发栈。",
+          tone: "accent",
+        },
+        {
+          label: "每日新闻热点",
+          title: "地缘与能源仍在牵动全球通胀、股市与供应链判断",
+          body:
+            "伊朗局势、油价波动、中国出口、美国关税与通胀数据交织，企业侧的核心问题不是『有没有需求』，而是『成本和预期如何重定价』。",
+          tone: "warn",
+        },
+      ];
+
+      const githubProjects = [
+        {
+          name: "OpenHands",
+          link: "https://github.com/OpenHands/OpenHands",
+          tags: ["AI Coding Agent", "76.5k stars", "最新版本 1.8.0 / 2026-06-10"],
+          usage: "面向真实开发流程的开源 AI 开发代理，可读写代码、运行命令并协助完成任务。",
+          highlights:
+            "仓库仍保持高密度迭代，GitHub 页面显示已有 103 个 release，最近一次版本发布就在 2026-06-10；代码同时覆盖 Python 和 TypeScript，说明其 agent + UI 双栈都在推进。",
+          whyNow:
+            "如果你关心『编程 agent 从 demo 走向工程化』，OpenHands 仍是最值得持续跟踪的参考样本之一。",
+          source: "GitHub 仓库首页",
+        },
+        {
+          name: "browser-use",
+          link: "https://github.com/browser-use/browser-use",
+          tags: ["Browser Automation", "98.4k stars", "最新版本 0.13.1 / 2026-06-10"],
+          usage: "把网站和网页操作抽象成 AI agent 能直接调用的浏览器能力层。",
+          highlights:
+            "仓库首页明确把定位写成『让网站可被 AI agent 使用』，而且 2026-06-10 仍在发版，说明它不是一次性爆红项目，而是在往平台能力演进。",
+          whyNow:
+            "浏览器是 agent 真正触达 SaaS、后台和外部信息的关键入口，这条赛道还在升温。",
+          source: "GitHub 仓库首页",
+        },
+        {
+          name: "microsoft/playwright-mcp",
+          link: "https://github.com/microsoft/playwright-mcp",
+          tags: ["MCP", "33.8k stars", "Microsoft"],
+          usage: "把 Playwright 暴露成 MCP server，让模型以结构化方式控制页面与读取界面状态。",
+          highlights:
+            "README 的重点不是『截图式操作』，而是 accessibility tree、结构化数据与 deterministic tool application，这意味着它更偏工程稳定性，而不是炫技自动化。",
+          whyNow:
+            "MCP 正在从概念层进入工程默认选项，Playwright MCP 是『可验证网页执行』这条链路中的基础件。",
+          source: "GitHub 仓库首页 / README",
+        },
+        {
+          name: "github/github-mcp-server",
+          link: "https://github.com/github/github-mcp-server",
+          tags: ["Official MCP", "30.6k stars", "最新版本 1.3.0 / 2026-06-11"],
+          usage: "GitHub 官方 MCP server，把代码、Issue、PR、Actions 与仓库上下文直接开放给 agent。",
+          highlights:
+            "官方仓库写得很明确：它覆盖仓库浏览、Issue/PR 自动化、CI/CD 工作流分析等；且 2026-06-11 仍在发版，说明 GitHub 正在把 agent 工作流产品化。",
+          whyNow:
+            "这已经不是『第三方接 GitHub』，而是平台方亲自下场定义 agent 与代码协作接口。",
+          source: "GitHub 仓库首页 / README",
+        },
+        {
+          name: "CopilotKit",
+          link: "https://github.com/CopilotKit/CopilotKit",
+          tags: ["Generative UI", "34.8k stars", "最新版本 v1.60.0 / 2026-06-11"],
+          usage: "帮助开发者快速构建 agent-native 前端与生成式 UI 的开源框架。",
+          highlights:
+            "仓库首页直接将自己定义为『The Frontend Stack for Agents & Generative UI』，而且 release 密度极高，说明前端交互层已成为新一轮 agent 竞赛的关键面。",
+          whyNow:
+            "大家不再满足于把 agent 塞进聊天框，而是在争夺『agent 应该如何进入业务界面』的标准。",
+          source: "GitHub 仓库首页",
+        },
+        {
+          name: "goose",
+          link: "https://github.com/aaif-goose/goose",
+          tags: ["Open Agent", "49k stars", "最新版本 v1.37.0 / 2026-06-03"],
+          usage: "一个可扩展开源 agent，强调安装、执行、编辑、测试等完整任务闭环。",
+          highlights:
+            "它和一般代码补全工具不同，重点是『beyond code suggestions』；同时 topic 里直接挂了 MCP 与 ACP，说明其扩展体系是当前竞争点。",
+          whyNow:
+            "如果你想看 agent 如何做成本地开发助手、CLI 助手与多模型编排器，goose 仍值得关注。",
+          source: "GitHub 仓库首页",
+        },
+        {
+          name: "bolt.diy",
+          link: "https://github.com/stackblitz-labs/bolt.diy",
+          tags: ["Any LLM", "19.5k stars", "高分叉模板仓库"],
+          usage: "用任意 LLM prompt、运行、编辑并部署全栈应用的开源自托管方案。",
+          highlights:
+            "虽然最新 release 时间不如前几项近，但仓库仍拥有 10.4k forks，说明『把闭源产品能力本地化、自托管化』依旧有稳定需求。",
+          whyNow:
+            "对很多团队来说，重要的不是最强模型，而是是否能在自己的栈里复刻出可控的生产流程。",
+          source: "GitHub 仓库首页",
+        },
+      ];
+
+      const githubTrends = [
+        {
+          title: "MCP 从热门概念转成默认接入层",
+          body:
+            "Playwright MCP 和 GitHub MCP Server 同时高热，说明 agent 生态的重心正在从『会不会调用工具』转到『工具如何被标准化接入』。",
+        },
+        {
+          title: "浏览器自动化是 agent 落地的必争入口",
+          body:
+            "browser-use 持续发版，Playwright MCP 继续走强，证明网页和 SaaS 操作仍是 agent 商业化里最关键的一层。",
+        },
+        {
+          title: "前端层开始形成 agent-native 新堆栈",
+          body:
+            "CopilotKit 的高频 release 很有代表性。2026 年的关键问题不再只是『模型够不够强』，而是『用户怎样在产品中真正使用 agent』。",
+        },
+        {
+          title: "自托管与可替换模型仍有强需求",
+          body:
+            "bolt.diy、goose 这类项目说明开发者不愿把工作流完全锁死在单一商业平台里，可移植性和成本控制仍是强约束。",
+        },
+      ];
+
+      const techNews = [
+        {
+          title: "OpenAI 已向 SEC 秘密递交 IPO 文件",
+          link: "https://apnews.com/article/c7583994426b1b097120786d6a0b8308",
+          source: "AP",
+          tags: ["AI", "资本市场", "2026-06-08"],
+          summary:
+            "AP 报道 OpenAI 已递交保密上市文件，但未确定具体上市时间，强调保持灵活性。",
+          impact:
+            "这意味着大模型竞争已进入『巨额基础设施资金 + 公开市场叙事』阶段。对上下游企业来说，AI 平台的经营逻辑会更像云厂商和超级软件公司。",
+          audience: "关注 AI 平台、企业软件、一级二级市场的人群",
+        },
+        {
+          title: "Cloudflare 收购 VoidZero，瞄准 AI 原生开发工具链",
+          link: "https://www.itpro.com/business/acquisition/cloudflare-snaps-up-voidzero-to-expand-ai-native-developer-tools",
+          source: "ITPro",
+          tags: ["开发者工具", "云平台", "待进一步确认"],
+          summary:
+            "据 ITPro，Cloudflare 收购了 Evan You 旗下 VoidZero，将继续保持 Vite 相关开源路线，并计划与 Workers 等平台更紧密结合。",
+          impact:
+            "如果消息与后续整合节奏持续落地，说明云厂商开始直接争夺前端与 agent 开发栈入口，而不是只卖算力与托管服务。",
+          audience: "前端工程师、云平台从业者、开发者工具投资者",
+        },
+        {
+          title: "苹果与欧盟就 Siri AI 上线延迟公开交锋",
+          link: "https://apnews.com/article/5d18df90b03e4e98ac528c8802e2b531",
+          source: "AP",
+          tags: ["Apple", "监管", "AI 入口"],
+          summary:
+            "苹果称欧盟 DMA 影响 Siri AI 在欧盟落地，欧盟则公开反驳，称法规并未阻止苹果发布新产品。",
+          impact:
+            "这不是单纯的合规争执，而是『系统级 AI 助手是否必须向竞争对手开放能力』的样板案件，后续会影响终端入口权力分配。",
+          audience: "关注消费电子、平台监管、AI 助手生态的人群",
+        },
+        {
+          title: "欧盟要求 Meta 恢复 WhatsApp 对竞争 AI 聊天机器人的接入",
+          link: "https://apnews.com/article/8b4b48acb23acf5686f141a276bb868d",
+          source: "AP",
+          tags: ["Meta", "反垄断", "分发渠道"],
+          summary:
+            "欧盟对 Meta 采取临时措施，要求其在调查期间恢复 WhatsApp 对竞品 AI 助手的接入能力。",
+          impact:
+            "AI 助手竞争正在从模型效果转到流量入口和分发权限。谁控制消息入口，谁就更可能控制下一代用户关系。",
+          audience: "平台产品经理、增长团队、监管与政策观察者",
+        },
+        {
+          title: "欧盟启动“科技主权”计划，推进本土芯片、云与 AI 能力",
+          link: "https://apnews.com/article/b16729f7758120260c7005bfba0774c3",
+          source: "AP",
+          tags: ["芯片", "云计算", "政策"],
+          summary:
+            "欧盟提出新的科技主权计划，希望降低对美国云与 AI 服务、以及亚洲芯片制造的依赖。",
+          impact:
+            "这会加速欧洲本地数据中心、芯片扶持与企业软件替代方案建设，对跨国云厂商和基础设施供应商都是长期变量。",
+          audience: "云厂商、芯片产业链、欧洲市场相关团队",
+        },
+        {
+          title: "AI 路由创业公司因推理成本飙升而快速吸金",
+          link: "https://www.businessinsider.com/ai-routing-startups-openrouter-concentrate-funding-boom-2026-6",
+          source: "Business Insider",
+          tags: ["推理成本", "模型路由", "开发平台"],
+          summary:
+            "Business Insider 报道，OpenRouter 等 AI 路由创业公司正因帮助团队在多模型间平衡成本和性能而获得融资。",
+          impact:
+            "这说明 2026 年真正痛点之一已经不是『能不能调模型』，而是『如何在价格、延迟、稳定性之间自动选路』。",
+          audience: "AI 应用开发者、平台工程师、FinOps 团队",
+        },
+        {
+          title: "Anthropic 推出 Claude Corps，试图扩大 AI 在公益组织中的使用",
+          link: "https://apnews.com/article/b1c130a08417d13e1256f8982d233b0e",
+          source: "AP",
+          tags: ["Anthropic", "组织落地", "公益场景"],
+          summary:
+            "Anthropic 宣布投入 1.5 亿美元推动非营利组织使用 Claude，并配套 fellowship 与额度支持。",
+          impact:
+            "这不只是公益动作，也是在提前占领组织流程入口。谁先进入真实办公流程，谁就更容易积累高价值使用场景。",
+          audience: "企业软件从业者、组织数字化团队、AI 生态观察者",
+        },
+      ];
+
+      const newsHotspots = [
+        {
+          title: "伊朗谈判突破预期带动全球股市反弹，油价单日大跌逾 4%",
+          link: "https://apnews.com/article/47f9fecd934706362104cd92514122fe",
+          source: "AP",
+          tags: ["地缘政治", "能源", "市场"],
+          summary:
+            "AP 报道，市场押注霍尔木兹海峡可能重开，Brent 油价回落至 86.31 美元附近，全球股市同步反弹。",
+          impact:
+            "这说明地缘风险仍然是当前通胀和风险偏好的第一变量。企业经营层需要继续把能源价格与物流风险纳入短期预算情景。",
+        },
+        {
+          title: "中国 5 月出口同比增长 19.4%，汽车与科技品需求成为主支撑",
+          link: "https://apnews.com/article/33ee2ae323cb9bd8189bf1b13fbe9edf",
+          source: "AP",
+          tags: ["中国经济", "出口", "产业"],
+          summary:
+            "中国海关数据显示，5 月出口强于预期，汽车、半导体与 AI 相关设备成为重要拉动力量。",
+          impact:
+            "对产业链判断来说，全球制造与 AI 硬件需求并未降温，反而在把中国出口结构继续推向高附加值硬件与电子品。",
+        },
+        {
+          title: "美国 5 月 PPI 同比上涨 6.5%，创 2022 年 11 月以来最快增速",
+          link: "https://apnews.com/article/137b9d3e10be5244547b3d94a9d6d940",
+          source: "AP",
+          tags: ["美国通胀", "能源价格", "货币政策"],
+          summary:
+            "AP 报道，美国批发价格受能源冲击明显走高，显示油价冲击正在继续向企业端传导。",
+          impact:
+            "这会直接影响美联储降息预期与企业融资成本。对 SaaS、硬件和高估值成长资产来说，利率叙事又会变得更敏感。",
+        },
+        {
+          title: "美国调整钢铝铜关税结构，部分农业和工业设备税率下调",
+          link: "https://apnews.com/article/7ca5a76dbe13db7e732fa48462ccde92",
+          source: "AP",
+          tags: ["关税", "制造业", "政策"],
+          summary:
+            "特朗普签署行政令，下调部分农机与工业设备相关关税，并扩大较低税率适用品类。",
+          impact:
+            "这不是全面放松，而是更细颗粒度地重排产业政策。做跨境制造、设备出口和供应链规划的企业需要重新评估成本结构。",
+        },
+        {
+          title: "SpaceX 启动史上级别 IPO 路演，计划募资约 750 亿美元",
+          link: "https://apnews.com/article/293e82ea0216efdd0ff7601baf85bae8",
+          source: "AP",
+          tags: ["IPO", "航天", "资本市场"],
+          summary:
+            "AP 称 SpaceX 将登陆华尔街，募资规模可能创纪录，资金将用于 Starlink 卫星和太空数据中心布局。",
+          impact:
+            "这件事的意义不只在航天，还在于『基础设施故事』重新成为资本市场最愿意买单的叙事之一，AI 与航天被合并成同一套资本语言。",
+        },
+        {
+          title: "OpenAI 递交 IPO 文件，AI 公司排队走向公开市场",
+          link: "https://apnews.com/article/c7583994426b1b097120786d6a0b8308",
+          source: "AP",
+          tags: ["AI", "上市", "资本市场"],
+          summary:
+            "OpenAI 的保密上市文件意味着 AI 龙头正开始接受公开市场约束，且与 Anthropic、SpaceX 形成资本层面的联动竞赛。",
+          impact:
+            "对企业客户和合作伙伴来说，平台公司公开化后会更强调营收结构、可预测增长与合规披露，商业节奏可能变得更硬。",
+        },
+      ];
+
+      const vibeProjects = [
+        {
+          title: "Agent Ops Radar",
+          stack: "React + Supabase + GitHub MCP Server + Playwright MCP",
+          what:
+            "做一个团队内部的『agent 任务看板』，统一看 PR、Issue、CI、网页操作任务和失败原因。",
+          mvp:
+            "先接 GitHub MCP 拉取 PR/Issue/Actions，再用 Playwright MCP 记录一次网页流程执行结果，做成一个可筛选的日报看板。",
+        },
+        {
+          title: "Browser Workflow Recorder",
+          stack: "Next.js 或 React + browser-use + SQLite",
+          what:
+            "把人工在浏览器里完成的一次运营或客服流程，转成可复用的 agent workflow 模板。",
+          mvp:
+            "先只支持登录后台、抓取订单、导出 CSV 三步，把每一步的页面状态、失败点和重试建议记录下来。",
+        },
+        {
+          title: "Generative UI Demo Studio",
+          stack: "React + CopilotKit + Vercel AI SDK 或任意 LLM API",
+          what:
+            "做一个『一句话生成业务小工具界面』的演示站，重点展示 agent 如何把结果直接渲染成 UI 卡片。",
+          mvp:
+            "先支持输入一句需求，生成 3 块卡片：摘要、下一步动作、表单草稿；后续再接真实接口。",
+        },
+        {
+          title: "Self-hosted Bolt Playground",
+          stack: "bolt.diy + Docker + Cloudflare Pages/Workers",
+          what:
+            "做一个团队自用的轻量 AI 原型工坊，用来快速生成 landing page、运营页和内部小工具。",
+          mvp:
+            "先只提供 3 个模板提示词：产品页、活动页、数据录入页，并把生成结果自动存到 Git 仓库。",
+        },
+      ];
+
+      const sourceNotes = [
+        {
+          title: "GitHub 项目数据口径",
+          body:
+            "优先参考仓库首页的 stars、release 时间、README 定位描述。今天入选项目都满足『近期仍活跃 or 仍具明显工程价值』。",
+        },
+        {
+          title: "科技/新闻来源口径",
+          body:
+            "优先用 AP 与 GitHub 官方页面；次选可信媒体。涉及并购与市场预期的条目，如后续官方口径变化，需继续复核。",
+        },
+        {
+          title: "使用建议",
+          body:
+            "这份日报更适合做『今天应关注什么、可立刻做什么』，不是完整行业研究。对重要结论建议二次回看原始链接。",
+        },
+      ];
+
+      const trendJudgement =
+        "今天背后的共同趋势很清晰：一方面，AI 正从『模型能力竞争』转向『接口标准、分发入口、推理成本和真实工作流落地』；另一方面，地缘政治与能源价格又在重新定义资本市场和企业预算。对开发者与产品团队来说，真正值得押注的不是单一热点，而是能把 agent 接进浏览器、代码仓库、企业界面和成本控制体系的那一层基础设施。";
+
+      function Pill({ children, tone }) {
+        const className = tone === "warn" ? "pill warn" : tone === "accent" ? "pill accent" : "pill";
+        return <span className={className}>{children}</span>;
       }
 
-      function Section({ id, title, subtitle, badge, badgeType = "default", children }) {
-        const badgeClass =
-          badgeType === "warning" ? "pill warning" : badgeType === "risk" ? "pill risk" : "pill";
-
+      function SectionShell({ id, title, desc, count, children }) {
         return (
-          <section className="section" id={id}>
+          <section className="section-shell" id={id}>
             <div className="section-head">
-              <div className="section-copy">
-                <h2>{title}</h2>
-                <p>{subtitle}</p>
+              <div>
+                <h2 className="mono">{title}</h2>
+                <p>{desc}</p>
               </div>
-              {badge ? <div className={badgeClass}>{badge}</div> : null}
+              {count ? <div className="section-count mono">{count}</div> : null}
             </div>
             {children}
           </section>
         );
       }
 
-      function GithubCard({ item }) {
+      function Card({ item, showAudience = false }) {
         return (
-          <article className="card span-6">
-            <div className="card-header">
+          <article className="card">
+            <div className="card-top">
               <div>
-                <h3>{item.name}</h3>
-                <p className="subhead">{item.source}</p>
+                <div className="pill-row">
+                  {item.tags.map((tag) => (
+                    <span className="mini-tag" key={tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <a href={item.link} target="_blank" rel="noreferrer">
+                  <h3>{item.title || item.name}</h3>
+                </a>
               </div>
-              <div className="tags">
-                {item.tags.map((tag) => (
-                  <span className="tag mono" key={tag}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="box">
-              <strong>主要用途</strong>
-              <p>{item.use}</p>
-            </div>
-            <p className="line">
-              <strong>核心亮点：</strong>
-              {item.highlight}
-            </p>
-            <p className="line">
-              <strong>为什么现在值得看：</strong>
-              {item.why}
-            </p>
-            <div className="source-row">
               <a className="source-link" href={item.link} target="_blank" rel="noreferrer">
-                打开项目
+                查看链接
               </a>
-              <span className="score mono">今日热门</span>
             </div>
-          </article>
-        );
-      }
 
-      function InfoCard({ item, audience = false }) {
-        return (
-          <article className="card span-6">
-            <div className="card-header">
-              <div>
-                <h3>{item.title}</h3>
-                <p className="subhead">{item.source}</p>
+            {item.usage ? (
+              <div className="card-block">
+                <strong>主要用途</strong>
+                <p>{item.usage}</p>
               </div>
-              <div className="tags">
-                {item.tags.map((tag) => (
-                  <span className="tag mono" key={tag}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="box">
-              <strong>事件摘要</strong>
-              <p>{item.summary}</p>
-            </div>
-            <div className="box">
-              <strong>影响判断</strong>
-              <p>{item.impact}</p>
-            </div>
-            {audience ? (
-              <p className="line">
-                <strong>适合关注的人群：</strong>
-                {item.audience}
-              </p>
             ) : null}
-            <div className="source-row">
-              <a className="source-link" href={item.link} target="_blank" rel="noreferrer">
-                查看来源
-              </a>
+
+            <div className="card-block">
+              <strong>{item.highlights ? "核心亮点" : "事件摘要"}</strong>
+              <p>{item.highlights || item.summary}</p>
+            </div>
+
+            <div className="card-block">
+              <strong>{item.whyNow ? "为什么现在值得看" : "影响判断"}</strong>
+              <p>{item.whyNow || item.impact}</p>
+            </div>
+
+            {showAudience ? (
+              <div className="card-block">
+                <strong>适合关注的人群</strong>
+                <p>{item.audience}</p>
+              </div>
+            ) : null}
+
+            <div className="card-footer">
+              <span className="source-note">{item.source}</span>
             </div>
           </article>
         );
       }
 
-      function VibeCard({ item }) {
+      function TrendCard({ item, tone }) {
         return (
-          <article className="card span-6">
-            <div>
-              <h3>{item.title}</h3>
-              <p className="subhead">可执行 side project / MVP</p>
+          <article className="trend-card">
+            <div className="pill-row">
+              <Pill tone={tone}>趋势观察</Pill>
             </div>
-            <div className="box">
-              <strong>适合技术栈 / 组件</strong>
-              <p>{item.stack}</p>
+            <h3>{item.title}</h3>
+            <p style={{ marginTop: "10px" }}>{item.body}</p>
+          </article>
+        );
+      }
+
+      function SuggestionCard({ item }) {
+        return (
+          <article className="trend-card">
+            <div className="pill-row">
+              <Pill tone="accent">Vibe Coding</Pill>
+              <span className="mini-tag">{item.stack}</span>
             </div>
-            <p className="line">
-              <strong>MVP 思路：</strong>
-              {item.idea}
-            </p>
-            <p className="line">
-              <strong>为什么值得做：</strong>
-              {item.why}
-            </p>
+            <h3>{item.title}</h3>
+            <div className="card-block" style={{ marginTop: "14px" }}>
+              <strong>可以做什么</strong>
+              <p>{item.what}</p>
+            </div>
+            <div className="card-block">
+              <strong>MVP 起手思路</strong>
+              <p>{item.mvp}</p>
+            </div>
           </article>
         );
       }
@@ -819,102 +958,160 @@
       function App() {
         return (
           <main className="page">
-            <Hero meta={report.meta} />
+            <header className="hero">
+              <div className="hero-grid">
+                <div>
+                  <Pill>中文每日简报</Pill>
+                  <h1 className="mono">GitHub 热门项目、科技动态与商业信号</h1>
+                  <p className="hero-intro">
+                    今天最值得注意的变化不是又出了哪个新模型，而是 agent
+                    的工程配套层在继续收拢成型：MCP、浏览器执行、agent 前端和多模型成本控制，正在一起变成新的默认基础设施。
+                  </p>
+                  <div className="hero-meta">
+                    <div className="hero-meta-card">
+                      <span className="label mono">Date</span>
+                      <span className="value mono">{briefDate}</span>
+                    </div>
+                    <div className="hero-meta-card">
+                      <span className="label mono">Coverage</span>
+                      <span className="value">7 个 GitHub 项目 + 7 条科技热点 + 6 条新闻热点</span>
+                    </div>
+                    <div className="hero-meta-card">
+                      <span className="label mono">Reader Lens</span>
+                      <span className="value">开发者、产品、投资、产业判断</span>
+                    </div>
+                  </div>
+                </div>
 
-            <Section
-              id="github"
-              title="模块一：GitHub 开源项目观察"
-              subtitle="今天值得关注的仓库，明显集中在 skills、研究工作流、知识管理和开发基础设施。比起又一个聊天壳，这些项目更贴近真实工作流。"
-              badge="今日重点"
-            >
-              <div className="grid">
-                {report.github.map((item) => (
-                  <GithubCard item={item} key={item.name} />
-                ))}
-              </div>
-              <div className="panel-row">
-                <div className="card">
-                  <h3>项目间趋势观察</h3>
-                  <ul className="trend-list">
-                    {report.githubTrends.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
+                <aside className="hero-side">
+                  <h2 className="mono">今日速览</h2>
+                  <ul>
+                    <li>
+                      <strong>GitHub 主线</strong>
+                      <p>MCP + Browser + Agent UI 三条线继续汇合，说明 agent 生态重心正从模型切到执行层。</p>
+                    </li>
+                    <li>
+                      <strong>科技主线</strong>
+                      <p>IPO、并购、监管和成本管理同时升温，AI 正进入平台化与金融化阶段。</p>
+                    </li>
+                    <li>
+                      <strong>宏观主线</strong>
+                      <p>能源与地缘仍在决定通胀、利率预期和高估值资产的波动上限。</p>
+                    </li>
                   </ul>
-                </div>
-                <div className="card">
-                  <h3>一句话判断</h3>
-                  <div className="box">
-                    <strong>结论</strong>
-                    <p>GitHub 热点已经从“AI 会不会做事”走到了“AI 能不能被安装进团队流程并稳定交付结果”。</p>
-                  </div>
-                </div>
+                </aside>
               </div>
-            </Section>
+            </header>
 
-            <Section
-              id="tech"
-              title="模块二：每日科技热点"
-              subtitle="优先保留平台级变化、企业级采购信号、算力与监管约束，避免只是复述发布会口号。"
-              badge="科技热度"
-              badgeType="warning"
-            >
-              <div className="grid">
-                {report.tech.map((item) => (
-                  <InfoCard item={item} key={item.title} audience />
-                ))}
-              </div>
-            </Section>
+            <nav className="section-nav">
+              <a href="#summary">日报摘要</a>
+              <a href="#github">GitHub 开源项目观察</a>
+              <a href="#tech">每日科技热点</a>
+              <a href="#news">每日新闻热点</a>
+              <a href="#vibe">Vibe Coding 建议</a>
+            </nav>
 
-            <Section
-              id="news"
-              title="模块三：每日新闻热点"
-              subtitle="重点筛选会影响企业经营、产品判断、产业链布局和资本市场情绪的内容，避免低价值噪音。"
-              badge="综合新闻"
-              badgeType="risk"
-            >
-              <div className="grid">
-                {report.news.map((item) => (
-                  <InfoCard item={item} key={item.title} />
-                ))}
-              </div>
-            </Section>
-
-            <Section
-              id="vibe"
-              title="模块四：Vibe Coding 项目建议"
-              subtitle="今天适合做的不是泛泛的 AI 应用，而是能把信息采集、判断和交付结果串起来的具体产品。"
-              badge="适合快速开工"
-            >
-              <div className="grid">
-                {report.vibeProjects.map((item) => (
-                  <VibeCard item={item} key={item.title} />
-                ))}
-              </div>
-            </Section>
-
-            <Section
-              id="trend"
-              title="模块五：今日总趋势判断"
-              subtitle="把开源、科技和新闻放在一起看，今天更像是“AI 进入现实约束期”的一天。"
-              badge="总判断"
-            >
-              <div className="grid">
-                <article className="card span-12">
-                  <div className="box">
-                    <strong>今日总趋势判断</strong>
-                    <p>{report.totalTrend}</p>
-                  </div>
+            <section className="summary-grid" id="summary">
+              {summaryCards.map((item) => (
+                <article className="summary-card" key={item.title}>
+                  <Pill tone={item.tone}>{item.label}</Pill>
+                  <h3>{item.title}</h3>
+                  <p style={{ marginTop: "12px" }}>{item.body}</p>
                 </article>
-              </div>
-            </Section>
+              ))}
+            </section>
 
-            <footer className="footer">
-              <h2 style={{ margin: 0 }}>数据说明</h2>
-              <p>
-                GitHub 项目主要基于 2026 年 6 月 11 日当日 GitHub Trending 页面的热门仓库筛选；科技与新闻部分优先采用官方页面、AP、BLS、WSJ
-                等来源。对仍在快速演化、尚未有更多官方细节公开的内容，已在文案判断中保持谨慎，不把未证实信息写成确定事实。
+            <SectionShell
+              id="github"
+              title="GitHub 开源项目观察"
+              desc="优先筛选近期仍活跃、易于快速理解、且能映射到真实开发工作流的项目。今天这组项目的共同点是：它们都在把 agent 从『会说』推进到『会做』。"
+              count="7 个值得关注项目"
+            >
+              <div className="card-grid">
+                {githubProjects.map((item) => (
+                  <Card item={item} key={item.name} />
+                ))}
+              </div>
+
+              <div className="muted-line">趋势观察</div>
+              <div className="trend-grid" style={{ marginTop: "12px" }}>
+                {githubTrends.map((item, index) => (
+                  <TrendCard item={item} tone={index % 2 === 0 ? "brand" : "accent"} key={item.title} />
+                ))}
+              </div>
+            </SectionShell>
+
+            <SectionShell
+              id="tech"
+              title="每日科技热点"
+              desc="优先覆盖 AI、开发者工具、开源生态、云、平台监管和企业软件入口变化。每条都补一层『为什么重要』，避免只有信息堆叠。"
+              count="7 条科技动态"
+            >
+              <div className="card-grid">
+                {techNews.map((item) => (
+                  <Card item={item} key={item.title} showAudience />
+                ))}
+              </div>
+            </SectionShell>
+
+            <SectionShell
+              id="news"
+              title="每日新闻热点"
+              desc="只保留对商业、产业、资本市场和全球供应链判断有帮助的综合热点，尽量避开低信息密度内容。"
+              count="6 条新闻热点"
+            >
+              <div className="card-grid">
+                {newsHotspots.map((item) => (
+                  <Card item={item} key={item.title} />
+                ))}
+              </div>
+            </SectionShell>
+
+            <SectionShell
+              id="vibe"
+              title="Vibe Coding 项目建议"
+              desc="今天的建议都尽量靠近当前高热开源主线，目标不是做概念站，而是做出一版能跑、能演示、能继续扩展的 MVP。"
+              count="4 个可执行方向"
+            >
+              <div className="suggestion-grid">
+                {vibeProjects.map((item) => (
+                  <SuggestionCard item={item} key={item.title} />
+                ))}
+              </div>
+            </SectionShell>
+
+            <SectionShell
+              id="trend"
+              title="今日总趋势判断"
+              desc="把今天 GitHub、科技与综合新闻放在一起看，能更清楚地看到产业重心正在怎么迁移。"
+            >
+              <div className="footer-note" style={{ marginTop: 0 }}>
+                <Pill>总趋势判断</Pill>
+                <h2 className="mono" style={{ marginTop: "12px", fontSize: "1.4rem", letterSpacing: "-0.03em" }}>
+                  AI 正在从能力竞争转向基础设施竞争，宏观风险则继续给估值与投入节奏定价
+                </h2>
+                <p>{trendJudgement}</p>
+              </div>
+            </SectionShell>
+
+            <SectionShell
+              id="sources"
+              title="说明与来源口径"
+              desc="以下说明帮助后续接入真实接口或继续做自动化生成时保持一致口径。"
+            >
+              <div className="source-grid">
+                {sourceNotes.map((item) => (
+                  <article className="source-card" key={item.title}>
+                    <Pill tone="accent">Notes</Pill>
+                    <h3 style={{ marginTop: "12px" }}>{item.title}</h3>
+                    <p style={{ marginTop: "10px" }}>{item.body}</p>
+                  </article>
+                ))}
+              </div>
+              <p className="muted-line">
+                数据窗口：GitHub 项目以仓库首页与 release 信息为主；新闻以 AP、GitHub 官方页面与可信媒体为主。标注“待进一步确认”的条目建议关注后续官方公告。
               </p>
-            </footer>
+            </SectionShell>
           </main>
         );
       }
