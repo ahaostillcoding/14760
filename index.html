@@ -6,7 +6,7 @@
     <title>每日 GitHub + 科技新闻热点简报</title>
     <meta
       name="description"
-      content="2026-06-17 中文每日简报：GitHub 开源项目观察、科技热点、新闻热点、Vibe Coding 建议与总趋势判断。"
+      content="2026-06-18 中文每日简报：GitHub 开源项目观察、科技热点、新闻热点、Vibe Coding 建议与总趋势判断。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,25 +19,23 @@
     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
       :root {
-        --bg: #f5efe6;
-        --bg-strong: #e8ddcf;
-        --panel: rgba(255, 252, 247, 0.94);
-        --panel-strong: #fffdf9;
-        --text: #17232f;
-        --muted: #637283;
-        --line: rgba(23, 35, 47, 0.1);
-        --line-strong: rgba(23, 35, 47, 0.18);
-        --brand: #0f6b66;
-        --brand-soft: rgba(15, 107, 102, 0.1);
-        --accent: #c26d2c;
-        --accent-soft: rgba(194, 109, 44, 0.12);
-        --warn: #a44b3e;
-        --warn-soft: rgba(164, 75, 62, 0.12);
-        --ink: #0d1822;
-        --shadow: 0 24px 64px rgba(17, 28, 38, 0.12);
-        --radius-xl: 28px;
-        --radius-lg: 22px;
-        --radius-md: 16px;
+        --bg: #f4efe8;
+        --bg-2: #e7ddd0;
+        --panel: rgba(255, 251, 246, 0.94);
+        --panel-strong: #fffdfa;
+        --text: #18232d;
+        --muted: #63717f;
+        --line: rgba(24, 35, 45, 0.11);
+        --brand: #0e665f;
+        --brand-soft: rgba(14, 102, 95, 0.11);
+        --accent: #bf6b31;
+        --accent-soft: rgba(191, 107, 49, 0.12);
+        --warn: #8d3e36;
+        --warn-soft: rgba(141, 62, 54, 0.12);
+        --shadow: 0 24px 64px rgba(20, 30, 39, 0.12);
+        --radius-xl: 30px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
       }
 
       * {
@@ -53,9 +51,9 @@
         color: var(--text);
         font-family: "Noto Sans SC", system-ui, sans-serif;
         background:
-          radial-gradient(circle at top left, rgba(15, 107, 102, 0.16), transparent 25%),
-          radial-gradient(circle at top right, rgba(194, 109, 44, 0.12), transparent 20%),
-          linear-gradient(180deg, #fbf8f3 0%, var(--bg) 54%, var(--bg-strong) 100%);
+          radial-gradient(circle at top left, rgba(14, 102, 95, 0.16), transparent 25%),
+          radial-gradient(circle at top right, rgba(191, 107, 49, 0.12), transparent 20%),
+          linear-gradient(180deg, #fcf8f2 0%, var(--bg) 52%, var(--bg-2) 100%);
       }
 
       a {
@@ -66,7 +64,7 @@
       .page {
         width: min(1240px, calc(100% - 28px));
         margin: 0 auto;
-        padding: 24px 0 80px;
+        padding: 24px 0 84px;
       }
 
       .mono {
@@ -78,10 +76,10 @@
         overflow: hidden;
         padding: 34px;
         border-radius: var(--radius-xl);
-        border: 1px solid rgba(255, 255, 255, 0.68);
+        border: 1px solid rgba(255, 255, 255, 0.7);
         background:
-          linear-gradient(135deg, rgba(15, 107, 102, 0.98), rgba(13, 32, 41, 0.97)),
-          linear-gradient(145deg, rgba(194, 109, 44, 0.3), transparent 45%);
+          linear-gradient(135deg, rgba(14, 102, 95, 0.98), rgba(13, 31, 40, 0.98)),
+          linear-gradient(145deg, rgba(191, 107, 49, 0.26), transparent 48%);
         color: #f8fbfb;
         box-shadow: var(--shadow);
       }
@@ -89,12 +87,11 @@
       .hero::after {
         content: "";
         position: absolute;
-        inset: auto -60px -80px auto;
-        width: 280px;
-        height: 280px;
+        inset: auto -70px -90px auto;
+        width: 310px;
+        height: 310px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 68%);
-        pointer-events: none;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 66%);
       }
 
       .eyebrow {
@@ -110,7 +107,7 @@
 
       .hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
+        grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.92fr);
         gap: 24px;
         margin-top: 20px;
       }
@@ -118,7 +115,7 @@
       .hero h1 {
         margin: 0 0 14px;
         font-size: clamp(34px, 5vw, 56px);
-        line-height: 1.02;
+        line-height: 1.03;
       }
 
       .hero p {
@@ -126,13 +123,7 @@
         max-width: 760px;
         color: rgba(248, 251, 251, 0.84);
         font-size: 16px;
-        line-height: 1.78;
-      }
-
-      .hero-panel {
-        display: grid;
-        gap: 14px;
-        align-content: start;
+        line-height: 1.8;
       }
 
       .snapshot,
@@ -146,20 +137,16 @@
         backdrop-filter: blur(16px);
       }
 
-      .snapshot {
+      .snapshot,
+      .toc,
+      .card,
+      .summary-card {
         padding: 20px;
       }
 
-      .snapshot-title,
-      .section-title {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-      }
-
-      .snapshot-title h2,
-      .section-title h2 {
+      .snapshot h2,
+      .toc h2,
+      .section h2 {
         margin: 0;
         font-size: 20px;
       }
@@ -189,10 +176,6 @@
         margin-top: 8px;
         font-size: 13px;
         color: rgba(248, 251, 251, 0.7);
-      }
-
-      .toc {
-        padding: 18px 20px;
       }
 
       .toc ul {
@@ -233,11 +216,18 @@
         box-shadow: var(--shadow);
       }
 
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
       .section-desc {
         margin: 10px 0 0;
         color: var(--muted);
         font-size: 15px;
-        line-height: 1.8;
+        line-height: 1.78;
       }
 
       .chip-row,
@@ -264,7 +254,7 @@
       }
 
       .tag {
-        background: rgba(23, 35, 47, 0.06);
+        background: rgba(24, 35, 45, 0.06);
         color: var(--muted);
       }
 
@@ -273,11 +263,6 @@
         grid-template-columns: repeat(12, minmax(0, 1fr));
         gap: 16px;
         margin-top: 20px;
-      }
-
-      .card,
-      .summary-card {
-        padding: 20px;
       }
 
       .span-4 {
@@ -302,7 +287,7 @@
       .card h3 {
         margin: 0;
         font-size: 21px;
-        line-height: 1.35;
+        line-height: 1.34;
       }
 
       .card-subtitle {
@@ -330,30 +315,30 @@
       }
 
       .summary-card {
-        background: linear-gradient(160deg, rgba(15, 107, 102, 0.08), rgba(194, 109, 44, 0.06));
+        background: linear-gradient(160deg, rgba(14, 102, 95, 0.08), rgba(191, 107, 49, 0.06));
       }
 
-      .summary-card p,
       .card p,
+      .summary-card p,
       .card li {
         margin: 0;
         color: var(--muted);
-        line-height: 1.75;
         font-size: 14px;
+        line-height: 1.75;
       }
 
       .key-block {
         margin-top: 16px;
         padding: 14px;
         border-radius: 16px;
-        background: rgba(23, 35, 47, 0.04);
+        background: rgba(24, 35, 45, 0.04);
       }
 
       .key-block strong,
       .mini-title {
         display: block;
         margin-bottom: 8px;
-        color: var(--ink);
+        color: var(--text);
         font-size: 13px;
       }
 
@@ -381,7 +366,7 @@
         border-radius: 999px;
         background: var(--panel-strong);
         border: 1px solid var(--line);
-        color: var(--ink);
+        color: var(--text);
         font-weight: 700;
         transition:
           transform 180ms ease,
@@ -392,7 +377,7 @@
       .source-link:hover {
         transform: translateY(-2px);
         border-color: var(--brand);
-        box-shadow: 0 12px 24px rgba(15, 107, 102, 0.12);
+        box-shadow: 0 12px 24px rgba(14, 102, 95, 0.12);
       }
 
       .callout {
@@ -400,7 +385,7 @@
         padding: 12px 14px;
         border-radius: 14px;
         background: var(--warn-soft);
-        color: #7c392e;
+        color: var(--warn);
         font-size: 13px;
         line-height: 1.7;
       }
@@ -436,13 +421,14 @@
           padding: 20px;
         }
 
-        .card,
-        .summary-card,
         .snapshot,
-        .toc {
+        .toc,
+        .card,
+        .summary-card {
           padding: 16px;
         }
 
+        .section-head,
         .card-header {
           flex-direction: column;
         }
@@ -461,307 +447,256 @@
     <div id="root"></div>
     <script type="text/babel">
       const report = {
-        date: "2026-06-17",
+        date: "2026-06-18",
         title: "每日 GitHub + 科技新闻热点简报",
         summary:
-          "今天最清晰的主线是：AI 正在从“模型能力竞争”转向“工程化与基础设施竞争”。GitHub 热门项目集中在 agent、MCP、代码执行与 AI 安全评测；科技新闻则显示大厂开始围绕算力、终端入口与主权基础设施重新排兵布阵；综合新闻层面，能源、通胀与贸易摩擦继续影响企业预算与全球需求判断。",
+          "今天最清晰的主线是：AI 热度正在继续向工程基础设施、执行环境、协议标准化和主权算力迁移。GitHub 热门项目几乎都围绕 agent 落地、工具接入、代码执行与评测；科技与宏观新闻则共同指向另一件事：真正会长期受益的，不是概念最热的产品，而是能穿透预算、合规和供应链约束的基础能力。",
         stats: [
           { value: "8", label: "GitHub 项目" },
           { value: "6", label: "科技热点" },
           { value: "6", label: "新闻热点" },
-          { value: "4", label: "Vibe 项目建议" },
+          { value: "4", label: "Vibe 建议" },
         ],
         githubProjects: [
           {
             name: "langgenius/dify",
             url: "https://github.com/langgenius/dify",
-            stars: "145.5k",
-            updatedAt: "2026-06-17",
+            stars: "145.6k",
+            updatedAt: "2026-06-18",
             tags: ["Agent Workflow", "LLMOps", "RAG", "Low-code"],
-            purpose: "面向生产的 AI 工作流与智能体应用开发平台。",
-            highlight:
-              "把工作流编排、知识库、模型接入、评测和部署串成一个完整闭环，适合快速验证到上线。",
-            whyNow:
-              "企业正在从“试一个模型”转向“交付一个可维护系统”，Dify 正好卡在这条落地链路上。",
+            purpose: "面向生产环境的智能体工作流开发平台，把应用编排、知识库、模型接入和上线交付串成一个闭环。",
+            highlight: "亮点不是单一功能，而是把“从 Demo 到可维护系统”的路径压短，尤其适合团队快速验证 AI 应用方案。",
+            whyNow: "越来越多团队不再只试模型，而是在试“怎么交付一个能持续迭代的 AI 系统”。Dify 正卡在这个最现实的切口上。",
           },
           {
             name: "OpenHands/OpenHands",
             url: "https://github.com/OpenHands/OpenHands",
-            stars: "77.4k",
-            updatedAt: "2026-06-17",
-            tags: ["AI Coding", "Agent", "DevTools"],
-            purpose: "让 AI 直接操作代码库、终端与任务流程的开源开发代理。",
-            highlight:
-              "强调真实开发环境中的执行能力，而不只是聊天补全，越来越接近“可托管的工程助手”。",
-            whyNow:
-              "AI 编程进入第二阶段，关注点从“写得像不像”变成“能不能持续交付并接住复杂上下文”。",
+            stars: "77.6k",
+            updatedAt: "2026-06-18",
+            tags: ["AI Coding", "Agent", "Developer Tools"],
+            purpose: "让 AI 真正操作代码库、终端和任务流程，而不是停留在聊天式建议层。",
+            highlight: "核心价值在执行能力和上下文延续性，越来越接近“可托管的开发代理”而不是纯补全工具。",
+            whyNow: "AI 编码竞争已经从“会不会写”转向“能不能持续完成复杂工作流”，OpenHands 是最直观的观察样本之一。",
           },
           {
             name: "daytonaio/daytona",
             url: "https://github.com/daytonaio/daytona",
             stars: "72.4k",
-            updatedAt: "2026-06-16",
-            tags: ["Sandbox", "Infra", "Runtime"],
-            purpose: "为 AI 生成代码提供安全、弹性、可隔离的执行基础设施。",
-            highlight:
-              "把代码执行环境抽象成可调度资源，明显贴合 agent、云开发与批量任务执行场景。",
-            whyNow:
-              "随着代码代理爆发，大家发现真正贵的不是 prompt，而是稳定、隔离、可观测的执行层。",
+            updatedAt: "2026-06-18",
+            tags: ["Sandbox", "Runtime", "Infra", "AI Code"],
+            purpose: "为 AI 生成代码提供安全、弹性、可隔离的执行环境。",
+            highlight: "把执行层做成可调度资源，这对 agent、批处理开发任务和云端代码运行都很关键。",
+            whyNow: "大家开始意识到，最稀缺的不是 prompt，而是稳定、可观测、可隔离的执行环境。",
           },
           {
             name: "modelcontextprotocol/servers",
             url: "https://github.com/modelcontextprotocol/servers",
-            stars: "87.3k",
-            updatedAt: "2026-06-16",
-            tags: ["MCP", "Tooling", "Integration"],
-            purpose: "MCP 官方/社区服务端集合，统一模型与外部工具的数据接入方式。",
-            highlight:
-              "它不是单个产品，而是整个 AI 工具连接层的“样板间”，能快速看到生态正在接什么、怎么接。",
-            whyNow:
-              "MCP 已从概念走向接口层标准化，开发者现在关注的重点是如何把内部工具、SaaS 和本地能力接进去。",
+            stars: "87.4k",
+            updatedAt: "2026-06-18",
+            tags: ["MCP", "Protocol", "Integrations"],
+            purpose: "MCP 生态里最直观的服务端集合，帮助模型统一接入外部工具、数据和系统能力。",
+            highlight: "它的重要性不在某个单独工具，而在于它展示了“AI 工具接入层”正在迅速标准化。",
+            whyNow: "2026 年的一个核心变化是，工具协议本身正在变成平台竞争的一部分。MCP 生态值得持续盯住。",
           },
           {
             name: "continuedev/continue",
             url: "https://github.com/continuedev/continue",
-            stars: "33.7k",
-            updatedAt: "2026-06-17",
+            stars: "33.9k",
+            updatedAt: "2026-06-18",
             tags: ["IDE", "Coding Agent", "Open Source"],
-            purpose: "开源 AI 编程代理与 IDE 辅助工具。",
-            highlight:
-              "以插件和 IDE 嵌入为核心，适合团队按自己的模型、规则和上下文策略定制开发体验。",
-            whyNow:
-              "企业对“可控的 AI 编程栈”需求很强，Continue 代表了不想完全押注封闭 IDE 的路线。",
+            purpose: "开源 AI 编程代理，嵌入 IDE 使用，强调团队可控性和自定义能力。",
+            highlight: "它让团队能按自己的模型、规则和上下文策略定义开发体验，而不是完全依附闭源产品路线。",
+            whyNow: "企业越来越在意 AI 开发栈的可控性，Continue 是“开放版团队编码助手”的代表项目。",
           },
           {
             name: "marimo-team/marimo",
             url: "https://github.com/marimo-team/marimo",
             stars: "21.5k",
-            updatedAt: "2026-06-16",
-            tags: ["Python", "Notebook", "Reactive"],
-            purpose: "反应式 Python Notebook，可直接演化为脚本或 Web 应用。",
-            highlight:
-              "把 Notebook、脚本与应用之间的边界打薄，天然适合 AI 数据实验、Demo 和轻量产品化。",
-            whyNow:
-              "开发者越来越需要“先探索、再发布”的统一工作台，marimo 很适合承担这个桥梁角色。",
+            updatedAt: "2026-06-17",
+            tags: ["Python", "Notebook", "Reactive", "SQL"],
+            purpose: "响应式 Python Notebook，可运行实验、查数据、导出脚本，也能直接部署成应用。",
+            highlight: "把 notebook、脚本和轻应用三者之间的边界打薄，非常适合 AI 试验和数据产品化。",
+            whyNow: "开发者越来越需要“先探索、再产品化”的统一工作台，marimo 很适合承担这个桥梁角色。",
           },
           {
             name: "promptfoo/promptfoo",
             url: "https://github.com/promptfoo/promptfoo",
             stars: "22.3k",
-            updatedAt: "2026-06-16",
-            tags: ["AI Eval", "Security", "CI/CD"],
-            purpose: "做 prompts、agents、RAG 的评测、回归测试与红队扫描。",
-            highlight:
-              "把 AI 评测工程化，能进 CI，也能直接做安全/越权/幻觉等风险扫描。",
-            whyNow:
-              "模型能力趋同后，真正拉开差距的是评测体系和安全边界，promptfoo 属于很务实的必修课。",
+            updatedAt: "2026-06-18",
+            tags: ["AI Eval", "Security", "CI/CD", "Red Team"],
+            purpose: "对 prompts、agents 和 RAG 系统做评测、回归测试和漏洞扫描。",
+            highlight: "它把 AI 评测真正工程化了，能直接进 CI，并能覆盖安全、越权和幻觉等风险点。",
+            whyNow: "模型能力趋同后，能不能做稳定评测和风险控制，正在成为团队是否敢上线 AI 的分水岭。",
           },
           {
             name: "google/adk-python",
             url: "https://github.com/google/adk-python",
-            stars: "20.1k",
-            updatedAt: "2026-06-17",
+            stars: "20.2k",
+            updatedAt: "2026-06-18",
             tags: ["Agent SDK", "Python", "Multi-agent"],
-            purpose: "Google 开源的代码优先智能体开发工具包。",
-            highlight:
-              "定位清晰：围绕 agent 生命周期、评测和部署做工程化抽象，适合 Python 团队快速实验。",
-            whyNow:
-              "Google 正在把 agent 能力变成开发者产品线的一部分，这类 SDK 往往能提前反映平台未来方向。",
-          }
+            purpose: "Google 开源的代码优先智能体工具包，用于构建、评测和部署多智能体系统。",
+            highlight: "适合 Python 团队快速试验 agent 生命周期管理，也能从侧面观察 Google 的平台化方向。",
+            whyNow: "大厂正在把智能体能力做成开发者平台部件，SDK 的设计通常比发布会更能透露未来路线。",
+          },
         ],
         projectTrends: [
-          "热门项目集中在“智能体工程基础设施”而不是单点模型能力，说明开发者关注点已经转向编排、执行、评测和接入。",
-          "MCP、沙箱运行时、IDE 内代理这三条线正在汇合，未来的 AI 开发体验很可能是“工具协议 + 受控执行 + 团队规则”。",
-          "开源价值正在从“替代闭源模型”转向“补齐企业可控层”，尤其是自托管、观测、安全与集成能力。"
+          "今天值得看的开源项目大多不再强调“模型更强”，而是强调怎么把模型接入真实流程、真实权限和真实执行环境。",
+          "MCP、沙箱运行时、IDE 代理和评测框架正在汇合成同一条工程栈，未来 AI 开发体验会越来越像“协议层 + 执行层 + 规则层”。",
+          "开源价值正在从替代闭源模型，转向补齐企业真正缺的可控层：接入、观测、安全、评测和部署。",
+        ],
+        techHotspots: [
+          {
+            title: "Apple 在 WWDC 2026 推出升级版 Siri AI，强调设备侧与私有云协同",
+            source: "AP News · 2026-06-05",
+            url: "https://apnews.com/article/aa25d07c06d366ec5b62643a1f5b0db9",
+            tags: ["Apple", "AI Assistant", "Consumer Tech"],
+            summary: "苹果在 2026 年 WWDC 上展示了新版 Siri AI，把视觉理解、跨设备任务执行和日常操作整合到更明确的产品叙事中，并继续强调隐私优先。",
+            impact: "这说明终端 AI 的竞争重点正在从“有没有模型”转向“能否嵌入高频场景并维持隐私叙事”。苹果若补上执行层体验，消费级 AI 入口会重新洗牌。",
+            audience: "移动产品团队、终端厂商、AI 助手创业者、投资人",
+          },
+          {
+            title: "Nvidia 与 Coherent 在德州推进 AI 制造基础设施升级",
+            source: "AP News · 2026-06-16",
+            url: "https://apnews.com/article/9bf560fa2365e4d6b57804438cda579e",
+            tags: ["Nvidia", "Manufacturing", "Optics", "Data Center"],
+            summary: "Nvidia 与 Coherent 推进约 20 亿美元制造升级，核心是为 AI 系统提供高速光互连材料，降低系统级功耗并提升多芯片协同效率。",
+            impact: "AI 竞争已经从芯片延伸到光互连、材料与制造。谁能控制这些环节，谁更可能持续压低推理和训练成本。",
+            audience: "半导体从业者、云基础设施团队、产业投资人",
+          },
+          {
+            title: "Nvidia 把 AI PC 推向 Windows 笔记本，试图重写本地智能终端入口",
+            source: "AP News · 2026-06-01",
+            url: "https://apnews.com/article/c807f7333b93b9927b62b1240dcf65a1",
+            tags: ["AI PC", "Nvidia", "Windows", "Edge AI"],
+            summary: "Nvidia 发布面向 Windows 设备的 RTX Spark“superchip”，希望把更强的本地 AI 能力带进个人电脑。",
+            impact: "如果本地 agent 与文件、应用和个人上下文结合得足够顺滑，AI PC 会从营销概念转向新的操作入口。终端侧算力叙事值得重新评估。",
+            audience: "PC 厂商、桌面软件团队、边缘 AI 开发者",
+          },
+          {
+            title: "欧盟推出 Tech Sovereignty 计划，直指芯片、云和 AI 自主",
+            source: "AP News · 2026-06-03",
+            url: "https://apnews.com/article/b16729f7758120260c7005bfba0774c3",
+            tags: ["EU", "Cloud", "Chips", "Sovereignty"],
+            summary: "欧盟提出新的技术主权方案，希望降低对美国云平台和亚洲芯片制造的依赖，并计划扩张本地数据中心能力。",
+            impact: "这不是单纯政策口号，而是区域级基础设施重构信号。对跨国 SaaS 和云厂商来说，本地部署、合规与区域合作会越来越重要。",
+            audience: "跨国企业、云服务商、政策与合规团队",
+          },
+          {
+            title: "AP 专访黄仁勋：AI 时代需要新的社会规范",
+            source: "AP News · 2026-06-16",
+            url: "https://apnews.com/article/8334abcbc6ed8d3d7889b640ec6fa05b",
+            tags: ["AI", "Policy", "Labor", "Nvidia"],
+            summary: "黄仁勋在接受 AP 采访时强调，社会需要更主动适应 AI，包括劳动力、教育和治理规则都要重构。",
+            impact: "这类表态背后反映的是产业已默认 AI 将持续进入高频工作流。下一阶段争议点不是 AI 会不会来，而是谁承担再培训和治理成本。",
+            audience: "企业管理层、教育机构、公共政策研究者",
+          },
+          {
+            title: "中国人形机器人量产推进很快，但真实需求仍待验证",
+            source: "AP News · 2026-06-06",
+            url: "https://apnews.com/article/7d542b5ee92caa9d79efa28de89afbbe",
+            tags: ["Robotics", "China", "Humanoids"],
+            summary: "AP 报道指出，中国人形机器人在制造和成本上推进很快，但实际可持续商业需求仍明显弱于供给端热度。",
+            impact: "机器人赛道已经进入“制造能力先行、场景落地滞后”的典型阶段。短期更值得看的是数据闭环和场景 ROI，而不是单纯表演能力。",
+            audience: "机器人创业团队、制造业、产业投资机构",
+          },
+        ],
+        generalNews: [
+          {
+            title: "美伊协议开始生效，霍尔木兹海峡重开，但后续执行仍有不确定性",
+            source: "AP News · 2026-06-17",
+            url: "https://apnews.com/article/a7ab28d9b34edfaa2061a67616f610bc",
+            tags: ["Energy", "Middle East", "Shipping"],
+            summary: "美国与伊朗签署谅解备忘录，相关方称协议“立即生效”，市场关注油运恢复与制裁安排，但正式长期协议仍未最终落定。",
+            impact: "短期利好航运与能源供应预期，但政策反复风险依然高。企业不能把“航道重开”直接等同于成本快速恢复正常。",
+            note: "待进一步确认：当前披露仍以谅解备忘录和多方表态为主，长期执行细节与持续性尚未完全明朗。",
+          },
+          {
+            title: "伊朗战争降温后，汽油、机票和食品价格未必会立刻回落",
+            source: "AP News · 2026-06-16",
+            url: "https://apnews.com/article/9c413bc111efcfa9bac53b20e9057738",
+            tags: ["Inflation", "Consumer", "Supply Chain"],
+            summary: "AP 援引分析称，即使停火与航运恢复，燃料、化肥、食品和运输价格的滞后传导仍会持续数月。",
+            impact: "这意味着企业下半年的成本判断不能只看地缘局势 headline，要看库存、保险、运力与合同重定价的滞后效应。",
+          },
+          {
+            title: "G7 重新把乌克兰与对俄制裁拉回核心议程",
+            source: "AP News · 2026-06-16",
+            url: "https://apnews.com/article/e7fad4eabaae8181f70fa5a0b9e499b2",
+            tags: ["G7", "Ukraine", "Russia", "Oil"],
+            summary: "随着中东局势阶段性缓和，G7 再次把乌克兰援助和对俄能源压力摆到更突出位置。",
+            impact: "这意味着能源与大宗商品供应不确定性并没有结束，只是焦点在不同地缘风险之间切换。全球经营环境仍偏脆弱。",
+          },
+          {
+            title: "美国上诉法院允许 10% 全球关税暂时继续执行",
+            source: "AP News · 2026-06-12",
+            url: "https://apnews.com/article/a95ef7309d89018477a3265ebf93d620",
+            tags: ["Tariffs", "Trade", "Supply Chain"],
+            summary: "美国联邦上诉法院允许政府在诉讼期间继续征收 10% 全球关税，合法性争议还没有最终定案。",
+            impact: "对跨境供应链而言，短期不确定性并未解除。进口成本、产地迁移和售价策略都需要继续保留调整空间。",
+          },
+          {
+            title: "China Shock 2.0 开始压向欧洲制造业",
+            source: "AP News · 2026-06-17",
+            url: "https://apnews.com/article/1aad9c64ed2b209bea46c1bba4895946",
+            tags: ["China", "Europe", "Manufacturing", "Trade"],
+            summary: "AP 将中国出口外溢对欧洲产业形成的新压力称为“China Shock 2.0”，高端制造与新能源链条也正受到冲击。",
+            impact: "这会加速欧洲的产业保护、本地制造和补贴政策。对中国企业和全球品牌来说，欧洲市场的合规与政治风险会继续抬升。",
+          },
+          {
+            title: "美联储维持利率不变，但点阵图转向更鹰派",
+            source: "AP News · 2026-06-16",
+            url: "https://apnews.com/article/103325df845d2d6bde63dfa4b8093d35",
+            tags: ["Fed", "Rates", "Markets", "Capital"],
+            summary: "美联储在新主席 Kevin Warsh 首次会议上维持利率不变，但多名官员转向支持年内加息，市场因此承压。",
+            impact: "这会直接影响科技估值、融资窗口和企业资本开支。对高投入赛道来说，宏观资金面并没有真正转松。",
+          },
         ],
         vibeIdeas: [
           {
             title: "MCP Connector Radar",
             tags: ["MCP", "React", "Node.js"],
-            what:
-              "做一个可视化目录，追踪 MCP server 的类型、权限、可用工具、更新时间与适用场景。",
-            stack:
-              "React、Vite、Tailwind 或普通 CSS、GitHub API、静态 JSON、可选 SQLite。",
-            mvp:
-              "先抓取 30-50 个常见 MCP server，展示标签、说明、最近活跃时间和一键复制配置。"
+            what: "做一个 MCP 连接器观察站，展示不同 server 的能力边界、权限类型、最近更新和典型使用场景。",
+            stack: "React、Vite、普通 CSS、GitHub API、静态 JSON，可选 SQLite。",
+            mvp: "先收录 30 个常见 MCP server，做搜索、分类标签和一键复制配置片段。",
           },
           {
-            title: "Agent Sandbox Cost Board",
+            title: "Agent Runtime Ops Board",
             tags: ["Daytona", "OpenHands", "Charts"],
-            what:
-              "做一个 agent 任务执行看板，追踪不同任务的运行时、失败率、重试次数和成本估算。",
-            stack:
-              "React、Recharts、Node.js、可选 PostgreSQL 或 Supabase。",
-            mvp:
-              "先用 mock 数据模拟 3 类任务，做出任务列表、耗时趋势图和失败原因面板。"
+            what: "做一个 agent 运行看板，跟踪不同任务的耗时、失败率、重试次数和单次执行成本。",
+            stack: "React、Recharts、Node.js，可选 Supabase/Postgres。",
+            mvp: "先用 mock 数据模拟 3 类任务，完成任务列表、趋势图和失败原因面板。",
           },
           {
             title: "Prompt Security Regression Lab",
             tags: ["promptfoo", "CI", "Security"],
-            what:
-              "把 promptfoo 封装成一个团队用的小平台，持续检测提示词、RAG 检索和工具调用的越权风险。",
-            stack:
-              "React、Node.js、promptfoo CLI、GitHub Actions。",
-            mvp:
-              "上传一组评测案例，跑出通过/失败结果，并用卡片展示风险类型和修复建议。"
+            what: "把 promptfoo 包成团队内部小工具，持续检查越权、泄漏、幻觉和回归风险。",
+            stack: "TypeScript、Node.js、promptfoo、GitHub Actions。",
+            mvp: "先支持 YAML 配置上传、单次评测运行和历史结果对比，接入 PR 检查即可。",
           },
           {
             title: "Notebook to App Studio",
-            tags: ["marimo", "Python", "Data Apps"],
-            what:
-              "围绕 marimo 做一个“从实验到分享页面”的轻量发布台，让数据分析结论直接变成可读产品页。",
-            stack:
-              "Python、marimo、React 嵌入壳、静态导出。",
-            mvp:
-              "提供模板：图表区、结论区、参数区和导出按钮，先把一个 Notebook 一键包装成分享页。"
-          }
-        ],
-        techHotspots: [
-          {
-            title: "微软为 GitHub 容量压力寻求 AWS 支援",
-            source: "Business Insider",
-            url: "https://www.businessinsider.com/microsoft-github-amazon-ai-cloud-capacity-2026-6",
-            tags: ["GitHub", "Cloud", "AI Coding"],
-            summary:
-              "Business Insider 报道称，受 AI 编程流量推动，GitHub 今年的代码变更量预期大幅增长，微软正引入 AWS 作为补充容量来源。",
-            impact:
-              "这说明 AI 编程热潮已开始真实冲击底层云资源分配。平台稳定性、区域调度与多云能力会重新变成开发者平台竞争点。",
-            audience: "开发者平台团队、云架构师、AI IDE 产品负责人"
+            tags: ["marimo", "Python", "Data App"],
+            what: "做一个把 marimo notebook 快速打包成轻应用的模板站，降低数据实验产品化门槛。",
+            stack: "Python、marimo、FastAPI、轻量静态前端。",
+            mvp: "先做 2 个模板：数据查询助手和日报生成器，支持本地运行与静态部署说明。",
           },
-          {
-            title: "Apple 在 WWDC 2026 强化 Siri AI 与 Apple Intelligence",
-            source: "Times of India / WWDC 2026 报道汇总",
-            url: "https://timesofindia.indiatimes.com/technology/tech-news/7-key-things-to-know-about-siri-ai-that-apple-announced-at-wwdc-2026/photostory/131662381.cms",
-            tags: ["Apple", "On-device AI", "Consumer AI"],
-            summary:
-              "WWDC 2026 上，Apple 展示了升级后的 Siri AI，强调跨应用上下文理解、视觉能力、文本改写与更强的隐私架构。",
-            impact:
-              "Apple 继续把 AI 入口收回系统层，竞争不再只是“有没有模型”，而是“谁掌握终端默认入口”。部分细节仍建议以 Apple 官方后续文档进一步确认。",
-            audience: "移动产品经理、iOS 开发者、消费电子观察者",
-            note: "部分功能发布时间与第三方媒体解读仍待进一步确认。"
-          },
-          {
-            title: "微软在 Build 2026 展示 Project Solara，押注 agent-first 终端",
-            source: "Tom's Hardware / Microsoft Build 2026",
-            url: "https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-unveils-project-solara-ai-a-chip-to-cloud-platform-built-to-power-a-new-generation-of-agent-first-enterprise-devices-hardware-designed-to-run-ai-agents-instead-of-traditional-apps",
-            tags: ["Microsoft", "Devices", "Enterprise AI"],
-            summary:
-              "微软提出面向企业的新设备形态，强调由云端 agent 驱动、边缘设备负责交互呈现，而不是传统本地应用优先。",
-            impact:
-              "如果这条路线成立，企业终端将从“装软件”转向“接工作流”，设备价值会更多体现在身份、安全与情境感知能力上。",
-            audience: "企业 IT、设备厂商、工作流平台团队"
-          },
-          {
-            title: "Nvidia 与 Coherent 在德州推进 AI 制造基础设施",
-            source: "AP News",
-            url: "https://apnews.com/article/9bf560fa2365e4d6b57804438cda579e",
-            tags: ["Nvidia", "Manufacturing", "Data Center"],
-            summary:
-              "AP 报道称，Nvidia 与 Coherent 正推进总额约 20 亿美元的制造升级，用于支撑 AI 系统内部高速光连接与更低功耗的数据传输。",
-            impact:
-              "AI 竞争已经下沉到光互连、材料与制造环节。芯片之外，供应链配套会决定大模型推理成本能否继续下降。",
-            audience: "半导体从业者、云基础设施团队、产业投资人"
-          },
-          {
-            title: "欧盟推出 tech sovereignty 计划，瞄准芯片、云与 AI 自主",
-            source: "AP News",
-            url: "https://apnews.com/article/b16729f7758120260c7005bfba0774c3",
-            tags: ["EU", "Sovereignty", "Cloud", "Chips"],
-            summary:
-              "欧盟提出新的“技术主权”方案，试图降低对美国云与 AI 平台、对亚洲芯片制造的依赖，并扩大本地数据中心与算力能力。",
-            impact:
-              "技术栈的地缘政治属性继续增强。对跨国 SaaS 和基础设施供应商来说，区域化部署、合规和本地主体合作会更重要。",
-            audience: "跨国企业、合规负责人、云服务商、政策研究者"
-          },
-          {
-            title: "AMD 提前放出 EPYC Venice 对标 Nvidia Vera 的性能口径",
-            source: "Tom's Hardware",
-            url: "https://www.tomshardware.com/pc-components/cpus/amd-fires-back-at-nvidia-claiming-256-core-zen-6-venice-cpu-beats-vera-by-3-3x-in-rack-level-performance-company-shares-first-estimated-epyc-venice-benchmarks",
-            tags: ["AMD", "CPU", "Data Center"],
-            summary:
-              "AMD 公布了基于模型估算的 EPYC Venice 机架级性能对比，宣称在部分场景下领先 Nvidia Vera。",
-            impact:
-              "数据中心 CPU 与 AI 计算之间的边界继续模糊。考虑到目前仍以估算口径为主，这类结论更适合作为方向信号，而非最终采购依据。",
-            audience: "基础设施采购、算力平台团队、半导体投资者",
-            note: "当前主要基于厂商估算，待进一步确认真实量产与第三方测试结果。"
-          }
-        ],
-        generalNews: [
-          {
-            title: "G7 重新把乌克兰与俄油制裁拉回议程",
-            source: "AP News",
-            url: "https://apnews.com/article/e7fad4eabaae8181f70fa5a0b9e499b2",
-            tags: ["G7", "Ukraine", "Oil Sanctions"],
-            summary:
-              "在伊朗局势暂时缓和后，G7 再次把乌克兰和对俄油制裁问题放到核心议程，美国方面释放可能恢复更强制裁的信号。",
-            impact:
-              "油价、航运与欧洲工业成本仍可能被地缘政治反复拉扯，企业做预算时很难假设能源环境已回归稳定。"
-          },
-          {
-            title: "霍尔木兹海峡恢复通航不代表能源供应立即恢复",
-            source: "AP News",
-            url: "https://apnews.com/article/42bdd71d5afa6fb5ac5d0c3e7857de6c",
-            tags: ["Energy", "Logistics", "Middle East"],
-            summary:
-              "AP 援引行业判断称，即便停火与通航恢复，油气运输、保险、炼化与库存重建仍需要数月时间。",
-            impact:
-              "这意味着通胀压力不会立刻消失，航空、物流、化工和制造企业的成本恢复会明显滞后于新闻标题。"
-          },
-          {
-            title: "美国 10% 全球关税暂时获法院放行",
-            source: "AP News",
-            url: "https://apnews.com/article/a95ef7309d89018477a3265ebf93d620",
-            tags: ["Tariffs", "Trade", "US Policy"],
-            summary:
-              "美国联邦上诉法院允许政府在诉讼继续期间暂时维持 10% 的全球关税措施，最终合法性仍未定案。",
-            impact:
-              "对跨境供应链来说，短期不确定性没有消失。企业需要继续准备成本转嫁、产地调整和价格策略预案。"
-          },
-          {
-            title: "新任美联储主席 Kevin Warsh 首次议息会议受市场高度关注",
-            source: "AP News",
-            url: "https://apnews.com/article/9a65c1d31c24bf943530f322fd5a731a",
-            tags: ["Federal Reserve", "Rates", "Markets"],
-            summary:
-              "市场关注 Warsh 会否在高通胀背景下维持偏鹰立场，以及未来是否调整美联储的沟通方式。",
-            impact:
-              "利率预期会直接影响科技估值、企业融资和美元流动性。对创业公司和高资本开支行业来说，这不是宏观噪音，而是融资成本问题。"
-          },
-          {
-            title: "中国出口高增长正在把贸易压力转向欧洲",
-            source: "AP News",
-            url: "https://apnews.com/article/edd7a75a090afca912b4650bcceb562d",
-            tags: ["China", "Europe", "Trade"],
-            summary:
-              "AP 将当前局面概括为“China Shock 2.0”：中国制造与高技术出口继续强势，欧洲产业承压上升。",
-            impact:
-              "这会加速欧洲的产业保护、补贴和本地化制造政策，也会影响中国企业在欧洲的市场进入与合规策略。"
-          },
-          {
-            title: "美国 5 月生产者价格涨幅创 2022 年以来新高",
-            source: "AP News",
-            url: "https://apnews.com/article/137b9d3e10be5244547b3d94a9d6d940",
-            tags: ["Inflation", "PPI", "Energy"],
-            summary:
-              "能源价格上行推动美国 5 月 PPI 同比显著走高，显示能源冲击已明显传导至上游成本。",
-            impact:
-              "如果上游成本无法快速回落，企业利润率和消费价格都可能继续承压，影响下半年的需求判断与库存策略。"
-          }
         ],
         totalTrend:
-          "今天的核心不是“又有哪家模型更强”，而是 AI 和宏观环境同时进入更重的执行阶段。技术侧，开发者正在把精力投向协议、基础设施、评测、安全和终端入口；商业侧，云容量、芯片配套和区域主权都在重塑平台格局；宏观侧，能源、利率和贸易政策没有明显放松，意味着企业在做 AI 投入决策时会更看重 ROI、稳定性和可控性。简单说，接下来值得下注的不是最会讲故事的 AI 项目，而是最能穿过真实预算、真实流程和真实合规要求的那一类。"
+          "今天背后的共同趋势很明确：AI 和宏观环境都进入了更重执行、更重约束的阶段。技术侧，开发者已经从追逐单一模型能力，转向建设协议、执行环境、评测和安全层；产业侧，芯片之外的光互连、数据中心、本地主权云和终端入口都在争夺下一轮价值分配；宏观侧，能源、关税、利率和地缘局势并没有真正退场，而是在继续决定企业预算和资本开支节奏。最值得下注的方向，不是故事讲得最热的 AI，而是那些能在真实流程、真实成本和真实合规条件下稳定工作的基础能力。",
       };
 
       function Pill({ children, tone = "default" }) {
-        const className = tone === "chip" ? "chip" : "tag";
-        return <span className={className}>{children}</span>;
+        return <span className={tone === "chip" ? "chip" : "tag"}>{children}</span>;
       }
 
       function SectionHeader({ id, title, desc, chips = [] }) {
         return (
           <div id={id}>
-            <div className="section-title">
-              <h2>{title}</h2>
+            <div className="section-head">
+              <div>
+                <h2>{title}</h2>
+                <p className="section-desc">{desc}</p>
+              </div>
               <div className="chip-row">
                 {chips.map((chip) => (
                   <Pill key={chip} tone="chip">
@@ -770,7 +705,6 @@
                 ))}
               </div>
             </div>
-            {desc ? <p className="section-desc">{desc}</p> : null}
           </div>
         );
       }
@@ -897,11 +831,9 @@
                     ))}
                   </div>
                 </div>
-                <div className="hero-panel">
+                <div style={{ display: "grid", gap: 14, alignContent: "start" }}>
                   <div className="toc">
-                    <div className="snapshot-title">
-                      <h2>阅读导航</h2>
-                    </div>
+                    <h2>阅读导航</h2>
                     <ul>
                       {[
                         "GitHub 开源项目观察",
@@ -918,11 +850,9 @@
                     </ul>
                   </div>
                   <div className="snapshot">
-                    <div className="snapshot-title">
-                      <h2>一句话判断</h2>
-                    </div>
+                    <h2>一句话判断</h2>
                     <p style={{ marginTop: 14, color: "rgba(248, 251, 251, 0.78)", lineHeight: 1.8 }}>
-                      AI 赛道的估值叙事开始让位给工程叙事：谁能把模型接进工具、接进流程、接进预算，谁更值得继续看。
+                      真正值得持续关注的，不是“哪个模型又更强了”，而是哪些团队已经把模型接进了真实工具、真实预算和真实组织流程。
                     </p>
                   </div>
                 </div>
@@ -934,7 +864,7 @@
                 <SectionHeader
                   id="github"
                   title="模块一 · GitHub 开源项目观察"
-                  desc="优先选取仍在高频更新、适合开发者快速理解且与当前 AI 工程化主线高度相关的项目。"
+                  desc="优先选择最近仍活跃、增长明显、并且适合开发者快速理解的基础设施与工程化项目。"
                   chips={["Active", "Open Source", "Builders First"]}
                 />
                 <div className="grid">
@@ -956,8 +886,8 @@
                 <SectionHeader
                   id="tech"
                   title="模块二 · 每日科技热点"
-                  desc="优先保留对 AI、开发者工具、云基础设施、硬件与企业软件真正有判断价值的更新。"
-                  chips={["AI", "Cloud", "Devices", "Infra"]}
+                  desc="优先保留对 AI、开发者工具、云基础设施、硬件与机器人真正有判断价值的事件。"
+                  chips={["AI", "Cloud", "Hardware", "Robotics"]}
                 />
                 <div className="grid">
                   {report.techHotspots.map((item) => (
@@ -970,7 +900,7 @@
                 <SectionHeader
                   id="news"
                   title="模块三 · 每日新闻热点"
-                  desc="只保留对商业、产业、价格、资本开支与国际经营环境有实质影响的综合新闻。"
+                  desc="只保留对商业、产业、资本市场、供应链和国际经营环境有实质影响的信息。"
                   chips={["Macro", "Trade", "Energy", "Policy"]}
                 />
                 <div className="grid">
@@ -984,8 +914,8 @@
                 <SectionHeader
                   id="vibe"
                   title="模块四 · Vibe Coding 项目建议"
-                  desc="不做空泛 brainstorm，优先给出这周就能起手的项目方向。"
-                  chips={["MVP Ready", "Builder Mode"]}
+                  desc="基于今天的 GitHub 和科技信号，挑出本周就能动手做的四个项目方向。"
+                  chips={["MVP Ready", "Actionable"]}
                 />
                 <div className="grid">
                   {report.vibeIdeas.map((item) => (
@@ -998,18 +928,17 @@
                 <SectionHeader
                   id="trend"
                   title="模块五 · 今日总趋势判断"
-                  desc="把今天分散的项目、科技更新与宏观新闻收束成一个更可执行的判断。"
+                  desc="把今天分散的开源项目、科技动态和宏观新闻，收束成一个更可执行的判断。"
                   chips={["Signal", "Decision"]}
                 />
                 <div className="summary-card">
-                  <p style={{ fontSize: 15, color: "var(--text)", lineHeight: 1.95 }}>{report.totalTrend}</p>
+                  <p style={{ fontSize: 15, color: "var(--text)", lineHeight: 1.92 }}>{report.totalTrend}</p>
                 </div>
               </section>
             </main>
 
             <footer className="footer">
-              数据说明：GitHub 项目信息基于 GitHub 仓库元数据与最近活跃时间筛选；新闻与科技热点优先采用 AP News、Business
-              Insider、Tom&apos;s Hardware 等近 7-14 天内可检索来源。带“待进一步确认”的结论表示目前更多来自媒体解读或厂商口径，建议继续追踪官方文档与后续实测。
+              数据说明：GitHub 项目部分基于 GitHub 仓库公开元数据与最近活跃时间筛选；科技与新闻热点优先采用 AP News 与 GitHub 官方仓库数据。带“待进一步确认”的内容表示当前仍存在执行层、政策层或信息披露层的不确定性，建议继续跟踪后续官方文件与市场反馈。
             </footer>
           </div>
         );
