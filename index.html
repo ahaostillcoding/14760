@@ -50,8 +50,7 @@
         margin: 0;
         color: var(--text);
         font-family: "Noto Sans SC", system-ui, sans-serif;
-        padding-top: 72px;
-        background:
+                background:
           radial-gradient(circle at top left, rgba(14, 102, 95, 0.16), transparent 25%),
           radial-gradient(circle at top right, rgba(191, 107, 49, 0.12), transparent 20%),
           linear-gradient(180deg, #fcf8f2 0%, var(--bg) 52%, var(--bg-2) 100%);
@@ -475,8 +474,7 @@
 
       @media (max-width: 720px) {
         body {
-          padding-top: 110px;
-        }
+                  }
 
         .page {
           width: min(100% - 18px, 1240px);
@@ -522,18 +520,11 @@
         }
       }
     </style>
+      <link rel="stylesheet" href="./switcher.css" />
+    <script defer src="./switcher.js"></script>
   </head>
   <body>
-    <nav class="brief-switcher">
-      <span class="brief-switcher-label">切换简报日期</span>
-      <div class="brief-switcher-buttons">
-        <a class="brief-switcher-button is-active" href="./index.html">2026-06-18</a>
-        <a class="brief-switcher-button" href="./briefs/2026-06-17.html">2026-06-17</a>
-        <a class="brief-switcher-button" href="./briefs/2026-06-16.html">2026-06-16</a>
-        <a class="brief-switcher-button" href="./briefs/2026-06-15.html">2026-06-15</a>
-        <a class="brief-switcher-button" href="./briefs/2026-06-12.html">2026-06-12</a>
-      </div>
-    </nav>
+    
     <div id="root"></div>
     <script type="text/babel">
       const report = {
