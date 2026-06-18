@@ -1,0 +1,501 @@
+
+      const report = {
+        date: "2026-06-18",
+        title: "每日 GitHub + 科技新闻热点简报",
+        summary:
+          "今天最清晰的主线是：AI 热度正在继续向工程基础设施、执行环境、协议标准化和主权算力迁移。GitHub 热门项目几乎都围绕 agent 落地、工具接入、代码执行与评测；科技与宏观新闻则共同指向另一件事：真正会长期受益的，不是概念最热的产品，而是能穿透预算、合规和供应链约束的基础能力。",
+        stats: [
+          { value: "8", label: "GitHub 项目" },
+          { value: "6", label: "科技热点" },
+          { value: "6", label: "新闻热点" },
+          { value: "4", label: "Vibe 建议" },
+        ],
+        githubProjects: [
+          {
+            name: "langgenius/dify",
+            url: "https://github.com/langgenius/dify",
+            stars: "145.6k",
+            updatedAt: "2026-06-18",
+            tags: ["Agent Workflow", "LLMOps", "RAG", "Low-code"],
+            purpose: "面向生产环境的智能体工作流开发平台，把应用编排、知识库、模型接入和上线交付串成一个闭环。",
+            highlight: "亮点不是单一功能，而是把“从 Demo 到可维护系统”的路径压短，尤其适合团队快速验证 AI 应用方案。",
+            whyNow: "越来越多团队不再只试模型，而是在试“怎么交付一个能持续迭代的 AI 系统”。Dify 正卡在这个最现实的切口上。",
+          },
+          {
+            name: "OpenHands/OpenHands",
+            url: "https://github.com/OpenHands/OpenHands",
+            stars: "77.6k",
+            updatedAt: "2026-06-18",
+            tags: ["AI Coding", "Agent", "Developer Tools"],
+            purpose: "让 AI 真正操作代码库、终端和任务流程，而不是停留在聊天式建议层。",
+            highlight: "核心价值在执行能力和上下文延续性，越来越接近“可托管的开发代理”而不是纯补全工具。",
+            whyNow: "AI 编码竞争已经从“会不会写”转向“能不能持续完成复杂工作流”，OpenHands 是最直观的观察样本之一。",
+          },
+          {
+            name: "daytonaio/daytona",
+            url: "https://github.com/daytonaio/daytona",
+            stars: "72.4k",
+            updatedAt: "2026-06-18",
+            tags: ["Sandbox", "Runtime", "Infra", "AI Code"],
+            purpose: "为 AI 生成代码提供安全、弹性、可隔离的执行环境。",
+            highlight: "把执行层做成可调度资源，这对 agent、批处理开发任务和云端代码运行都很关键。",
+            whyNow: "大家开始意识到，最稀缺的不是 prompt，而是稳定、可观测、可隔离的执行环境。",
+          },
+          {
+            name: "modelcontextprotocol/servers",
+            url: "https://github.com/modelcontextprotocol/servers",
+            stars: "87.4k",
+            updatedAt: "2026-06-18",
+            tags: ["MCP", "Protocol", "Integrations"],
+            purpose: "MCP 生态里最直观的服务端集合，帮助模型统一接入外部工具、数据和系统能力。",
+            highlight: "它的重要性不在某个单独工具，而在于它展示了“AI 工具接入层”正在迅速标准化。",
+            whyNow: "2026 年的一个核心变化是，工具协议本身正在变成平台竞争的一部分。MCP 生态值得持续盯住。",
+          },
+          {
+            name: "continuedev/continue",
+            url: "https://github.com/continuedev/continue",
+            stars: "33.9k",
+            updatedAt: "2026-06-18",
+            tags: ["IDE", "Coding Agent", "Open Source"],
+            purpose: "开源 AI 编程代理，嵌入 IDE 使用，强调团队可控性和自定义能力。",
+            highlight: "它让团队能按自己的模型、规则和上下文策略定义开发体验，而不是完全依附闭源产品路线。",
+            whyNow: "企业越来越在意 AI 开发栈的可控性，Continue 是“开放版团队编码助手”的代表项目。",
+          },
+          {
+            name: "marimo-team/marimo",
+            url: "https://github.com/marimo-team/marimo",
+            stars: "21.5k",
+            updatedAt: "2026-06-17",
+            tags: ["Python", "Notebook", "Reactive", "SQL"],
+            purpose: "响应式 Python Notebook，可运行实验、查数据、导出脚本，也能直接部署成应用。",
+            highlight: "把 notebook、脚本和轻应用三者之间的边界打薄，非常适合 AI 试验和数据产品化。",
+            whyNow: "开发者越来越需要“先探索、再产品化”的统一工作台，marimo 很适合承担这个桥梁角色。",
+          },
+          {
+            name: "promptfoo/promptfoo",
+            url: "https://github.com/promptfoo/promptfoo",
+            stars: "22.3k",
+            updatedAt: "2026-06-18",
+            tags: ["AI Eval", "Security", "CI/CD", "Red Team"],
+            purpose: "对 prompts、agents 和 RAG 系统做评测、回归测试和漏洞扫描。",
+            highlight: "它把 AI 评测真正工程化了，能直接进 CI，并能覆盖安全、越权和幻觉等风险点。",
+            whyNow: "模型能力趋同后，能不能做稳定评测和风险控制，正在成为团队是否敢上线 AI 的分水岭。",
+          },
+          {
+            name: "google/adk-python",
+            url: "https://github.com/google/adk-python",
+            stars: "20.2k",
+            updatedAt: "2026-06-18",
+            tags: ["Agent SDK", "Python", "Multi-agent"],
+            purpose: "Google 开源的代码优先智能体工具包，用于构建、评测和部署多智能体系统。",
+            highlight: "适合 Python 团队快速试验 agent 生命周期管理，也能从侧面观察 Google 的平台化方向。",
+            whyNow: "大厂正在把智能体能力做成开发者平台部件，SDK 的设计通常比发布会更能透露未来路线。",
+          },
+        ],
+        projectTrends: [
+          "今天值得看的开源项目大多不再强调“模型更强”，而是强调怎么把模型接入真实流程、真实权限和真实执行环境。",
+          "MCP、沙箱运行时、IDE 代理和评测框架正在汇合成同一条工程栈，未来 AI 开发体验会越来越像“协议层 + 执行层 + 规则层”。",
+          "开源价值正在从替代闭源模型，转向补齐企业真正缺的可控层：接入、观测、安全、评测和部署。",
+        ],
+        techHotspots: [
+          {
+            title: "Apple 在 WWDC 2026 推出升级版 Siri AI，强调设备侧与私有云协同",
+            source: "AP News · 2026-06-05",
+            url: "https://apnews.com/article/aa25d07c06d366ec5b62643a1f5b0db9",
+            tags: ["Apple", "AI Assistant", "Consumer Tech"],
+            summary: "苹果在 2026 年 WWDC 上展示了新版 Siri AI，把视觉理解、跨设备任务执行和日常操作整合到更明确的产品叙事中，并继续强调隐私优先。",
+            impact: "这说明终端 AI 的竞争重点正在从“有没有模型”转向“能否嵌入高频场景并维持隐私叙事”。苹果若补上执行层体验，消费级 AI 入口会重新洗牌。",
+            audience: "移动产品团队、终端厂商、AI 助手创业者、投资人",
+          },
+          {
+            title: "Nvidia 与 Coherent 在德州推进 AI 制造基础设施升级",
+            source: "AP News · 2026-06-16",
+            url: "https://apnews.com/article/9bf560fa2365e4d6b57804438cda579e",
+            tags: ["Nvidia", "Manufacturing", "Optics", "Data Center"],
+            summary: "Nvidia 与 Coherent 推进约 20 亿美元制造升级，核心是为 AI 系统提供高速光互连材料，降低系统级功耗并提升多芯片协同效率。",
+            impact: "AI 竞争已经从芯片延伸到光互连、材料与制造。谁能控制这些环节，谁更可能持续压低推理和训练成本。",
+            audience: "半导体从业者、云基础设施团队、产业投资人",
+          },
+          {
+            title: "Nvidia 把 AI PC 推向 Windows 笔记本，试图重写本地智能终端入口",
+            source: "AP News · 2026-06-01",
+            url: "https://apnews.com/article/c807f7333b93b9927b62b1240dcf65a1",
+            tags: ["AI PC", "Nvidia", "Windows", "Edge AI"],
+            summary: "Nvidia 发布面向 Windows 设备的 RTX Spark“superchip”，希望把更强的本地 AI 能力带进个人电脑。",
+            impact: "如果本地 agent 与文件、应用和个人上下文结合得足够顺滑，AI PC 会从营销概念转向新的操作入口。终端侧算力叙事值得重新评估。",
+            audience: "PC 厂商、桌面软件团队、边缘 AI 开发者",
+          },
+          {
+            title: "欧盟推出 Tech Sovereignty 计划，直指芯片、云和 AI 自主",
+            source: "AP News · 2026-06-03",
+            url: "https://apnews.com/article/b16729f7758120260c7005bfba0774c3",
+            tags: ["EU", "Cloud", "Chips", "Sovereignty"],
+            summary: "欧盟提出新的技术主权方案，希望降低对美国云平台和亚洲芯片制造的依赖，并计划扩张本地数据中心能力。",
+            impact: "这不是单纯政策口号，而是区域级基础设施重构信号。对跨国 SaaS 和云厂商来说，本地部署、合规与区域合作会越来越重要。",
+            audience: "跨国企业、云服务商、政策与合规团队",
+          },
+          {
+            title: "AP 专访黄仁勋：AI 时代需要新的社会规范",
+            source: "AP News · 2026-06-16",
+            url: "https://apnews.com/article/8334abcbc6ed8d3d7889b640ec6fa05b",
+            tags: ["AI", "Policy", "Labor", "Nvidia"],
+            summary: "黄仁勋在接受 AP 采访时强调，社会需要更主动适应 AI，包括劳动力、教育和治理规则都要重构。",
+            impact: "这类表态背后反映的是产业已默认 AI 将持续进入高频工作流。下一阶段争议点不是 AI 会不会来，而是谁承担再培训和治理成本。",
+            audience: "企业管理层、教育机构、公共政策研究者",
+          },
+          {
+            title: "中国人形机器人量产推进很快，但真实需求仍待验证",
+            source: "AP News · 2026-06-06",
+            url: "https://apnews.com/article/7d542b5ee92caa9d79efa28de89afbbe",
+            tags: ["Robotics", "China", "Humanoids"],
+            summary: "AP 报道指出，中国人形机器人在制造和成本上推进很快，但实际可持续商业需求仍明显弱于供给端热度。",
+            impact: "机器人赛道已经进入“制造能力先行、场景落地滞后”的典型阶段。短期更值得看的是数据闭环和场景 ROI，而不是单纯表演能力。",
+            audience: "机器人创业团队、制造业、产业投资机构",
+          },
+        ],
+        generalNews: [
+          {
+            title: "美伊协议开始生效，霍尔木兹海峡重开，但后续执行仍有不确定性",
+            source: "AP News · 2026-06-17",
+            url: "https://apnews.com/article/a7ab28d9b34edfaa2061a67616f610bc",
+            tags: ["Energy", "Middle East", "Shipping"],
+            summary: "美国与伊朗签署谅解备忘录，相关方称协议“立即生效”，市场关注油运恢复与制裁安排，但正式长期协议仍未最终落定。",
+            impact: "短期利好航运与能源供应预期，但政策反复风险依然高。企业不能把“航道重开”直接等同于成本快速恢复正常。",
+            note: "待进一步确认：当前披露仍以谅解备忘录和多方表态为主，长期执行细节与持续性尚未完全明朗。",
+          },
+          {
+            title: "伊朗战争降温后，汽油、机票和食品价格未必会立刻回落",
+            source: "AP News · 2026-06-16",
+            url: "https://apnews.com/article/9c413bc111efcfa9bac53b20e9057738",
+            tags: ["Inflation", "Consumer", "Supply Chain"],
+            summary: "AP 援引分析称，即使停火与航运恢复，燃料、化肥、食品和运输价格的滞后传导仍会持续数月。",
+            impact: "这意味着企业下半年的成本判断不能只看地缘局势 headline，要看库存、保险、运力与合同重定价的滞后效应。",
+          },
+          {
+            title: "G7 重新把乌克兰与对俄制裁拉回核心议程",
+            source: "AP News · 2026-06-16",
+            url: "https://apnews.com/article/e7fad4eabaae8181f70fa5a0b9e499b2",
+            tags: ["G7", "Ukraine", "Russia", "Oil"],
+            summary: "随着中东局势阶段性缓和，G7 再次把乌克兰援助和对俄能源压力摆到更突出位置。",
+            impact: "这意味着能源与大宗商品供应不确定性并没有结束，只是焦点在不同地缘风险之间切换。全球经营环境仍偏脆弱。",
+          },
+          {
+            title: "美国上诉法院允许 10% 全球关税暂时继续执行",
+            source: "AP News · 2026-06-12",
+            url: "https://apnews.com/article/a95ef7309d89018477a3265ebf93d620",
+            tags: ["Tariffs", "Trade", "Supply Chain"],
+            summary: "美国联邦上诉法院允许政府在诉讼期间继续征收 10% 全球关税，合法性争议还没有最终定案。",
+            impact: "对跨境供应链而言，短期不确定性并未解除。进口成本、产地迁移和售价策略都需要继续保留调整空间。",
+          },
+          {
+            title: "China Shock 2.0 开始压向欧洲制造业",
+            source: "AP News · 2026-06-17",
+            url: "https://apnews.com/article/1aad9c64ed2b209bea46c1bba4895946",
+            tags: ["China", "Europe", "Manufacturing", "Trade"],
+            summary: "AP 将中国出口外溢对欧洲产业形成的新压力称为“China Shock 2.0”，高端制造与新能源链条也正受到冲击。",
+            impact: "这会加速欧洲的产业保护、本地制造和补贴政策。对中国企业和全球品牌来说，欧洲市场的合规与政治风险会继续抬升。",
+          },
+          {
+            title: "美联储维持利率不变，但点阵图转向更鹰派",
+            source: "AP News · 2026-06-16",
+            url: "https://apnews.com/article/103325df845d2d6bde63dfa4b8093d35",
+            tags: ["Fed", "Rates", "Markets", "Capital"],
+            summary: "美联储在新主席 Kevin Warsh 首次会议上维持利率不变，但多名官员转向支持年内加息，市场因此承压。",
+            impact: "这会直接影响科技估值、融资窗口和企业资本开支。对高投入赛道来说，宏观资金面并没有真正转松。",
+          },
+        ],
+        vibeIdeas: [
+          {
+            title: "MCP Connector Radar",
+            tags: ["MCP", "React", "Node.js"],
+            what: "做一个 MCP 连接器观察站，展示不同 server 的能力边界、权限类型、最近更新和典型使用场景。",
+            stack: "React、Vite、普通 CSS、GitHub API、静态 JSON，可选 SQLite。",
+            mvp: "先收录 30 个常见 MCP server，做搜索、分类标签和一键复制配置片段。",
+          },
+          {
+            title: "Agent Runtime Ops Board",
+            tags: ["Daytona", "OpenHands", "Charts"],
+            what: "做一个 agent 运行看板，跟踪不同任务的耗时、失败率、重试次数和单次执行成本。",
+            stack: "React、Recharts、Node.js，可选 Supabase/Postgres。",
+            mvp: "先用 mock 数据模拟 3 类任务，完成任务列表、趋势图和失败原因面板。",
+          },
+          {
+            title: "Prompt Security Regression Lab",
+            tags: ["promptfoo", "CI", "Security"],
+            what: "把 promptfoo 包成团队内部小工具，持续检查越权、泄漏、幻觉和回归风险。",
+            stack: "TypeScript、Node.js、promptfoo、GitHub Actions。",
+            mvp: "先支持 YAML 配置上传、单次评测运行和历史结果对比，接入 PR 检查即可。",
+          },
+          {
+            title: "Notebook to App Studio",
+            tags: ["marimo", "Python", "Data App"],
+            what: "做一个把 marimo notebook 快速打包成轻应用的模板站，降低数据实验产品化门槛。",
+            stack: "Python、marimo、FastAPI、轻量静态前端。",
+            mvp: "先做 2 个模板：数据查询助手和日报生成器，支持本地运行与静态部署说明。",
+          },
+        ],
+        totalTrend:
+          "今天背后的共同趋势很明确：AI 和宏观环境都进入了更重执行、更重约束的阶段。技术侧，开发者已经从追逐单一模型能力，转向建设协议、执行环境、评测和安全层；产业侧，芯片之外的光互连、数据中心、本地主权云和终端入口都在争夺下一轮价值分配；宏观侧，能源、关税、利率和地缘局势并没有真正退场，而是在继续决定企业预算和资本开支节奏。最值得下注的方向，不是故事讲得最热的 AI，而是那些能在真实流程、真实成本和真实合规条件下稳定工作的基础能力。",
+      };
+
+      function Pill({ children, tone = "default" }) {
+        return <span className={tone === "chip" ? "chip" : "tag"}>{children}</span>;
+      }
+
+      function SectionHeader({ id, title, desc, chips = [] }) {
+        return (
+          <div id={id}>
+            <div className="section-head">
+              <div>
+                <h2>{title}</h2>
+                <p className="section-desc">{desc}</p>
+              </div>
+              <div className="chip-row">
+                {chips.map((chip) => (
+                  <Pill key={chip} tone="chip">
+                    {chip}
+                  </Pill>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      function ProjectCard({ item }) {
+        return (
+          <article className="card span-6">
+            <div className="card-header">
+              <div>
+                <h3>{item.name}</h3>
+                <p className="card-subtitle">最近活跃：{item.updatedAt}</p>
+              </div>
+              <div className="stat">
+                <strong>{item.stars}</strong>
+                <span>GitHub Stars</span>
+              </div>
+            </div>
+            <div className="tag-row" style={{ marginTop: 14 }}>
+              {item.tags.map((tag) => (
+                <Pill key={tag}>{tag}</Pill>
+              ))}
+            </div>
+            <div className="key-block">
+              <strong>主要用途</strong>
+              <p>{item.purpose}</p>
+            </div>
+            <div className="key-block">
+              <strong>核心亮点</strong>
+              <p>{item.highlight}</p>
+            </div>
+            <div className="key-block">
+              <strong>为什么现在值得看</strong>
+              <p>{item.whyNow}</p>
+            </div>
+            <div className="meta">
+              <span className="mini-title">来源：GitHub 仓库元数据</span>
+              <a className="source-link" href={item.url} target="_blank" rel="noreferrer">
+                查看项目
+              </a>
+            </div>
+          </article>
+        );
+      }
+
+      function NewsCard({ item, compact = false }) {
+        return (
+          <article className={`card ${compact ? "span-4" : "span-6"}`}>
+            <div className="card-header">
+              <div>
+                <h3>{item.title}</h3>
+                <p className="card-subtitle">{item.source}</p>
+              </div>
+            </div>
+            <div className="tag-row" style={{ marginTop: 14 }}>
+              {item.tags.map((tag) => (
+                <Pill key={tag}>{tag}</Pill>
+              ))}
+            </div>
+            <div className="key-block">
+              <strong>事件摘要</strong>
+              <p>{item.summary}</p>
+            </div>
+            <div className="key-block">
+              <strong>影响判断</strong>
+              <p>{item.impact}</p>
+            </div>
+            {item.audience ? (
+              <div className="key-block">
+                <strong>适合关注的人群</strong>
+                <p>{item.audience}</p>
+              </div>
+            ) : null}
+            {item.note ? <div className="callout">{item.note}</div> : null}
+            <div className="meta">
+              <span className="mini-title">来源链接</span>
+              <a className="source-link" href={item.url} target="_blank" rel="noreferrer">
+                打开原文
+              </a>
+            </div>
+          </article>
+        );
+      }
+
+      function IdeaCard({ item }) {
+        return (
+          <article className="card span-6">
+            <h3>{item.title}</h3>
+            <div className="tag-row" style={{ marginTop: 14 }}>
+              {item.tags.map((tag) => (
+                <Pill key={tag}>{tag}</Pill>
+              ))}
+            </div>
+            <div className="key-block">
+              <strong>可以做什么</strong>
+              <p>{item.what}</p>
+            </div>
+            <div className="key-block">
+              <strong>适合技术栈 / 组件</strong>
+              <p>{item.stack}</p>
+            </div>
+            <div className="key-block">
+              <strong>MVP 思路</strong>
+              <p>{item.mvp}</p>
+            </div>
+          </article>
+        );
+      }
+
+      function App() {
+        return (
+          <div className="page">
+            <header className="hero">
+              <div className="eyebrow mono">Daily Briefing · {report.date}</div>
+              <div className="hero-grid">
+                <div>
+                  <h1>{report.title}</h1>
+                  <p>{report.summary}</p>
+                  <div className="snapshot-grid" style={{ marginTop: 20 }}>
+                    {report.stats.map((stat) => (
+                      <div className="metric" key={stat.label}>
+                        <strong className="mono">{stat.value}</strong>
+                        <span>{stat.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ display: "grid", gap: 14, alignContent: "start" }}>
+                  <div className="toc">
+                    <h2>阅读导航</h2>
+                    <ul>
+                      {[
+                        "GitHub 开源项目观察",
+                        "每日科技热点",
+                        "每日新闻热点",
+                        "Vibe Coding 项目建议",
+                        "今日总趋势判断",
+                      ].map((item, index) => (
+                        <li key={item}>
+                          <span className="toc-index mono">{index + 1}</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="snapshot">
+                    <h2>一句话判断</h2>
+                    <p style={{ marginTop: 14, color: "rgba(248, 251, 251, 0.78)", lineHeight: 1.8 }}>
+                      真正值得持续关注的，不是“哪个模型又更强了”，而是哪些团队已经把模型接进了真实工具、真实预算和真实组织流程。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </header>
+
+            <main className="main">
+              <section className="section">
+                <SectionHeader
+                  id="github"
+                  title="模块一 · GitHub 开源项目观察"
+                  desc="优先选择最近仍活跃、增长明显、并且适合开发者快速理解的基础设施与工程化项目。"
+                  chips={["Active", "Open Source", "Builders First"]}
+                />
+                <div className="grid">
+                  {report.githubProjects.map((item) => (
+                    <ProjectCard key={item.name} item={item} />
+                  ))}
+                  <div className="summary-card span-12">
+                    <h3 style={{ margin: 0, fontSize: 21 }}>项目趋势观察</h3>
+                    <ol className="list">
+                      {report.projectTrends.map((trend) => (
+                        <li key={trend}>{trend}</li>
+                      ))}
+                    </ol>
+                  </div>
+                </div>
+              </section>
+
+              <section className="section">
+                <SectionHeader
+                  id="tech"
+                  title="模块二 · 每日科技热点"
+                  desc="优先保留对 AI、开发者工具、云基础设施、硬件与机器人真正有判断价值的事件。"
+                  chips={["AI", "Cloud", "Hardware", "Robotics"]}
+                />
+                <div className="grid">
+                  {report.techHotspots.map((item) => (
+                    <NewsCard key={item.title} item={item} compact />
+                  ))}
+                </div>
+              </section>
+
+              <section className="section">
+                <SectionHeader
+                  id="news"
+                  title="模块三 · 每日新闻热点"
+                  desc="只保留对商业、产业、资本市场、供应链和国际经营环境有实质影响的信息。"
+                  chips={["Macro", "Trade", "Energy", "Policy"]}
+                />
+                <div className="grid">
+                  {report.generalNews.map((item) => (
+                    <NewsCard key={item.title} item={item} compact />
+                  ))}
+                </div>
+              </section>
+
+              <section className="section">
+                <SectionHeader
+                  id="vibe"
+                  title="模块四 · Vibe Coding 项目建议"
+                  desc="基于今天的 GitHub 和科技信号，挑出本周就能动手做的四个项目方向。"
+                  chips={["MVP Ready", "Actionable"]}
+                />
+                <div className="grid">
+                  {report.vibeIdeas.map((item) => (
+                    <IdeaCard key={item.title} item={item} />
+                  ))}
+                </div>
+              </section>
+
+              <section className="section">
+                <SectionHeader
+                  id="trend"
+                  title="模块五 · 今日总趋势判断"
+                  desc="把今天分散的开源项目、科技动态和宏观新闻，收束成一个更可执行的判断。"
+                  chips={["Signal", "Decision"]}
+                />
+                <div className="summary-card">
+                  <p style={{ fontSize: 15, color: "var(--text)", lineHeight: 1.92 }}>{report.totalTrend}</p>
+                </div>
+              </section>
+            </main>
+
+            <footer className="footer">
+              数据说明：GitHub 项目部分基于 GitHub 仓库公开元数据与最近活跃时间筛选；科技与新闻热点优先采用 AP News 与 GitHub 官方仓库数据。带“待进一步确认”的内容表示当前仍存在执行层、政策层或信息披露层的不确定性，建议继续跟踪后续官方文件与市场反馈。
+            </footer>
+          </div>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    

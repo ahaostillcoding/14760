@@ -16,8 +16,7 @@
     />
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <style>
+        <style>
       :root {
         --bg: #f5efe6;
         --bg-strong: #e8ddcf;
@@ -461,563 +460,312 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="text/babel">
-      const report = {
-        date: "2026-06-17",
-        title: "每日 GitHub + 科技新闻热点简报",
-        summary:
-          "今天最清晰的主线是：AI 正在从“模型能力竞争”转向“工程化与基础设施竞争”。GitHub 热门项目集中在 agent、MCP、代码执行与 AI 安全评测；科技新闻则显示大厂开始围绕算力、终端入口与主权基础设施重新排兵布阵；综合新闻层面，能源、通胀与贸易摩擦继续影响企业预算与全球需求判断。",
-        stats: [
-          { value: "8", label: "GitHub 项目" },
-          { value: "6", label: "科技热点" },
-          { value: "6", label: "新闻热点" },
-          { value: "4", label: "Vibe 项目建议" },
-        ],
-        githubProjects: [
-          {
-            name: "langgenius/dify",
-            url: "https://github.com/langgenius/dify",
-            stars: "145.5k",
-            updatedAt: "2026-06-17",
-            tags: ["Agent Workflow", "LLMOps", "RAG", "Low-code"],
-            purpose: "面向生产的 AI 工作流与智能体应用开发平台。",
-            highlight:
-              "把工作流编排、知识库、模型接入、评测和部署串成一个完整闭环，适合快速验证到上线。",
-            whyNow:
-              "企业正在从“试一个模型”转向“交付一个可维护系统”，Dify 正好卡在这条落地链路上。",
-          },
-          {
-            name: "OpenHands/OpenHands",
-            url: "https://github.com/OpenHands/OpenHands",
-            stars: "77.4k",
-            updatedAt: "2026-06-17",
-            tags: ["AI Coding", "Agent", "DevTools"],
-            purpose: "让 AI 直接操作代码库、终端与任务流程的开源开发代理。",
-            highlight:
-              "强调真实开发环境中的执行能力，而不只是聊天补全，越来越接近“可托管的工程助手”。",
-            whyNow:
-              "AI 编程进入第二阶段，关注点从“写得像不像”变成“能不能持续交付并接住复杂上下文”。",
-          },
-          {
-            name: "daytonaio/daytona",
-            url: "https://github.com/daytonaio/daytona",
-            stars: "72.4k",
-            updatedAt: "2026-06-16",
-            tags: ["Sandbox", "Infra", "Runtime"],
-            purpose: "为 AI 生成代码提供安全、弹性、可隔离的执行基础设施。",
-            highlight:
-              "把代码执行环境抽象成可调度资源，明显贴合 agent、云开发与批量任务执行场景。",
-            whyNow:
-              "随着代码代理爆发，大家发现真正贵的不是 prompt，而是稳定、隔离、可观测的执行层。",
-          },
-          {
-            name: "modelcontextprotocol/servers",
-            url: "https://github.com/modelcontextprotocol/servers",
-            stars: "87.3k",
-            updatedAt: "2026-06-16",
-            tags: ["MCP", "Tooling", "Integration"],
-            purpose: "MCP 官方/社区服务端集合，统一模型与外部工具的数据接入方式。",
-            highlight:
-              "它不是单个产品，而是整个 AI 工具连接层的“样板间”，能快速看到生态正在接什么、怎么接。",
-            whyNow:
-              "MCP 已从概念走向接口层标准化，开发者现在关注的重点是如何把内部工具、SaaS 和本地能力接进去。",
-          },
-          {
-            name: "continuedev/continue",
-            url: "https://github.com/continuedev/continue",
-            stars: "33.7k",
-            updatedAt: "2026-06-17",
-            tags: ["IDE", "Coding Agent", "Open Source"],
-            purpose: "开源 AI 编程代理与 IDE 辅助工具。",
-            highlight:
-              "以插件和 IDE 嵌入为核心，适合团队按自己的模型、规则和上下文策略定制开发体验。",
-            whyNow:
-              "企业对“可控的 AI 编程栈”需求很强，Continue 代表了不想完全押注封闭 IDE 的路线。",
-          },
-          {
-            name: "marimo-team/marimo",
-            url: "https://github.com/marimo-team/marimo",
-            stars: "21.5k",
-            updatedAt: "2026-06-16",
-            tags: ["Python", "Notebook", "Reactive"],
-            purpose: "反应式 Python Notebook，可直接演化为脚本或 Web 应用。",
-            highlight:
-              "把 Notebook、脚本与应用之间的边界打薄，天然适合 AI 数据实验、Demo 和轻量产品化。",
-            whyNow:
-              "开发者越来越需要“先探索、再发布”的统一工作台，marimo 很适合承担这个桥梁角色。",
-          },
-          {
-            name: "promptfoo/promptfoo",
-            url: "https://github.com/promptfoo/promptfoo",
-            stars: "22.3k",
-            updatedAt: "2026-06-16",
-            tags: ["AI Eval", "Security", "CI/CD"],
-            purpose: "做 prompts、agents、RAG 的评测、回归测试与红队扫描。",
-            highlight:
-              "把 AI 评测工程化，能进 CI，也能直接做安全/越权/幻觉等风险扫描。",
-            whyNow:
-              "模型能力趋同后，真正拉开差距的是评测体系和安全边界，promptfoo 属于很务实的必修课。",
-          },
-          {
-            name: "google/adk-python",
-            url: "https://github.com/google/adk-python",
-            stars: "20.1k",
-            updatedAt: "2026-06-17",
-            tags: ["Agent SDK", "Python", "Multi-agent"],
-            purpose: "Google 开源的代码优先智能体开发工具包。",
-            highlight:
-              "定位清晰：围绕 agent 生命周期、评测和部署做工程化抽象，适合 Python 团队快速实验。",
-            whyNow:
-              "Google 正在把 agent 能力变成开发者产品线的一部分，这类 SDK 往往能提前反映平台未来方向。",
-          },
-        ],
-        projectTrends: [
-          "热门项目集中在“智能体工程基础设施”而不是单点模型能力，说明开发者关注点已经转向编排、执行、评测和接入。",
-          "MCP、沙箱运行时、IDE 内代理这三条线正在汇合，未来的 AI 开发体验很可能是“工具协议 + 受控执行 + 团队规则”。",
-          "开源价值正在从“替代闭源模型”转向“补齐企业可控层”，尤其是自托管、观测、安全与集成能力。",
-        ],
-        vibeIdeas: [
-          {
-            title: "MCP Connector Radar",
-            tags: ["MCP", "React", "Node.js"],
-            what:
-              "做一个可视化目录，追踪 MCP server 的类型、权限、可用工具、更新时间与适用场景。",
-            stack:
-              "React、Vite、Tailwind 或普通 CSS、GitHub API、静态 JSON、可选 SQLite。",
-            mvp:
-              "先抓取 30-50 个常见 MCP server，展示标签、说明、最近活跃时间和一键复制配置。",
-          },
-          {
-            title: "Agent Sandbox Cost Board",
-            tags: ["Daytona", "OpenHands", "Charts"],
-            what:
-              "做一个 agent 任务执行看板，追踪不同任务的运行时、失败率、重试次数和成本估算。",
-            stack:
-              "React、Recharts、Node.js、可选 PostgreSQL 或 Supabase。",
-            mvp:
-              "先用 mock 数据模拟 3 类任务，做出任务列表、耗时趋势图和失败原因面板。",
-          },
-          {
-            title: "Prompt Security Regression Lab",
-            tags: ["promptfoo", "CI", "Security"],
-            what:
-              "把 promptfoo 封装成一个团队用的小平台，持续检测提示词、RAG 检索和工具调用的越权风险。",
-            stack:
-              "React、Node.js、promptfoo CLI、GitHub Actions。",
-            mvp:
-              "上传一组评测案例，跑出通过/失败结果，并用卡片展示风险类型和修复建议。",
-          },
-          {
-            title: "Notebook to App Studio",
-            tags: ["marimo", "Python", "Data Apps"],
-            what:
-              "围绕 marimo 做一个“从实验到分享页面”的轻量发布台，让数据分析结论直接变成可读产品页。",
-            stack:
-              "Python、marimo、React 嵌入壳、静态导出。",
-            mvp:
-              "提供模板：图表区、结论区、参数区和导出按钮，先把一个 Notebook 一键包装成分享页。",
-          },
-        ],
-        techHotspots: [
-          {
-            title: "微软为 GitHub 容量压力寻求 AWS 支援",
-            source: "Business Insider",
-            url: "https://www.businessinsider.com/microsoft-github-amazon-ai-cloud-capacity-2026-6",
-            tags: ["GitHub", "Cloud", "AI Coding"],
-            summary:
-              "Business Insider 报道称，受 AI 编程流量推动，GitHub 今年的代码变更量预期大幅增长，微软正引入 AWS 作为补充容量来源。",
-            impact:
-              "这说明 AI 编程热潮已开始真实冲击底层云资源分配。平台稳定性、区域调度与多云能力会重新变成开发者平台竞争点。",
-            audience: "开发者平台团队、云架构师、AI IDE 产品负责人",
-          },
-          {
-            title: "Apple 在 WWDC 2026 强化 Siri AI 与 Apple Intelligence",
-            source: "Times of India / WWDC 2026 报道汇总",
-            url: "https://timesofindia.indiatimes.com/technology/tech-news/7-key-things-to-know-about-siri-ai-that-apple-announced-at-wwdc-2026/photostory/131662381.cms",
-            tags: ["Apple", "On-device AI", "Consumer AI"],
-            summary:
-              "WWDC 2026 上，Apple 展示了升级后的 Siri AI，强调跨应用上下文理解、视觉能力、文本改写与更强的隐私架构。",
-            impact:
-              "Apple 继续把 AI 入口收回系统层，竞争不再只是“有没有模型”，而是“谁掌握终端默认入口”。部分细节仍建议以 Apple 官方后续文档进一步确认。",
-            audience: "移动产品经理、iOS 开发者、消费电子观察者",
-            note: "部分功能发布时间与第三方媒体解读仍待进一步确认。",
-          },
-          {
-            title: "微软在 Build 2026 展示 Project Solara，押注 agent-first 终端",
-            source: "Tom's Hardware / Microsoft Build 2026",
-            url: "https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-unveils-project-solara-ai-a-chip-to-cloud-platform-built-to-power-a-new-generation-of-agent-first-enterprise-devices-hardware-designed-to-run-ai-agents-instead-of-traditional-apps",
-            tags: ["Microsoft", "Devices", "Enterprise AI"],
-            summary:
-              "微软提出面向企业的新设备形态，强调由云端 agent 驱动、边缘设备负责交互呈现，而不是传统本地应用优先。",
-            impact:
-              "如果这条路线成立，企业终端将从“装软件”转向“接工作流”，设备价值会更多体现在身份、安全与情境感知能力上。",
-            audience: "企业 IT、设备厂商、工作流平台团队",
-          },
-          {
-            title: "Nvidia 与 Coherent 在德州推进 AI 制造基础设施",
-            source: "AP News",
-            url: "https://apnews.com/article/9bf560fa2365e4d6b57804438cda579e",
-            tags: ["Nvidia", "Manufacturing", "Data Center"],
-            summary:
-              "AP 报道称，Nvidia 与 Coherent 正推进总额约 20 亿美元的制造升级，用于支撑 AI 系统内部高速光连接与更低功耗的数据传输。",
-            impact:
-              "AI 竞争已经下沉到光互连、材料与制造环节。芯片之外，供应链配套会决定大模型推理成本能否继续下降。",
-            audience: "半导体从业者、云基础设施团队、产业投资人",
-          },
-          {
-            title: "欧盟推出 tech sovereignty 计划，瞄准芯片、云与 AI 自主",
-            source: "AP News",
-            url: "https://apnews.com/article/b16729f7758120260c7005bfba0774c3",
-            tags: ["EU", "Sovereignty", "Cloud", "Chips"],
-            summary:
-              "欧盟提出新的“技术主权”方案，试图降低对美国云与 AI 平台、对亚洲芯片制造的依赖，并扩大本地数据中心与算力能力。",
-            impact:
-              "技术栈的地缘政治属性继续增强。对跨国 SaaS 和基础设施供应商来说，区域化部署、合规和本地主体合作会更重要。",
-            audience: "跨国企业、合规负责人、云服务商、政策研究者",
-          },
-          {
-            title: "AMD 提前放出 EPYC Venice 对标 Nvidia Vera 的性能口径",
-            source: "Tom's Hardware",
-            url: "https://www.tomshardware.com/pc-components/cpus/amd-fires-back-at-nvidia-claiming-256-core-zen-6-venice-cpu-beats-vera-by-3-3x-in-rack-level-performance-company-shares-first-estimated-epyc-venice-benchmarks",
-            tags: ["AMD", "CPU", "Data Center"],
-            summary:
-              "AMD 公布了基于模型估算的 EPYC Venice 机架级性能对比，宣称在部分场景下领先 Nvidia Vera。",
-            impact:
-              "数据中心 CPU 与 AI 计算之间的边界继续模糊。考虑到目前仍以估算口径为主，这类结论更适合作为方向信号，而非最终采购依据。",
-            audience: "基础设施采购、算力平台团队、半导体投资者",
-            note: "当前主要基于厂商估算，待进一步确认真实量产与第三方测试结果。",
-          },
-        ],
-        generalNews: [
-          {
-            title: "G7 重新把乌克兰与俄油制裁拉回议程",
-            source: "AP News",
-            url: "https://apnews.com/article/e7fad4eabaae8181f70fa5a0b9e499b2",
-            tags: ["G7", "Ukraine", "Oil Sanctions"],
-            summary:
-              "在伊朗局势暂时缓和后，G7 再次把乌克兰和对俄油制裁问题放到核心议程，美国方面释放可能恢复更强制裁的信号。",
-            impact:
-              "油价、航运与欧洲工业成本仍可能被地缘政治反复拉扯，企业做预算时很难假设能源环境已回归稳定。",
-          },
-          {
-            title: "霍尔木兹海峡恢复通航不代表能源供应立即恢复",
-            source: "AP News",
-            url: "https://apnews.com/article/42bdd71d5afa6fb5ac5d0c3e7857de6c",
-            tags: ["Energy", "Logistics", "Middle East"],
-            summary:
-              "AP 援引行业判断称，即便停火与通航恢复，油气运输、保险、炼化与库存重建仍需要数月时间。",
-            impact:
-              "这意味着通胀压力不会立刻消失，航空、物流、化工和制造企业的成本恢复会明显滞后于新闻标题。",
-          },
-          {
-            title: "美国 10% 全球关税暂时获法院放行",
-            source: "AP News",
-            url: "https://apnews.com/article/a95ef7309d89018477a3265ebf93d620",
-            tags: ["Tariffs", "Trade", "US Policy"],
-            summary:
-              "美国联邦上诉法院允许政府在诉讼继续期间暂时维持 10% 的全球关税措施，最终合法性仍未定案。",
-            impact:
-              "对跨境供应链来说，短期不确定性没有消失。企业需要继续准备成本转嫁、产地调整和价格策略预案。",
-          },
-          {
-            title: "新任美联储主席 Kevin Warsh 首次议息会议受市场高度关注",
-            source: "AP News",
-            url: "https://apnews.com/article/9a65c1d31c24bf943530f322fd5a731a",
-            tags: ["Federal Reserve", "Rates", "Markets"],
-            summary:
-              "市场关注 Warsh 会否在高通胀背景下维持偏鹰立场，以及未来是否调整美联储的沟通方式。",
-            impact:
-              "利率预期会直接影响科技估值、企业融资和美元流动性。对创业公司和高资本开支行业来说，这不是宏观噪音，而是融资成本问题。",
-          },
-          {
-            title: "中国出口高增长正在把贸易压力转向欧洲",
-            source: "AP News",
-            url: "https://apnews.com/article/edd7a75a090afca912b4650bcceb562d",
-            tags: ["China", "Europe", "Trade"],
-            summary:
-              "AP 将当前局面概括为“China Shock 2.0”：中国制造与高技术出口继续强势，欧洲产业承压上升。",
-            impact:
-              "这会加速欧洲的产业保护、补贴和本地化制造政策，也会影响中国企业在欧洲的市场进入与合规策略。",
-          },
-          {
-            title: "美国 5 月生产者价格涨幅创 2022 年以来新高",
-            source: "AP News",
-            url: "https://apnews.com/article/137b9d3e10be5244547b3d94a9d6d940",
-            tags: ["Inflation", "PPI", "Energy"],
-            summary:
-              "能源价格上行推动美国 5 月 PPI 同比显著走高，显示能源冲击已明显传导至上游成本。",
-            impact:
-              "如果上游成本无法快速回落，企业利润率和消费价格都可能继续承压，影响下半年的需求判断与库存策略。",
-          },
-        ],
-        totalTrend:
-          "今天的核心不是“又有哪家模型更强”，而是 AI 和宏观环境同时进入更重的执行阶段。技术侧，开发者正在把精力投向协议、基础设施、评测、安全和终端入口；商业侧，云容量、芯片配套和区域主权都在重塑平台格局；宏观侧，能源、利率和贸易政策没有明显放松，意味着企业在做 AI 投入决策时会更看重 ROI、稳定性和可控性。简单说，接下来值得下注的不是最会讲故事的 AI 项目，而是最能穿过真实预算、真实流程和真实合规要求的那一类。",
-      };
-
-      function Pill({ children, tone = "default" }) {
-        const className = tone === "chip" ? "chip" : "tag";
-        return <span className={className}>{children}</span>;
+    <script>
+(() => {
+  const report = {
+    date: "2026-06-17",
+    title: "\u6BCF\u65E5 GitHub + \u79D1\u6280\u65B0\u95FB\u70ED\u70B9\u7B80\u62A5",
+    summary: "\u4ECA\u5929\u6700\u6E05\u6670\u7684\u4E3B\u7EBF\u662F\uFF1AAI \u6B63\u5728\u4ECE\u201C\u6A21\u578B\u80FD\u529B\u7ADE\u4E89\u201D\u8F6C\u5411\u201C\u5DE5\u7A0B\u5316\u4E0E\u57FA\u7840\u8BBE\u65BD\u7ADE\u4E89\u201D\u3002GitHub \u70ED\u95E8\u9879\u76EE\u96C6\u4E2D\u5728 agent\u3001MCP\u3001\u4EE3\u7801\u6267\u884C\u4E0E AI \u5B89\u5168\u8BC4\u6D4B\uFF1B\u79D1\u6280\u65B0\u95FB\u5219\u663E\u793A\u5927\u5382\u5F00\u59CB\u56F4\u7ED5\u7B97\u529B\u3001\u7EC8\u7AEF\u5165\u53E3\u4E0E\u4E3B\u6743\u57FA\u7840\u8BBE\u65BD\u91CD\u65B0\u6392\u5175\u5E03\u9635\uFF1B\u7EFC\u5408\u65B0\u95FB\u5C42\u9762\uFF0C\u80FD\u6E90\u3001\u901A\u80C0\u4E0E\u8D38\u6613\u6469\u64E6\u7EE7\u7EED\u5F71\u54CD\u4F01\u4E1A\u9884\u7B97\u4E0E\u5168\u7403\u9700\u6C42\u5224\u65AD\u3002",
+    stats: [
+      { value: "8", label: "GitHub \u9879\u76EE" },
+      { value: "6", label: "\u79D1\u6280\u70ED\u70B9" },
+      { value: "6", label: "\u65B0\u95FB\u70ED\u70B9" },
+      { value: "4", label: "Vibe \u9879\u76EE\u5EFA\u8BAE" }
+    ],
+    githubProjects: [
+      {
+        name: "langgenius/dify",
+        url: "https://github.com/langgenius/dify",
+        stars: "145.5k",
+        updatedAt: "2026-06-17",
+        tags: ["Agent Workflow", "LLMOps", "RAG", "Low-code"],
+        purpose: "\u9762\u5411\u751F\u4EA7\u7684 AI \u5DE5\u4F5C\u6D41\u4E0E\u667A\u80FD\u4F53\u5E94\u7528\u5F00\u53D1\u5E73\u53F0\u3002",
+        highlight: "\u628A\u5DE5\u4F5C\u6D41\u7F16\u6392\u3001\u77E5\u8BC6\u5E93\u3001\u6A21\u578B\u63A5\u5165\u3001\u8BC4\u6D4B\u548C\u90E8\u7F72\u4E32\u6210\u4E00\u4E2A\u5B8C\u6574\u95ED\u73AF\uFF0C\u9002\u5408\u5FEB\u901F\u9A8C\u8BC1\u5230\u4E0A\u7EBF\u3002",
+        whyNow: "\u4F01\u4E1A\u6B63\u5728\u4ECE\u201C\u8BD5\u4E00\u4E2A\u6A21\u578B\u201D\u8F6C\u5411\u201C\u4EA4\u4ED8\u4E00\u4E2A\u53EF\u7EF4\u62A4\u7CFB\u7EDF\u201D\uFF0CDify \u6B63\u597D\u5361\u5728\u8FD9\u6761\u843D\u5730\u94FE\u8DEF\u4E0A\u3002"
+      },
+      {
+        name: "OpenHands/OpenHands",
+        url: "https://github.com/OpenHands/OpenHands",
+        stars: "77.4k",
+        updatedAt: "2026-06-17",
+        tags: ["AI Coding", "Agent", "DevTools"],
+        purpose: "\u8BA9 AI \u76F4\u63A5\u64CD\u4F5C\u4EE3\u7801\u5E93\u3001\u7EC8\u7AEF\u4E0E\u4EFB\u52A1\u6D41\u7A0B\u7684\u5F00\u6E90\u5F00\u53D1\u4EE3\u7406\u3002",
+        highlight: "\u5F3A\u8C03\u771F\u5B9E\u5F00\u53D1\u73AF\u5883\u4E2D\u7684\u6267\u884C\u80FD\u529B\uFF0C\u800C\u4E0D\u53EA\u662F\u804A\u5929\u8865\u5168\uFF0C\u8D8A\u6765\u8D8A\u63A5\u8FD1\u201C\u53EF\u6258\u7BA1\u7684\u5DE5\u7A0B\u52A9\u624B\u201D\u3002",
+        whyNow: "AI \u7F16\u7A0B\u8FDB\u5165\u7B2C\u4E8C\u9636\u6BB5\uFF0C\u5173\u6CE8\u70B9\u4ECE\u201C\u5199\u5F97\u50CF\u4E0D\u50CF\u201D\u53D8\u6210\u201C\u80FD\u4E0D\u80FD\u6301\u7EED\u4EA4\u4ED8\u5E76\u63A5\u4F4F\u590D\u6742\u4E0A\u4E0B\u6587\u201D\u3002"
+      },
+      {
+        name: "daytonaio/daytona",
+        url: "https://github.com/daytonaio/daytona",
+        stars: "72.4k",
+        updatedAt: "2026-06-16",
+        tags: ["Sandbox", "Infra", "Runtime"],
+        purpose: "\u4E3A AI \u751F\u6210\u4EE3\u7801\u63D0\u4F9B\u5B89\u5168\u3001\u5F39\u6027\u3001\u53EF\u9694\u79BB\u7684\u6267\u884C\u57FA\u7840\u8BBE\u65BD\u3002",
+        highlight: "\u628A\u4EE3\u7801\u6267\u884C\u73AF\u5883\u62BD\u8C61\u6210\u53EF\u8C03\u5EA6\u8D44\u6E90\uFF0C\u660E\u663E\u8D34\u5408 agent\u3001\u4E91\u5F00\u53D1\u4E0E\u6279\u91CF\u4EFB\u52A1\u6267\u884C\u573A\u666F\u3002",
+        whyNow: "\u968F\u7740\u4EE3\u7801\u4EE3\u7406\u7206\u53D1\uFF0C\u5927\u5BB6\u53D1\u73B0\u771F\u6B63\u8D35\u7684\u4E0D\u662F prompt\uFF0C\u800C\u662F\u7A33\u5B9A\u3001\u9694\u79BB\u3001\u53EF\u89C2\u6D4B\u7684\u6267\u884C\u5C42\u3002"
+      },
+      {
+        name: "modelcontextprotocol/servers",
+        url: "https://github.com/modelcontextprotocol/servers",
+        stars: "87.3k",
+        updatedAt: "2026-06-16",
+        tags: ["MCP", "Tooling", "Integration"],
+        purpose: "MCP \u5B98\u65B9/\u793E\u533A\u670D\u52A1\u7AEF\u96C6\u5408\uFF0C\u7EDF\u4E00\u6A21\u578B\u4E0E\u5916\u90E8\u5DE5\u5177\u7684\u6570\u636E\u63A5\u5165\u65B9\u5F0F\u3002",
+        highlight: "\u5B83\u4E0D\u662F\u5355\u4E2A\u4EA7\u54C1\uFF0C\u800C\u662F\u6574\u4E2A AI \u5DE5\u5177\u8FDE\u63A5\u5C42\u7684\u201C\u6837\u677F\u95F4\u201D\uFF0C\u80FD\u5FEB\u901F\u770B\u5230\u751F\u6001\u6B63\u5728\u63A5\u4EC0\u4E48\u3001\u600E\u4E48\u63A5\u3002",
+        whyNow: "MCP \u5DF2\u4ECE\u6982\u5FF5\u8D70\u5411\u63A5\u53E3\u5C42\u6807\u51C6\u5316\uFF0C\u5F00\u53D1\u8005\u73B0\u5728\u5173\u6CE8\u7684\u91CD\u70B9\u662F\u5982\u4F55\u628A\u5185\u90E8\u5DE5\u5177\u3001SaaS \u548C\u672C\u5730\u80FD\u529B\u63A5\u8FDB\u53BB\u3002"
+      },
+      {
+        name: "continuedev/continue",
+        url: "https://github.com/continuedev/continue",
+        stars: "33.7k",
+        updatedAt: "2026-06-17",
+        tags: ["IDE", "Coding Agent", "Open Source"],
+        purpose: "\u5F00\u6E90 AI \u7F16\u7A0B\u4EE3\u7406\u4E0E IDE \u8F85\u52A9\u5DE5\u5177\u3002",
+        highlight: "\u4EE5\u63D2\u4EF6\u548C IDE \u5D4C\u5165\u4E3A\u6838\u5FC3\uFF0C\u9002\u5408\u56E2\u961F\u6309\u81EA\u5DF1\u7684\u6A21\u578B\u3001\u89C4\u5219\u548C\u4E0A\u4E0B\u6587\u7B56\u7565\u5B9A\u5236\u5F00\u53D1\u4F53\u9A8C\u3002",
+        whyNow: "\u4F01\u4E1A\u5BF9\u201C\u53EF\u63A7\u7684 AI \u7F16\u7A0B\u6808\u201D\u9700\u6C42\u5F88\u5F3A\uFF0CContinue \u4EE3\u8868\u4E86\u4E0D\u60F3\u5B8C\u5168\u62BC\u6CE8\u5C01\u95ED IDE \u7684\u8DEF\u7EBF\u3002"
+      },
+      {
+        name: "marimo-team/marimo",
+        url: "https://github.com/marimo-team/marimo",
+        stars: "21.5k",
+        updatedAt: "2026-06-16",
+        tags: ["Python", "Notebook", "Reactive"],
+        purpose: "\u53CD\u5E94\u5F0F Python Notebook\uFF0C\u53EF\u76F4\u63A5\u6F14\u5316\u4E3A\u811A\u672C\u6216 Web \u5E94\u7528\u3002",
+        highlight: "\u628A Notebook\u3001\u811A\u672C\u4E0E\u5E94\u7528\u4E4B\u95F4\u7684\u8FB9\u754C\u6253\u8584\uFF0C\u5929\u7136\u9002\u5408 AI \u6570\u636E\u5B9E\u9A8C\u3001Demo \u548C\u8F7B\u91CF\u4EA7\u54C1\u5316\u3002",
+        whyNow: "\u5F00\u53D1\u8005\u8D8A\u6765\u8D8A\u9700\u8981\u201C\u5148\u63A2\u7D22\u3001\u518D\u53D1\u5E03\u201D\u7684\u7EDF\u4E00\u5DE5\u4F5C\u53F0\uFF0Cmarimo \u5F88\u9002\u5408\u627F\u62C5\u8FD9\u4E2A\u6865\u6881\u89D2\u8272\u3002"
+      },
+      {
+        name: "promptfoo/promptfoo",
+        url: "https://github.com/promptfoo/promptfoo",
+        stars: "22.3k",
+        updatedAt: "2026-06-16",
+        tags: ["AI Eval", "Security", "CI/CD"],
+        purpose: "\u505A prompts\u3001agents\u3001RAG \u7684\u8BC4\u6D4B\u3001\u56DE\u5F52\u6D4B\u8BD5\u4E0E\u7EA2\u961F\u626B\u63CF\u3002",
+        highlight: "\u628A AI \u8BC4\u6D4B\u5DE5\u7A0B\u5316\uFF0C\u80FD\u8FDB CI\uFF0C\u4E5F\u80FD\u76F4\u63A5\u505A\u5B89\u5168/\u8D8A\u6743/\u5E7B\u89C9\u7B49\u98CE\u9669\u626B\u63CF\u3002",
+        whyNow: "\u6A21\u578B\u80FD\u529B\u8D8B\u540C\u540E\uFF0C\u771F\u6B63\u62C9\u5F00\u5DEE\u8DDD\u7684\u662F\u8BC4\u6D4B\u4F53\u7CFB\u548C\u5B89\u5168\u8FB9\u754C\uFF0Cpromptfoo \u5C5E\u4E8E\u5F88\u52A1\u5B9E\u7684\u5FC5\u4FEE\u8BFE\u3002"
+      },
+      {
+        name: "google/adk-python",
+        url: "https://github.com/google/adk-python",
+        stars: "20.1k",
+        updatedAt: "2026-06-17",
+        tags: ["Agent SDK", "Python", "Multi-agent"],
+        purpose: "Google \u5F00\u6E90\u7684\u4EE3\u7801\u4F18\u5148\u667A\u80FD\u4F53\u5F00\u53D1\u5DE5\u5177\u5305\u3002",
+        highlight: "\u5B9A\u4F4D\u6E05\u6670\uFF1A\u56F4\u7ED5 agent \u751F\u547D\u5468\u671F\u3001\u8BC4\u6D4B\u548C\u90E8\u7F72\u505A\u5DE5\u7A0B\u5316\u62BD\u8C61\uFF0C\u9002\u5408 Python \u56E2\u961F\u5FEB\u901F\u5B9E\u9A8C\u3002",
+        whyNow: "Google \u6B63\u5728\u628A agent \u80FD\u529B\u53D8\u6210\u5F00\u53D1\u8005\u4EA7\u54C1\u7EBF\u7684\u4E00\u90E8\u5206\uFF0C\u8FD9\u7C7B SDK \u5F80\u5F80\u80FD\u63D0\u524D\u53CD\u6620\u5E73\u53F0\u672A\u6765\u65B9\u5411\u3002"
       }
-
-      function SectionHeader({ id, title, desc, chips = [] }) {
-        return (
-          <div id={id}>
-            <div className="section-title">
-              <h2>{title}</h2>
-              <div className="chip-row">
-                {chips.map((chip) => (
-                  <Pill key={chip} tone="chip">
-                    {chip}
-                  </Pill>
-                ))}
-              </div>
-            </div>
-            {desc ? <p className="section-desc">{desc}</p> : null}
-          </div>
-        );
+    ],
+    projectTrends: [
+      "\u70ED\u95E8\u9879\u76EE\u96C6\u4E2D\u5728\u201C\u667A\u80FD\u4F53\u5DE5\u7A0B\u57FA\u7840\u8BBE\u65BD\u201D\u800C\u4E0D\u662F\u5355\u70B9\u6A21\u578B\u80FD\u529B\uFF0C\u8BF4\u660E\u5F00\u53D1\u8005\u5173\u6CE8\u70B9\u5DF2\u7ECF\u8F6C\u5411\u7F16\u6392\u3001\u6267\u884C\u3001\u8BC4\u6D4B\u548C\u63A5\u5165\u3002",
+      "MCP\u3001\u6C99\u7BB1\u8FD0\u884C\u65F6\u3001IDE \u5185\u4EE3\u7406\u8FD9\u4E09\u6761\u7EBF\u6B63\u5728\u6C47\u5408\uFF0C\u672A\u6765\u7684 AI \u5F00\u53D1\u4F53\u9A8C\u5F88\u53EF\u80FD\u662F\u201C\u5DE5\u5177\u534F\u8BAE + \u53D7\u63A7\u6267\u884C + \u56E2\u961F\u89C4\u5219\u201D\u3002",
+      "\u5F00\u6E90\u4EF7\u503C\u6B63\u5728\u4ECE\u201C\u66FF\u4EE3\u95ED\u6E90\u6A21\u578B\u201D\u8F6C\u5411\u201C\u8865\u9F50\u4F01\u4E1A\u53EF\u63A7\u5C42\u201D\uFF0C\u5C24\u5176\u662F\u81EA\u6258\u7BA1\u3001\u89C2\u6D4B\u3001\u5B89\u5168\u4E0E\u96C6\u6210\u80FD\u529B\u3002"
+    ],
+    vibeIdeas: [
+      {
+        title: "MCP Connector Radar",
+        tags: ["MCP", "React", "Node.js"],
+        what: "\u505A\u4E00\u4E2A\u53EF\u89C6\u5316\u76EE\u5F55\uFF0C\u8FFD\u8E2A MCP server \u7684\u7C7B\u578B\u3001\u6743\u9650\u3001\u53EF\u7528\u5DE5\u5177\u3001\u66F4\u65B0\u65F6\u95F4\u4E0E\u9002\u7528\u573A\u666F\u3002",
+        stack: "React\u3001Vite\u3001Tailwind \u6216\u666E\u901A CSS\u3001GitHub API\u3001\u9759\u6001 JSON\u3001\u53EF\u9009 SQLite\u3002",
+        mvp: "\u5148\u6293\u53D6 30-50 \u4E2A\u5E38\u89C1 MCP server\uFF0C\u5C55\u793A\u6807\u7B7E\u3001\u8BF4\u660E\u3001\u6700\u8FD1\u6D3B\u8DC3\u65F6\u95F4\u548C\u4E00\u952E\u590D\u5236\u914D\u7F6E\u3002"
+      },
+      {
+        title: "Agent Sandbox Cost Board",
+        tags: ["Daytona", "OpenHands", "Charts"],
+        what: "\u505A\u4E00\u4E2A agent \u4EFB\u52A1\u6267\u884C\u770B\u677F\uFF0C\u8FFD\u8E2A\u4E0D\u540C\u4EFB\u52A1\u7684\u8FD0\u884C\u65F6\u3001\u5931\u8D25\u7387\u3001\u91CD\u8BD5\u6B21\u6570\u548C\u6210\u672C\u4F30\u7B97\u3002",
+        stack: "React\u3001Recharts\u3001Node.js\u3001\u53EF\u9009 PostgreSQL \u6216 Supabase\u3002",
+        mvp: "\u5148\u7528 mock \u6570\u636E\u6A21\u62DF 3 \u7C7B\u4EFB\u52A1\uFF0C\u505A\u51FA\u4EFB\u52A1\u5217\u8868\u3001\u8017\u65F6\u8D8B\u52BF\u56FE\u548C\u5931\u8D25\u539F\u56E0\u9762\u677F\u3002"
+      },
+      {
+        title: "Prompt Security Regression Lab",
+        tags: ["promptfoo", "CI", "Security"],
+        what: "\u628A promptfoo \u5C01\u88C5\u6210\u4E00\u4E2A\u56E2\u961F\u7528\u7684\u5C0F\u5E73\u53F0\uFF0C\u6301\u7EED\u68C0\u6D4B\u63D0\u793A\u8BCD\u3001RAG \u68C0\u7D22\u548C\u5DE5\u5177\u8C03\u7528\u7684\u8D8A\u6743\u98CE\u9669\u3002",
+        stack: "React\u3001Node.js\u3001promptfoo CLI\u3001GitHub Actions\u3002",
+        mvp: "\u4E0A\u4F20\u4E00\u7EC4\u8BC4\u6D4B\u6848\u4F8B\uFF0C\u8DD1\u51FA\u901A\u8FC7/\u5931\u8D25\u7ED3\u679C\uFF0C\u5E76\u7528\u5361\u7247\u5C55\u793A\u98CE\u9669\u7C7B\u578B\u548C\u4FEE\u590D\u5EFA\u8BAE\u3002"
+      },
+      {
+        title: "Notebook to App Studio",
+        tags: ["marimo", "Python", "Data Apps"],
+        what: "\u56F4\u7ED5 marimo \u505A\u4E00\u4E2A\u201C\u4ECE\u5B9E\u9A8C\u5230\u5206\u4EAB\u9875\u9762\u201D\u7684\u8F7B\u91CF\u53D1\u5E03\u53F0\uFF0C\u8BA9\u6570\u636E\u5206\u6790\u7ED3\u8BBA\u76F4\u63A5\u53D8\u6210\u53EF\u8BFB\u4EA7\u54C1\u9875\u3002",
+        stack: "Python\u3001marimo\u3001React \u5D4C\u5165\u58F3\u3001\u9759\u6001\u5BFC\u51FA\u3002",
+        mvp: "\u63D0\u4F9B\u6A21\u677F\uFF1A\u56FE\u8868\u533A\u3001\u7ED3\u8BBA\u533A\u3001\u53C2\u6570\u533A\u548C\u5BFC\u51FA\u6309\u94AE\uFF0C\u5148\u628A\u4E00\u4E2A Notebook \u4E00\u952E\u5305\u88C5\u6210\u5206\u4EAB\u9875\u3002"
       }
-
-      function ProjectCard({ item }) {
-        return (
-          <article className="card span-6">
-            <div className="card-header">
-              <div>
-                <h3>{item.name}</h3>
-                <p className="card-subtitle">最近活跃：{item.updatedAt}</p>
-              </div>
-              <div className="stat">
-                <strong>{item.stars}</strong>
-                <span>GitHub Stars</span>
-              </div>
-            </div>
-            <div className="tag-row" style={{ marginTop: 14 }}>
-              {item.tags.map((tag) => (
-                <Pill key={tag}>{tag}</Pill>
-              ))}
-            </div>
-            <div className="key-block">
-              <strong>主要用途</strong>
-              <p>{item.purpose}</p>
-            </div>
-            <div className="key-block">
-              <strong>核心亮点</strong>
-              <p>{item.highlight}</p>
-            </div>
-            <div className="key-block">
-              <strong>为什么现在值得看</strong>
-              <p>{item.whyNow}</p>
-            </div>
-            <div className="meta">
-              <span className="mini-title">来源：GitHub 仓库元数据</span>
-              <a className="source-link" href={item.url} target="_blank" rel="noreferrer">
-                查看项目
-              </a>
-            </div>
-          </article>
-        );
+    ],
+    techHotspots: [
+      {
+        title: "\u5FAE\u8F6F\u4E3A GitHub \u5BB9\u91CF\u538B\u529B\u5BFB\u6C42 AWS \u652F\u63F4",
+        source: "Business Insider",
+        url: "https://www.businessinsider.com/microsoft-github-amazon-ai-cloud-capacity-2026-6",
+        tags: ["GitHub", "Cloud", "AI Coding"],
+        summary: "Business Insider \u62A5\u9053\u79F0\uFF0C\u53D7 AI \u7F16\u7A0B\u6D41\u91CF\u63A8\u52A8\uFF0CGitHub \u4ECA\u5E74\u7684\u4EE3\u7801\u53D8\u66F4\u91CF\u9884\u671F\u5927\u5E45\u589E\u957F\uFF0C\u5FAE\u8F6F\u6B63\u5F15\u5165 AWS \u4F5C\u4E3A\u8865\u5145\u5BB9\u91CF\u6765\u6E90\u3002",
+        impact: "\u8FD9\u8BF4\u660E AI \u7F16\u7A0B\u70ED\u6F6E\u5DF2\u5F00\u59CB\u771F\u5B9E\u51B2\u51FB\u5E95\u5C42\u4E91\u8D44\u6E90\u5206\u914D\u3002\u5E73\u53F0\u7A33\u5B9A\u6027\u3001\u533A\u57DF\u8C03\u5EA6\u4E0E\u591A\u4E91\u80FD\u529B\u4F1A\u91CD\u65B0\u53D8\u6210\u5F00\u53D1\u8005\u5E73\u53F0\u7ADE\u4E89\u70B9\u3002",
+        audience: "\u5F00\u53D1\u8005\u5E73\u53F0\u56E2\u961F\u3001\u4E91\u67B6\u6784\u5E08\u3001AI IDE \u4EA7\u54C1\u8D1F\u8D23\u4EBA"
+      },
+      {
+        title: "Apple \u5728 WWDC 2026 \u5F3A\u5316 Siri AI \u4E0E Apple Intelligence",
+        source: "Times of India / WWDC 2026 \u62A5\u9053\u6C47\u603B",
+        url: "https://timesofindia.indiatimes.com/technology/tech-news/7-key-things-to-know-about-siri-ai-that-apple-announced-at-wwdc-2026/photostory/131662381.cms",
+        tags: ["Apple", "On-device AI", "Consumer AI"],
+        summary: "WWDC 2026 \u4E0A\uFF0CApple \u5C55\u793A\u4E86\u5347\u7EA7\u540E\u7684 Siri AI\uFF0C\u5F3A\u8C03\u8DE8\u5E94\u7528\u4E0A\u4E0B\u6587\u7406\u89E3\u3001\u89C6\u89C9\u80FD\u529B\u3001\u6587\u672C\u6539\u5199\u4E0E\u66F4\u5F3A\u7684\u9690\u79C1\u67B6\u6784\u3002",
+        impact: "Apple \u7EE7\u7EED\u628A AI \u5165\u53E3\u6536\u56DE\u7CFB\u7EDF\u5C42\uFF0C\u7ADE\u4E89\u4E0D\u518D\u53EA\u662F\u201C\u6709\u6CA1\u6709\u6A21\u578B\u201D\uFF0C\u800C\u662F\u201C\u8C01\u638C\u63E1\u7EC8\u7AEF\u9ED8\u8BA4\u5165\u53E3\u201D\u3002\u90E8\u5206\u7EC6\u8282\u4ECD\u5EFA\u8BAE\u4EE5 Apple \u5B98\u65B9\u540E\u7EED\u6587\u6863\u8FDB\u4E00\u6B65\u786E\u8BA4\u3002",
+        audience: "\u79FB\u52A8\u4EA7\u54C1\u7ECF\u7406\u3001iOS \u5F00\u53D1\u8005\u3001\u6D88\u8D39\u7535\u5B50\u89C2\u5BDF\u8005",
+        note: "\u90E8\u5206\u529F\u80FD\u53D1\u5E03\u65F6\u95F4\u4E0E\u7B2C\u4E09\u65B9\u5A92\u4F53\u89E3\u8BFB\u4ECD\u5F85\u8FDB\u4E00\u6B65\u786E\u8BA4\u3002"
+      },
+      {
+        title: "\u5FAE\u8F6F\u5728 Build 2026 \u5C55\u793A Project Solara\uFF0C\u62BC\u6CE8 agent-first \u7EC8\u7AEF",
+        source: "Tom's Hardware / Microsoft Build 2026",
+        url: "https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-unveils-project-solara-ai-a-chip-to-cloud-platform-built-to-power-a-new-generation-of-agent-first-enterprise-devices-hardware-designed-to-run-ai-agents-instead-of-traditional-apps",
+        tags: ["Microsoft", "Devices", "Enterprise AI"],
+        summary: "\u5FAE\u8F6F\u63D0\u51FA\u9762\u5411\u4F01\u4E1A\u7684\u65B0\u8BBE\u5907\u5F62\u6001\uFF0C\u5F3A\u8C03\u7531\u4E91\u7AEF agent \u9A71\u52A8\u3001\u8FB9\u7F18\u8BBE\u5907\u8D1F\u8D23\u4EA4\u4E92\u5448\u73B0\uFF0C\u800C\u4E0D\u662F\u4F20\u7EDF\u672C\u5730\u5E94\u7528\u4F18\u5148\u3002",
+        impact: "\u5982\u679C\u8FD9\u6761\u8DEF\u7EBF\u6210\u7ACB\uFF0C\u4F01\u4E1A\u7EC8\u7AEF\u5C06\u4ECE\u201C\u88C5\u8F6F\u4EF6\u201D\u8F6C\u5411\u201C\u63A5\u5DE5\u4F5C\u6D41\u201D\uFF0C\u8BBE\u5907\u4EF7\u503C\u4F1A\u66F4\u591A\u4F53\u73B0\u5728\u8EAB\u4EFD\u3001\u5B89\u5168\u4E0E\u60C5\u5883\u611F\u77E5\u80FD\u529B\u4E0A\u3002",
+        audience: "\u4F01\u4E1A IT\u3001\u8BBE\u5907\u5382\u5546\u3001\u5DE5\u4F5C\u6D41\u5E73\u53F0\u56E2\u961F"
+      },
+      {
+        title: "Nvidia \u4E0E Coherent \u5728\u5FB7\u5DDE\u63A8\u8FDB AI \u5236\u9020\u57FA\u7840\u8BBE\u65BD",
+        source: "AP News",
+        url: "https://apnews.com/article/9bf560fa2365e4d6b57804438cda579e",
+        tags: ["Nvidia", "Manufacturing", "Data Center"],
+        summary: "AP \u62A5\u9053\u79F0\uFF0CNvidia \u4E0E Coherent \u6B63\u63A8\u8FDB\u603B\u989D\u7EA6 20 \u4EBF\u7F8E\u5143\u7684\u5236\u9020\u5347\u7EA7\uFF0C\u7528\u4E8E\u652F\u6491 AI \u7CFB\u7EDF\u5185\u90E8\u9AD8\u901F\u5149\u8FDE\u63A5\u4E0E\u66F4\u4F4E\u529F\u8017\u7684\u6570\u636E\u4F20\u8F93\u3002",
+        impact: "AI \u7ADE\u4E89\u5DF2\u7ECF\u4E0B\u6C89\u5230\u5149\u4E92\u8FDE\u3001\u6750\u6599\u4E0E\u5236\u9020\u73AF\u8282\u3002\u82AF\u7247\u4E4B\u5916\uFF0C\u4F9B\u5E94\u94FE\u914D\u5957\u4F1A\u51B3\u5B9A\u5927\u6A21\u578B\u63A8\u7406\u6210\u672C\u80FD\u5426\u7EE7\u7EED\u4E0B\u964D\u3002",
+        audience: "\u534A\u5BFC\u4F53\u4ECE\u4E1A\u8005\u3001\u4E91\u57FA\u7840\u8BBE\u65BD\u56E2\u961F\u3001\u4EA7\u4E1A\u6295\u8D44\u4EBA"
+      },
+      {
+        title: "\u6B27\u76DF\u63A8\u51FA tech sovereignty \u8BA1\u5212\uFF0C\u7784\u51C6\u82AF\u7247\u3001\u4E91\u4E0E AI \u81EA\u4E3B",
+        source: "AP News",
+        url: "https://apnews.com/article/b16729f7758120260c7005bfba0774c3",
+        tags: ["EU", "Sovereignty", "Cloud", "Chips"],
+        summary: "\u6B27\u76DF\u63D0\u51FA\u65B0\u7684\u201C\u6280\u672F\u4E3B\u6743\u201D\u65B9\u6848\uFF0C\u8BD5\u56FE\u964D\u4F4E\u5BF9\u7F8E\u56FD\u4E91\u4E0E AI \u5E73\u53F0\u3001\u5BF9\u4E9A\u6D32\u82AF\u7247\u5236\u9020\u7684\u4F9D\u8D56\uFF0C\u5E76\u6269\u5927\u672C\u5730\u6570\u636E\u4E2D\u5FC3\u4E0E\u7B97\u529B\u80FD\u529B\u3002",
+        impact: "\u6280\u672F\u6808\u7684\u5730\u7F18\u653F\u6CBB\u5C5E\u6027\u7EE7\u7EED\u589E\u5F3A\u3002\u5BF9\u8DE8\u56FD SaaS \u548C\u57FA\u7840\u8BBE\u65BD\u4F9B\u5E94\u5546\u6765\u8BF4\uFF0C\u533A\u57DF\u5316\u90E8\u7F72\u3001\u5408\u89C4\u548C\u672C\u5730\u4E3B\u4F53\u5408\u4F5C\u4F1A\u66F4\u91CD\u8981\u3002",
+        audience: "\u8DE8\u56FD\u4F01\u4E1A\u3001\u5408\u89C4\u8D1F\u8D23\u4EBA\u3001\u4E91\u670D\u52A1\u5546\u3001\u653F\u7B56\u7814\u7A76\u8005"
+      },
+      {
+        title: "AMD \u63D0\u524D\u653E\u51FA EPYC Venice \u5BF9\u6807 Nvidia Vera \u7684\u6027\u80FD\u53E3\u5F84",
+        source: "Tom's Hardware",
+        url: "https://www.tomshardware.com/pc-components/cpus/amd-fires-back-at-nvidia-claiming-256-core-zen-6-venice-cpu-beats-vera-by-3-3x-in-rack-level-performance-company-shares-first-estimated-epyc-venice-benchmarks",
+        tags: ["AMD", "CPU", "Data Center"],
+        summary: "AMD \u516C\u5E03\u4E86\u57FA\u4E8E\u6A21\u578B\u4F30\u7B97\u7684 EPYC Venice \u673A\u67B6\u7EA7\u6027\u80FD\u5BF9\u6BD4\uFF0C\u5BA3\u79F0\u5728\u90E8\u5206\u573A\u666F\u4E0B\u9886\u5148 Nvidia Vera\u3002",
+        impact: "\u6570\u636E\u4E2D\u5FC3 CPU \u4E0E AI \u8BA1\u7B97\u4E4B\u95F4\u7684\u8FB9\u754C\u7EE7\u7EED\u6A21\u7CCA\u3002\u8003\u8651\u5230\u76EE\u524D\u4ECD\u4EE5\u4F30\u7B97\u53E3\u5F84\u4E3A\u4E3B\uFF0C\u8FD9\u7C7B\u7ED3\u8BBA\u66F4\u9002\u5408\u4F5C\u4E3A\u65B9\u5411\u4FE1\u53F7\uFF0C\u800C\u975E\u6700\u7EC8\u91C7\u8D2D\u4F9D\u636E\u3002",
+        audience: "\u57FA\u7840\u8BBE\u65BD\u91C7\u8D2D\u3001\u7B97\u529B\u5E73\u53F0\u56E2\u961F\u3001\u534A\u5BFC\u4F53\u6295\u8D44\u8005",
+        note: "\u5F53\u524D\u4E3B\u8981\u57FA\u4E8E\u5382\u5546\u4F30\u7B97\uFF0C\u5F85\u8FDB\u4E00\u6B65\u786E\u8BA4\u771F\u5B9E\u91CF\u4EA7\u4E0E\u7B2C\u4E09\u65B9\u6D4B\u8BD5\u7ED3\u679C\u3002"
       }
-
-      function NewsCard({ item, compact = false }) {
-        return (
-          <article className={`card ${compact ? "span-4" : "span-6"}`}>
-            <div className="card-header">
-              <div>
-                <h3>{item.title}</h3>
-                <p className="card-subtitle">{item.source}</p>
-              </div>
-            </div>
-            <div className="tag-row" style={{ marginTop: 14 }}>
-              {item.tags.map((tag) => (
-                <Pill key={tag}>{tag}</Pill>
-              ))}
-            </div>
-            <div className="key-block">
-              <strong>事件摘要</strong>
-              <p>{item.summary}</p>
-            </div>
-            <div className="key-block">
-              <strong>影响判断</strong>
-              <p>{item.impact}</p>
-            </div>
-            {item.audience ? (
-              <div className="key-block">
-                <strong>适合关注的人群</strong>
-                <p>{item.audience}</p>
-              </div>
-            ) : null}
-            {item.note ? <div className="callout">{item.note}</div> : null}
-            <div className="meta">
-              <span className="mini-title">来源链接</span>
-              <a className="source-link" href={item.url} target="_blank" rel="noreferrer">
-                打开原文
-              </a>
-            </div>
-          </article>
-        );
+    ],
+    generalNews: [
+      {
+        title: "G7 \u91CD\u65B0\u628A\u4E4C\u514B\u5170\u4E0E\u4FC4\u6CB9\u5236\u88C1\u62C9\u56DE\u8BAE\u7A0B",
+        source: "AP News",
+        url: "https://apnews.com/article/e7fad4eabaae8181f70fa5a0b9e499b2",
+        tags: ["G7", "Ukraine", "Oil Sanctions"],
+        summary: "\u5728\u4F0A\u6717\u5C40\u52BF\u6682\u65F6\u7F13\u548C\u540E\uFF0CG7 \u518D\u6B21\u628A\u4E4C\u514B\u5170\u548C\u5BF9\u4FC4\u6CB9\u5236\u88C1\u95EE\u9898\u653E\u5230\u6838\u5FC3\u8BAE\u7A0B\uFF0C\u7F8E\u56FD\u65B9\u9762\u91CA\u653E\u53EF\u80FD\u6062\u590D\u66F4\u5F3A\u5236\u88C1\u7684\u4FE1\u53F7\u3002",
+        impact: "\u6CB9\u4EF7\u3001\u822A\u8FD0\u4E0E\u6B27\u6D32\u5DE5\u4E1A\u6210\u672C\u4ECD\u53EF\u80FD\u88AB\u5730\u7F18\u653F\u6CBB\u53CD\u590D\u62C9\u626F\uFF0C\u4F01\u4E1A\u505A\u9884\u7B97\u65F6\u5F88\u96BE\u5047\u8BBE\u80FD\u6E90\u73AF\u5883\u5DF2\u56DE\u5F52\u7A33\u5B9A\u3002"
+      },
+      {
+        title: "\u970D\u5C14\u6728\u5179\u6D77\u5CE1\u6062\u590D\u901A\u822A\u4E0D\u4EE3\u8868\u80FD\u6E90\u4F9B\u5E94\u7ACB\u5373\u6062\u590D",
+        source: "AP News",
+        url: "https://apnews.com/article/42bdd71d5afa6fb5ac5d0c3e7857de6c",
+        tags: ["Energy", "Logistics", "Middle East"],
+        summary: "AP \u63F4\u5F15\u884C\u4E1A\u5224\u65AD\u79F0\uFF0C\u5373\u4FBF\u505C\u706B\u4E0E\u901A\u822A\u6062\u590D\uFF0C\u6CB9\u6C14\u8FD0\u8F93\u3001\u4FDD\u9669\u3001\u70BC\u5316\u4E0E\u5E93\u5B58\u91CD\u5EFA\u4ECD\u9700\u8981\u6570\u6708\u65F6\u95F4\u3002",
+        impact: "\u8FD9\u610F\u5473\u7740\u901A\u80C0\u538B\u529B\u4E0D\u4F1A\u7ACB\u523B\u6D88\u5931\uFF0C\u822A\u7A7A\u3001\u7269\u6D41\u3001\u5316\u5DE5\u548C\u5236\u9020\u4F01\u4E1A\u7684\u6210\u672C\u6062\u590D\u4F1A\u660E\u663E\u6EDE\u540E\u4E8E\u65B0\u95FB\u6807\u9898\u3002"
+      },
+      {
+        title: "\u7F8E\u56FD 10% \u5168\u7403\u5173\u7A0E\u6682\u65F6\u83B7\u6CD5\u9662\u653E\u884C",
+        source: "AP News",
+        url: "https://apnews.com/article/a95ef7309d89018477a3265ebf93d620",
+        tags: ["Tariffs", "Trade", "US Policy"],
+        summary: "\u7F8E\u56FD\u8054\u90A6\u4E0A\u8BC9\u6CD5\u9662\u5141\u8BB8\u653F\u5E9C\u5728\u8BC9\u8BBC\u7EE7\u7EED\u671F\u95F4\u6682\u65F6\u7EF4\u6301 10% \u7684\u5168\u7403\u5173\u7A0E\u63AA\u65BD\uFF0C\u6700\u7EC8\u5408\u6CD5\u6027\u4ECD\u672A\u5B9A\u6848\u3002",
+        impact: "\u5BF9\u8DE8\u5883\u4F9B\u5E94\u94FE\u6765\u8BF4\uFF0C\u77ED\u671F\u4E0D\u786E\u5B9A\u6027\u6CA1\u6709\u6D88\u5931\u3002\u4F01\u4E1A\u9700\u8981\u7EE7\u7EED\u51C6\u5907\u6210\u672C\u8F6C\u5AC1\u3001\u4EA7\u5730\u8C03\u6574\u548C\u4EF7\u683C\u7B56\u7565\u9884\u6848\u3002"
+      },
+      {
+        title: "\u65B0\u4EFB\u7F8E\u8054\u50A8\u4E3B\u5E2D Kevin Warsh \u9996\u6B21\u8BAE\u606F\u4F1A\u8BAE\u53D7\u5E02\u573A\u9AD8\u5EA6\u5173\u6CE8",
+        source: "AP News",
+        url: "https://apnews.com/article/9a65c1d31c24bf943530f322fd5a731a",
+        tags: ["Federal Reserve", "Rates", "Markets"],
+        summary: "\u5E02\u573A\u5173\u6CE8 Warsh \u4F1A\u5426\u5728\u9AD8\u901A\u80C0\u80CC\u666F\u4E0B\u7EF4\u6301\u504F\u9E70\u7ACB\u573A\uFF0C\u4EE5\u53CA\u672A\u6765\u662F\u5426\u8C03\u6574\u7F8E\u8054\u50A8\u7684\u6C9F\u901A\u65B9\u5F0F\u3002",
+        impact: "\u5229\u7387\u9884\u671F\u4F1A\u76F4\u63A5\u5F71\u54CD\u79D1\u6280\u4F30\u503C\u3001\u4F01\u4E1A\u878D\u8D44\u548C\u7F8E\u5143\u6D41\u52A8\u6027\u3002\u5BF9\u521B\u4E1A\u516C\u53F8\u548C\u9AD8\u8D44\u672C\u5F00\u652F\u884C\u4E1A\u6765\u8BF4\uFF0C\u8FD9\u4E0D\u662F\u5B8F\u89C2\u566A\u97F3\uFF0C\u800C\u662F\u878D\u8D44\u6210\u672C\u95EE\u9898\u3002"
+      },
+      {
+        title: "\u4E2D\u56FD\u51FA\u53E3\u9AD8\u589E\u957F\u6B63\u5728\u628A\u8D38\u6613\u538B\u529B\u8F6C\u5411\u6B27\u6D32",
+        source: "AP News",
+        url: "https://apnews.com/article/edd7a75a090afca912b4650bcceb562d",
+        tags: ["China", "Europe", "Trade"],
+        summary: "AP \u5C06\u5F53\u524D\u5C40\u9762\u6982\u62EC\u4E3A\u201CChina Shock 2.0\u201D\uFF1A\u4E2D\u56FD\u5236\u9020\u4E0E\u9AD8\u6280\u672F\u51FA\u53E3\u7EE7\u7EED\u5F3A\u52BF\uFF0C\u6B27\u6D32\u4EA7\u4E1A\u627F\u538B\u4E0A\u5347\u3002",
+        impact: "\u8FD9\u4F1A\u52A0\u901F\u6B27\u6D32\u7684\u4EA7\u4E1A\u4FDD\u62A4\u3001\u8865\u8D34\u548C\u672C\u5730\u5316\u5236\u9020\u653F\u7B56\uFF0C\u4E5F\u4F1A\u5F71\u54CD\u4E2D\u56FD\u4F01\u4E1A\u5728\u6B27\u6D32\u7684\u5E02\u573A\u8FDB\u5165\u4E0E\u5408\u89C4\u7B56\u7565\u3002"
+      },
+      {
+        title: "\u7F8E\u56FD 5 \u6708\u751F\u4EA7\u8005\u4EF7\u683C\u6DA8\u5E45\u521B 2022 \u5E74\u4EE5\u6765\u65B0\u9AD8",
+        source: "AP News",
+        url: "https://apnews.com/article/137b9d3e10be5244547b3d94a9d6d940",
+        tags: ["Inflation", "PPI", "Energy"],
+        summary: "\u80FD\u6E90\u4EF7\u683C\u4E0A\u884C\u63A8\u52A8\u7F8E\u56FD 5 \u6708 PPI \u540C\u6BD4\u663E\u8457\u8D70\u9AD8\uFF0C\u663E\u793A\u80FD\u6E90\u51B2\u51FB\u5DF2\u660E\u663E\u4F20\u5BFC\u81F3\u4E0A\u6E38\u6210\u672C\u3002",
+        impact: "\u5982\u679C\u4E0A\u6E38\u6210\u672C\u65E0\u6CD5\u5FEB\u901F\u56DE\u843D\uFF0C\u4F01\u4E1A\u5229\u6DA6\u7387\u548C\u6D88\u8D39\u4EF7\u683C\u90FD\u53EF\u80FD\u7EE7\u7EED\u627F\u538B\uFF0C\u5F71\u54CD\u4E0B\u534A\u5E74\u7684\u9700\u6C42\u5224\u65AD\u4E0E\u5E93\u5B58\u7B56\u7565\u3002"
       }
-
-      function IdeaCard({ item }) {
-        return (
-          <article className="card span-6">
-            <h3>{item.title}</h3>
-            <div className="tag-row" style={{ marginTop: 14 }}>
-              {item.tags.map((tag) => (
-                <Pill key={tag}>{tag}</Pill>
-              ))}
-            </div>
-            <div className="key-block">
-              <strong>可以做什么</strong>
-              <p>{item.what}</p>
-            </div>
-            <div className="key-block">
-              <strong>适合技术栈 / 组件</strong>
-              <p>{item.stack}</p>
-            </div>
-            <div className="key-block">
-              <strong>MVP 思路</strong>
-              <p>{item.mvp}</p>
-            </div>
-          </article>
-        );
+    ],
+    totalTrend: "\u4ECA\u5929\u7684\u6838\u5FC3\u4E0D\u662F\u201C\u53C8\u6709\u54EA\u5BB6\u6A21\u578B\u66F4\u5F3A\u201D\uFF0C\u800C\u662F AI \u548C\u5B8F\u89C2\u73AF\u5883\u540C\u65F6\u8FDB\u5165\u66F4\u91CD\u7684\u6267\u884C\u9636\u6BB5\u3002\u6280\u672F\u4FA7\uFF0C\u5F00\u53D1\u8005\u6B63\u5728\u628A\u7CBE\u529B\u6295\u5411\u534F\u8BAE\u3001\u57FA\u7840\u8BBE\u65BD\u3001\u8BC4\u6D4B\u3001\u5B89\u5168\u548C\u7EC8\u7AEF\u5165\u53E3\uFF1B\u5546\u4E1A\u4FA7\uFF0C\u4E91\u5BB9\u91CF\u3001\u82AF\u7247\u914D\u5957\u548C\u533A\u57DF\u4E3B\u6743\u90FD\u5728\u91CD\u5851\u5E73\u53F0\u683C\u5C40\uFF1B\u5B8F\u89C2\u4FA7\uFF0C\u80FD\u6E90\u3001\u5229\u7387\u548C\u8D38\u6613\u653F\u7B56\u6CA1\u6709\u660E\u663E\u653E\u677E\uFF0C\u610F\u5473\u7740\u4F01\u4E1A\u5728\u505A AI \u6295\u5165\u51B3\u7B56\u65F6\u4F1A\u66F4\u770B\u91CD ROI\u3001\u7A33\u5B9A\u6027\u548C\u53EF\u63A7\u6027\u3002\u7B80\u5355\u8BF4\uFF0C\u63A5\u4E0B\u6765\u503C\u5F97\u4E0B\u6CE8\u7684\u4E0D\u662F\u6700\u4F1A\u8BB2\u6545\u4E8B\u7684 AI \u9879\u76EE\uFF0C\u800C\u662F\u6700\u80FD\u7A7F\u8FC7\u771F\u5B9E\u9884\u7B97\u3001\u771F\u5B9E\u6D41\u7A0B\u548C\u771F\u5B9E\u5408\u89C4\u8981\u6C42\u7684\u90A3\u4E00\u7C7B\u3002"
+  };
+  function Pill({ children, tone = "default" }) {
+    const className = tone === "chip" ? "chip" : "tag";
+    return /* @__PURE__ */ React.createElement("span", { className }, children);
+  }
+  function SectionHeader({ id, title, desc, chips = [] }) {
+    return /* @__PURE__ */ React.createElement("div", { id }, /* @__PURE__ */ React.createElement("div", { className: "section-title" }, /* @__PURE__ */ React.createElement("h2", null, title), /* @__PURE__ */ React.createElement("div", { className: "chip-row" }, chips.map((chip) => /* @__PURE__ */ React.createElement(Pill, { key: chip, tone: "chip" }, chip)))), desc ? /* @__PURE__ */ React.createElement("p", { className: "section-desc" }, desc) : null);
+  }
+  function ProjectCard({ item }) {
+    return /* @__PURE__ */ React.createElement("article", { className: "card span-6" }, /* @__PURE__ */ React.createElement("div", { className: "card-header" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h3", null, item.name), /* @__PURE__ */ React.createElement("p", { className: "card-subtitle" }, "\u6700\u8FD1\u6D3B\u8DC3\uFF1A", item.updatedAt)), /* @__PURE__ */ React.createElement("div", { className: "stat" }, /* @__PURE__ */ React.createElement("strong", null, item.stars), /* @__PURE__ */ React.createElement("span", null, "GitHub Stars"))), /* @__PURE__ */ React.createElement("div", { className: "tag-row", style: { marginTop: 14 } }, item.tags.map((tag) => /* @__PURE__ */ React.createElement(Pill, { key: tag }, tag))), /* @__PURE__ */ React.createElement("div", { className: "key-block" }, /* @__PURE__ */ React.createElement("strong", null, "\u4E3B\u8981\u7528\u9014"), /* @__PURE__ */ React.createElement("p", null, item.purpose)), /* @__PURE__ */ React.createElement("div", { className: "key-block" }, /* @__PURE__ */ React.createElement("strong", null, "\u6838\u5FC3\u4EAE\u70B9"), /* @__PURE__ */ React.createElement("p", null, item.highlight)), /* @__PURE__ */ React.createElement("div", { className: "key-block" }, /* @__PURE__ */ React.createElement("strong", null, "\u4E3A\u4EC0\u4E48\u73B0\u5728\u503C\u5F97\u770B"), /* @__PURE__ */ React.createElement("p", null, item.whyNow)), /* @__PURE__ */ React.createElement("div", { className: "meta" }, /* @__PURE__ */ React.createElement("span", { className: "mini-title" }, "\u6765\u6E90\uFF1AGitHub \u4ED3\u5E93\u5143\u6570\u636E"), /* @__PURE__ */ React.createElement("a", { className: "source-link", href: item.url, target: "_blank", rel: "noreferrer" }, "\u67E5\u770B\u9879\u76EE")));
+  }
+  function NewsCard({ item, compact = false }) {
+    return /* @__PURE__ */ React.createElement("article", { className: `card ${compact ? "span-4" : "span-6"}` }, /* @__PURE__ */ React.createElement("div", { className: "card-header" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h3", null, item.title), /* @__PURE__ */ React.createElement("p", { className: "card-subtitle" }, item.source))), /* @__PURE__ */ React.createElement("div", { className: "tag-row", style: { marginTop: 14 } }, item.tags.map((tag) => /* @__PURE__ */ React.createElement(Pill, { key: tag }, tag))), /* @__PURE__ */ React.createElement("div", { className: "key-block" }, /* @__PURE__ */ React.createElement("strong", null, "\u4E8B\u4EF6\u6458\u8981"), /* @__PURE__ */ React.createElement("p", null, item.summary)), /* @__PURE__ */ React.createElement("div", { className: "key-block" }, /* @__PURE__ */ React.createElement("strong", null, "\u5F71\u54CD\u5224\u65AD"), /* @__PURE__ */ React.createElement("p", null, item.impact)), item.audience ? /* @__PURE__ */ React.createElement("div", { className: "key-block" }, /* @__PURE__ */ React.createElement("strong", null, "\u9002\u5408\u5173\u6CE8\u7684\u4EBA\u7FA4"), /* @__PURE__ */ React.createElement("p", null, item.audience)) : null, item.note ? /* @__PURE__ */ React.createElement("div", { className: "callout" }, item.note) : null, /* @__PURE__ */ React.createElement("div", { className: "meta" }, /* @__PURE__ */ React.createElement("span", { className: "mini-title" }, "\u6765\u6E90\u94FE\u63A5"), /* @__PURE__ */ React.createElement("a", { className: "source-link", href: item.url, target: "_blank", rel: "noreferrer" }, "\u6253\u5F00\u539F\u6587")));
+  }
+  function IdeaCard({ item }) {
+    return /* @__PURE__ */ React.createElement("article", { className: "card span-6" }, /* @__PURE__ */ React.createElement("h3", null, item.title), /* @__PURE__ */ React.createElement("div", { className: "tag-row", style: { marginTop: 14 } }, item.tags.map((tag) => /* @__PURE__ */ React.createElement(Pill, { key: tag }, tag))), /* @__PURE__ */ React.createElement("div", { className: "key-block" }, /* @__PURE__ */ React.createElement("strong", null, "\u53EF\u4EE5\u505A\u4EC0\u4E48"), /* @__PURE__ */ React.createElement("p", null, item.what)), /* @__PURE__ */ React.createElement("div", { className: "key-block" }, /* @__PURE__ */ React.createElement("strong", null, "\u9002\u5408\u6280\u672F\u6808 / \u7EC4\u4EF6"), /* @__PURE__ */ React.createElement("p", null, item.stack)), /* @__PURE__ */ React.createElement("div", { className: "key-block" }, /* @__PURE__ */ React.createElement("strong", null, "MVP \u601D\u8DEF"), /* @__PURE__ */ React.createElement("p", null, item.mvp)));
+  }
+  function App() {
+    return /* @__PURE__ */ React.createElement("div", { className: "page" }, /* @__PURE__ */ React.createElement("header", { className: "hero" }, /* @__PURE__ */ React.createElement("div", { className: "eyebrow mono" }, "Daily Briefing \xB7 ", report.date), /* @__PURE__ */ React.createElement("div", { className: "hero-grid" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h1", null, report.title), /* @__PURE__ */ React.createElement("p", null, report.summary), /* @__PURE__ */ React.createElement("div", { className: "snapshot-grid", style: { marginTop: 20 } }, report.stats.map((stat) => /* @__PURE__ */ React.createElement("div", { className: "metric", key: stat.label }, /* @__PURE__ */ React.createElement("strong", { className: "mono" }, stat.value), /* @__PURE__ */ React.createElement("span", null, stat.label))))), /* @__PURE__ */ React.createElement("div", { className: "hero-panel" }, /* @__PURE__ */ React.createElement("div", { className: "toc" }, /* @__PURE__ */ React.createElement("div", { className: "snapshot-title" }, /* @__PURE__ */ React.createElement("h2", null, "\u9605\u8BFB\u5BFC\u822A")), /* @__PURE__ */ React.createElement("ul", null, [
+      "GitHub \u5F00\u6E90\u9879\u76EE\u89C2\u5BDF",
+      "\u6BCF\u65E5\u79D1\u6280\u70ED\u70B9",
+      "\u6BCF\u65E5\u65B0\u95FB\u70ED\u70B9",
+      "Vibe Coding \u9879\u76EE\u5EFA\u8BAE",
+      "\u4ECA\u65E5\u603B\u8D8B\u52BF\u5224\u65AD"
+    ].map((item, index) => /* @__PURE__ */ React.createElement("li", { key: item }, /* @__PURE__ */ React.createElement("span", { className: "toc-index mono" }, index + 1), /* @__PURE__ */ React.createElement("span", null, item))))), /* @__PURE__ */ React.createElement("div", { className: "snapshot" }, /* @__PURE__ */ React.createElement("div", { className: "snapshot-title" }, /* @__PURE__ */ React.createElement("h2", null, "\u4E00\u53E5\u8BDD\u5224\u65AD")), /* @__PURE__ */ React.createElement("p", { style: { marginTop: 14, color: "rgba(248, 251, 251, 0.78)", lineHeight: 1.8 } }, "AI \u8D5B\u9053\u7684\u4F30\u503C\u53D9\u4E8B\u5F00\u59CB\u8BA9\u4F4D\u7ED9\u5DE5\u7A0B\u53D9\u4E8B\uFF1A\u8C01\u80FD\u628A\u6A21\u578B\u63A5\u8FDB\u5DE5\u5177\u3001\u63A5\u8FDB\u6D41\u7A0B\u3001\u63A5\u8FDB\u9884\u7B97\uFF0C\u8C01\u66F4\u503C\u5F97\u7EE7\u7EED\u770B\u3002"))))), /* @__PURE__ */ React.createElement("main", { className: "main" }, /* @__PURE__ */ React.createElement("section", { className: "section" }, /* @__PURE__ */ React.createElement(
+      SectionHeader,
+      {
+        id: "github",
+        title: "\u6A21\u5757\u4E00 \xB7 GitHub \u5F00\u6E90\u9879\u76EE\u89C2\u5BDF",
+        desc: "\u4F18\u5148\u9009\u53D6\u4ECD\u5728\u9AD8\u9891\u66F4\u65B0\u3001\u9002\u5408\u5F00\u53D1\u8005\u5FEB\u901F\u7406\u89E3\u4E14\u4E0E\u5F53\u524D AI \u5DE5\u7A0B\u5316\u4E3B\u7EBF\u9AD8\u5EA6\u76F8\u5173\u7684\u9879\u76EE\u3002",
+        chips: ["Active", "Open Source", "Builders First"]
       }
-
-      function App() {
-        return (
-          <div className="page">
-            <header className="hero">
-              <div className="eyebrow mono">Daily Briefing · {report.date}</div>
-              <div className="hero-grid">
-                <div>
-                  <h1>{report.title}</h1>
-                  <p>{report.summary}</p>
-                  <div className="snapshot-grid" style={{ marginTop: 20 }}>
-                    {report.stats.map((stat) => (
-                      <div className="metric" key={stat.label}>
-                        <strong className="mono">{stat.value}</strong>
-                        <span>{stat.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="hero-panel">
-                  <div className="toc">
-                    <div className="snapshot-title">
-                      <h2>阅读导航</h2>
-                    </div>
-                    <ul>
-                      {[
-                        "GitHub 开源项目观察",
-                        "每日科技热点",
-                        "每日新闻热点",
-                        "Vibe Coding 项目建议",
-                        "今日总趋势判断",
-                      ].map((item, index) => (
-                        <li key={item}>
-                          <span className="toc-index mono">{index + 1}</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="snapshot">
-                    <div className="snapshot-title">
-                      <h2>一句话判断</h2>
-                    </div>
-                    <p style={{ marginTop: 14, color: "rgba(248, 251, 251, 0.78)", lineHeight: 1.8 }}>
-                      AI 赛道的估值叙事开始让位给工程叙事：谁能把模型接进工具、接进流程、接进预算，谁更值得继续看。
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </header>
-
-            <main className="main">
-              <section className="section">
-                <SectionHeader
-                  id="github"
-                  title="模块一 · GitHub 开源项目观察"
-                  desc="优先选取仍在高频更新、适合开发者快速理解且与当前 AI 工程化主线高度相关的项目。"
-                  chips={["Active", "Open Source", "Builders First"]}
-                />
-                <div className="grid">
-                  {report.githubProjects.map((item) => (
-                    <ProjectCard key={item.name} item={item} />
-                  ))}
-                  <div className="summary-card span-12">
-                    <h3 style={{ margin: 0, fontSize: 21 }}>项目趋势观察</h3>
-                    <ol className="list">
-                      {report.projectTrends.map((trend) => (
-                        <li key={trend}>{trend}</li>
-                      ))}
-                    </ol>
-                  </div>
-                </div>
-              </section>
-
-              <section className="section">
-                <SectionHeader
-                  id="tech"
-                  title="模块二 · 每日科技热点"
-                  desc="优先保留对 AI、开发者工具、云基础设施、硬件与企业软件真正有判断价值的更新。"
-                  chips={["AI", "Cloud", "Devices", "Infra"]}
-                />
-                <div className="grid">
-                  {report.techHotspots.map((item) => (
-                    <NewsCard key={item.title} item={item} compact />
-                  ))}
-                </div>
-              </section>
-
-              <section className="section">
-                <SectionHeader
-                  id="news"
-                  title="模块三 · 每日新闻热点"
-                  desc="只保留对商业、产业、价格、资本开支与国际经营环境有实质影响的综合新闻。"
-                  chips={["Macro", "Trade", "Energy", "Policy"]}
-                />
-                <div className="grid">
-                  {report.generalNews.map((item) => (
-                    <NewsCard key={item.title} item={item} compact />
-                  ))}
-                </div>
-              </section>
-
-              <section className="section">
-                <SectionHeader
-                  id="vibe"
-                  title="模块四 · Vibe Coding 项目建议"
-                  desc="不做空泛 brainstorm，优先给出这周就能起手的项目方向。"
-                  chips={["MVP Ready", "Builder Mode"]}
-                />
-                <div className="grid">
-                  {report.vibeIdeas.map((item) => (
-                    <IdeaCard key={item.title} item={item} />
-                  ))}
-                </div>
-              </section>
-
-              <section className="section">
-                <SectionHeader
-                  id="trend"
-                  title="模块五 · 今日总趋势判断"
-                  desc="把今天分散的项目、科技更新与宏观新闻收束成一个更可执行的判断。"
-                  chips={["Signal", "Decision"]}
-                />
-                <div className="summary-card">
-                  <p style={{ fontSize: 15, color: "var(--text)", lineHeight: 1.95 }}>{report.totalTrend}</p>
-                </div>
-              </section>
-            </main>
-
-            <footer className="footer">
-              数据说明：GitHub 项目信息基于 GitHub 仓库元数据与最近活跃时间筛选；新闻与科技热点优先采用 AP News、Business
-              Insider、Tom&apos;s Hardware 等近 7-14 天内可检索来源。带“待进一步确认”的结论表示目前更多来自媒体解读或厂商口径，建议继续追踪官方文档与后续实测。
-            </footer>
-          </div>
-        );
+    ), /* @__PURE__ */ React.createElement("div", { className: "grid" }, report.githubProjects.map((item) => /* @__PURE__ */ React.createElement(ProjectCard, { key: item.name, item })), /* @__PURE__ */ React.createElement("div", { className: "summary-card span-12" }, /* @__PURE__ */ React.createElement("h3", { style: { margin: 0, fontSize: 21 } }, "\u9879\u76EE\u8D8B\u52BF\u89C2\u5BDF"), /* @__PURE__ */ React.createElement("ol", { className: "list" }, report.projectTrends.map((trend) => /* @__PURE__ */ React.createElement("li", { key: trend }, trend)))))), /* @__PURE__ */ React.createElement("section", { className: "section" }, /* @__PURE__ */ React.createElement(
+      SectionHeader,
+      {
+        id: "tech",
+        title: "\u6A21\u5757\u4E8C \xB7 \u6BCF\u65E5\u79D1\u6280\u70ED\u70B9",
+        desc: "\u4F18\u5148\u4FDD\u7559\u5BF9 AI\u3001\u5F00\u53D1\u8005\u5DE5\u5177\u3001\u4E91\u57FA\u7840\u8BBE\u65BD\u3001\u786C\u4EF6\u4E0E\u4F01\u4E1A\u8F6F\u4EF6\u771F\u6B63\u6709\u5224\u65AD\u4EF7\u503C\u7684\u66F4\u65B0\u3002",
+        chips: ["AI", "Cloud", "Devices", "Infra"]
       }
-
-      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    ), /* @__PURE__ */ React.createElement("div", { className: "grid" }, report.techHotspots.map((item) => /* @__PURE__ */ React.createElement(NewsCard, { key: item.title, item, compact: true })))), /* @__PURE__ */ React.createElement("section", { className: "section" }, /* @__PURE__ */ React.createElement(
+      SectionHeader,
+      {
+        id: "news",
+        title: "\u6A21\u5757\u4E09 \xB7 \u6BCF\u65E5\u65B0\u95FB\u70ED\u70B9",
+        desc: "\u53EA\u4FDD\u7559\u5BF9\u5546\u4E1A\u3001\u4EA7\u4E1A\u3001\u4EF7\u683C\u3001\u8D44\u672C\u5F00\u652F\u4E0E\u56FD\u9645\u7ECF\u8425\u73AF\u5883\u6709\u5B9E\u8D28\u5F71\u54CD\u7684\u7EFC\u5408\u65B0\u95FB\u3002",
+        chips: ["Macro", "Trade", "Energy", "Policy"]
+      }
+    ), /* @__PURE__ */ React.createElement("div", { className: "grid" }, report.generalNews.map((item) => /* @__PURE__ */ React.createElement(NewsCard, { key: item.title, item, compact: true })))), /* @__PURE__ */ React.createElement("section", { className: "section" }, /* @__PURE__ */ React.createElement(
+      SectionHeader,
+      {
+        id: "vibe",
+        title: "\u6A21\u5757\u56DB \xB7 Vibe Coding \u9879\u76EE\u5EFA\u8BAE",
+        desc: "\u4E0D\u505A\u7A7A\u6CDB brainstorm\uFF0C\u4F18\u5148\u7ED9\u51FA\u8FD9\u5468\u5C31\u80FD\u8D77\u624B\u7684\u9879\u76EE\u65B9\u5411\u3002",
+        chips: ["MVP Ready", "Builder Mode"]
+      }
+    ), /* @__PURE__ */ React.createElement("div", { className: "grid" }, report.vibeIdeas.map((item) => /* @__PURE__ */ React.createElement(IdeaCard, { key: item.title, item })))), /* @__PURE__ */ React.createElement("section", { className: "section" }, /* @__PURE__ */ React.createElement(
+      SectionHeader,
+      {
+        id: "trend",
+        title: "\u6A21\u5757\u4E94 \xB7 \u4ECA\u65E5\u603B\u8D8B\u52BF\u5224\u65AD",
+        desc: "\u628A\u4ECA\u5929\u5206\u6563\u7684\u9879\u76EE\u3001\u79D1\u6280\u66F4\u65B0\u4E0E\u5B8F\u89C2\u65B0\u95FB\u6536\u675F\u6210\u4E00\u4E2A\u66F4\u53EF\u6267\u884C\u7684\u5224\u65AD\u3002",
+        chips: ["Signal", "Decision"]
+      }
+    ), /* @__PURE__ */ React.createElement("div", { className: "summary-card" }, /* @__PURE__ */ React.createElement("p", { style: { fontSize: 15, color: "var(--text)", lineHeight: 1.95 } }, report.totalTrend)))), /* @__PURE__ */ React.createElement("footer", { className: "footer" }, "\u6570\u636E\u8BF4\u660E\uFF1AGitHub \u9879\u76EE\u4FE1\u606F\u57FA\u4E8E GitHub \u4ED3\u5E93\u5143\u6570\u636E\u4E0E\u6700\u8FD1\u6D3B\u8DC3\u65F6\u95F4\u7B5B\u9009\uFF1B\u65B0\u95FB\u4E0E\u79D1\u6280\u70ED\u70B9\u4F18\u5148\u91C7\u7528 AP News\u3001Business Insider\u3001Tom's Hardware \u7B49\u8FD1 7-14 \u5929\u5185\u53EF\u68C0\u7D22\u6765\u6E90\u3002\u5E26\u201C\u5F85\u8FDB\u4E00\u6B65\u786E\u8BA4\u201D\u7684\u7ED3\u8BBA\u8868\u793A\u76EE\u524D\u66F4\u591A\u6765\u81EA\u5A92\u4F53\u89E3\u8BFB\u6216\u5382\u5546\u53E3\u5F84\uFF0C\u5EFA\u8BAE\u7EE7\u7EED\u8FFD\u8E2A\u5B98\u65B9\u6587\u6863\u4E0E\u540E\u7EED\u5B9E\u6D4B\u3002"));
+  }
+  ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));
+})();
     </script>
   </body>
 </html>

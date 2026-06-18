@@ -1,0 +1,596 @@
+
+      const briefDate = "2026-06-12";
+
+      const summaryCards = [
+        {
+          label: "GitHub 开源项目观察",
+          title: "MCP、Browser Automation、Agent Frontend 仍是最强主线",
+          body:
+            "今天入选项目几乎都围绕『让 agent 真能接入工具、理解界面、完成交付』展开，纯聊天 agent 的注意力正在继续向执行层迁移。",
+          tone: "brand",
+        },
+        {
+          label: "每日科技热点",
+          title: "AI 产业从模型竞赛转向分发、成本与入口控制",
+          body:
+            "OpenAI IPO、Meta/WhatsApp 接入争议、Cloudflare 收购 VoidZero、AI 路由创业潮，说明竞争点正从模型能力扩展到渠道、成本与开发栈。",
+          tone: "accent",
+        },
+        {
+          label: "每日新闻热点",
+          title: "地缘与能源仍在牵动全球通胀、股市与供应链判断",
+          body:
+            "伊朗局势、油价波动、中国出口、美国关税与通胀数据交织，企业侧的核心问题不是『有没有需求』，而是『成本和预期如何重定价』。",
+          tone: "warn",
+        },
+      ];
+
+      const githubProjects = [
+        {
+          name: "OpenHands",
+          link: "https://github.com/OpenHands/OpenHands",
+          tags: ["AI Coding Agent", "76.5k stars", "最新版本 1.8.0 / 2026-06-10"],
+          usage: "面向真实开发流程的开源 AI 开发代理，可读写代码、运行命令并协助完成任务。",
+          highlights:
+            "仓库仍保持高密度迭代，GitHub 页面显示已有 103 个 release，最近一次版本发布就在 2026-06-10；代码同时覆盖 Python 和 TypeScript，说明其 agent + UI 双栈都在推进。",
+          whyNow:
+            "如果你关心『编程 agent 从 demo 走向工程化』，OpenHands 仍是最值得持续跟踪的参考样本之一。",
+          source: "GitHub 仓库首页",
+        },
+        {
+          name: "browser-use",
+          link: "https://github.com/browser-use/browser-use",
+          tags: ["Browser Automation", "98.4k stars", "最新版本 0.13.1 / 2026-06-10"],
+          usage: "把网站和网页操作抽象成 AI agent 能直接调用的浏览器能力层。",
+          highlights:
+            "仓库首页明确把定位写成『让网站可被 AI agent 使用』，而且 2026-06-10 仍在发版，说明它不是一次性爆红项目，而是在往平台能力演进。",
+          whyNow:
+            "浏览器是 agent 真正触达 SaaS、后台和外部信息的关键入口，这条赛道还在升温。",
+          source: "GitHub 仓库首页",
+        },
+        {
+          name: "microsoft/playwright-mcp",
+          link: "https://github.com/microsoft/playwright-mcp",
+          tags: ["MCP", "33.8k stars", "Microsoft"],
+          usage: "把 Playwright 暴露成 MCP server，让模型以结构化方式控制页面与读取界面状态。",
+          highlights:
+            "README 的重点不是『截图式操作』，而是 accessibility tree、结构化数据与 deterministic tool application，这意味着它更偏工程稳定性，而不是炫技自动化。",
+          whyNow:
+            "MCP 正在从概念层进入工程默认选项，Playwright MCP 是『可验证网页执行』这条链路中的基础件。",
+          source: "GitHub 仓库首页 / README",
+        },
+        {
+          name: "github/github-mcp-server",
+          link: "https://github.com/github/github-mcp-server",
+          tags: ["Official MCP", "30.6k stars", "最新版本 1.3.0 / 2026-06-11"],
+          usage: "GitHub 官方 MCP server，把代码、Issue、PR、Actions 与仓库上下文直接开放给 agent。",
+          highlights:
+            "官方仓库写得很明确：它覆盖仓库浏览、Issue/PR 自动化、CI/CD 工作流分析等；且 2026-06-11 仍在发版，说明 GitHub 正在把 agent 工作流产品化。",
+          whyNow:
+            "这已经不是『第三方接 GitHub』，而是平台方亲自下场定义 agent 与代码协作接口。",
+          source: "GitHub 仓库首页 / README",
+        },
+        {
+          name: "CopilotKit",
+          link: "https://github.com/CopilotKit/CopilotKit",
+          tags: ["Generative UI", "34.8k stars", "最新版本 v1.60.0 / 2026-06-11"],
+          usage: "帮助开发者快速构建 agent-native 前端与生成式 UI 的开源框架。",
+          highlights:
+            "仓库首页直接将自己定义为『The Frontend Stack for Agents & Generative UI』，而且 release 密度极高，说明前端交互层已成为新一轮 agent 竞赛的关键面。",
+          whyNow:
+            "大家不再满足于把 agent 塞进聊天框，而是在争夺『agent 应该如何进入业务界面』的标准。",
+          source: "GitHub 仓库首页",
+        },
+        {
+          name: "goose",
+          link: "https://github.com/aaif-goose/goose",
+          tags: ["Open Agent", "49k stars", "最新版本 v1.37.0 / 2026-06-03"],
+          usage: "一个可扩展开源 agent，强调安装、执行、编辑、测试等完整任务闭环。",
+          highlights:
+            "它和一般代码补全工具不同，重点是『beyond code suggestions』；同时 topic 里直接挂了 MCP 与 ACP，说明其扩展体系是当前竞争点。",
+          whyNow:
+            "如果你想看 agent 如何做成本地开发助手、CLI 助手与多模型编排器，goose 仍值得关注。",
+          source: "GitHub 仓库首页",
+        },
+        {
+          name: "bolt.diy",
+          link: "https://github.com/stackblitz-labs/bolt.diy",
+          tags: ["Any LLM", "19.5k stars", "高分叉模板仓库"],
+          usage: "用任意 LLM prompt、运行、编辑并部署全栈应用的开源自托管方案。",
+          highlights:
+            "虽然最新 release 时间不如前几项近，但仓库仍拥有 10.4k forks，说明『把闭源产品能力本地化、自托管化』依旧有稳定需求。",
+          whyNow:
+            "对很多团队来说，重要的不是最强模型，而是是否能在自己的栈里复刻出可控的生产流程。",
+          source: "GitHub 仓库首页",
+        },
+      ];
+
+      const githubTrends = [
+        {
+          title: "MCP 从热门概念转成默认接入层",
+          body:
+            "Playwright MCP 和 GitHub MCP Server 同时高热，说明 agent 生态的重心正在从『会不会调用工具』转到『工具如何被标准化接入』。",
+        },
+        {
+          title: "浏览器自动化是 agent 落地的必争入口",
+          body:
+            "browser-use 持续发版，Playwright MCP 继续走强，证明网页和 SaaS 操作仍是 agent 商业化里最关键的一层。",
+        },
+        {
+          title: "前端层开始形成 agent-native 新堆栈",
+          body:
+            "CopilotKit 的高频 release 很有代表性。2026 年的关键问题不再只是『模型够不够强』，而是『用户怎样在产品中真正使用 agent』。",
+        },
+        {
+          title: "自托管与可替换模型仍有强需求",
+          body:
+            "bolt.diy、goose 这类项目说明开发者不愿把工作流完全锁死在单一商业平台里，可移植性和成本控制仍是强约束。",
+        },
+      ];
+
+      const techNews = [
+        {
+          title: "OpenAI 已向 SEC 秘密递交 IPO 文件",
+          link: "https://apnews.com/article/c7583994426b1b097120786d6a0b8308",
+          source: "AP",
+          tags: ["AI", "资本市场", "2026-06-08"],
+          summary:
+            "AP 报道 OpenAI 已递交保密上市文件，但未确定具体上市时间，强调保持灵活性。",
+          impact:
+            "这意味着大模型竞争已进入『巨额基础设施资金 + 公开市场叙事』阶段。对上下游企业来说，AI 平台的经营逻辑会更像云厂商和超级软件公司。",
+          audience: "关注 AI 平台、企业软件、一级二级市场的人群",
+        },
+        {
+          title: "Cloudflare 收购 VoidZero，瞄准 AI 原生开发工具链",
+          link: "https://www.itpro.com/business/acquisition/cloudflare-snaps-up-voidzero-to-expand-ai-native-developer-tools",
+          source: "ITPro",
+          tags: ["开发者工具", "云平台", "待进一步确认"],
+          summary:
+            "据 ITPro，Cloudflare 收购了 Evan You 旗下 VoidZero，将继续保持 Vite 相关开源路线，并计划与 Workers 等平台更紧密结合。",
+          impact:
+            "如果消息与后续整合节奏持续落地，说明云厂商开始直接争夺前端与 agent 开发栈入口，而不是只卖算力与托管服务。",
+          audience: "前端工程师、云平台从业者、开发者工具投资者",
+        },
+        {
+          title: "苹果与欧盟就 Siri AI 上线延迟公开交锋",
+          link: "https://apnews.com/article/5d18df90b03e4e98ac528c8802e2b531",
+          source: "AP",
+          tags: ["Apple", "监管", "AI 入口"],
+          summary:
+            "苹果称欧盟 DMA 影响 Siri AI 在欧盟落地，欧盟则公开反驳，称法规并未阻止苹果发布新产品。",
+          impact:
+            "这不是单纯的合规争执，而是『系统级 AI 助手是否必须向竞争对手开放能力』的样板案件，后续会影响终端入口权力分配。",
+          audience: "关注消费电子、平台监管、AI 助手生态的人群",
+        },
+        {
+          title: "欧盟要求 Meta 恢复 WhatsApp 对竞争 AI 聊天机器人的接入",
+          link: "https://apnews.com/article/8b4b48acb23acf5686f141a276bb868d",
+          source: "AP",
+          tags: ["Meta", "反垄断", "分发渠道"],
+          summary:
+            "欧盟对 Meta 采取临时措施，要求其在调查期间恢复 WhatsApp 对竞品 AI 助手的接入能力。",
+          impact:
+            "AI 助手竞争正在从模型效果转到流量入口和分发权限。谁控制消息入口，谁就更可能控制下一代用户关系。",
+          audience: "平台产品经理、增长团队、监管与政策观察者",
+        },
+        {
+          title: "欧盟启动“科技主权”计划，推进本土芯片、云与 AI 能力",
+          link: "https://apnews.com/article/b16729f7758120260c7005bfba0774c3",
+          source: "AP",
+          tags: ["芯片", "云计算", "政策"],
+          summary:
+            "欧盟提出新的科技主权计划，希望降低对美国云与 AI 服务、以及亚洲芯片制造的依赖。",
+          impact:
+            "这会加速欧洲本地数据中心、芯片扶持与企业软件替代方案建设，对跨国云厂商和基础设施供应商都是长期变量。",
+          audience: "云厂商、芯片产业链、欧洲市场相关团队",
+        },
+        {
+          title: "AI 路由创业公司因推理成本飙升而快速吸金",
+          link: "https://www.businessinsider.com/ai-routing-startups-openrouter-concentrate-funding-boom-2026-6",
+          source: "Business Insider",
+          tags: ["推理成本", "模型路由", "开发平台"],
+          summary:
+            "Business Insider 报道，OpenRouter 等 AI 路由创业公司正因帮助团队在多模型间平衡成本和性能而获得融资。",
+          impact:
+            "这说明 2026 年真正痛点之一已经不是『能不能调模型』，而是『如何在价格、延迟、稳定性之间自动选路』。",
+          audience: "AI 应用开发者、平台工程师、FinOps 团队",
+        },
+        {
+          title: "Anthropic 推出 Claude Corps，试图扩大 AI 在公益组织中的使用",
+          link: "https://apnews.com/article/b1c130a08417d13e1256f8982d233b0e",
+          source: "AP",
+          tags: ["Anthropic", "组织落地", "公益场景"],
+          summary:
+            "Anthropic 宣布投入 1.5 亿美元推动非营利组织使用 Claude，并配套 fellowship 与额度支持。",
+          impact:
+            "这不只是公益动作，也是在提前占领组织流程入口。谁先进入真实办公流程，谁就更容易积累高价值使用场景。",
+          audience: "企业软件从业者、组织数字化团队、AI 生态观察者",
+        },
+      ];
+
+      const newsHotspots = [
+        {
+          title: "伊朗谈判突破预期带动全球股市反弹，油价单日大跌逾 4%",
+          link: "https://apnews.com/article/47f9fecd934706362104cd92514122fe",
+          source: "AP",
+          tags: ["地缘政治", "能源", "市场"],
+          summary:
+            "AP 报道，市场押注霍尔木兹海峡可能重开，Brent 油价回落至 86.31 美元附近，全球股市同步反弹。",
+          impact:
+            "这说明地缘风险仍然是当前通胀和风险偏好的第一变量。企业经营层需要继续把能源价格与物流风险纳入短期预算情景。",
+        },
+        {
+          title: "中国 5 月出口同比增长 19.4%，汽车与科技品需求成为主支撑",
+          link: "https://apnews.com/article/33ee2ae323cb9bd8189bf1b13fbe9edf",
+          source: "AP",
+          tags: ["中国经济", "出口", "产业"],
+          summary:
+            "中国海关数据显示，5 月出口强于预期，汽车、半导体与 AI 相关设备成为重要拉动力量。",
+          impact:
+            "对产业链判断来说，全球制造与 AI 硬件需求并未降温，反而在把中国出口结构继续推向高附加值硬件与电子品。",
+        },
+        {
+          title: "美国 5 月 PPI 同比上涨 6.5%，创 2022 年 11 月以来最快增速",
+          link: "https://apnews.com/article/137b9d3e10be5244547b3d94a9d6d940",
+          source: "AP",
+          tags: ["美国通胀", "能源价格", "货币政策"],
+          summary:
+            "AP 报道，美国批发价格受能源冲击明显走高，显示油价冲击正在继续向企业端传导。",
+          impact:
+            "这会直接影响美联储降息预期与企业融资成本。对 SaaS、硬件和高估值成长资产来说，利率叙事又会变得更敏感。",
+        },
+        {
+          title: "美国调整钢铝铜关税结构，部分农业和工业设备税率下调",
+          link: "https://apnews.com/article/7ca5a76dbe13db7e732fa48462ccde92",
+          source: "AP",
+          tags: ["关税", "制造业", "政策"],
+          summary:
+            "特朗普签署行政令，下调部分农机与工业设备相关关税，并扩大较低税率适用品类。",
+          impact:
+            "这不是全面放松，而是更细颗粒度地重排产业政策。做跨境制造、设备出口和供应链规划的企业需要重新评估成本结构。",
+        },
+        {
+          title: "SpaceX 启动史上级别 IPO 路演，计划募资约 750 亿美元",
+          link: "https://apnews.com/article/293e82ea0216efdd0ff7601baf85bae8",
+          source: "AP",
+          tags: ["IPO", "航天", "资本市场"],
+          summary:
+            "AP 称 SpaceX 将登陆华尔街，募资规模可能创纪录，资金将用于 Starlink 卫星和太空数据中心布局。",
+          impact:
+            "这件事的意义不只在航天，还在于『基础设施故事』重新成为资本市场最愿意买单的叙事之一，AI 与航天被合并成同一套资本语言。",
+        },
+        {
+          title: "OpenAI 递交 IPO 文件，AI 公司排队走向公开市场",
+          link: "https://apnews.com/article/c7583994426b1b097120786d6a0b8308",
+          source: "AP",
+          tags: ["AI", "上市", "资本市场"],
+          summary:
+            "OpenAI 的保密上市文件意味着 AI 龙头正开始接受公开市场约束，且与 Anthropic、SpaceX 形成资本层面的联动竞赛。",
+          impact:
+            "对企业客户和合作伙伴来说，平台公司公开化后会更强调营收结构、可预测增长与合规披露，商业节奏可能变得更硬。",
+        },
+      ];
+
+      const vibeProjects = [
+        {
+          title: "Agent Ops Radar",
+          stack: "React + Supabase + GitHub MCP Server + Playwright MCP",
+          what:
+            "做一个团队内部的『agent 任务看板』，统一看 PR、Issue、CI、网页操作任务和失败原因。",
+          mvp:
+            "先接 GitHub MCP 拉取 PR/Issue/Actions，再用 Playwright MCP 记录一次网页流程执行结果，做成一个可筛选的日报看板。",
+        },
+        {
+          title: "Browser Workflow Recorder",
+          stack: "Next.js 或 React + browser-use + SQLite",
+          what:
+            "把人工在浏览器里完成的一次运营或客服流程，转成可复用的 agent workflow 模板。",
+          mvp:
+            "先只支持登录后台、抓取订单、导出 CSV 三步，把每一步的页面状态、失败点和重试建议记录下来。",
+        },
+        {
+          title: "Generative UI Demo Studio",
+          stack: "React + CopilotKit + Vercel AI SDK 或任意 LLM API",
+          what:
+            "做一个『一句话生成业务小工具界面』的演示站，重点展示 agent 如何把结果直接渲染成 UI 卡片。",
+          mvp:
+            "先支持输入一句需求，生成 3 块卡片：摘要、下一步动作、表单草稿；后续再接真实接口。",
+        },
+        {
+          title: "Self-hosted Bolt Playground",
+          stack: "bolt.diy + Docker + Cloudflare Pages/Workers",
+          what:
+            "做一个团队自用的轻量 AI 原型工坊，用来快速生成 landing page、运营页和内部小工具。",
+          mvp:
+            "先只提供 3 个模板提示词：产品页、活动页、数据录入页，并把生成结果自动存到 Git 仓库。",
+        },
+      ];
+
+      const sourceNotes = [
+        {
+          title: "GitHub 项目数据口径",
+          body:
+            "优先参考仓库首页的 stars、release 时间、README 定位描述。今天入选项目都满足『近期仍活跃 or 仍具明显工程价值』。",
+        },
+        {
+          title: "科技/新闻来源口径",
+          body:
+            "优先用 AP 与 GitHub 官方页面；次选可信媒体。涉及并购与市场预期的条目，如后续官方口径变化，需继续复核。",
+        },
+        {
+          title: "使用建议",
+          body:
+            "这份日报更适合做『今天应关注什么、可立刻做什么』，不是完整行业研究。对重要结论建议二次回看原始链接。",
+        },
+      ];
+
+      const trendJudgement =
+        "今天背后的共同趋势很清晰：一方面，AI 正从『模型能力竞争』转向『接口标准、分发入口、推理成本和真实工作流落地』；另一方面，地缘政治与能源价格又在重新定义资本市场和企业预算。对开发者与产品团队来说，真正值得押注的不是单一热点，而是能把 agent 接进浏览器、代码仓库、企业界面和成本控制体系的那一层基础设施。";
+
+      function Pill({ children, tone }) {
+        const className = tone === "warn" ? "pill warn" : tone === "accent" ? "pill accent" : "pill";
+        return <span className={className}>{children}</span>;
+      }
+
+      function SectionShell({ id, title, desc, count, children }) {
+        return (
+          <section className="section-shell" id={id}>
+            <div className="section-head">
+              <div>
+                <h2 className="mono">{title}</h2>
+                <p>{desc}</p>
+              </div>
+              {count ? <div className="section-count mono">{count}</div> : null}
+            </div>
+            {children}
+          </section>
+        );
+      }
+
+      function Card({ item, showAudience = false }) {
+        return (
+          <article className="card">
+            <div className="card-top">
+              <div>
+                <div className="pill-row">
+                  {item.tags.map((tag) => (
+                    <span className="mini-tag" key={tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <a href={item.link} target="_blank" rel="noreferrer">
+                  <h3>{item.title || item.name}</h3>
+                </a>
+              </div>
+              <a className="source-link" href={item.link} target="_blank" rel="noreferrer">
+                查看链接
+              </a>
+            </div>
+
+            {item.usage ? (
+              <div className="card-block">
+                <strong>主要用途</strong>
+                <p>{item.usage}</p>
+              </div>
+            ) : null}
+
+            <div className="card-block">
+              <strong>{item.highlights ? "核心亮点" : "事件摘要"}</strong>
+              <p>{item.highlights || item.summary}</p>
+            </div>
+
+            <div className="card-block">
+              <strong>{item.whyNow ? "为什么现在值得看" : "影响判断"}</strong>
+              <p>{item.whyNow || item.impact}</p>
+            </div>
+
+            {showAudience ? (
+              <div className="card-block">
+                <strong>适合关注的人群</strong>
+                <p>{item.audience}</p>
+              </div>
+            ) : null}
+
+            <div className="card-footer">
+              <span className="source-note">{item.source}</span>
+            </div>
+          </article>
+        );
+      }
+
+      function TrendCard({ item, tone }) {
+        return (
+          <article className="trend-card">
+            <div className="pill-row">
+              <Pill tone={tone}>趋势观察</Pill>
+            </div>
+            <h3>{item.title}</h3>
+            <p style={{ marginTop: "10px" }}>{item.body}</p>
+          </article>
+        );
+      }
+
+      function SuggestionCard({ item }) {
+        return (
+          <article className="trend-card">
+            <div className="pill-row">
+              <Pill tone="accent">Vibe Coding</Pill>
+              <span className="mini-tag">{item.stack}</span>
+            </div>
+            <h3>{item.title}</h3>
+            <div className="card-block" style={{ marginTop: "14px" }}>
+              <strong>可以做什么</strong>
+              <p>{item.what}</p>
+            </div>
+            <div className="card-block">
+              <strong>MVP 起手思路</strong>
+              <p>{item.mvp}</p>
+            </div>
+          </article>
+        );
+      }
+
+      function App() {
+        return (
+          <main className="page">
+            <header className="hero">
+              <div className="hero-grid">
+                <div>
+                  <Pill>中文每日简报</Pill>
+                  <h1 className="mono">GitHub 热门项目、科技动态与商业信号</h1>
+                  <p className="hero-intro">
+                    今天最值得注意的变化不是又出了哪个新模型，而是 agent
+                    的工程配套层在继续收拢成型：MCP、浏览器执行、agent 前端和多模型成本控制，正在一起变成新的默认基础设施。
+                  </p>
+                  <div className="hero-meta">
+                    <div className="hero-meta-card">
+                      <span className="label mono">Date</span>
+                      <span className="value mono">{briefDate}</span>
+                    </div>
+                    <div className="hero-meta-card">
+                      <span className="label mono">Coverage</span>
+                      <span className="value">7 个 GitHub 项目 + 7 条科技热点 + 6 条新闻热点</span>
+                    </div>
+                    <div className="hero-meta-card">
+                      <span className="label mono">Reader Lens</span>
+                      <span className="value">开发者、产品、投资、产业判断</span>
+                    </div>
+                  </div>
+                </div>
+
+                <aside className="hero-side">
+                  <h2 className="mono">今日速览</h2>
+                  <ul>
+                    <li>
+                      <strong>GitHub 主线</strong>
+                      <p>MCP + Browser + Agent UI 三条线继续汇合，说明 agent 生态重心正从模型切到执行层。</p>
+                    </li>
+                    <li>
+                      <strong>科技主线</strong>
+                      <p>IPO、并购、监管和成本管理同时升温，AI 正进入平台化与金融化阶段。</p>
+                    </li>
+                    <li>
+                      <strong>宏观主线</strong>
+                      <p>能源与地缘仍在决定通胀、利率预期和高估值资产的波动上限。</p>
+                    </li>
+                  </ul>
+                </aside>
+              </div>
+            </header>
+
+            <nav className="section-nav">
+              <a href="#summary">日报摘要</a>
+              <a href="#github">GitHub 开源项目观察</a>
+              <a href="#tech">每日科技热点</a>
+              <a href="#news">每日新闻热点</a>
+              <a href="#vibe">Vibe Coding 建议</a>
+            </nav>
+
+            <section className="summary-grid" id="summary">
+              {summaryCards.map((item) => (
+                <article className="summary-card" key={item.title}>
+                  <Pill tone={item.tone}>{item.label}</Pill>
+                  <h3>{item.title}</h3>
+                  <p style={{ marginTop: "12px" }}>{item.body}</p>
+                </article>
+              ))}
+            </section>
+
+            <SectionShell
+              id="github"
+              title="GitHub 开源项目观察"
+              desc="优先筛选近期仍活跃、易于快速理解、且能映射到真实开发工作流的项目。今天这组项目的共同点是：它们都在把 agent 从『会说』推进到『会做』。"
+              count="7 个值得关注项目"
+            >
+              <div className="card-grid">
+                {githubProjects.map((item) => (
+                  <Card item={item} key={item.name} />
+                ))}
+              </div>
+
+              <div className="muted-line">趋势观察</div>
+              <div className="trend-grid" style={{ marginTop: "12px" }}>
+                {githubTrends.map((item, index) => (
+                  <TrendCard item={item} tone={index % 2 === 0 ? "brand" : "accent"} key={item.title} />
+                ))}
+              </div>
+            </SectionShell>
+
+            <SectionShell
+              id="tech"
+              title="每日科技热点"
+              desc="优先覆盖 AI、开发者工具、开源生态、云、平台监管和企业软件入口变化。每条都补一层『为什么重要』，避免只有信息堆叠。"
+              count="7 条科技动态"
+            >
+              <div className="card-grid">
+                {techNews.map((item) => (
+                  <Card item={item} key={item.title} showAudience />
+                ))}
+              </div>
+            </SectionShell>
+
+            <SectionShell
+              id="news"
+              title="每日新闻热点"
+              desc="只保留对商业、产业、资本市场和全球供应链判断有帮助的综合热点，尽量避开低信息密度内容。"
+              count="6 条新闻热点"
+            >
+              <div className="card-grid">
+                {newsHotspots.map((item) => (
+                  <Card item={item} key={item.title} />
+                ))}
+              </div>
+            </SectionShell>
+
+            <SectionShell
+              id="vibe"
+              title="Vibe Coding 项目建议"
+              desc="今天的建议都尽量靠近当前高热开源主线，目标不是做概念站，而是做出一版能跑、能演示、能继续扩展的 MVP。"
+              count="4 个可执行方向"
+            >
+              <div className="suggestion-grid">
+                {vibeProjects.map((item) => (
+                  <SuggestionCard item={item} key={item.title} />
+                ))}
+              </div>
+            </SectionShell>
+
+            <SectionShell
+              id="trend"
+              title="今日总趋势判断"
+              desc="把今天 GitHub、科技与综合新闻放在一起看，能更清楚地看到产业重心正在怎么迁移。"
+            >
+              <div className="footer-note" style={{ marginTop: 0 }}>
+                <Pill>总趋势判断</Pill>
+                <h2 className="mono" style={{ marginTop: "12px", fontSize: "1.4rem", letterSpacing: "-0.03em" }}>
+                  AI 正在从能力竞争转向基础设施竞争，宏观风险则继续给估值与投入节奏定价
+                </h2>
+                <p>{trendJudgement}</p>
+              </div>
+            </SectionShell>
+
+            <SectionShell
+              id="sources"
+              title="说明与来源口径"
+              desc="以下说明帮助后续接入真实接口或继续做自动化生成时保持一致口径。"
+            >
+              <div className="source-grid">
+                {sourceNotes.map((item) => (
+                  <article className="source-card" key={item.title}>
+                    <Pill tone="accent">Notes</Pill>
+                    <h3 style={{ marginTop: "12px" }}>{item.title}</h3>
+                    <p style={{ marginTop: "10px" }}>{item.body}</p>
+                  </article>
+                ))}
+              </div>
+              <p className="muted-line">
+                数据窗口：GitHub 项目以仓库首页与 release 信息为主；新闻以 AP、GitHub 官方页面与可信媒体为主。标注“待进一步确认”的条目建议关注后续官方公告。
+              </p>
+            </SectionShell>
+          </main>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    
