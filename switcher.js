@@ -1,8 +1,12 @@
-        (function () {
-          var days = [
+(() => {
+          const DAYS = [
+  {
+    "date": "2026-06-23",
+    "href": "/14760/"
+  },
   {
     "date": "2026-06-22",
-    "href": "/14760/"
+    "href": "/14760/briefs/2026-06-22.html"
   },
   {
     "date": "2026-06-18",
@@ -25,42 +29,29 @@
     "href": "/14760/briefs/2026-06-12.html"
   }
 ];
+          const currentDate = document.body.getAttribute("data-brief-date");
+          const mount = document.querySelector("[data-brief-switcher]");
+          if (!mount || !currentDate) return;
 
-          var path = window.location.pathname.replace(/index\.html$/, "");
-          var currentDate = "2026-06-22";
-
-          for (var i = 0; i < days.length; i += 1) {
-            if (path === days[i].href.replace(/index\.html$/, "")) {
-              currentDate = days[i].date;
-              break;
-            }
-          }
-
-          var nav = document.createElement("nav");
+          const nav = document.createElement("nav");
           nav.className = "brief-switcher";
 
-          var label = document.createElement("span");
+          const label = document.createElement("div");
           label.className = "brief-switcher-label";
-          label.textContent = "切换简报日期";
+          label.textContent = "日期切换";
+          nav.appendChild(label);
 
-          var buttons = document.createElement("div");
+          const buttons = document.createElement("div");
           buttons.className = "brief-switcher-buttons";
 
-          for (var j = 0; j < days.length; j += 1) {
-            var item = days[j];
-            var link = document.createElement("a");
+          DAYS.forEach((item) => {
+            const link = document.createElement("a");
             link.className = "brief-switcher-button" + (item.date === currentDate ? " is-active" : "");
             link.href = item.href;
             link.textContent = item.date;
             buttons.appendChild(link);
-          }
+          });
 
-          nav.appendChild(label);
           nav.appendChild(buttons);
-
-          var spacer = document.createElement("div");
-          spacer.className = "brief-switcher-spacer";
-
-          document.body.insertBefore(nav, document.body.firstChild);
-          document.body.insertBefore(spacer, nav.nextSibling);
+          mount.appendChild(nav);
         })();
