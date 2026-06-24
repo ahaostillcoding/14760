@@ -147,7 +147,13 @@
               h(
                 "ul",
                 null,
-                ...["GitHub 开源项目观察", "每日科技热点", "每日新闻热点", "Vibe Coding 项目建议", "今日总趋势判断"].map((item, index) =>
+                ...[
+                  "GitHub 开源项目观察",
+                  "每日科技热点",
+                  "每日新闻热点",
+                  "Vibe Coding 项目建议",
+                  "今日总趋势判断",
+                ].map((item, index) =>
                   h(
                     "li",
                     { key: item },
@@ -161,11 +167,7 @@
               "div",
               { className: "snapshot" },
               h("h2", null, "一句话判断"),
-              h(
-                "p",
-                { style: { marginTop: 14, color: "rgba(248, 251, 251, 0.78)", lineHeight: 1.8 } },
-                "真正值得盯住的，不是又多了几个 AI 概念，而是哪些团队已经把 AI 接进浏览器、沙箱、评测、终端和基础设施约束里。"
-              )
+              h("p", { style: { marginTop: 14, color: "rgba(248, 251, 251, 0.78)", lineHeight: 1.8 } }, report.heroNote)
             )
           )
         )
@@ -179,7 +181,7 @@
           h(SectionHeader, {
             id: "github",
             title: "模块一 | GitHub 开源项目观察",
-            desc: "优先选择最近仍活跃、增长明显、适合开发者快速理解的工程化和 agent 基础设施项目。",
+            desc: "优先选择最近仍活跃、适合开发者快速理解并能直接映射到工程落地的项目。",
             chips: ["Active", "Open Source", "Builder Focus"],
           }),
           h(
@@ -200,7 +202,7 @@
           h(SectionHeader, {
             id: "tech",
             title: "模块二 | 每日科技热点",
-            desc: "优先保留对 AI、云基础设施、终端入口、机器人和开发者工具真正有判断价值的事件。",
+            desc: "优先保留对 AI、基础设施、开发者工具、硬件和自动驾驶最有判断价值的事件。",
             chips: ["AI", "Cloud", "Hardware", "Robotics"],
           }),
           h("div", { className: "grid" }, ...report.techHotspots.map((item) => h(NewsCard, { key: item.title, item })))
@@ -211,7 +213,7 @@
           h(SectionHeader, {
             id: "news",
             title: "模块三 | 每日新闻热点",
-            desc: "只保留对商业、产业、资本市场、国际经营与供应链有实质影响的信息。",
+            desc: "只保留对商业、资本市场、供应链、国际经营和政策判断有直接影响的内容。",
             chips: ["Macro", "Trade", "Energy", "Policy"],
           }),
           h("div", { className: "grid" }, ...report.generalNews.map((item) => h(NewsCard, { key: item.title, item })))
@@ -222,7 +224,7 @@
           h(SectionHeader, {
             id: "vibe",
             title: "模块四 | Vibe Coding 项目建议",
-            desc: "基于今天的 GitHub 和科技信号，挑出这周就能启动的 4 个可执行方向。",
+            desc: "基于今天的 GitHub 和科技信号，挑出本周就能开干的 4 个方向。",
             chips: ["MVP Ready", "Actionable"],
           }),
           h("div", { className: "grid" }, ...report.vibeIdeas.map((item) => h(IdeaCard, { key: item.title, item })))
@@ -233,7 +235,7 @@
           h(SectionHeader, {
             id: "trend",
             title: "模块五 | 今日总趋势判断",
-            desc: "把今天分散的开源项目、科技动态和综合新闻，收束成一个更可执行的判断。",
+            desc: "把今天分散的开源项目、科技动态和综合新闻，收束成一个可执行判断。",
             chips: ["Signal", "Decision"],
           }),
           h("div", { className: "summary-card" }, h("p", { style: { fontSize: 15, color: "var(--text)", lineHeight: 1.92 } }, report.totalTrend))
