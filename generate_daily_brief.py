@@ -10,8 +10,9 @@ BRIEFS_DIR = REPO / "briefs"
 ASSETS_DIR = REPO / "assets"
 REPORTS_DIR = ASSETS_DIR / "reports"
 
-CURRENT_DATE = "2026-06-25"
+CURRENT_DATE = "2026-06-26"
 ARCHIVE_DATES = [
+    "2026-06-26",
     "2026-06-25",
     "2026-06-24",
     "2026-06-23",
@@ -41,10 +42,10 @@ def make_html(page_date: str, prefix: str) -> str:
           <head>
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>每日 GitHub + 科技新闻热点简报</title>
+            <title>\u6bcf\u65e5 GitHub + \u79d1\u6280\u65b0\u95fb\u70ed\u70b9\u7b80\u62a5</title>
             <meta
               name="description"
-              content="{page_date} 中文日报：GitHub 开源项目观察、每日科技热点、每日新闻热点与 Vibe Coding 建议。"
+              content="{page_date} \u4e2d\u6587\u65e5\u62a5\uff1aGitHub \u5f00\u6e90\u9879\u76ee\u89c2\u5bdf\u3001\u6bcf\u65e5\u79d1\u6280\u70ed\u70b9\u3001\u6bcf\u65e5\u65b0\u95fb\u70ed\u70b9\u4e0e Vibe Coding \u5efa\u8bae\u3002"
             />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -84,7 +85,7 @@ def make_switcher_js() -> str:
 
           const label = document.createElement("div");
           label.className = "brief-switcher-label";
-          label.textContent = "日期切换";
+          label.textContent = "\u65e5\u671f\u5207\u6362";
           nav.appendChild(label);
 
           const buttons = document.createElement("div");
