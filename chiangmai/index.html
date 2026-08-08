@@ -308,48 +308,48 @@
     content:'';position:absolute;left:9px;top:20px;bottom:0;width:2px;
     background:linear-gradient(180deg,var(--gold),rgba(192,154,75,.1));
     transform:scaleY(0);transform-origin:top;
-    transition:transform .9s var(--ease-out) calc(var(--i,0)*.12s);
+    transition:transform .5s var(--ease-out) calc(var(--i,0)*.06s);
   }
   .ev .marker{
     position:absolute;left:2px;top:4px;width:16px;height:16px;border-radius:50%;
     background:var(--gold);display:flex;align-items:center;justify-content:center;
     box-shadow:0 0 0 3px var(--paper-3),0 2px 8px rgba(192,154,75,.5);
     transform:scale(0);
-    transition:transform .5s var(--ease-spring) calc(var(--i,0)*.12s + .1s);
+    transition:transform .35s var(--ease-spring) calc(var(--i,0)*.06s + .04s);
   }
   .ev .marker svg{width:16px;height:16px;color:#fff;}
   .ev .time{
     font-family:var(--font-mono);
     font-size:13px;font-weight:700;color:var(--gold-deep);letter-spacing:.02em;
-    opacity:0;transform:translateY(6px);
-    transition:opacity .5s ease calc(var(--i,0)*.12s + .18s),transform .5s var(--ease-out) calc(var(--i,0)*.12s + .18s);
+    opacity:0;transform:translateY(4px);
+    transition:opacity .3s ease calc(var(--i,0)*.06s + .08s),transform .3s var(--ease-out) calc(var(--i,0)*.06s + .08s);
   }
   .ev-title{font-size:15.5px;font-weight:700;color:var(--ink);margin:1px 0 4px;}
   .ev-title span{font-weight:500;color:var(--muted);font-size:13px;margin-left:6px;}
-  .ev ul{padding-left:18px;opacity:0;transform:translateY(10px);
-    transition:opacity .55s ease calc(var(--i,0)*.12s + .26s),transform .55s var(--ease-out) calc(var(--i,0)*.12s + .26s);
+  .ev ul{padding-left:18px;opacity:0;transform:translateY(6px);
+    transition:opacity .3s ease calc(var(--i,0)*.06s + .12s),transform .3s var(--ease-out) calc(var(--i,0)*.06s + .12s);
   }
   .ev li{margin:3px 0;font-size:14px;color:#3c3d45;}
   .ev li b{color:var(--ink);}
 
   /* ===== Reveal states (JS on) ===== */
-  html.js .card{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s var(--ease-out),box-shadow .4s ease;}
+  html.js .card{opacity:0;transform:translateY(18px);transition:opacity .4s ease,transform .4s var(--ease-out),box-shadow .4s ease;}
   html.js .card.in{opacity:1;transform:none;}
-  html.js .card .num{transform:scale(.4);opacity:0;transition:transform .5s var(--ease-spring),opacity .4s ease;}
-  html.js .card.in .num{transform:scale(1);opacity:1;transition-delay:.12s;}
-  html.js .card .tip{opacity:0;transform:translateX(-14px);transition:opacity .5s ease,transform .5s var(--ease-out);}
-  html.js .card.in .tip{opacity:1;transform:none;transition-delay:.15s;}
-  html.js .foods .food{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s var(--ease-out);}
+  html.js .card .num{transform:scale(.4);opacity:0;transition:transform .35s var(--ease-spring),opacity .3s ease;}
+  html.js .card.in .num{transform:scale(1);opacity:1;transition-delay:.06s;}
+  html.js .card .tip{opacity:0;transform:translateX(-10px);transition:opacity .3s ease,transform .3s var(--ease-out);}
+  html.js .card.in .tip{opacity:1;transform:none;transition-delay:.08s;}
+  html.js .foods .food{opacity:0;transform:translateY(10px);transition:opacity .3s ease,transform .3s var(--ease-out);}
   html.js .card.in .foods .food{opacity:1;transform:none;}
-  html.js .card.in .foods .food:nth-child(1){transition-delay:.05s;}
-  html.js .card.in .foods .food:nth-child(2){transition-delay:.11s;}
-  html.js .card.in .foods .food:nth-child(3){transition-delay:.17s;}
-  html.js .card.in .foods .food:nth-child(4){transition-delay:.23s;}
-  html.js .card.in .foods .food:nth-child(5){transition-delay:.29s;}
-  html.js .card.in .foods .food:nth-child(6){transition-delay:.35s;}
-  html.js .hotel{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s var(--ease-out);}
-  html.js .card.in .hotel{opacity:1;transform:none;transition-delay:calc(var(--i,0)*.08s + .05s);}
-  html.js .ev{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s var(--ease-out);}
+  html.js .card.in .foods .food:nth-child(1){transition-delay:.02s;}
+  html.js .card.in .foods .food:nth-child(2){transition-delay:.05s;}
+  html.js .card.in .foods .food:nth-child(3){transition-delay:.08s;}
+  html.js .card.in .foods .food:nth-child(4){transition-delay:.11s;}
+  html.js .card.in .foods .food:nth-child(5){transition-delay:.14s;}
+  html.js .card.in .foods .food:nth-child(6){transition-delay:.17s;}
+  html.js .hotel{opacity:0;transform:translateY(10px);transition:opacity .3s ease,transform .3s var(--ease-out);}
+  html.js .card.in .hotel{opacity:1;transform:none;transition-delay:calc(var(--i,0)*.05s + .03s);}
+  html.js .ev{opacity:0;transform:translateY(10px);transition:opacity .35s ease,transform .35s var(--ease-out);}
   html.js .ev.in{opacity:1;transform:none;}
   html.js .ev.in:not(:last-child)::before{transform:scaleY(1);}
   html.js .ev.in .marker{transform:scale(1);}
@@ -361,7 +361,7 @@
   html.js .hero .h-title{animation:titleIn .95s var(--ease-out) .28s backwards;}
   html.js .hero .h-sub{animation:fadeUp .8s var(--ease-out) .5s backwards;}
   html.js .hero .h-sabai{animation:fadeUp .8s var(--ease-out) .64s backwards;}
-  html.js .hero .chip{opacity:0;transform:translateY(12px) scale(.92);animation:chipIn .55s var(--ease-spring) backwards;}
+  html.js .hero .chip{opacity:0;transform:translateY(12px) scale(.92);animation:chipIn .55s var(--ease-spring) both;}
   html.js .hero .chip:nth-child(1){animation-delay:.68s;}
   html.js .hero .chip:nth-child(2){animation-delay:.78s;}
   html.js .hero .chip:nth-child(3){animation-delay:.88s;}
@@ -958,7 +958,7 @@
             io.unobserve(en.target);
           }
         });
-      }, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
+      }, {threshold:.01, rootMargin:'0px 0px -20px 0px'});
       cards.forEach(function(c){ io.observe(c); });
       /* 时间轴事件逐个点亮：单独观察每个 .ev */
       var evs = document.querySelectorAll('.ev');
@@ -969,7 +969,7 @@
             ioEv.unobserve(en.target);
           }
         });
-      }, {threshold:.25, rootMargin:'0px 0px -60px 0px'});
+      }, {threshold:.05, rootMargin:'0px 0px -40px 0px'});
       evs.forEach(function(ev){ ioEv.observe(ev); });
     }
 
