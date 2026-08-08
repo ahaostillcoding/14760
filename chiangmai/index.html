@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="清迈 3 天悠闲自由行规划：古城、素贴山、夜市，微笑兰纳酒店周边住宿，含酒店与美食推荐。">
+<title>清迈 3 天悠闲自由行 · 兰纳之夜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#1b2133;
+    --night-2:#232b44;
+    --night-3:#141a29;
+    --paper:#f6f1e3;
+    --paper-2:#efe8d4;
+    --paper-3:#fbf7ec;
+    --ink:#26282f;
+    --muted:#7d7766;
+    --gold:#c09a4b;
+    --gold-light:#e0c068;
+    --gold-deep:#a67b2e;
+    --gold-soft:rgba(192,154,75,.16);
+    --line:rgba(154,124,44,.26);
+    --teal:#3f6f59;
+    --radius:18px;
+    --ease-out:cubic-bezier(0.22,1,0.36,1);
+    --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+    --font-sans:'Noto Sans SC','PingFang SC','Microsoft YaHei',-apple-system,'Segoe UI',sans-serif;
+    --font-serif:'Noto Serif SC','Songti SC','STSong','SimSun',serif;
+    --font-display:'Cormorant Garamond',Georgia,serif;
+    --font-mono:ui-monospace,'SF Mono','JetBrains Mono','Cascadia Code',Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:var(--font-sans);
+    background:
+      radial-gradient(1100px 520px at 50% -140px, rgba(192,154,75,.16), transparent 62%),
+      linear-gradient(180deg, var(--night-2) 0%, var(--night) 46%, var(--night-3) 100%);
+    background-attachment:fixed;
+    color:var(--paper);
+    line-height:1.75;
+    min-height:100vh;
+    padding-bottom:70px;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold);color:var(--night-3);}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
+  [id]{scroll-margin-top:96px;}
+  @media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth;} }
+
+  .wrap{max-width:860px;margin:0 auto;padding:0 18px;}
+
+  /* ===== Scroll progress ===== */
+  .progress{
+    position:fixed;top:0;left:0;z-index:120;
+    height:3px;width:0%;
+    background:linear-gradient(90deg,var(--gold-deep),var(--gold-light));
+    box-shadow:0 0 8px rgba(192,154,75,.5);
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    text-align:center;
+    padding:60px 20px 0;
+    overflow:hidden;
+  }
+  .kicker{
+    font-family:var(--font-display);
+    font-weight:600;
+    letter-spacing:.48em;
+    text-indent:.48em;
+    color:var(--gold);
+    font-size:14px;
+    text-transform:uppercase;
+  }
+  .kicker::before,.kicker::after{
+    content:'◆';
+    display:inline-block;
+    font-size:8px;
+    vertical-align:middle;
+    margin:0 14px;
+    color:var(--gold-deep);
+  }
+  .h-title{
+    font-family:var(--font-serif);
+    font-weight:700;
+    font-size:clamp(30px,6vw,46px);
+    letter-spacing:.06em;
+    color:#f8f4e8;
+    margin-top:16px;
+    line-height:1.3;
+  }
+  .h-sub{
+    margin-top:12px;
+    color:#cfc9b2;
+    font-size:15px;
+    letter-spacing:.04em;
+  }
+  .h-sabai{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-weight:500;
+    color:var(--gold);
+    font-size:19px;
+    letter-spacing:.06em;
+    margin-top:10px;
+  }
+  .h-chips{margin-top:22px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;}
+  .chip{
+    display:inline-flex;align-items:center;gap:7px;
+    border:1px solid rgba(192,154,75,.4);
+    color:#e3d9b8;
+    background:rgba(192,154,75,.08);
+    border-radius:999px;
+    padding:5px 14px;
+    font-size:13px;
+    letter-spacing:.03em;
+    cursor:default;
+    transition:background .3s ease,color .3s ease,border-color .3s ease,transform .35s var(--ease-spring);
+  }
+  .chip::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);}
+  .chip:hover{background:var(--gold);color:var(--night-3);border-color:var(--gold);transform:scale(1.07);}
+  .skyline{position:relative;will-change:transform;}
+  .skyline svg{
+    display:block;
+    width:100%;
+    max-width:900px;
+    height:150px;
+    margin:26px auto -2px;
+    opacity:.5;
+    animation:float 9s ease-in-out 1.5s infinite;
+    will-change:transform;
+  }
+
+  /* ===== Nav ===== */
+  .nav{
+    position:sticky;top:12px;z-index:60;
+    width:fit-content;max-width:100%;
+    margin:-8px auto 0;
+    padding:8px 12px;
+    display:flex;flex-wrap:wrap;justify-content:center;gap:4px;
+    background:transparent;
+    border:1px solid transparent;
+    border-radius:999px;
+    transition:background .4s ease,border-color .4s ease,box-shadow .4s ease,backdrop-filter .4s ease;
+  }
+  .nav.scrolled{
+    background:rgba(20,26,41,.78);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-color:rgba(192,154,75,.32);
+    box-shadow:0 8px 24px rgba(0,0,0,.3);
+  }
+  .nav a{
+    position:relative;
+    color:#d8d2b8;text-decoration:none;
+    font-size:13px;padding:4px 11px;border-radius:999px;
+    transition:color .2s ease,background .2s ease;
+  }
+  .nav a::after{
+    content:'';position:absolute;left:11px;right:11px;bottom:3px;height:1.5px;
+    background:var(--gold-light);border-radius:2px;
+    transform:scaleX(0);transform-origin:center;
+    transition:transform .3s var(--ease-out);
+  }
+  .nav a:hover{color:#fff;background:rgba(192,154,75,.18);}
+  .nav a:hover::after{transform:scaleX(1);}
+
+  /* ===== Cards ===== */
+  .card{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:var(--radius);
+    padding:26px 30px;
+    margin-top:28px;
+    border:1px solid rgba(192,154,75,.26);
+    box-shadow:0 16px 42px rgba(0,0,0,.38);
+    transition:transform .4s var(--ease-out),box-shadow .4s ease;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 22px 50px rgba(0,0,0,.46);}
+  .eyebrow{
+    font-family:var(--font-display);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--gold-deep);font-size:12px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before,.eyebrow::after{content:'';height:1px;background:var(--gold);flex:1;opacity:.5;}
+  .sec-title{
+    font-family:var(--font-serif);
+    font-size:22px;font-weight:700;margin-top:10px;
+    color:var(--ink);letter-spacing:.03em;
+  }
+  .sec-sub{font-size:13.5px;color:var(--muted);margin-top:6px;}
+
+  /* ===== Tables ===== */
+  .tbl{width:100%;border-collapse:collapse;font-size:14px;margin-top:18px;}
+  .tbl th{
+    text-align:left;color:var(--gold-deep);
+    font-weight:600;padding:9px 10px;
+    border-bottom:2px solid var(--gold);
+    white-space:nowrap;
+  }
+  .tbl td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  .tbl tr:last-child td{border-bottom:none;}
+  .tbl tr:nth-child(even) td{background:rgba(239,232,212,.5);}
+  .tbl tr.total td{background:var(--paper-2);font-weight:700;border-top:2px solid var(--gold);}
+
+  /* ===== Hotels ===== */
+  .hotel{
+    background:var(--paper-3);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px 18px 14px;
+    margin-top:14px;
+    transition:transform .35s var(--ease-out),box-shadow .35s ease,border-color .35s ease;
+  }
+  .hotel:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.14);border-color:var(--gold);}
+  .hotel.hot{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 6px 18px rgba(192,154,75,.18);}
+  .hotel.hot:hover{box-shadow:0 0 0 1px var(--gold),0 12px 30px rgba(192,154,75,.26);}
+  .h-name{font-size:16px;font-weight:700;color:var(--ink);display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+  .h-price{color:var(--teal);font-weight:700;font-size:14px;margin-top:3px;}
+  .h-meta{font-size:12.5px;color:var(--muted);margin:4px 0 8px;}
+  .hotel ul{padding-left:18px;}
+  .hotel li{margin:3px 0;font-size:14px;}
+  .pick{
+    display:inline-block;background:var(--gold);color:#fff;
+    font-size:11px;padding:2px 10px;border-radius:999px;
+    letter-spacing:.08em;font-weight:600;
+  }
+
+  /* ===== Budget tabs ===== */
+  .tabs{
+    display:flex;gap:8px;flex-wrap:wrap;
+    margin-top:18px;padding:6px;
+    background:rgba(192,154,75,.14);
+    border:1px solid var(--line);
+    border-radius:14px;
+  }
+  .tab{
+    flex:1;min-width:150px;
+    display:flex;flex-direction:column;align-items:center;gap:2px;
+    padding:10px 14px;
+    border:none;border-radius:10px;cursor:pointer;
+    font-family:var(--font-sans);
+    font-size:15px;font-weight:700;color:var(--gold-deep);
+    background:transparent;
+    transition:background .3s ease,color .3s ease,box-shadow .3s ease,transform .3s var(--ease-spring);
+  }
+  .tab .tab-sub{
+    font-size:11px;font-weight:500;color:var(--muted);
+    letter-spacing:.04em;transition:color .3s ease;
+  }
+  .tab:hover{background:rgba(192,154,75,.18);}
+  .tab.active{
+    background:var(--paper);
+    color:var(--gold-deep);
+    box-shadow:0 3px 12px rgba(0,0,0,.12);
+    transform:translateY(-1px);
+  }
+  .tab.active .tab-sub{color:var(--gold-deep);}
+  .tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .tab-panel[hidden]{display:none;}
+  .tab-panel{animation:tabIn .45s var(--ease-out);}
+  @keyframes tabIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  html.js .card.in .tab-panel .hotel{transition-delay:calc(var(--i,0)*.08s + .05s);}
+
+  /* ===== Day cards ===== */
+  .day-head{
+    display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;gap:14px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:16px;margin-top:8px;
+  }
+  .day-id{display:flex;align-items:baseline;gap:10px;}
+  .day-num{
+    font-family:var(--font-display);
+    font-style:italic;font-weight:600;
+    font-size:46px;line-height:.9;color:var(--gold-deep);
+  }
+  .day-lbl{
+    font-family:var(--font-display);
+    letter-spacing:.3em;text-transform:uppercase;
+    font-size:13px;color:var(--muted);
+  }
+  .day-when{font-size:14px;color:var(--muted);}
+  .day-when b{color:var(--gold-deep);font-weight:600;}
+  .kw{
+    display:inline-block;background:var(--gold-soft);
+    color:var(--gold-deep);border:1px solid rgba(166,123,46,.3);
+    border-radius:999px;padding:2px 10px;font-size:12px;
+    margin:3px 4px 0 0;
+  }
+  .dayline{
+    display:flex;align-items:center;gap:10px;
+    margin:12px 0 2px;
+  }
+  .dayline svg{color:var(--gold);flex-shrink:0;}
+  .dayline .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--gold),rgba(192,154,75,.25));}
+  .dayline .cap{font-family:var(--font-display);font-style:italic;font-size:12px;color:var(--gold-deep);letter-spacing:.06em;}
+
+  /* ===== Timeline (with scroll-in animation) ===== */
+  .events{margin-top:14px;}
+  .ev{position:relative;padding-left:30px;padding-bottom:20px;}
+  .ev:not(:last-child)::before{
+    content:'';position:absolute;left:9px;top:20px;bottom:0;width:2px;
+    background:linear-gradient(180deg,var(--gold),rgba(192,154,75,.1));
+    transform:scaleY(0);transform-origin:top;
+    transition:transform .9s var(--ease-out) calc(var(--i,0)*.12s);
+  }
+  .ev .marker{
+    position:absolute;left:2px;top:4px;width:16px;height:16px;border-radius:50%;
+    background:var(--gold);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 0 3px var(--paper-3),0 2px 8px rgba(192,154,75,.5);
+    transform:scale(0);
+    transition:transform .5s var(--ease-spring) calc(var(--i,0)*.12s + .1s);
+  }
+  .ev .marker svg{width:16px;height:16px;color:#fff;}
+  .ev .time{
+    font-family:var(--font-mono);
+    font-size:13px;font-weight:700;color:var(--gold-deep);letter-spacing:.02em;
+    opacity:0;transform:translateY(6px);
+    transition:opacity .5s ease calc(var(--i,0)*.12s + .18s),transform .5s var(--ease-out) calc(var(--i,0)*.12s + .18s);
+  }
+  .ev-title{font-size:15.5px;font-weight:700;color:var(--ink);margin:1px 0 4px;}
+  .ev-title span{font-weight:500;color:var(--muted);font-size:13px;margin-left:6px;}
+  .ev ul{padding-left:18px;opacity:0;transform:translateY(10px);
+    transition:opacity .55s ease calc(var(--i,0)*.12s + .26s),transform .55s var(--ease-out) calc(var(--i,0)*.12s + .26s);
+  }
+  .ev li{margin:3px 0;font-size:14px;color:#3c3d45;}
+  .ev li b{color:var(--ink);}
+
+  /* ===== Reveal states (JS on) ===== */
+  html.js .card{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s var(--ease-out),box-shadow .4s ease;}
+  html.js .card.in{opacity:1;transform:none;}
+  html.js .card .num{transform:scale(.4);opacity:0;transition:transform .5s var(--ease-spring),opacity .4s ease;}
+  html.js .card.in .num{transform:scale(1);opacity:1;transition-delay:.12s;}
+  html.js .card .tip{opacity:0;transform:translateX(-14px);transition:opacity .5s ease,transform .5s var(--ease-out);}
+  html.js .card.in .tip{opacity:1;transform:none;transition-delay:.15s;}
+  html.js .foods .food{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s var(--ease-out);}
+  html.js .card.in .foods .food{opacity:1;transform:none;}
+  html.js .card.in .foods .food:nth-child(1){transition-delay:.05s;}
+  html.js .card.in .foods .food:nth-child(2){transition-delay:.11s;}
+  html.js .card.in .foods .food:nth-child(3){transition-delay:.17s;}
+  html.js .card.in .foods .food:nth-child(4){transition-delay:.23s;}
+  html.js .card.in .foods .food:nth-child(5){transition-delay:.29s;}
+  html.js .card.in .foods .food:nth-child(6){transition-delay:.35s;}
+  html.js .hotel{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s var(--ease-out);}
+  html.js .card.in .hotel{opacity:1;transform:none;transition-delay:calc(var(--i,0)*.08s + .05s);}
+  html.js .ev{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s var(--ease-out);}
+  html.js .ev.in{opacity:1;transform:none;}
+  html.js .ev.in:not(:last-child)::before{transform:scaleY(1);}
+  html.js .ev.in .marker{transform:scale(1);}
+  html.js .ev.in .time{opacity:1;transform:none;}
+  html.js .ev.in ul{opacity:1;transform:none;}
+
+  /* ===== Hero entrance animations ===== */
+  html.js .hero .kicker{animation:fadeDown .7s ease .12s backwards;}
+  html.js .hero .h-title{animation:titleIn .95s var(--ease-out) .28s backwards;}
+  html.js .hero .h-sub{animation:fadeUp .8s var(--ease-out) .5s backwards;}
+  html.js .hero .h-sabai{animation:fadeUp .8s var(--ease-out) .64s backwards;}
+  html.js .hero .chip{opacity:0;transform:translateY(12px) scale(.92);animation:chipIn .55s var(--ease-spring) backwards;}
+  html.js .hero .chip:nth-child(1){animation-delay:.68s;}
+  html.js .hero .chip:nth-child(2){animation-delay:.78s;}
+  html.js .hero .chip:nth-child(3){animation-delay:.88s;}
+  html.js .hero .chip:nth-child(4){animation-delay:.98s;}
+  html.js .skyline{opacity:0;animation:skyFade 1s ease .5s both;}
+
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:none;}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+  @keyframes titleIn{from{opacity:0;transform:translateY(26px);letter-spacing:.14em;}to{opacity:1;transform:none;letter-spacing:.06em;}}
+  @keyframes chipIn{from{opacity:0;transform:translateY(12px) scale(.92);}to{opacity:1;transform:none;}}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+  @keyframes skyFade{from{opacity:0;}to{opacity:1;}}
+
+  /* ===== Food ===== */
+  .foods{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:12px;margin-top:18px;}
+  .food{
+    background:var(--paper-3);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;
+    transition:transform .35s var(--ease-out),box-shadow .35s ease,border-color .35s ease;
+  }
+  .food:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.14);border-color:var(--gold);}
+  .food .ico{font-size:20px;line-height:1;}
+  .food .name{font-weight:700;font-size:15px;color:var(--ink);margin:6px 0 3px;}
+  .food p{font-size:13px;color:#4a4b53;margin:2px 0;}
+  .food .where{font-size:12px;color:var(--gold-deep);}
+  .food h4{font-size:15px;color:var(--ink);margin:10px 0 2px;}
+
+  /* ===== Tips / misc ===== */
+  .tip{
+    background:#fdf5dd;border-left:4px solid var(--gold);
+    padding:12px 16px;border-radius:0 10px 10px 0;
+    font-size:14px;margin-top:18px;color:var(--ink);
+  }
+  .tip ul{margin-top:6px;padding-left:18px;}
+  .tip li{margin:3px 0;}
+  .note{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.7;}
+  .foot{
+    margin-top:44px;text-align:center;
+    font-family:var(--font-display);
+    color:rgba(207,201,178,.75);font-size:14px;letter-spacing:.05em;
+  }
+  .foot::before,.foot::after{content:'◆';font-size:8px;color:var(--gold-deep);margin:0 12px;vertical-align:middle;}
+
+  @media (max-width:620px){
+    .hero{padding-top:44px;}
+    .h-title{font-size:27px;}
+    .card{padding:20px 18px;border-radius:16px;}
+    .sec-title{font-size:19px;}
+    .day-num{font-size:38px;}
+    .ev{padding-left:26px;}
+    .nav{padding:6px 8px;}
+    .nav a{font-size:12px;padding:3px 8px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    html.js .card,html.js .hotel,html.js .ev,html.js .ev .marker,html.js .ev .time,html.js .ev ul,
+    html.js .card .num,html.js .card .tip,html.js .foods .food{opacity:1!important;transform:none!important;transition:none!important;}
+    html.js .ev:not(:last-child)::before{transform:scaleY(1);}
+    html.js .hero .kicker,html.js .hero .h-title,html.js .hero .h-sub,html.js .hero .h-sabai,
+    html.js .hero .chip,html.js .skyline{animation:none!important;opacity:1!important;}
+    .card:hover,.food:hover,.hotel:hover,.chip:hover{transform:none;}
+    *{animation:none!important;transition:none!important;}
+  }
+
+  @media print{
+    body{background:#fff;color:#000;padding:0;}
+    .nav,.skyline,.progress{display:none;}
+    .card{background:#fff;box-shadow:none;border:1px solid #ccc;page-break-inside:avoid;}
+    .hero{background:none;color:#000;padding:20px 0;}
+    .hero .h-title,.hero .h-sub{color:#000;}
+    .foot{color:#666;}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">Chiang Mai · Lanna</div>
+    <h1 class="h-title">清迈 3 天悠闲自由行</h1>
+    <p class="h-sub">2026年9月12日（周六）— 9月14日（周一） · 微笑兰纳酒店周边住宿</p>
+    <div class="h-sabai">Sabai sabai — 慢下来，才是清迈</div>
+    <div class="h-chips">
+      <span class="chip">节奏轻松</span>
+      <span class="chip">古城与山林</span>
+      <span class="chip">夜市烟火</span>
+      <span class="chip">800 / 1000 元两档</span>
+    </div>
+  </div>
+  <div class="skyline">
+    <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax meet" aria-hidden="true" fill="none" stroke="#c09a4b" stroke-width="1.5">
+      <defs>
+        <g id="chedi">
+          <path d="M-34 0 H34 V-9 H28 V-17 H22 V-25 H-22 V-17 H-28 V-9 Z"/>
+          <path d="M-15 -25 Q-15 -50 0 -57 Q15 -50 15 -25 Z"/>
+          <path d="M-12 -41 Q0 -46 12 -41"/>
+          <path d="M-5 -57 H5 V-64 H-5 Z"/>
+          <path d="M-2 -64 V-82"/>
+          <path d="M-7 -69 H7 M-7 -75 H7 M-7 -81 H7"/>
+          <path d="M0 -92 L4 -86 L0 -80 L-4 -86 Z"/>
+        </g>
+      </defs>
+      <g transform="translate(200,190) scale(.5)"><use href="#chedi"/></g>
+      <g transform="translate(330,190) scale(.72)"><use href="#chedi"/></g>
+      <g transform="translate(470,190) scale(.92)"><use href="#chedi"/></g>
+      <g transform="translate(600,190) scale(1.12)"><use href="#chedi"/></g>
+      <g transform="translate(730,190) scale(.92)"><use href="#chedi"/></g>
+      <g transform="translate(870,190) scale(.72)"><use href="#chedi"/></g>
+      <g transform="translate(1000,190) scale(.5)"><use href="#chedi"/></g>
+      <path d="M60 190 H1140" stroke-opacity=".35"/>
+      <g transform="translate(60,170)" stroke="#c09a4b">
+        <path d="M0 0 C0 -14 10 -20 14 -20 C18 -20 22 -14 22 0" stroke-opacity=".5"/>
+        <path d="M14 -20 V-38" stroke-opacity=".5"/>
+        <path d="M11 -30 H17" stroke-opacity=".5"/>
+      </g>
+      <g transform="translate(1140,170) scale(-1,1)" stroke="#c09a4b">
+        <path d="M0 0 C0 -14 10 -20 14 -20 C18 -20 22 -14 22 0" stroke-opacity=".5"/>
+        <path d="M14 -20 V-38" stroke-opacity=".5"/>
+        <path d="M11 -30 H17" stroke-opacity=".5"/>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<div class="nav" id="nav" aria-label="页面导航">
+  <a href="#overview">行程总览</a>
+  <a href="#hotels">酒店推荐</a>
+  <a href="#day1">DAY 1</a>
+  <a href="#day2">DAY 2</a>
+  <a href="#day3">DAY 3</a>
+  <a href="#food">美食</a>
+  <a href="#budget">预算</a>
+</div>
+
+<div class="wrap">
+
+  <!-- 行程总览 -->
+  <div class="card" id="overview">
+    <div class="eyebrow">Overview</div>
+    <h2 class="sec-title"><span class="num">1</span>行程总览</h2>
+    <table class="tbl">
+      <tr><th>日期</th><th>时段</th><th>安排</th><th>亮点</th></tr>
+      <tr>
+        <td><b>9/12 周六</b></td><td>上午 — 晚</td>
+        <td>抵达 → 酒店寄存行李 → 古城漫游（柴迪龙寺、塔佩门、三王纪念碑）→ <b>周六夜市</b></td>
+        <td>周六夜市就在酒店旁 Wualai 路，走路就到</td>
+      </tr>
+      <tr>
+        <td><b>9/13 周日</b></td><td>上午 — 晚</td>
+        <td>素贴山双龙寺半日 → 午后宁曼路/清迈大学 → <b>周日夜市</b></td>
+        <td>周日夜市是清迈最大夜市，古城内</td>
+      </tr>
+      <tr>
+        <td><b>9/14 周一</b></td><td>上午 — 下午</td>
+        <td>退房 → 瓦洛洛市场买伴手礼 → 午餐 → 前往机场（17:00 航班）</td>
+        <td>节奏最松的一天，为返程留足余量</td>
+      </tr>
+    </table>
+    <div class="tip">🕐 每天只安排 2~3 个核心点，留足休息和「走到哪逛到哪」的余地，符合「不紧凑」的需求。</div>
+  </div>
+
+  <!-- 酒店推荐 -->
+  <div class="card" id="hotels">
+    <div class="eyebrow">Stay</div>
+    <h2 class="sec-title"><span class="num">2</span>酒店推荐（Smile Lanna 附近 · 双档预算）</h2>
+    <p class="sec-sub">
+      参考基准：<b>微笑兰纳酒店（Smile Lanna Hotel）</b>位于老城南侧的 Chang Lor 路，紧邻清迈门（Chiang Mai Gate）与周六夜市所在的 Wualai 路。这一带是古城南门外最热闹、夜路明亮、餐饮密集的区域，也是银器手作街所在地，安全性较好、治安口碑良好。按两晚预算分两档，点击切换：<b>800 元档</b>（小红书口碑款）与 <b>1000 元档</b>（经典舒适款）。
+    </p>
+
+    <div class="tabs" role="tablist" aria-label="酒店预算档位">
+      <button class="tab active" id="tab-b800" role="tab" aria-selected="true" aria-controls="panel-b800">
+        两晚 800 元内<span class="tab-sub">小红书口碑款</span>
+      </button>
+      <button class="tab" id="tab-b1000" role="tab" aria-selected="false" aria-controls="panel-b1000">
+        两晚 1000 元内<span class="tab-sub">经典舒适款</span>
+      </button>
+    </div>
+
+    <!-- 800 元档 -->
+    <div class="tab-panel active" id="panel-b800" role="tabpanel" aria-labelledby="tab-b800">
+      <div class="hotel hot" style="--i:0">
+        <div class="h-name">Narinthra Heritage Hotel 纳琳特拉·文化遗产酒店 <span class="pick">首选 · 性价比之神</span></div>
+        <div class="h-price">约 ¥250–¥380 / 晚 · 两晚约 ¥500–¥760</div>
+        <div class="h-meta">海雅区（古城南门外）· 距微笑兰纳约 10 分钟步程 · 小红书「清迈古城性价比的神」</div>
+        <ul>
+          <li>小红书高赞：兰纳风格庭院、带泳池，早餐丰盛，服务热情。</li>
+          <li>位置安静又不偏，出门打车方便，步行可达清迈门夜市。</li>
+          <li>淡季价格常不到 ¥300/晚，两晚妥妥压在 800 以内。</li>
+        </ul>
+      </div>
+
+      <div class="hotel" style="--i:1">
+        <div class="h-name">Hotel de Wualai 德武莱酒店 <span class="pick">次选 · 出门即夜市</span></div>
+        <div class="h-price">约 ¥220–¥350 / 晚 · 两晚约 ¥440–¥700</div>
+        <div class="h-meta">Wualai 路（周六夜市街）· 距微笑兰纳步行约 6 分钟 · 银器街内</div>
+        <ul>
+          <li>直接开在周六夜市主街上，下楼就是夜市与银器店。</li>
+          <li>精致小巧的精品酒店，干净舒适，价格亲民。</li>
+          <li>想最大限度「逛完夜市就回房」的话选它。</li>
+        </ul>
+      </div>
+
+      <div class="hotel" style="--i:2">
+        <div class="h-name">iWualai Hotel 艾瓦莱酒店 <span class="pick">次选 · 平价舒适</span></div>
+        <div class="h-price">约 ¥200–¥320 / 晚 · 两晚约 ¥400–¥640</div>
+        <div class="h-meta">Wualai 路 · 距微笑兰纳步行约 6 分钟 · 含早</div>
+        <ul>
+          <li>小红书古城周边平价酒店测评常客，干净、含早、性价比高。</li>
+          <li>步行到清迈门与周六夜市都很近，晚上亮堂安全。</li>
+          <li>预算最省的选择之一，两晚可控制在 ¥600 上下。</li>
+        </ul>
+      </div>
+
+      <div class="hotel" style="--i:3">
+        <div class="h-name">Le Ville Lanna Old Town 悦隐兰纳古城酒店 <span class="pick">备选 · 古城内</span></div>
+        <div class="h-price">约 ¥230–¥360 / 晚 · 两晚约 ¥460–¥720</div>
+        <div class="h-meta">清迈门内 · 距微笑兰纳步行约 10 分钟 · 兰纳庭院风</div>
+        <ul>
+          <li>古城内的兰纳风格民宿酒店，闹中取静，性价比高。</li>
+          <li>从酒店步行可进古城各寺庙，离周六夜市也只几步路。</li>
+          <li>喜欢住进古城城墙内的话，这是不错的选择。</li>
+        </ul>
+      </div>
+
+      <div class="tip">🛡️ 安全与预订：以上均位于古城南门 / Wualai 路一带，夜路明亮、游客密集、餐馆与 7-11 遍布，治安口碑良好。建议在 Booking / 携程 / Agoda 上筛选「评分 8.0+」并按评分排序，预订时选择可免费取消的房型以应对行程变动。</div>
+      <div class="note">※ 价格为 9 月淡季估算（雨季尾段，房费普遍偏低），以小红书口碑推荐为基础、具体房型价格以实际下单为准。两晚预算建议预留 ¥700–¥800 区间，含一顿酒店早餐更省心。</div>
+    </div>
+
+    <!-- 1000 元档 -->
+    <div class="tab-panel" id="panel-b1000" role="tabpanel" aria-labelledby="tab-b1000" hidden>
+      <div class="hotel hot" style="--i:0">
+        <div class="h-name">Smile Lanna Hotel 微笑兰纳酒店 <span class="pick">首选 · 位置最合适</span></div>
+        <div class="h-price">约 ¥250–¥400 / 晚 · 两晚约 ¥500–¥800</div>
+        <div class="h-meta">地址：129 Chang Lor Rd · 步行 2 分钟到周六夜市 · 机场打车约 15 分钟</div>
+        <ul>
+          <li>泰式兰纳风格小酒店，性价比高，自带泳池与花园。</li>
+          <li>出门就是 Wualai 路周六夜市，逛完夜市直接回房。</li>
+          <li>预算内即可拿下，若你本就打算住这里，直接订它最省心。</li>
+        </ul>
+      </div>
+
+      <div class="hotel" style="--i:1">
+        <div class="h-name">Raming Lodge Hotel &amp; Spa 拉明旅舍酒店 <span class="pick">备选</span></div>
+        <div class="h-price">约 ¥280–¥450 / 晚 · 两晚约 ¥560–¥900</div>
+        <div class="h-meta">Wualai 路 · 距微笑兰纳步行约 5 分钟 · 带泳池</div>
+        <ul>
+          <li>清迈门外的老牌度假酒店，位置热闹、环境安逸，评分在线。</li>
+          <li>从机场打车过来顺路，行李多时非常方便。</li>
+        </ul>
+      </div>
+
+      <div class="hotel" style="--i:2">
+        <div class="h-name">Pha Thai Boutique Hotel 帕泰之家精品酒店 <span class="pick">备选</span></div>
+        <div class="h-price">约 ¥280–¥450 / 晚 · 两晚约 ¥560–¥900</div>
+        <div class="h-meta">清迈门内 · 距微笑兰纳步行约 8 分钟</div>
+        <ul>
+          <li>古城内安静巷道中的泰式小精品，私密安静、服务贴心。</li>
+          <li>想睡得更安静、离夜市稍远一点的话选它。</li>
+        </ul>
+      </div>
+
+      <div class="hotel" style="--i:3">
+        <div class="h-name">Nuan Boutique Hotel 暖南精品酒店 <span class="pick">备选 · 更省预算</span></div>
+        <div class="h-price">约 ¥200–¥380 / 晚 · 两晚约 ¥400–¥760</div>
+        <div class="h-meta">古城南侧安静巷内 · 距微笑兰纳步行约 8 分钟</div>
+        <ul>
+          <li>小而美的泰式庭院酒店，安静干净，性价比很高。</li>
+          <li>预算吃紧又想住得舒服时的好选择。</li>
+        </ul>
+      </div>
+
+      <div class="tip">🛡️ 安全提示：此区域夜路明亮、游客密集、餐馆与 7-11 便利店遍布。建议在 Booking / 携程 / Agoda 上筛选「评分 8.0+」并按评分排序，预订时选择可免费取消的房型以应对行程变动。</div>
+      <div class="note">※ 价格为 9 月淡季估算（雨季尾段，房费普遍偏低），不同平台与房型差异较大，以实际下单为准。</div>
+    </div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="card" id="day1">
+    <div class="eyebrow">Day One</div>
+    <div class="day-head">
+      <div class="day-id">
+        <span class="day-num">01</span>
+        <span class="day-lbl">Sat · 9月12日</span>
+      </div>
+      <div class="day-when">
+        <b>古城漫步 + 周六夜市</b><br>
+        <span class="kw">抵达缓冲</span><span class="kw">熟悉古城</span><span class="kw">夜市初体验</span>
+      </div>
+    </div>
+    <div class="dayline">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+      <div class="rule"></div>
+      <span class="cap">from sunrise to night market</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
+    </div>
+
+    <div class="events">
+      <div class="ev">
+        <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3.5V6M12 18v2.5M3.5 12H6M18 12h2.5M5.6 5.6L7.4 7.4M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/></svg></span>
+        <div class="time">08:00</div>
+        <div class="ev-title">落地清迈机场（CNX）</div>
+        <ul>
+          <li>出关、取行李约 40 分钟，入境卡已取消，节奏从容。</li>
+          <li>机场到酒店：Grab 打车约 15 分钟，¥30–¥40（150–200 泰铢）；出航站楼即有官方出租车柜台，也可以让酒店帮忙叫车。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">09:30</div>
+        <div class="ev-title">入住酒店 / 寄存行李</div>
+        <ul>
+          <li>一般下午 14:00 后入住，先寄存行李，周边吃早餐。</li>
+          <li>买好当天电话卡/流量（机场或 7-11），下载 Grab 打车 App。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">10:30 – 13:00</div>
+        <div class="ev-title">古城漫步（西半区）</div>
+        <ul>
+          <li><b>帕辛寺 Wat Phra Singh</b>：古城内最大寺庙，金碧辉煌。</li>
+          <li><b>柴迪龙寺 Wat Chedi Luang</b>：四百多年的大佛塔，清迈地标。</li>
+          <li>沿护城河边走边看，累了就进路边咖啡馆歇脚。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">13:00 – 15:00</div>
+        <div class="ev-title">午餐 + 午休</div>
+        <ul>
+          <li>午餐推荐：古城内 Khao Soi 咖喱面（清迈招牌），如 Khao Soi Khun Yai、邓丽君最爱的 Khao Soi 小店。</li>
+          <li>下午回酒店小睡 / 游泳，避开正午热浪（9 月仍偏热，多阵雨）。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">15:30 – 17:30</div>
+        <div class="ev-title">塔佩门 + 三王纪念碑</div>
+        <ul>
+          <li><b>塔佩门</b>：古城东门，喂鸽子、拍红砖墙，周日夜市主入口。</li>
+          <li><b>三王纪念碑</b>：清迈开城三王像，周边是博物馆与咖啡馆。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></span>
+        <div class="time">18:00 – 21:00</div>
+        <div class="ev-title">周六夜市（Wualai Walking Street）</div>
+        <ul>
+          <li>就在酒店旁边，<b>步行 2 分钟</b>，逛完直接回房，毫无压力。</li>
+          <li>银器手作、民族服饰、街头小吃、街头艺人，氛围极好。</li>
+          <li>晚餐就地解决：炸猪皮、芒果糯米饭、烧烤串吃到饱。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="card" id="day2">
+    <div class="eyebrow">Day Two</div>
+    <div class="day-head">
+      <div class="day-id">
+        <span class="day-num">02</span>
+        <span class="day-lbl">Sun · 9月13日</span>
+      </div>
+      <div class="day-when">
+        <b>素贴山半日 + 宁曼路 + 周日夜市</b><br>
+        <span class="kw">自然清迈</span><span class="kw">文艺街区</span><span class="kw">清迈最大夜市</span>
+      </div>
+    </div>
+    <div class="dayline">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+      <div class="rule"></div>
+      <span class="cap">mountain dawn to the big night market</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
+    </div>
+
+    <div class="events">
+      <div class="ev">
+        <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3.5V6M12 18v2.5M3.5 12H6M18 12h2.5M5.6 5.6L7.4 7.4M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/></svg></span>
+        <div class="time">08:30</div>
+        <div class="ev-title">早餐后出发去素贴山</div>
+        <ul>
+          <li>酒店前台叫双条车包车往返（约 ¥150–¥200 / 车），或 Grab 打车单程约 ¥50。</li>
+          <li>山路约 45 分钟，途中可远眺清迈全景。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">09:30 – 12:00</div>
+        <div class="ev-title">素贴山双龙寺（Wat Phra That Doi Suthep）</div>
+        <ul>
+          <li>清迈最神圣的寺庙，山顶金塔 + 观景平台俯瞰整个清迈。</li>
+          <li>可坐电梯上山或爬 306 级双龙阶梯，仪式感拉满。</li>
+          <li>建议早去避人流与日晒，备好遮阳帽与水。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">12:30 – 14:30</div>
+        <div class="ev-title">下山午餐 + 回酒店休息</div>
+        <ul>
+          <li>山下或回古城午餐，午后回酒店午休，为夜市养精神。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">15:00 – 18:00</div>
+        <div class="ev-title">宁曼路（Nimmanhaemin）+ 清迈大学（可选）</div>
+        <ul>
+          <li>宁曼路：文艺街区，独立咖啡馆、设计小店、网红甜品，适合慢逛拍照。</li>
+          <li>体力允许可顺路去清迈大学静心湖散步。</li>
+          <li>傍晚回古城吃晚餐：推荐泰北火锅/冬阴功，或找家河景餐厅。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></span>
+        <div class="time">19:00 – 22:00</div>
+        <div class="ev-title">周日夜市（Sunday Walking Street）</div>
+        <ul>
+          <li>清迈最大夜市，从塔佩门沿主路延伸，手作、小吃、音乐一应俱全。</li>
+          <li>逛累可随时 Grab 回酒店（古城打车约 ¥20–¥30）。</li>
+          <li>时间分配：建议前半段吃小吃，后半段买伴手礼。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="card" id="day3">
+    <div class="eyebrow">Day Three</div>
+    <div class="day-head">
+      <div class="day-id">
+        <span class="day-num">03</span>
+        <span class="day-lbl">Mon · 9月14日</span>
+      </div>
+      <div class="day-when">
+        <b>买买买 + 从容返程</b><br>
+        <span class="kw">轻松收尾</span><span class="kw">伴手礼</span><span class="kw">准时登机</span>
+      </div>
+    </div>
+    <div class="dayline">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+      <div class="rule"></div>
+      <span class="cap">easy morning, flight home</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
+    </div>
+
+    <div class="events">
+      <div class="ev">
+        <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3.5V6M12 18v2.5M3.5 12H6M18 12h2.5M5.6 5.6L7.4 7.4M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/></svg></span>
+        <div class="time">09:00 – 10:30</div>
+        <div class="ev-title">酒店早餐 + 收拾行李</div>
+        <ul>
+          <li>睡到自然醒，退房（一般 12:00 前），行李可寄放前台。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">10:30 – 12:30</div>
+        <div class="ev-title">瓦洛洛市场（Warorot Market）+ 花市</div>
+        <ul>
+          <li>本地人最爱的日杂/果蔬/干货市场，买果干、香料、泰式调料当伴手礼。</li>
+          <li>Grab 过去约 ¥25–¥35（古城东侧），逛完回酒店取行李。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">12:30 – 13:30</div>
+        <div class="ev-title">午餐</div>
+        <ul>
+          <li>在酒店附近吃顿清淡的泰餐，或打包清迈招牌咖喱面作为告别餐。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></span>
+        <div class="time">14:00</div>
+        <div class="ev-title">出发前往机场</div>
+        <ul>
+          <li><b>17:00 起飞，国际航班建议 14:30–15:00 到机场</b>（起飞前约 2–2.5 小时），办理值机托运。</li>
+          <li>酒店到机场约 15–20 分钟车程，14:00 出发绰绰有余，留出安检排队缓冲。</li>
+          <li>若不赶时间，可在机场出发层旁简单用餐后登机。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 美食推荐 -->
+  <div class="card" id="food">
+    <div class="eyebrow">Taste</div>
+    <h2 class="sec-title"><span class="num">6</span>美食推荐（吃遍清迈）</h2>
+    <h3 style="font-weight:700;color:var(--gold-deep);font-size:14px;margin-top:20px;">🍜 必吃清单 · 来清迈不能错过</h3>
+    <div class="foods">
+      <div class="food"><div class="ico">🍜</div><div class="name">Khao Soi 咖喱面</div><p>清迈灵魂美食：椰奶咖喱汤 + 脆面 + 鸡/牛，香而不腻。</p><p class="where">古城内老字号（见下）</p></div>
+      <div class="food"><div class="ico">🌭</div><div class="name">Sai Ua 泰北香肠</div><p>香料烤肠，微辣多汁，配糯米饭一绝。</p><p class="where">夜市摊、泰北菜馆</p></div>
+      <div class="food"><div class="ico">🥗</div><div class="name">Som Tam 青木瓜沙拉</div><p>酸辣爽脆，泰式开胃标配（可选辣度）。</p><p class="where">随处路边摊</p></div>
+      <div class="food"><div class="ico">🥭</div><div class="name">芒果糯米饭</div><p>甜糯椰香，夜市必吃甜品。</p><p class="where">夜市、泰餐厅</p></div>
+      <div class="food"><div class="ico">🍲</div><div class="name">冬阴功 / 泰北咖喱</div><p>酸辣虾汤；泰北咖喱比曼谷版更醇厚。</p><p class="where">泰餐小馆</p></div>
+      <div class="food"><div class="ico">🧋</div><div class="name">泰式奶茶 / 椰奶冰沙</div><p>橙色泰奶浓郁好喝，椰奶冰沙解暑。</p><p class="where">街头饮品摊、7-11</p></div>
+    </div>
+
+    <h3 style="font-weight:700;color:var(--gold-deep);font-size:14px;margin-top:26px;">🏛️ 古城内（离酒店步行可到）</h3>
+    <ul style="margin-top:8px;padding-left:18px;">
+      <li><b>Khao Soi Khun Yai</b>：邓丽君生前最爱的老字号咖喱面，招牌 Khao Soi 必点，饭点常排队。</li>
+      <li><b>Huen Phen</b>：泰北菜老字号，招牌泰北咖喱猪肉（Khao Kha Moo）与香肠，环境有泰式风情。</li>
+      <li><b>Blue Diamond Breakfast Club</b>：早餐/健康轻食人气店，面包、果汁、水果碗，适合清早出发前。</li>
+      <li><b>Kat's Kitchen</b>：性价比泰餐小馆，冬阴功、Pad Thai 便宜大碗，适合日常便餐。</li>
+      <li><b>凤飞飞猪脚饭（北门夜市）</b>：入口即化的卤猪脚饭，¥10 出头一份，夜宵党福利。</li>
+    </ul>
+
+    <h3 style="font-weight:700;color:var(--gold-deep);font-size:14px;margin-top:26px;">🏮 酒店周边夜市 & 清迈门市场（步行 2–10 分钟）</h3>
+    <ul style="margin-top:8px;padding-left:18px;">
+      <li><b>周六夜市（Wualai 路）</b>：边逛边吃，泰北香肠、烤串、炸鸡、鲜榨果汁应有尽有，吃完就走回酒店。</li>
+      <li><b>清迈门市场（Chiang Mai Gate Market）</b>：本地人扎堆的傍晚小吃市集，种类比夜市更「接地气」，价格也更便宜。</li>
+      <li><b>芒果糯米饭小摊</b>：清迈门周边有多家专做芒果糯米饭的摊子，现切现做，椰浆浓郁。</li>
+    </ul>
+
+    <h3 style="font-weight:700;color:var(--gold-deep);font-size:14px;margin-top:26px;">☕ 宁曼路（DAY 2 行程内顺路）</h3>
+    <ul style="margin-top:8px;padding-left:18px;">
+      <li><b>Khao Soi Nimman</b>：宁曼路版本的地道咖喱面，装修更精致，拍照也好看。</li>
+      <li><b>Anchan Noodle</b>：蝶豆花染成蓝色的面条，视觉新奇，配酸辣酱汁，宁曼打卡店。</li>
+      <li><b>Cheevit Cheeva</b>：日式刨冰甜品店，芒果绵绵冰是招牌，午后避暑好去处。</li>
+      <li><b>Rustic &amp; Blue / Graph</b>：清迈精品咖啡代表，逛累了坐下喝一杯手冲，慢节奏标配。</li>
+      <li><b>Mango Tango</b>：芒果甜品专门店，糯米饭、杨枝甘露、芒果圣代一应俱全。</li>
+    </ul>
+
+    <div class="tip">🍽️ 觅食小贴士：① 优先选「本地人排长队」的摊子，好吃又有保障；② 夜市摊建议备小额现金；③ 怕辣的话点餐时说「Mai Phet」（不辣）/「Phet Nit Noi」（微辣）；④ 肠胃较弱可自备肠胃药，选择食材新鲜的档口。</div>
+  </div>
+
+  <!-- 预算与贴士 -->
+  <div class="card" id="budget">
+    <div class="eyebrow">Budget &amp; Tips</div>
+    <h2 class="sec-title"><span class="num">7</span>预算参考（单人 · 人民币）</h2>
+    <table class="tbl">
+      <tr><th>项目</th><th>估算</th><th>说明</th></tr>
+      <tr><td>住宿（2 晚）</td><td>¥500 – ¥800</td><td>微笑兰纳或周边备选，见上文</td></tr>
+      <tr><td>交通（机场 + 素贴山 + 市区 Grab）</td><td>¥200 – ¥300</td><td>素贴山往返包车占大头</td></tr>
+      <tr><td>餐饮</td><td>¥300 – ¥500</td><td>一天约 ¥100–¥160，夜市小吃更省</td></tr>
+      <tr><td>门票</td><td>¥60 – ¥80</td><td>双龙寺约 ¥20–¥30，古城寺庙少量门票</td></tr>
+      <tr><td>电话卡 / 杂费</td><td>¥40 – ¥80</td><td>机场买卡约 ¥30 起</td></tr>
+      <tr class="total"><td>合计（不含机票）</td><td>约 ¥1100 – ¥1760</td><td>按吃住行标准水平估算</td></tr>
+    </table>
+    <div class="tip">📝 实用贴士
+      <ul style="margin-top:6px;">
+        <li><b>天气</b>：9 月属雨季尾段，午后常有一场阵雨，随身带折叠伞，雨后反而凉快。</li>
+        <li><b>打车</b>：全程用 Grab（国内 App 可先下载，落地再注册），明码标价，避免被宰。</li>
+        <li><b>进寺庙</b>：需穿过膝、不露肩的服装，门口通常有免费借用的围裙。</li>
+        <li><b>货币</b>：多数商家支持支付宝/微信（部分），但夜市与双条车最好备现金；泰国机场可 ATM 取现。</li>
+        <li><b>安全</b>：清迈治安普遍良好，晚上老城照明充足；仍建议贵重物品随身，夜市注意看管手机。</li>
+      </ul>
+    </div>
+    <div class="note">以上酒店价格为 9 月淡季的估算参考，实际价格请以 Booking / 携程 / Agoda 实时价格为准，建议筛选评分 8.0+ 并选择「可免费取消」房型。祝你在清迈玩得轻松自在！</div>
+  </div>
+
+  <div class="foot">Chiang Mai · 3-Day Relaxed Itinerary · Sabai sabai สบายๆ · 规划生成于 2026-08</div>
+</div>
+
+<script>
+  document.documentElement.classList.add('js');
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* 时间轴事件序号（用于 stagger 延迟） */
+    document.querySelectorAll('.events').forEach(function(container){
+      var evs = container.querySelectorAll('.ev');
+      evs.forEach(function(ev, i){ ev.style.setProperty('--i', i); });
+    });
+
+    /* 卡片 / 时间轴 滚动渐显 */
+    var cards = document.querySelectorAll('.card');
+    var ioSupport = 'IntersectionObserver' in window;
+    if(!ioSupport || reduce){
+      cards.forEach(function(c){ c.classList.add('in'); });
+      document.querySelectorAll('.ev').forEach(function(e){ e.classList.add('in'); });
+    } else {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){
+            en.target.classList.add('in');
+            io.unobserve(en.target);
+          }
+        });
+      }, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
+      cards.forEach(function(c){ io.observe(c); });
+      /* 时间轴事件逐个点亮：单独观察每个 .ev */
+      var evs = document.querySelectorAll('.ev');
+      var ioEv = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){
+            en.target.classList.add('in');
+            ioEv.unobserve(en.target);
+          }
+        });
+      }, {threshold:.25, rootMargin:'0px 0px -60px 0px'});
+      evs.forEach(function(ev){ ioEv.observe(ev); });
+    }
+
+    /* 滚动驱动效果：进度条 + 导航毛玻璃 + hero 视差淡出 */
+    var progress = document.getElementById('progress');
+    var nav = document.getElementById('nav');
+    var heroInner = document.querySelector('.hero-inner');
+    var skyline = document.querySelector('.skyline');
+    var ticking = false;
+
+    function onScroll(){
+      ticking = false;
+      var st = window.scrollY || window.pageYOffset;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (max > 0 ? (st / max) * 100 : 0) + '%';
+      nav.classList.toggle('scrolled', st > 30);
+      if(heroInner){
+        heroInner.style.transform = 'translateY(' + Math.round(st * 0.22) + 'px)';
+        heroInner.style.opacity = Math.max(0, 1 - st / 520);
+      }
+      if(skyline){
+        skyline.style.transform = 'translateY(' + Math.round(st * 0.12) + 'px)';
+      }
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){ ticking = true; requestAnimationFrame(onScroll); }
+    }, {passive:true});
+    onScroll();
+
+    /* 预算 tab 切换 */
+    var tabs = document.querySelectorAll('.tabs .tab');
+    var panels = document.querySelectorAll('.tab-panel');
+    function switchTab(btn){
+      var target = btn.getAttribute('aria-controls');
+      tabs.forEach(function(t){
+        var active = t === btn;
+        t.classList.toggle('active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      panels.forEach(function(p){
+        var show = p.id === target;
+        if(show){ p.removeAttribute('hidden'); p.classList.add('active'); }
+        else { p.setAttribute('hidden',''); p.classList.remove('active'); }
+      });
+    }
+    tabs.forEach(function(btn, i){
+      btn.addEventListener('click', function(){ switchTab(btn); });
+      btn.addEventListener('keydown', function(e){
+        var dir = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ? -1 : 0;
+        if(dir !== 0){
+          e.preventDefault();
+          var next = tabs[(i + dir + tabs.length) % tabs.length];
+          switchTab(next); next.focus();
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
