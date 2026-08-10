@@ -267,6 +267,31 @@
   @keyframes tabIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
   html.js .card.in .tab-panel .hotel{transition-delay:calc(var(--i,0)*.08s + .05s);}
 
+  /* ===== Flight cards ===== */
+  .flight-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;}
+  @media (max-width:640px){.flight-grid{grid-template-columns:1fr;}}
+  .flight-card{
+    background:var(--paper-3);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;
+    transition:transform .3s var(--ease-out),box-shadow .3s ease,border-color .3s ease;
+  }
+  .flight-card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.14);border-color:var(--gold);}
+  .flight-card.mine{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 6px 18px rgba(192,154,75,.16);}
+  .fc-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  .fc-label{font-size:13px;font-weight:700;color:var(--gold-deep);letter-spacing:.04em;}
+  .fc-airline{font-size:11.5px;color:var(--muted);}
+  .fc-route{padding:14px 2px;border-bottom:1px dashed var(--line);}
+  .fc-route:last-of-type{border-bottom:none;}
+  .fc-city{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;font-size:13px;color:var(--ink);}
+  .fc-city .fc-code{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);letter-spacing:.04em;}
+  .fc-fnum{font-family:var(--font-mono);font-size:16px;font-weight:600;color:var(--teal);margin-top:6px;letter-spacing:.02em;}
+  .fc-time{font-size:15px;margin-top:6px;color:var(--ink);}
+  .fc-time b{font-family:var(--font-mono);font-size:17px;color:var(--gold-deep);}
+  .fc-time em{font-style:normal;color:var(--muted);margin:0 3px;}
+  .fc-alt{font-size:12px;color:var(--muted);font-weight:500;margin:0 2px;}
+  .fc-note{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5;}
+  .fc-tip{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.6;background:rgba(192,154,75,.08);border-radius:8px;padding:8px 10px;}
+
   /* ===== Day cards ===== */
   .day-head{
     display:flex;align-items:center;justify-content:space-between;
@@ -490,6 +515,7 @@
 </header>
 
 <div class="nav" id="nav" aria-label="页面导航">
+  <a href="#flights">航班</a>
   <a href="#overview">行程总览</a>
   <a href="#hotels">酒店推荐</a>
   <a href="#day1">DAY 1</a>
@@ -501,10 +527,63 @@
 
 <div class="wrap">
 
+  <!-- 航班信息 -->
+  <div class="card" id="flights">
+    <div class="eyebrow">Flights</div>
+    <h2 class="sec-title"><span class="num">1</span>航班信息</h2>
+    <p class="sec-sub">我的航班已订（春秋航空直飞）；对象的吉隆坡往返建议亚航直飞，时刻已按 2026 年排班整理。</p>
+
+    <div class="flight-grid">
+      <!-- 我的航班 -->
+      <div class="flight-card mine">
+        <div class="fc-head">
+          <span class="fc-label">我的航班 · 已订</span>
+          <span class="fc-airline">春秋航空 · 广州直飞</span>
+        </div>
+        <div class="fc-route">
+          <div class="fc-city"><b>09/12 周六</b><span class="fc-code">CAN → CNX</span></div>
+          <div class="fc-fnum">9C8933</div>
+          <div class="fc-time"><b>05:55</b> 起飞 <em>→</em> <b>08:45</b> 到达</div>
+          <div class="fc-note">广州白云 T1 → 清迈国际机场 · 飞行约 2h50m</div>
+        </div>
+        <div class="fc-route">
+          <div class="fc-city"><b>09/14 周一</b><span class="fc-code">CNX → CAN</span></div>
+          <div class="fc-fnum">9C8934</div>
+          <div class="fc-time"><b>22:20</b> 起飞 <em>→</em> <b>01:05</b> 次日到达</div>
+          <div class="fc-note">清迈国际机场 → 广州白云 T1 · 次日凌晨到，注意是深夜红眼航班</div>
+        </div>
+        <div class="fc-tip">⚠️ 返程 9C8934 为深夜航班，凌晨到广州。DAY 3 行程已按此调整：上午一起逛市场、下午你自由慢享清迈，20:00 从容出发去机场。</div>
+      </div>
+
+      <!-- 对象航班 -->
+      <div class="flight-card">
+        <div class="fc-head">
+          <span class="fc-label">对象航班 · 待订</span>
+          <span class="fc-airline">亚洲航空 · 吉隆坡直飞</span>
+        </div>
+        <div class="fc-route">
+          <div class="fc-city"><b>09/12 周六</b><span class="fc-code">KUL → CNX</span></div>
+          <div class="fc-fnum">AK854 / AK856</div>
+          <div class="fc-time"><b>07:00</b> 起飞 <em>→</em> <b>08:40</b> 到达 <span class="fc-alt">或</span> <b>13:00</b> → <b>14:40</b></div>
+          <div class="fc-note">吉隆坡 KUL2 → 清迈 CNX · 飞行约 2h40m · AK854 早班 / AK856 午班</div>
+        </div>
+        <div class="fc-route">
+          <div class="fc-city"><b>09/14 周一</b><span class="fc-code">CNX → KUL</span></div>
+          <div class="fc-fnum">AK857</div>
+          <div class="fc-time"><b>17:20</b> 起飞 <em>→</em> <b>21:15</b> 到达 <span class="fc-alt">或</span> <b>15:10</b> → <b>19:05</b></div>
+          <div class="fc-note">清迈 CNX → 吉隆坡 KUL2 · 飞行约 2h55m · 建议选 17:20 班，返程白天从容</div>
+        </div>
+        <div class="fc-tip">💡 建议尽早订亚航（经常促销），两程各约 ¥400–¥700。返程建议选 17:20 班：DAY 3 下午 14:30 从酒店出发去机场即可，白天时间更充裕。</div>
+      </div>
+    </div>
+
+    <div class="tip">✈️ 落地时间参考：你 08:45 落地清迈，出关取行李约 40 分钟，9:30 前后可到酒店寄存行李，正好衔接 DAY 1 行程。对象若乘早班 08:40 落地，几乎同步。</div>
+  </div>
+
   <!-- 行程总览 -->
   <div class="card" id="overview">
     <div class="eyebrow">Overview</div>
-    <h2 class="sec-title"><span class="num">1</span>行程总览</h2>
+    <h2 class="sec-title"><span class="num">2</span>行程总览</h2>
     <table class="tbl">
       <tr><th>日期</th><th>时段</th><th>安排</th><th>亮点</th></tr>
       <tr>
@@ -518,9 +597,9 @@
         <td>周日夜市是清迈最大夜市，古城内</td>
       </tr>
       <tr>
-        <td><b>9/14 周一</b></td><td>上午 — 下午</td>
-        <td>退房 → 瓦洛洛市场买伴手礼 → 午餐 → 前往机场（17:00 航班）</td>
-        <td>节奏最松的一天，为返程留足余量</td>
+        <td><b>9/14 周一</b></td><td>上午 — 晚</td>
+        <td>退房 → 一起逛瓦洛洛市场 → 午餐 → 对象 14:30 去机场（17:20 航班）→ 你下午自由慢享 → 20:00 去机场（22:20 航班）</td>
+        <td>上午一起买伴手礼，下午各自从容返程</td>
       </tr>
     </table>
     <div class="tip">🕐 每天只安排 2~3 个核心点，留足休息和「走到哪逛到哪」的余地，符合「不紧凑」的需求。</div>
@@ -529,7 +608,7 @@
   <!-- 酒店推荐 -->
   <div class="card" id="hotels">
     <div class="eyebrow">Stay</div>
-    <h2 class="sec-title"><span class="num">2</span>酒店推荐（Smile Lanna 附近 · 双档预算）</h2>
+    <h2 class="sec-title"><span class="num">3</span>酒店推荐（Smile Lanna 附近 · 双档预算）</h2>
     <p class="sec-sub">
       参考基准：<b>微笑兰纳酒店（Smile Lanna Hotel）</b>位于老城南侧的 Chang Lor 路，紧邻清迈门（Chiang Mai Gate）与周六夜市所在的 Wualai 路。这一带是古城南门外最热闹、夜路明亮、餐饮密集的区域，也是银器手作街所在地，安全性较好、治安口碑良好。按两晚预算分两档，点击切换：<b>800 元档</b>（小红书口碑款）与 <b>1000 元档</b>（经典舒适款）。
     </p>
@@ -664,8 +743,8 @@
     <div class="events">
       <div class="ev">
         <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3.5V6M12 18v2.5M3.5 12H6M18 12h2.5M5.6 5.6L7.4 7.4M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/></svg></span>
-        <div class="time">08:00</div>
-        <div class="ev-title">落地清迈机场（CNX）</div>
+        <div class="time">08:45</div>
+        <div class="ev-title">落地清迈机场（CNX）<span>9C8933 · 广州→清迈</span></div>
         <ul>
           <li>出关、取行李约 40 分钟，入境卡已取消，节奏从容。</li>
           <li>机场到酒店：Grab 打车约 15 分钟，¥30–¥40（150–200 泰铢）；出航站楼即有官方出租车柜台，也可以让酒店帮忙叫车。</li>
@@ -810,14 +889,14 @@
         <span class="day-lbl">Mon · 9月14日</span>
       </div>
       <div class="day-when">
-        <b>买买买 + 从容返程</b><br>
-        <span class="kw">轻松收尾</span><span class="kw">伴手礼</span><span class="kw">准时登机</span>
+        <b>伴手礼 + 下午各自从容返程</b><br>
+        <span class="kw">上午一起逛</span><span class="kw">对象下午先走</span><span class="kw">你晚上再飞</span>
       </div>
     </div>
     <div class="dayline">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
       <div class="rule"></div>
-      <span class="cap">easy morning, flight home</span>
+      <span class="cap">shop together, fly apart — afternoon café, evening flight</span>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
     </div>
 
@@ -827,37 +906,62 @@
         <div class="time">09:00 – 10:30</div>
         <div class="ev-title">酒店早餐 + 收拾行李</div>
         <ul>
-          <li>睡到自然醒，退房（一般 12:00 前），行李可寄放前台。</li>
+          <li>睡到自然醒，退房（一般 12:00 前），行李寄放前台。</li>
+          <li>退房前先把两人行李分好：对象只带随身包去机场，你的一起带上。</li>
         </ul>
       </div>
 
       <div class="ev">
         <span class="marker"></span>
         <div class="time">10:30 – 12:30</div>
-        <div class="ev-title">瓦洛洛市场（Warorot Market）+ 花市</div>
+        <div class="ev-title">瓦洛洛市场（Warorot Market）+ 花市（一起逛）</div>
         <ul>
           <li>本地人最爱的日杂/果蔬/干货市场，买果干、香料、泰式调料当伴手礼。</li>
-          <li>Grab 过去约 ¥25–¥35（古城东侧），逛完回酒店取行李。</li>
+          <li>Grab 过去约 ¥25–¥35（古城东侧）。</li>
+          <li>最后一站大采购，两人一起把伴手礼买齐。</li>
         </ul>
       </div>
 
       <div class="ev">
         <span class="marker"></span>
-        <div class="time">12:30 – 13:30</div>
-        <div class="ev-title">午餐</div>
+        <div class="time">12:30 – 14:00</div>
+        <div class="ev-title">午餐（告别餐）</div>
         <ul>
-          <li>在酒店附近吃顿清淡的泰餐，或打包清迈招牌咖喱面作为告别餐。</li>
+          <li>在酒店附近吃顿清淡的泰餐，或再来一份清迈招牌咖喱面。</li>
+          <li>对象在此与你去机场前好好吃完午餐，留出充裕送行时间。</li>
         </ul>
       </div>
 
       <div class="ev">
         <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></span>
-        <div class="time">14:00</div>
-        <div class="ev-title">出发前往机场</div>
+        <div class="time">14:30</div>
+        <div class="ev-title">对象出发前往机场（赶 17:20 航班）</div>
         <ul>
-          <li><b>17:00 起飞，国际航班建议 14:30–15:00 到机场</b>（起飞前约 2–2.5 小时），办理值机托运。</li>
-          <li>酒店到机场约 15–20 分钟车程，14:00 出发绰绰有余，留出安检排队缓冲。</li>
-          <li>若不赶时间，可在机场出发层旁简单用餐后登机。</li>
+          <li><b>对象航班 AK857 清迈→吉隆坡 17:20 起飞</b>，国际航班建议提前约 2 小时到，<b>15:20 前到机场</b>。</li>
+          <li>酒店到机场约 15–20 分钟车程，<b>14:30 出发绰绰有余</b>，Grab 约 ¥30–¥40。</li>
+          <li>你的行李仍在酒店前台寄存，返程不急。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">15:00 – 18:00</div>
+        <div class="ev-title">下午自由时光（你不赶时间，慢享清迈）</div>
+        <ul>
+          <li><b>清迈门咖啡馆</b>：送走对象后，回古城南门找家河景咖啡馆，点杯泰奶/手冲，慢坐发呆。</li>
+          <li><b>银庙 Wat Srisuphan</b>：Wualai 路银器街上的全银寺庙，午后去正好避开人流，离酒店步行就到。</li>
+          <li>或回酒店泳池游个泳、睡个午觉，怎么舒服怎么来——你的航班是晚上。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></span>
+        <div class="time">20:00</div>
+        <div class="ev-title">你出发前往机场（赶 22:20 航班）</div>
+        <ul>
+          <li><b>你的航班 9C8934 清迈→广州 22:20 起飞</b>，国际航班建议提前约 2 小时到，<b>20:30 前到机场</b>。</li>
+          <li>酒店到机场约 15–20 分钟，<b>20:00 出发从容</b>，取回寄存行李，Grab 约 ¥30–¥40。</li>
+          <li>到机场后值机托运，可在出发层吃顿简餐等登机。</li>
         </ul>
       </div>
     </div>
@@ -866,7 +970,7 @@
   <!-- 美食推荐 -->
   <div class="card" id="food">
     <div class="eyebrow">Taste</div>
-    <h2 class="sec-title"><span class="num">6</span>美食推荐（吃遍清迈）</h2>
+    <h2 class="sec-title"><span class="num">7</span>美食推荐（吃遍清迈）</h2>
     <h3 style="font-weight:700;color:var(--gold-deep);font-size:14px;margin-top:20px;">🍜 必吃清单 · 来清迈不能错过</h3>
     <div class="foods">
       <div class="food"><div class="ico">🍜</div><div class="name">Khao Soi 咖喱面</div><p>清迈灵魂美食：椰奶咖喱汤 + 脆面 + 鸡/牛，香而不腻。</p><p class="where">古城内老字号（见下）</p></div>
@@ -908,7 +1012,7 @@
   <!-- 预算与贴士 -->
   <div class="card" id="budget">
     <div class="eyebrow">Budget &amp; Tips</div>
-    <h2 class="sec-title"><span class="num">7</span>预算参考（单人 · 人民币）</h2>
+    <h2 class="sec-title"><span class="num">8</span>预算参考（单人 · 人民币）</h2>
     <table class="tbl">
       <tr><th>项目</th><th>估算</th><th>说明</th></tr>
       <tr><td>住宿（2 晚）</td><td>¥500 – ¥800</td><td>微笑兰纳或周边备选，见上文</td></tr>
