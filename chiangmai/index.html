@@ -424,7 +424,417 @@
   @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
   @keyframes titleIn{from{opacity:0;transform:translateY(26px);letter-spacing:.14em;}to{opacity:1;transform:none;letter-spacing:.06em;}}
   @keyframes chipIn{from{opacity:0;transform:translateY(12px) scale(.92);}to{opacity:1;transform:none;}}
-  @keyframes float{0%,100%{transform:translateY(0);}50%{t…5767 tokens truncated…</span>
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+  @keyframes skyFade{from{opacity:0;}to{opacity:1;}}
+
+  /* ===== Food ===== */
+ 
+ .foods{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:12px;margin-top:18px;}
+  .food{
+    background:var(--paper-3);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;
+    transition:transform .35s var(--ease-out),box-shadow .35s ease,border-color .35s ease;
+  }
+  .food:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.14);border-color:var(--gold);}
+  .food .ico{font-size:20px;line-height:1;}
+  .food .name{font-weight:700;font-size:15px;color:var(--ink);margin:6px 0 3px;}
+  .food p{font-size:13px;color:#4a4b53;margin:2px 0;}
+  .food .where{font-size:12px;color:var(--gold-deep);}
+  .food h4{font-size:15px;color:var(--ink);margin:10px 0 2px;}
+
+  /* ===== Tips / misc ===== */
+  .tip{
+    background:#fdf5dd;border-left:4px solid var(--gold);
+    padding:12px 16px;border-radius:0 10px 10px 0;
+    font-size:14px;margin-top:18px;color:var(--ink);
+  }
+  .tip ul{margin-top:6px;padding-left:18px;}
+  .tip li{margin:3px 0;}
+  .note{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.7;}
+  .foot{
+    margin-top:44px;text-align:center;
+    font-family:var(--font-display);
+    color:rgba(207,201,178,.75);font-size:14px;letter-spacing:.05em;
+  }
+  .foot::before,.foot::after{content:'◆';font-size:8px;color:var(--gold-deep);margin:0 12px;vertical-align:middle;}
+
+  @media (max-width:620px){
+    .hero{padding-top:44px;}
+    .h-title{font-size:27px;}
+    .card{padding:20px 18px;border-radius:16px;}
+    .sec-title{font-size:19px;}
+    .day-num{font-size:38px;}
+    .ev{padding-left:26px;}
+    .nav{padding:6px 8px;}
+    .nav a{font-size:12px;padding:3px 8px;}
+    .flight-choice{grid-template-columns:1fr;}
+    .lantern.l3{display:none;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    html.js .card,html.js .hotel,html.js .ev,html.js .ev .marker,html.js .ev .time,html.js .ev ul,
+    html.js .card .num,html.js .card .tip,html.js .foods .food{opacity:1!important;transform:none!important;transition:none!important;}
+    html.js .ev:not(:last-child)::before{transform:scaleY(1);}
+    html.js .hero .kicker,html.js .hero .h-title,html.js .hero .h-sub,html.js .hero .h-sabai,
+    html.js .hero .chip,html.js .skyline{animation:none!important;opacity:1!important;}
+    .lantern{animation:none!important;}
+    .card:hover,.food:hover,.hotel:hover,.chip:hover{transform:none;}
+    *{animation:none!important;transition:none!important;}
+  }
+
+  @media print{
+    body{background:#fff;color:#000;padding:0;}
+    .nav,.skyline,.progress{display:none;}
+    .card{background:#fff;box-shadow:none;border:1px solid #ccc;page-break-inside:avoid;}
+    .hero{background:none;color:#000;padding:20px 0;}
+    .hero .h-title,.hero .h-sub{color:#000;}
+    .foot{color:#666;}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="lanterns" aria-hidden="true"><span class="lantern l1"></span><span class="lantern l2"></span><span class="lantern l3"></span></div>
+  <div class="hero-inner">
+    <div class="kicker">Chiang Mai · Lanna</div>
+    <h1 class="h-title">清迈 3 天悠闲自由行</h1>
+    <p class="h-sub">2026年9月12日（周六）— 9月14日（周一） · 微笑兰纳酒店周边住宿</p>
+    <div class="h-sabai">Sabai sabai — 慢下来，才是清迈</div>
+    <div class="h-chips">
+      <span class="chip">节奏轻松</span>
+      <span class="chip">古城与山林</span>
+      <span class="chip">夜市烟火</span>
+      <span class="chip">800 / 1000 元两档</span>
+    </div>
+  </div>
+  <div class="skyline">
+    <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax meet" aria-hidden="true" fill="none" stroke="#c09a4b" stroke-width="1.5">
+      <defs>
+        <g id="chedi">
+          <path d="M-34 0 H34 V-9 H28 V-17 H22 V-25 H-22 V-17 H-28 V-9 Z"/>
+          <path d="M-15 -25 Q-15 -50 0 -57 Q15 -50 15 -25 Z"/>
+          <path d="M-12 -41 Q0 -46 12 -41"/>
+          <path d="M-5 -57 H5 V-64 H-5 Z"/>
+          <path d="M-2 -64 V-82"/>
+          <path d="M-7 -69 H7 M-7 -75 H7 M-7 -81 H7"/>
+          <path d="M0 -92 L4 -86 L0 -80 L-4 -86 Z"/>
+        </g>
+      </defs>
+      <g transform="translate(200,190) scale(.5)"><use href="#chedi"/></g>
+      <g transform="translate(330,190) scale(.72)"><use href="#chedi"/></g>
+      <g transform="translate(470,190) scale(.92)"><use href="#chedi"/></g>
+      <g transform="translate(600,190) scale(1.12)"><use href="#chedi"/></g>
+      <g transform="translate(730,190) scale(.92)"><use href="#chedi"/></g>
+      <g transform="translate(870,190) scale(.72)"><use href="#chedi"/></g>
+      <g transform="translate(1000,190) scale(.5)"><use href="#chedi"/></g>
+      <path d="M60 190 H1140" stroke-opacity=".35"/>
+      <g transform="translate(60,170)" stroke="#c09a4b">
+        <path d="M0 0 C0 -14 10 -20 14 -20 C18 -20 22 -14 22 0" stroke-opacity=".5"/>
+        <path d="M14 -20 V-38" stroke-opacity=".5"/>
+        <path d="M11 -30 H17" stroke-opacity=".5"/>
+      </g>
+      <g transform="translate(1140,170) scale(-1,1)" stroke="#c09a4b">
+        <path d="M0 0 C0 -14 10 -20 14 -20 C18 -20 22 -14 22 0" stroke-opacity=".5"/>
+        <path d="M14 -20 V-38" stroke-opacity=".5"/>
+        <path d="M11 -30 H17" stroke-opacity=".5"/>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<div class="nav" id="nav" aria-label="页面导航">
+  <a href="#flights">航班</a>
+  <a href="#overview">行程总览</a>
+  <a href="#hotels">酒店推荐</a>
+  <a href="#day1">DAY 1</a>
+  <a href="#day2">DAY 2</a>
+  <a href="#day3">DAY 3</a>
+  <a href="#food">美食</a>
+  <a href="#budget">预算</a>
+</div>
+
+<div class="wrap">
+
+  <!-- 航班信息 -->
+  <div class="card" id="flights">
+    <div class="eyebrow">Flights</div>
+    <h2 class="sec-title"><span class="num">1</span>航班信息</h2>
+    <p class="sec-sub">我的航班已订；对象航班尚未确认。为了避免旧时刻误导，以下仅保留选票原则和会合节奏，最终以出票信息为准。</p>
+
+    <div class="flight-grid">
+      <!-- 我的航班 -->
+      <div class="flight-card mine">
+        <div class="fc-head">
+          <span class="fc-label">我的航班 · 已订</span>
+          <span class="fc-airline">春秋航空 · 广州直飞</span>
+        </div>
+        <div class="fc-route">
+          <div class="fc-city"><b>09/12 周六</b><span class="fc-code">CAN → CNX</span></div>
+          <div class="fc-fnum">9C8933</div>
+          <div class="fc-time"><b>05:55</b> 起飞 <em>→</em> <b>08:45</b> 到达</div>
+          <div class="fc-note">广州白云 T1 → 清迈国际机场 · 飞行约 2h50m</div>
+        </div>
+        <div class="fc-route">
+          <div class="fc-city"><b>09/14 周一</b><span class="fc-code">CNX → CAN</span></div>
+          <div class="fc-fnum">9C8934</div>
+          <div class="fc-time"><b>22:20</b> 起飞 <em>→</em> <b>01:05</b> 次日到达</div>
+          <div class="fc-note">清迈国际机场 → 广州白云 T1 · 次日凌晨到，注意是深夜红眼航班</div>
+        </div>
+        <div class="fc-tip">⚠️ 返程 9C8934 为深夜航班，凌晨到广州。DAY 3 行程已按此调整：上午一起逛市场、下午你自由慢享清迈，20:00 从容出发去机场。</div>
+      </div>
+
+      <!-- 对象航班 -->
+      <div class="flight-card pending">
+        <div class="fc-head">
+          <span class="fc-label">对象航班 · 待订</span>
+          <span class="fc-airline">吉隆坡 KUL ↔ 清迈 CNX · 优先直飞</span>
+        </div>
+        <div class="fc-route">
+          <div class="fc-city"><b>09/12 周六</b><span class="fc-code">KUL → CNX</span></div>
+          <div class="fc-fnum">首选 · AK856 <span class="fc-alt">（订票页复核）</span></div>
+          <div class="fc-time"><b>13:30</b> 起飞 <em>→</em> <b>15:10</b> 到达</div>
+          <div class="fc-note">KUL2 → CNX · 直飞约 2h40m；落地后直接去酒店，晚上 18:00 从容衔接周六夜市，不用清早赶机场。</div>
+          <div class="flight-choice recommend">
+            <span class="primary"><b>✓ 最推荐：AK856 · 午后抵达</b>适合这份“慢游”行程：白天留给补觉和入住，傍晚在酒店/夜市会合。</span>
+            <span><b>备选：AK854 · 07:00 → 08:40</b>想从第一天上午就一起行动时再选；时间最充足，但意味着清早到 KUL2。</span>
+            <span><b>舒适备选：MH772 · 09:50 → 11:40</b>马航直飞、KUL T1 出发；仅当 9/12 订票页显示可售时考虑。</span>
+          </div>
+        </div>
+        <div class="fc-route">
+          <div class="fc-city"><b>09/14 周一</b><span class="fc-code">CNX → KUL</span></div>
+          <div class="fc-fnum">首选 · AK857 <span class="fc-alt">（订票页复核）</span></div>
+          <div class="fc-time"><b>15:40</b> 起飞 <em>→</em> <b>19:35</b> 到达</div>
+          <div class="fc-note">CNX → KUL2 · 直飞约 2h55m；建议 12:30–12:45 从酒店出发，早上还能一起逛市场、吃午餐。</div>
+          <div class="flight-choice recommend">
+            <span class="primary"><b>✓ 最推荐：AK857 · 下午返程</b>DAY 3 只安排市场和告别午餐，起飞前预留约 3 小时到机场，节奏最稳。</span>
+            <span><b>备选原则：同日直飞且 15:00 后起飞</b>若 AK857 当日无售，选同样满足此窗口的直飞；不建议为了晚一点而转机。</span>
+            <span><b>不作为主推：MH793 · 14:30 → 18:30</b>近期公开排班多见于周二/周六，与你的 9/14 周一未必匹配，仅在当天真的显示可售时采用。</span>
+          </div>
+        </div>
+        <div class="fc-tip">💡 推荐组合：<b>AK856（去）+ AK857（回）</b>。两程均以航空公司订票页在 <b>9/12、9/14</b> 显示的实际时刻和可售状态为准；若航班调整，优先保留“直飞 + 去程 15:30 前抵达 + 回程 15:00 后起飞”这三个条件。</div>
+      </div>
+    </div>
+
+    <div class="tip">✈️ 落地时间参考：你 08:45 落地后，出关、取行李与到酒店约需 60–90 分钟。对象航班未定时，不预设会合时刻：中午抵达就午休后会合，傍晚抵达则直接在周六夜市碰面。</div>
+  </div>
+
+  <!-- 行程总览 -->
+  <div class="card" id="overview">
+    <div class="eyebrow">Overview</div>
+    <h2 class="sec-title"><span class="num">2</span>行程总览</h2>
+    <table class="tbl">
+      <tr><th>日期</th><th>时段</th><th>安排</th><th>亮点</th></tr>
+      <tr>
+        <td><b>9/12 周六</b></td><td>上午 — 晚</td>
+        <td>抵达 → 酒店寄存行李 → 古城漫游（柴迪龙寺、塔佩门、三王纪念碑）→ <b>周六夜市</b></td>
+        <td>周六夜市就在酒店旁 Wualai 路，走路就到</td>
+      </tr>
+      <tr>
+        <td><b>9/13 周日</b></td><td>上午 — 晚</td>
+        <td>素贴山双龙寺半日 → 午后宁曼路/清迈大学 → <b>周日夜市</b></td>
+        <td>周日夜市是清迈最大夜市，古城内</td>
+      </tr>
+      <tr>
+        <td><b>9/14 周一</b></td><td>上午 — 晚</td>
+        <td>退房 → 一起逛瓦洛洛市场 → 午餐 → 对象按已订航班前往机场 → 你下午自由慢享 → 晚间返程</td>
+        <td>上午一起买伴手礼；返程按实际起飞时间弹性收尾</td>
+      </tr>
+    </table>
+    <div class="tip">🕐 每天只安排 2~3 个核心点，留足休息和「走到哪逛到哪」的余地，符合「不紧凑」的需求。</div>
+  </div>
+
+  <!-- 酒店推荐 -->
+  <div class="card" id="hotels">
+    <div class="eyebrow">Stay</div>
+    <h2 class="sec-title"><span class="num">3</span>酒店推荐（Smile Lanna 附近 · 双档预算）</h2>
+    <p class="sec-sub">
+      参考基准：<b>微笑兰纳酒店（Smile Lanna Hotel）</b>位于老城南侧的 Chang Lor 路，紧邻清迈门（Chiang Mai Gate）与周六夜市所在的 Wualai 路。这一带是古城南门外最热闹、夜路明亮、餐饮密集的区域，也是银器手作街所在地，安全性较好、治安口碑良好。按两晚预算分两档，点击切换：<b>800 元档</b>（小红书口碑款）与 <b>1000 元档</b>（经典舒适款）。
+    </p>
+
+    <div class="tabs" role="tablist" aria-label="酒店预算档位">
+      <button class="tab active" id="tab-b800" role="tab" aria-selected="true" aria-controls="panel-b800">
+        两晚 800 元内<span class="tab-sub">小红书口碑款</span>
+      </button>
+      <button class="tab" id="tab-b1000" role="tab" aria-selected="false" aria-controls="panel-b1000">
+        两晚 1000 元内<span class="tab-sub">经典舒适款</span>
+      </button>
+    </div>
+
+    <!-- 800 元档 -->
+    <div class="tab-panel active" id="panel-b800" role="tabpanel" aria-labelledby="tab-b800">
+      <div class="hotel hot" style="--i:0">
+        <div class="h-name">Narinthra Heritage Hotel 纳琳特拉·文化遗产酒店 <span class="pick">首选 · 性价比之神</span></div>
+        <div class="h-price">约 ¥250–¥380 / 晚 · 两晚约 ¥500–¥760</div>
+        <div class="h-meta">海雅区（古城南门外）· 距微笑兰纳约 10 分钟步程 · 小红书「清迈古城性价比的神」</div>
+        <ul>
+          <li>小红书高赞：兰纳风格庭院、带泳池，早餐丰盛，服务热情。</li>
+          <li>位置安静又不偏，出门打车方便，步行可达清迈门夜市。</li>
+          <li>淡季价格常不到 ¥300/晚，两晚妥妥压在 800 以内。</li>
+        </ul>
+      </div>
+
+      <div class="hotel" style="--i:1">
+        <div class="h-name">Hotel de Wualai 德武莱酒店 <span class="pick">次选 · 出门即夜市</span></div>
+        <div class="h-price">约 ¥220–¥350 / 晚 · 两晚约 ¥440–¥700</div>
+        <div class="h-meta">Wualai 路（周六夜市街）· 距微笑兰纳步行约 6 分钟 · 银器街内</div>
+        <ul>
+          <li>直接开在周六夜市主街上，下楼就是夜市与银器店。</li>
+          <li>精致小巧的精品酒店，干净舒适，价格亲民。</li>
+          <li>想最大限度「逛完夜市就回房」的话选它。</li>
+        </ul>
+      </div>
+
+      <div class="hotel" style="--i:2">
+        <div class="h-name">iWualai Hotel 艾瓦莱酒店 <span class="pick">次选 · 平价舒适</span></div>
+        <div class="h-price">约 ¥200–¥320 / 晚 · 两晚约 ¥400–¥640</div>
+        <div class="h-meta">Wualai 路 · 距微笑兰纳步行约 6 分钟 · 含早</div>
+        <ul>
+          <li>小红书古城周边平价酒店测评常客，干净、含早、性价比高。</li>
+          <li>步行到清迈门与周六夜市都很近，晚上亮堂安全。</li>
+          <li>预算最省的选择之一，两晚可控制在 ¥600 上下。</li>
+        </ul>
+      </div>
+
+      <div class="hotel" style="--i:3">
+        <div class="h-name">Le Ville Lanna Old Town 悦隐兰纳古城酒店 <span class="pick">备选 · 古城内</span></div>
+        <div class="h-price">约 ¥230–¥360 / 晚 · 两晚约 ¥460–¥720</div>
+        <div class="h-meta">清迈门内 · 距微笑兰纳步行约 10 分钟 · 兰纳庭院风</div>
+        <ul>
+          <li>古城内的兰纳风格民宿酒店，闹中取静，性价比高。</li>
+          <li>从酒店步行可进古城各寺庙，离周六夜市也只几步路。</li>
+          <li>喜欢住进古城城墙内的话，这是不错的选择。</li>
+        </ul>
+      </div>
+
+      <div class="tip">🛡️ 安全与预订：以上均位于古城南门 / Wualai 路一带，夜路明亮、游客密集、餐馆与 7-11 遍布，治安口碑良好。建议在 Booking / 携程 / Agoda 上筛选「评分 8.0+」并按评分排序，预订时选择可免费取消的房型以应对行程变动。</div>
+      <div class="note">※ 价格为 9 月淡季估算（雨季尾段，房费普遍偏低），以小红书口碑推荐为基础、具体房型价格以实际下单为准。两晚预算建议预留 ¥700–¥800 区间，含一顿酒店早餐更省心。</div>
+    </div>
+
+    <!-- 1000 元档 -->
+    <div class="tab-panel" id="panel-b1000" role="tabpanel" aria-labelledby="tab-b1000" hidden>
+      <div class="hotel hot" style="--i:0">
+        <div class="h-name">Smile Lanna Hotel 微笑兰纳酒店 <span class="pick">首选 · 位置最合适</span></div>
+        <div class="h-price">约 ¥250–¥400 / 晚 · 两晚约 ¥500–¥800</div>
+        <div class="h-meta">地址：129 Chang Lor Rd · 步行 2 分钟到周六夜市 · 机场打车约 15 分钟</div>
+        <ul>
+          <li>泰式兰纳风格小酒店，性价比高，自带泳池与花园。</li>
+          <li>出门就是 Wualai 路周六夜市，逛完夜市直接回房。</li>
+          <li>预算内即可拿下，若你本就打算住这里，直接订它最省心。</li>
+        </ul>
+      </div>
+
+      <div class="hotel" style="--i:1">
+        <div class="h-name">Raming Lodge Hotel &amp; Spa 拉明旅舍酒店 <span class="pick">备选</span></div>
+        <div class="h-price">约 ¥280–¥450 / 晚 · 两晚约 ¥560–¥900</div>
+        <div class="h-meta">Wualai 路 · 距微笑兰纳步行约 5 分钟 · 带泳池</div>
+        <ul>
+          <li>清迈门外的老牌度假酒店，位置热闹、环境安逸，评分在线。</li>
+          <li>从机场打车过来顺路，行李多时非常方便。</li>
+        </ul>
+      </div>
+
+      <div class="hotel" style="--i:2">
+        <div class="h-name">Pha Thai Boutique Hotel 帕泰之家精品酒店 <span class="pick">备选</span></div>
+        <div class="h-price">约 ¥280–¥450 / 晚 · 两晚约 ¥560–¥900</div>
+        <div class="h-meta">清迈门内 · 距微笑兰纳步行约 8 分钟</div>
+        <ul>
+          <li>古城内安静巷道中的泰式小精品，私密安静、服务贴心。</li>
+          <li>想睡得更安静、离夜市稍远一点的话选它。</li>
+        </ul>
+      </div>
+
+      <div class="hotel" style="--i:3">
+        <div class="h-name">Nuan Boutique Hotel 暖南精品酒店 <span class="pick">备选 · 更省预算</span></div>
+        <div class="h-price">约 ¥200–¥380 / 晚 · 两晚约 ¥400–¥760</div>
+        <div class="h-meta">古城南侧安静巷内 · 距微笑兰纳步行约 8 分钟</div>
+        <ul>
+          <li>小而美的泰式庭院酒店，安静干净，性价比很高。</li>
+          <li>预算吃紧又想住得舒服时的好选择。</li>
+        </ul>
+      </div>
+
+      <div class="tip">🛡️ 安全提示：此区域夜路明亮、游客密集、餐馆与 7-11 便利店遍布。建议在 Booking / 携程 / Agoda 上筛选「评分 8.0+」并按评分排序，预订时选择可免费取消的房型以应对行程变动。</div>
+      <div class="note">※ 价格为 9 月淡季估算（雨季尾段，房费普遍偏低），不同平台与房型差异较大，以实际下单为准。</div>
+    </div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="card" id="day1">
+    <div class="eyebrow">Day One</div>
+    <div class="day-head">
+      <div class="day-id">
+        <span class="day-num">01</span>
+        <span class="day-lbl">Sat · 9月12日</span>
+      </div>
+      <div class="day-when">
+        <b>落地缓冲 + 周六夜市</b><br>
+        <span class="kw">抵达缓冲</span><span class="kw">熟悉古城</span><span class="kw">夜市初体验</span>
+      </div>
+    </div>
+    <div class="dayline">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+      <div class="rule"></div>
+        <span class="cap">arrival buffer, then a slow night market</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
+    </div>
+
+    <div class="events">
+      <div class="ev">
+        <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3.5V6M12 18v2.5M3.5 12H6M18 12h2.5M5.6 5.6L7.4 7.4M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/></svg></span>
+        <div class="time">08:45</div>
+        <div class="ev-title">落地清迈机场（CNX）<span>9C8933 · 广州→清迈</span></div>
+        <ul>
+          <li>出关、取行李约 40 分钟，入境卡已取消，节奏从容。</li>
+          <li>机场到酒店：Grab 打车约 15 分钟，¥30–¥40（150–200 泰铢）；出航站楼即有官方出租车柜台，也可以让酒店帮忙叫车。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">09:30</div>
+        <div class="ev-title">入住酒店 / 寄存行李</div>
+        <ul>
+          <li>一般下午 14:00 后入住，先寄存行李，周边吃早餐。</li>
+          <li>买好当天电话卡/流量（机场或 7-11），下载 Grab 打车 App。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">10:30 – 13:00</div>
+        <div class="ev-title">早午餐 + 轻松散步（只选一处）</div>
+        <ul>
+          <li>体力充足时从 <b>帕辛寺</b> 与 <b>柴迪龙寺</b> 中二选一；不要第一天就赶两座寺庙。</li>
+          <li>更推荐沿护城河走一小段、进咖啡馆歇脚，为傍晚夜市保留体力。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">13:00 – 15:00</div>
+        <div class="ev-title">午餐 + 午休</div>
+        <ul>
+          <li>午餐推荐：古城内 Khao Soi 咖喱面（清迈招牌），如 Khao Soi Khun Yai、邓丽君最爱的 Khao Soi 小店。</li>
+          <li>下午回酒店小睡 / 游泳，避开正午热浪（9 月仍偏热，多阵雨）。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">15:30 – 17:30</div>
+        <div class="ev-title">按对象抵达时间会合 / 自由休息</div>
+        <ul>
+          <li>对象早到：在酒店附近会合，沿清迈门到 Wualai 路慢慢走即可。</li>
+          <li>对象午到或晚到：你回酒店休息 / 游泳 / 喝咖啡；塔佩门与三王纪念碑留给 DAY 2 周日夜市前顺路经过。</li>
+        </ul>
+      </div>
+
+      <div class="ev">
+        <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></span>
         <div class="time">18:00 – 21:00</div>
         <div class="ev-title">周六夜市（Wualai Walking Street）</div>
         <ul>
@@ -473,7 +883,8 @@
         <div class="ev-title">素贴山双龙寺（Wat Phra That Doi Suthep）</div>
         <ul>
           <li>清迈最神圣的寺庙，山顶金塔 + 观景平台俯瞰整个清迈。</li>
-          <li>可坐电梯上山或爬 306 级双龙阶梯，仪式感拉满。</li>
+          <li>可坐电梯上山或爬 306 级双龙阶梯，仪式感拉
+满。</li>
           <li>建议早去避人流与日晒，备好遮阳帽与水。</li>
         </ul>
       </div>
