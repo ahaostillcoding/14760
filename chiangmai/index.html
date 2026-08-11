@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183e39">
+  <meta name="description" content="清迈三天不赶路旅行计划，航班确认前后都能轻松使用。">
+  <title>清迈三日 · 慢游计划</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--pine:#183e39;--deep:#092b29;--jade:#3f8a75;--mint:#d8eee2;--sand:#f6f0e4;--cream:#fffdf8;--ink:#17322f;--muted:#667a73;--coral:#df7c65;--line:#d9ded4;--shadow:0 20px 50px rgba(7,43,39,.13);--radius:25px;--font:'Noto Sans SC',system-ui,sans-serif;--serif:'Noto Serif SC',serif;--mono:'DM Mono',monospace}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--sand);color:var(--ink);font:15px/1.75 var(--font);letter-spacing:.01em} button{font:inherit} ::selection{background:var(--mint);color:var(--deep)} a{color:inherit}
+    .top-progress{height:4px;background:var(--coral);width:0;position:fixed;inset:0 auto auto 0;z-index:20;box-shadow:0 0 12px #df7c65}
+    .hero{min-height:560px;position:relative;isolation:isolate;overflow:hidden;background:var(--deep);color:#fff;padding:72px 24px 52px}.hero:before,.hero:after{content:'';position:absolute;border-radius:50%;filter:blur(2px);z-index:-1}.hero:before{width:510px;height:510px;background:#267364;right:-145px;top:-190px;opacity:.85}.hero:after{width:440px;height:440px;background:#d58b55;left:-180px;bottom:-270px;opacity:.4}.hero-grid{max-width:1120px;margin:auto;display:grid;grid-template-columns:1.25fr .75fr;gap:44px;align-items:end}.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.17em;text-transform:uppercase;color:#b5d9c8}.hero h1{font:900 clamp(40px,7vw,74px)/1.14 var(--serif);margin:18px 0 14px;letter-spacing:.04em}.hero p{color:#cbe4d8;font-size:16px;max-width:550px;margin:0}.date-pill{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:7px 13px;margin-top:24px;font-size:13px;color:#e6f4ed}.dot{width:7px;height:7px;background:#f0ab75;border-radius:50%;box-shadow:0 0 0 4px rgba(240,171,117,.16)}
+    .hero-card{background:rgba(255,253,248,.95);color:var(--ink);border-radius:22px;padding:23px;box-shadow:0 25px 60px rgba(0,0,0,.22);transform:translateY(0);animation:float 5s ease-in-out infinite}.hero-card h2{font:700 18px var(--serif);margin:0 0 15px}.hero-card p{font-size:13px;color:var(--muted);margin-top:8px}.flight-mini{padding:13px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;font-size:13px}.flight-mini b{display:block;color:var(--pine)}.flight-mini time{font:500 12px var(--mono);color:var(--coral)}
+    .nav-wrap{position:sticky;top:12px;z-index:10;margin-top:-27px}.nav{max-width:1000px;margin:auto;background:rgba(255,253,248,.82);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.8);box-shadow:0 10px 35px rgba(6,43,39,.1);border-radius:100px;padding:7px 12px;display:flex;justify-content:center;gap:2px}.nav a{font-size:13px;text-decoration:none;padding:7px 12px;border-radius:30px;color:#42625b}.nav a:hover{background:var(--mint);color:var(--deep)}
+    main{max-width:1120px;margin:0 auto;padding:66px 24px 96px}.section{margin-top:70px;scroll-margin-top:85px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:23px}.section h2{font:900 clamp(25px,3.8vw,37px)/1.3 var(--serif);margin:9px 0 0}.section-desc{color:var(--muted);max-width:500px;font-size:14px;margin:0}.card{background:var(--cream);border:1px solid rgba(23,50,47,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .notice{padding:26px 29px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;background:linear-gradient(125deg,#f4e7d8,#fffdf8)}.notice-icon{width:38px;height:38px;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font-weight:700}.notice h3{margin:0 0 4px;font-size:17px}.notice p{margin:0;color:#536a63;font-size:14px}.notice b{color:var(--deep)}
+    .flight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}.flight-card{padding:25px;position:relative;overflow:hidden}.flight-card:after{content:'✦';position:absolute;right:18px;top:8px;font-size:48px;color:rgba(63,138,117,.08)}.flight-card h3{font:700 18px var(--serif);margin:0 0 7px}.flight-card p{margin:0;color:var(--muted);font-size:13px}.route{display:flex;align-items:center;gap:12px;margin:23px 0 14px;font:500 15px var(--mono)}.route i{font-style:normal;color:var(--coral)}.route strong{color:var(--pine)}.status{font-size:12px;border-radius:100px;padding:3px 9px;display:inline-block;background:#eef3ed;color:#4e6c62}.status.warn{background:#fff0e8;color:#aa533e}.flight-card ul{padding-left:18px;color:#49635b;font-size:13px;margin:14px 0 0}.flight-card li+li{margin-top:5px}
+    .chooser{margin-top:20px;padding:23px}.chooser h3{font:700 18px var(--serif);margin:0}.chooser p{color:var(--muted);font-size:13px;margin:4px 0 15px}.choice-row{display:flex;gap:9px;flex-wrap:wrap}.choice{background:#f1f5ef;border:1px solid transparent;border-radius:12px;color:#48655d;padding:10px 14px;cursor:pointer;font-size:13px;transition:.25s}.choice:hover{border-color:var(--jade);transform:translateY(-2px)}.choice.active{background:var(--pine);color:#fff;box-shadow:0 8px 20px rgba(24,62,57,.2)}.choice small{display:block;opacity:.75;font-size:11px;margin-top:1px}.adaptive-note{display:flex;align-items:center;gap:11px;margin-top:16px;color:#35685b;font-size:14px}.adaptive-note span{font:500 11px var(--mono);color:var(--coral);letter-spacing:.08em}
+    .overview{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.day-summary{padding:23px;min-height:220px;position:relative;overflow:hidden}.day-summary .num{font:500 12px var(--mono);color:var(--coral)}.day-summary h3{font:800 21px var(--serif);margin:8px 0}.day-summary p{font-size:13px;color:var(--muted);margin:0}.tag{display:inline-block;padding:3px 8px;background:var(--mint);border-radius:100px;font-size:11px;color:#276352;margin-top:15px}.day-summary:before{content:'';position:absolute;width:95px;height:95px;border-radius:50%;right:-35px;bottom:-37px;background:var(--mint);opacity:.6}
+    .itinerary{display:grid;grid-template-columns:235px 1fr;gap:26px;align-items:start}.day-aside{position:sticky;top:100px;padding:27px;background:var(--pine);color:#fff;border-radius:var(--radius)}.day-aside .num{font:500 13px var(--mono);color:#b7d8cc}.day-aside h3{font:800 29px/1.25 var(--serif);margin:9px 0}.day-aside p{font-size:13px;color:#cde3d9;margin:0}.day-aside .local{margin-top:22px;padding-top:17px;border-top:1px solid rgba(255,255,255,.18);font-size:12px;color:#dcece5}.timeline{padding:12px 0}.stop{display:grid;grid-template-columns:102px 22px 1fr;gap:13px;min-height:118px;position:relative}.stop:not(:last-child):after{content:'';position:absolute;left:112px;top:27px;bottom:0;border-left:1px dashed #b6c9bf}.stop time{font:500 12px var(--mono);color:var(--coral);padding-top:2px}.pin{width:15px;height:15px;background:var(--cream);border:4px solid var(--jade);border-radius:50%;position:relative;z-index:1;margin-top:2px}.stop:first-child .pin,.stop:last-child .pin{border-color:var(--coral)}.stop h4{font-size:16px;margin:0 0 4px;line-height:1.5}.stop p{font-size:13px;color:#5d726b;margin:0;max-width:620px}.stop .micro{display:block;margin-top:5px;font-size:12px;color:#82948d}.stop[data-arrival]{transition:opacity .25s,transform .25s}.stop.is-hidden{display:none}
+    .airport{background:linear-gradient(120deg,#e5f2eb,#fdfbf4);padding:25px;margin-top:22px;display:grid;grid-template-columns:auto 1fr;gap:15px}.airport strong{display:block;font:700 17px var(--serif);margin-bottom:4px}.airport p{margin:0;font-size:13px;color:#526d64}.plane{font-size:25px;color:var(--coral)}
+    .mapless{padding:27px;display:grid;grid-template-columns:1fr 1fr;gap:22px}.mapless h3{font:700 18px var(--serif);margin:0 0 9px}.mapless p{margin:0;color:var(--muted);font-size:13px}.zones{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.zone{font-size:12px;border:1px solid var(--line);border-radius:99px;padding:4px 10px;color:#547067}.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tip{padding:21px}.tip b{font-size:15px}.tip p{font-size:13px;color:var(--muted);margin:7px 0 0}.tip i{font-style:normal;color:var(--coral);margin-right:6px}
+    footer{text-align:center;color:#8a9a94;font-size:12px;padding:30px}.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}.reveal.in{opacity:1;transform:none}@keyframes float{50%{transform:translateY(-9px)}}
+    @media(max-width:760px){.hero{min-height:auto;padding-top:55px}.hero-grid,.itinerary{grid-template-columns:1fr}.hero-card{margin-top:10px}.nav{border-radius:17px;max-width:calc(100% - 24px);flex-wrap:wrap}.nav a{padding:5px 7px;font-size:12px}main{padding:46px 17px 75px}.section{margin-top:52px}.section-head{display:block}.section-desc{margin-top:10px}.flight-grid,.overview,.tips,.mapless{grid-template-columns:1fr}.day-aside{position:relative;top:auto}.stop{grid-template-columns:82px 18px 1fr;gap:10px}.stop:not(:last-child):after{left:90px}.notice{padding:21px}.card{border-radius:20px}.chooser,.flight-card{padding:20px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-card{animation:none}.reveal{opacity:1;transform:none;transition:none}.choice:hover{transform:none}}
+  </style>
+</head>
+<body>
+  <div class="top-progress" id="progress"></div>
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Chiang Mai / Sabai Sabai</div>
+        <h1>清迈三日<br>慢游计划</h1>
+        <p>把「一起到达」留给航班确定后，把「不赶路」先写进每一天。古城、素贴山与两场周末夜市，只保留真正值得慢慢体验的部分。</p>
+        <div class="date-pill"><span class="dot"></span>2026.09.12 — 09.14 · 周六至周一</div>
+      </div>
+      <aside class="hero-card" aria-label="航班状态摘要">
+        <h2>先看航班，再落行程</h2>
+        <div class="flight-mini"><span><b>你的广州往返</b>已记录，但返程需复核</span><time>CNX → CAN</time></div>
+        <div class="flight-mini"><span><b>对象的吉隆坡往返</b>暂未订，不锁具体航班</span><time>KUL ↔ CNX</time></div>
+        <p>下方可切换对象抵达时段；Day 1 会随之调整。</p>
+      </aside>
+    </div>
+  </header>
+  <div class="nav-wrap"><nav class="nav" aria-label="页面导航"><a href="#flights">航班策略</a><a href="#overview">三日总览</a><a href="#day1">Day 1</a><a href="#day2">Day 2</a><a href="#day3">Day 3</a><a href="#tips">实用提示</a></nav></div>
+  <main>
+    <section class="section reveal" id="flights">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--coral)">01 / Flight-aware</div><h2>不把不确定的航班，写成确定的行程</h2></div><p class="section-desc">此前页面的对象航班号、时刻，以及你的返程 9C8934，都不应直接视为 9 月 12–14 日的有效班次。现在改成可执行的抵达/返程窗口。</p></div>
+      <div class="notice card"><div class="notice-icon">!</div><div><h3>已移除对象的具体航班号与价格承诺</h3><p>AK857 近期公开时刻显示为下午航班，和旧版 <b>17:20</b> 不一致；春秋航空公开时刻表中，9C8934 的一段计划有效期也没有覆盖 9/14。请以购票页和出票信息为唯一依据。</p></div></div>
+      <div class="flight-grid">
+        <article class="flight-card card"><span class="status">你的航班 · 已记录 / 待复核</span><h3>广州 ↔ 清迈</h3><div class="route"><strong>CAN</strong><i>→</i><strong>CNX</strong></div><p>去程暂按 9/12 早上抵达清迈设计；返程暂按 9/14 晚上离开设计。</p><ul><li>起飞前 72 小时：核对航班号、起降时间与航站楼。</li><li>若返程早于 18:00，Day 3 只保留市场与午餐。</li></ul></article>
+        <article class="flight-card card"><span class="status warn">对象航班 · 待订</span><h3>吉隆坡 ↔ 清迈</h3><div class="route"><strong>KUL</strong><i>↔</i><strong>CNX</strong></div><p>优先选直飞；抵达清迈不晚于 14:30，才能舒服衔接周六夜市。</p><ul><li>不为了同步抵达而买转机或过早航班。</li><li>返程优先 16:00 之后起飞；若只能早飞，改为 Day 3 上午独立返程。</li></ul></article>
+      </div>
+      <div class="chooser card" aria-live="polite"><h3>对象预计几点抵达清迈？</h3><p>暂不清楚就保持「中午抵达」；确认后点一下，Day 1 的内容会立刻改成对应的从容版本。</p><div class="choice-row" role="group" aria-label="对象抵达时间"><button class="choice" data-arrival-choice="early">早到<small>10:30 前</small></button><button class="choice active" data-arrival-choice="mid">中午抵达<small>10:30–15:30</small></button><button class="choice" data-arrival-choice="late">傍晚抵达<small>15:30 后</small></button></div><div class="adaptive-note"><span>DAY 1</span><b id="arrival-message">按中午抵达安排：你先寄存行李、午休；对象到后会合，傍晚只逛古城南侧与周六夜市。</b></div></div>
+    </section>
+    <section class="section reveal" id="overview">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--coral)">02 / Three slow days</div><h2>一天一个主区域，雨天也有余地</h2></div><p class="section-desc">减少折返：第一天只在古城南侧，第二天把山景与宁曼连成一条线，第三天留给市场与返程。</p></div>
+      <div class="overview">
+        <article class="day-summary card"><span class="num">DAY 01 · SAT</span><h3>落地、缓冲、夜市</h3><p>把房间、午休和会合留在白天；晚上步行逛 Wualai 周六夜市。</p><span class="tag">不跨区 · 不追景点</span></article>
+        <article class="day-summary card"><span class="num">DAY 02 · SUN</span><h3>山上半日，宁曼慢逛</h3><p>上午双龙寺，午后只留宁曼路；傍晚回古城逛周日夜市。</p><span class="tag">山路包车 · 午后可缩短</span></article>
+        <article class="day-summary card"><span class="num">DAY 03 · MON</span><h3>市场、午餐、返程</h3><p>上午瓦洛洛市场，按各自离境时间分流；你的晚航班保留酒店休息。</p><span class="tag">可提前结束 · 无硬塞景点</span></article>
+      </div>
+    </section>
+    <section class="section reveal" id="day1">
+      <div class="itinerary"><aside class="day-aside"><div class="num">DAY 01 · SAT · 09/12</div><h3>先抵达，再开始旅行</h3><p>第一天的目标不是打卡，而是把作息调回舒服的节奏。</p><div class="local">区域：清迈机场 → 古城南侧 / Wualai 路<br>交通：机场 Grab 约 15–25 分钟</div></aside><div><div class="timeline">
+        <article class="stop"><time>08:45 起</time><span class="pin"></span><div><h4>你抵达清迈，先到酒店寄存</h4><p>不追求立即入住：寄存行李、吃早午餐、补充电话卡或现金。旅途疲惫就直接在酒店公共区休息。</p><span class="micro">你的航班时间以出票凭证为准。</span></div></article>
+        <article class="stop" data-arrival="early"><time>11:00–13:00</time><span class="pin"></span><div><h4>两人会合后，吃一顿慢午餐</h4><p>对象早到时，直接在清迈门或酒店附近会合；午餐后各自回房休息，下午不安排寺庙。</p></div></article>
+        <article class="stop" data-arrival="mid"><time>你的上午</time><span class="pin"></span><div><h4>你休息；对象到达后再会合</h4><p>对象抵达、过关、到酒店通常还需约 60–90 分钟。会合时间留弹性，不要在机场外等待或把餐厅订死。</p></div></article>
+        <article class="stop" data-arrival="late"><time>下午</time><span class="pin"></span><div><h4>你在酒店休息，晚餐再会合</h4><p>对象傍晚抵达时，取消白天游览；你可游泳、小睡或在清迈门附近喝咖啡。</p></div></article>
+        <article class="stop" data-arrival="early mid"><time>16:30–17:40</time><span class="pin"></span><div><h4>古城南侧散步（可选）</h4><p>只走一小段：清迈门 → 银庙外街区 → Wualai 路。下雨或没睡好就跳过，直接去夜市。</p></div></article>
+        <article class="stop"><time>18:00–21:00</time><span class="pin"></span><div><h4>周六夜市 · Wualai Walking Street</h4><p>把它当晚餐与漫游，而不是购物任务。住在南门附近可步行回酒店；住古城内也建议 Grab 往返。</p><span class="micro">雨天：带伞、穿防滑鞋，夜市照常但摊位会略少。</span></div></article>
+      </div></div></div>
+    </section>
+    <section class="section reveal" id="day2">
+      <div class="itinerary"><aside class="day-aside"><div class="num">DAY 02 · SUN · 09/13</div><h3>山景与城市，各留半天</h3><p>山路、午休、夜市三件事都做得到，前提是下午不再加清迈大学。</p><div class="local">路线：酒店 → 双龙寺 → 宁曼 → 古城<br>交通：双龙寺推荐往返包车</div></aside><div><div class="timeline">
+        <article class="stop"><time>08:30</time><span class="pin"></span><div><h4>早餐后包车上素贴山</h4><p>建议在酒店订半天往返车，减少临时议价与回程等车；车程约 45–60 分钟，雨天多预留 20 分钟。</p></div></article>
+        <article class="stop"><time>09:30–11:30</time><span class="pin"></span><div><h4>双龙寺 · Wat Phra That Doi Suthep</h4><p>只游双龙寺与观景台，不再塞入蒲屏皇宫。穿过膝、不露肩；山上云雾重时就慢慢逛寺庙本身。</p></div></article>
+        <article class="stop"><time>12:30–15:00</time><span class="pin"></span><div><h4>下山午餐 + 回酒店休息</h4><p>回到古城或宁曼吃午餐后，至少留 60–90 分钟空档。这个休息段是晚上还能舒适逛夜市的关键。</p></div></article>
+        <article class="stop"><time>16:00–18:00</time><span class="pin"></span><div><h4>宁曼路一小圈</h4><p>从 One Nimman / 咖啡店开始，逛累便坐下，不安排清迈大学。若遇暴雨，直接在商场或咖啡馆避雨。</p></div></article>
+        <article class="stop"><time>19:00–21:30</time><span class="pin"></span><div><h4>周日夜市 · Tha Phae Gate 一带</h4><p>从塔佩门向西慢慢逛，先吃后买。晚上人多，逛到累就 Grab 回酒店，不必走完全程。</p></div></article>
+      </div></div></div>
+    </section>
+    <section class="section reveal" id="day3">
+      <div class="itinerary"><aside class="day-aside"><div class="num">DAY 03 · MON · 09/14</div><h3>给返程留足空白</h3><p>每个人的起飞时间不同，分开安排不等于赶路；重点是提前结束共同活动。</p><div class="local">区域：酒店 → 瓦洛洛市场 → 机场<br>CNX 通常建议国际航班提前 2.5–3 小时抵达</div></aside><div><div class="timeline">
+        <article class="stop"><time>09:30–11:30</time><span class="pin"></span><div><h4>退房、寄存行李、瓦洛洛市场</h4><p>只买容易带走的果干、香料、咖啡或日用品；不建议临走买液体、散装食品或易碎银器。</p></div></article>
+        <article class="stop"><time>12:00–13:30</time><span class="pin"></span><div><h4>一起吃告别午餐</h4><p>市场附近或回古城吃一顿轻松的泰北菜。此后不再安排需要打车跨城的景点。</p></div></article>
+        <article class="stop"><time>按对象航班</time><span class="pin"></span><div><h4>对象独立去机场</h4><p>起飞在 16:00 前：午餐后直接出发；16:00–19:00：酒店休息后离开；19:00 后：可与你共享一段咖啡时间。清迈机场距离市区近，但雨天和晚高峰仍需缓冲。</p></div></article>
+        <article class="stop"><time>你的下午</time><span class="pin"></span><div><h4>回酒店休息 / 泳池 / 一杯咖啡</h4><p>如果你的返程确为晚班，最好的安排就是留白：取回行李、洗漱、整理照片。不要再插入寺庙或远郊项目。</p></div></article>
+        <article class="stop"><time>起飞前 3 小时</time><span class="pin"></span><div><h4>你前往 CNX 机场</h4><p>按出票信息核对航站楼、值机柜台和行李额度。建议比航空公司最低要求更早一点抵达，特别是托运行李或雨天出行。</p></div></article>
+      </div><div class="airport card"><div class="plane">✈</div><div><strong>返程的“不会赶”公式</strong><p>从住宿出发时间 = 起飞时间 − 3 小时（国际航班到机场缓冲）− 30 分钟（市区到机场与雨天余量）。若住古城/南门，通常可以更早到机场而不是把下午塞满。</p></div></div></div></div>
+    </section>
+    <section class="section reveal" id="tips">
+      <div class="section-head"><div><div class="eyebrow" style="color:var(--coral)">04 / Easy details</div><h2>不赶路的小细节</h2></div><p class="section-desc">酒店、天气和交通，决定了行程体感远多于多打一个景点。</p></div>
+      <div class="mapless card"><div><h3>建议住哪里</h3><p>沿用微笑兰纳周边、古城南门或 Wualai 路一带：周六夜市步行可到，去机场也近。宁曼适合作为 Day 2 的下午目的地，不建议为两晚住宿而搬家。</p><div class="zones"><span class="zone">古城南门</span><span class="zone">Wualai 路</span><span class="zone">清迈门</span></div></div><div><h3>9 月的安排原则</h3><p>上午留给室外；13:00–15:30 预留午休或室内咖啡馆；傍晚再逛夜市。下雨时不补打卡，直接缩短为一处寺庙或一段市场。</p><div class="zones"><span class="zone">折叠伞</span><span class="zone">防滑鞋</span><span class="zone">Grab</span></div></div></div>
+      <div class="tips" style="margin-top:16px"><article class="tip card"><b><i>01</i>预约包车</b><p>双龙寺最适合半日往返包车；确认是否包含等候、停车和上山后返程。</p></article><article class="tip card"><b><i>02</i>寺庙着装</b><p>带一件轻薄衬衫或披肩，进入寺庙时遮肩、穿过膝下装最省心。</p></article><article class="tip card"><b><i>03</i>夜市节奏</b><p>先吃再买、现金分开放；周末夜市人多，累了随时叫车回酒店。</p></article></div>
+    </section>
+  </main>
+  <footer>CHIANG MAI · 3 DAYS · SABAI SABAI · 更新于 2026.08</footer>
+  <script>
+    const modeMessages={early:'按早到安排：午餐后一起回酒店休息，16:30 再决定是否散步。',mid:'按中午抵达安排：你先寄存行李、午休；对象到后会合，傍晚只逛古城南侧与周六夜市。',late:'按傍晚抵达安排：白天完全留白，晚餐在周六夜市会合，不安排任何景点。'};
+    const buttons=document.querySelectorAll('[data-arrival-choice]'); const arrivalStops=document.querySelectorAll('[data-arrival]'); const message=document.getElementById('arrival-message');
+    function setArrival(mode){buttons.forEach(b=>b.classList.toggle('active',b.dataset.arrivalChoice===mode));arrivalStops.forEach(stop=>{const modes=stop.dataset.arrival.split(' ');stop.classList.toggle('is-hidden',!modes.includes(mode));});message.textContent=modeMessages[mode];}
+    buttons.forEach(b=>b.addEventListener('click',()=>setArrival(b.dataset.arrivalChoice)));
+    const progress=document.getElementById('progress');addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(scrollY/max*100||0)+'%'},{passive:true});
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));setArrival('mid');
+  </script>
+</body>
+</html>
+
