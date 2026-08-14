@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="清迈 3 天悠闲自由行规划：古城、素贴山、夜市，微笑兰纳酒店周边住宿，含酒店与美食推荐。">
-<title>清迈 3 天悠闲自由行 · 兰纳之夜</title>
+<meta name="description" content="清迈 3 晚悠闲自由行规划：围绕粘粘瀑布、泰餐烹饪体验与夜市安排；支持拖拽调整具体时间，含两人错峰返程、酒店预算和实用贴士。">
+<title>清迈 3 晚悠闲自由行 · 兰纳之夜</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
@@ -397,7 +397,8 @@
   html.js .card.in .foods .food:nth-child(2){transition-delay:.05s;}
   html.js .card.in .foods .food:nth-child(3){transition-delay:.08s;}
   html.js .card.in .foods .food:nth-child(4){transition-delay:.11s;}
-  html.js .card.in .foods .food:nth-child(5){transition-delay:.14s;}
+  html.js .card.in .foods .food:nth-child(5){transition-delay:.1
+4s;}
   html.js .card.in .foods .food:nth-child(6){transition-delay:.17s;}
   html.js .hotel{opacity:0;transform:translateY(10px);transition:opacity .3s ease,transform .3s var(--ease-out);}
   html.js .card.in .hotel{opacity:1;transform:none;transition-delay:calc(var(--i,0)*.05s + .03s);}
@@ -428,8 +429,7 @@
   @keyframes skyFade{from{opacity:0;}to{opacity:1;}}
 
   /* ===== Food ===== */
- 
- .foods{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:12px;margin-top:18px;}
+  .foods{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:12px;margin-top:18px;}
   .food{
     background:var(--paper-3);border:1px solid var(--line);border-radius:12px;
     padding:14px 16px;
@@ -471,6 +471,52 @@
     .lantern.l3{display:none;}
   }
 
+  /* 可拖拽行程编排器：保留原有纸张质感，只让规划变得可操作 */
+  .planner-intro{margin:0 0 15px;color:var(--muted);font-size:13px;line-height:1.8;}
+  .planner-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:16px;align-items:start;}
+  .planner-catalog,.planner-board{border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.42);padding:13px;}
+  .planner-label{display:flex;justify-content:space-between;align-items:center;color:var(--gold-deep);font-size:12px;font-weight:700;letter-spacing:.08em;margin-bottom:10px;}
+  .planner-hint{font-size:11px;color:var(--muted);letter-spacing:0;font-weight:400;}
+  .catalog-list{display:flex;flex-wrap:wrap;gap:7px;}
+  .catalog-item,.plan-item{border:1px solid rgba(183,137,48,.36);border-radius:9px;background:#fffdf8;color:var(--ink);cursor:grab;user-select:none;box-shadow:0 2px 5px rgba(68,48,15,.06);}
+  .catalog-item{font-size:12px;padding:8px 9px;width:100%;}
+  .catalog-item small{display:block;color:var(--muted);font-size:10px;margin-top:2px;}
+  .plan-item{padding:7px 9px;font-size:12px;font-weight:700;line-height:1.35;}
+  .catalog-item:active,.plan-item:active{cursor:grabbing;}
+  .catalog-item:hover,.plan-item:hover{border-color:var(--gold);transform:translateY(-1px);}
+  .plan-item.is-dragging{opacity:.45;}
+  .planner-days{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px;}
+  .planner-day{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;}
+  .planner-day.active{background:var(--night);border-color:var(--night);color:#fff8e8;}
+  .planner-day[hidden]{display:none;}
+  .planner-slots{display:grid;gap:8px;}
+  .planner-slots[hidden]{display:none!important;}
+  .planner-slot{display:grid;grid-template-columns:84px 1fr;gap:10px;align-items:start;padding:9px;border:1px dashed rgba(167,122,36,.44);border-radius:10px;min-height:53px;transition:background .18s,border-color .18s;}
+  .planner-slot.drag-over{background:rgba(239,210,151,.23);border-color:var(--gold);}
+  .slot-time{appearance:none;border:0;background:transparent;color:var(--gold-deep);font-weight:700;text-align:left;padding:3px 0;font-size:12px;line-height:1.35;cursor:pointer;}
+  .slot-time::after{content:' ✎';font-weight:400;color:var(--muted);}
+  .slot-content{display:flex;gap:7px;flex-wrap:wrap;min-height:30px;align-items:center;}
+  .slot-empty{font-size:11px;color:#a99c87;font-style:italic;}
+  .planner-actions{display:flex;align-items:center;justify-content:space-between;margin-top:12px;gap:10px;}
+  .planner-reset{border:1px solid var(--gold);background:transparent;color:var(--gold-deep);border-radius:999px;padding:7px 11px;font-size:11px;font-weight:700;cursor:pointer;}
+  .planner-reset:hover{background:#fff7df;}
+  .planner-status{font-size:11px;color:var(--muted);}
+  .planner-trash{margin-top:12px;border:1px dashed #b68d70;border-radius:9px;padding:9px;text-align:center;color:#99735c;font-size:11px;}
+  .planner-trash.drag-over{background:#fff0e7;border-color:#a96048;}
+  .time-modal[hidden]{display:none!important;}
+  .time-modal{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:18px;background:rgba(17,25,43,.48);backdrop-filter:blur(4px);animation:fadeIn .18s ease both;}
+  .time-modal-dialog{width:min(390px,100%);border:1px solid rgba(202,160,81,.55);border-radius:16px;padding:21px;background:#fffaf0;box-shadow:0 22px 55px rgba(14,20,35,.3);}
+  .time-modal-kicker{color:var(--gold-deep);font:700 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;}
+  .time-modal h3{font-family:var(--serif);font-size:22px;margin:7px 0 5px;color:var(--ink);}
+  .time-modal p{margin:0 0 14px;color:var(--muted);font-size:12px;line-height:1.6;}
+  .time-modal input{box-sizing:border-box;width:100%;border:1px solid var(--gold);border-radius:9px;padding:11px 12px;background:#fffdf8;color:var(--ink);font:600 16px/1.2 var(--sans);outline:none;}
+  .time-modal input:focus{box-shadow:0 0 0 3px rgba(202,160,81,.18);}
+  .time-modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:15px;}
+  .time-modal-actions button{border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;}
+  .time-modal-cancel{background:transparent;border:1px solid var(--line);color:var(--muted);}
+  .time-modal-save{background:var(--night);border:1px solid var(--night);color:#fff9e7;}
+  @media(max-width:680px){.planner-layout{grid-template-columns:1fr}.catalog-list{display:grid;grid-template-columns:1fr 1fr}.catalog-item{width:auto}.planner-slot{grid-template-columns:72px 1fr;gap:7px;}}
+
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
     html.js .card,html.js .hotel,html.js .ev,html.js .ev .marker,html.js .ev .time,html.js .ev ul,
@@ -501,8 +547,8 @@
   <div class="lanterns" aria-hidden="true"><span class="lantern l1"></span><span class="lantern l2"></span><span class="lantern l3"></span></div>
   <div class="hero-inner">
     <div class="kicker">Chiang Mai · Lanna</div>
-    <h1 class="h-title">清迈 3 天悠闲自由行</h1>
-    <p class="h-sub">2026年9月12日（周六）— 9月14日（周一） · 微笑兰纳酒店周边住宿</p>
+    <h1 class="h-title">清迈 3 晚悠闲自由行</h1>
+    <p class="h-sub">2026年9月12日（周六）— 9月15日（周二） · 你 9/14 晚返广，她 9/15 午后返吉隆坡</p>
     <div class="h-sabai">Sabai sabai — 慢下来，才是清迈</div>
     <div class="h-chips">
       <span class="chip">节奏轻松</span>
@@ -548,11 +594,13 @@
 
 <div class="nav" id="nav" aria-label="页面导航">
   <a href="#flights">航班</a>
+  <a href="#planner">编排</a>
   <a href="#overview">行程总览</a>
   <a href="#hotels">酒店推荐</a>
   <a href="#day1">DAY 1</a>
   <a href="#day2">DAY 2</a>
   <a href="#day3">DAY 3</a>
+  <a href="#day4">DAY 4</a>
   <a href="#food">美食</a>
   <a href="#budget">预算</a>
 </div>
@@ -563,7 +611,7 @@
   <div class="card" id="flights">
     <div class="eyebrow">Flights</div>
     <h2 class="sec-title"><span class="num">1</span>航班信息</h2>
-    <p class="sec-sub">我的航班已订；对象航班尚未确认。为了避免旧时刻误导，以下仅保留选票原则和会合节奏，最终以出票信息为准。</p>
+    <p class="sec-sub">我的航班已订；对象大概率选择截图中的亚航直飞。航班时刻已按截图更新；但截图返程日期为 9/15（周二），与本页我的 9/14（周一）返程不同，订票前请再确认两人的实际同行日期。</p>
 
     <div class="flight-grid">
       <!-- 我的航班 -->
@@ -590,36 +638,100 @@
       <!-- 对象航班 -->
       <div class="flight-card pending">
         <div class="fc-head">
-          <span class="fc-label">对象航班 · 待订</span>
-          <span class="fc-airline">吉隆坡 KUL ↔ 清迈 CNX · 优先直飞</span>
+          <span class="fc-label">对象航班 · 大概率锁定</span>
+          <span class="fc-airline">亚航直飞 · 截图所示时刻</span>
         </div>
         <div class="fc-route">
           <div class="fc-city"><b>09/12 周六</b><span class="fc-code">KUL → CNX</span></div>
-          <div class="fc-fnum">首选 · AK856 <span class="fc-alt">（订票页复核）</span></div>
+          <div class="fc-fnum">去程 · 亚航直飞 <span class="fc-alt">（以出票为准）</span></div>
           <div class="fc-time"><b>13:30</b> 起飞 <em>→</em> <b>15:10</b> 到达</div>
           <div class="fc-note">KUL2 → CNX · 直飞约 2h40m；落地后直接去酒店，晚上 18:00 从容衔接周六夜市，不用清早赶机场。</div>
           <div class="flight-choice recommend">
-            <span class="primary"><b>✓ 最推荐：AK856 · 午后抵达</b>适合这份“慢游”行程：白天留给补觉和入住，傍晚在酒店/夜市会合。</span>
-            <span><b>备选：AK854 · 07:00 → 08:40</b>想从第一天上午就一起行动时再选；时间最充足，但意味着清早到 KUL2。</span>
-            <span><b>舒适备选：MH772 · 09:50 → 11:40</b>马航直飞、KUL T1 出发；仅当 9/12 订票页显示可售时考虑。</span>
+            <span class="primary"><b>✓ 13:30 → 15:10</b>正好适合慢游：白天留给你补觉和入住，她落地后直接去酒店，傍晚夜市会合。</span>
+            <span><b>机场：吉隆坡 T2 → 清迈</b>，直飞约 2 小时 40 分钟；建议预留入境、取行李与打车时间。</span>
           </div>
         </div>
         <div class="fc-route">
-          <div class="fc-city"><b>09/14 周一</b><span class="fc-code">CNX → KUL</span></div>
-          <div class="fc-fnum">首选 · AK857 <span class="fc-alt">（订票页复核）</span></div>
+          <div class="fc-city"><b>09/15 周二</b><span class="fc-code">CNX → KUL · 截图所选日期</span></div>
+          <div class="fc-fnum">回程 · 亚航直飞 <span class="fc-alt">（以出票为准）</span></div>
           <div class="fc-time"><b>15:40</b> 起飞 <em>→</em> <b>19:35</b> 到达</div>
-          <div class="fc-note">CNX → KUL2 · 直飞约 2h55m；建议 12:30–12:45 从酒店出发，早上还能一起逛市场、吃午餐。</div>
+          <div class="fc-note">CNX → KUL2 · 直飞约 2h55m；建议 12:30–12:45 从酒店出发，早上仍可悠闲吃早餐、收拾行李。</div>
           <div class="flight-choice recommend">
-            <span class="primary"><b>✓ 最推荐：AK857 · 下午返程</b>DAY 3 只安排市场和告别午餐，起飞前预留约 3 小时到机场，节奏最稳。</span>
-            <span><b>备选原则：同日直飞且 15:00 后起飞</b>若 AK857 当日无售，选同样满足此窗口的直飞；不建议为了晚一点而转机。</span>
-            <span><b>不作为主推：MH793 · 14:30 → 18:30</b>近期公开排班多见于周二/周六，与你的 9/14 周一未必匹配，仅在当天真的显示可售时采用。</span>
+            <span class="primary"><b>✓ 15:40 → 19:35</b>下午返程最舒适，离开前不用早起赶路。</span>
+            <span><b>注意日期差异</b>：截图是 9/15 周二；若你仍乘 9/14 周一晚班返广，她将会在清迈多住一晚。</span>
           </div>
         </div>
-        <div class="fc-tip">💡 推荐组合：<b>AK856（去）+ AK857（回）</b>。两程均以航空公司订票页在 <b>9/12、9/14</b> 显示的实际时刻和可售状态为准；若航班调整，优先保留“直飞 + 去程 15:30 前抵达 + 回程 15:00 后起飞”这三个条件。</div>
+        <div class="fc-tip">💡 大概率组合：<b>9/12 13:30 → 15:10（去）+ 9/15 15:40 → 19:35（回）</b>。请出票前核对航班号、日期、行李额和航站楼；本页暂不假设你会更改 9/14 晚班返程。</div>
       </div>
     </div>
 
     <div class="tip">✈️ 落地时间参考：你 08:45 落地后，出关、取行李与到酒店约需 60–90 分钟。对象航班未定时，不预设会合时刻：中午抵达就午休后会合，傍晚抵达则直接在周六夜市碰面。</div>
+  </div>
+
+  <!-- 可拖拽行程编排器 -->
+  <div class="card" id="planner">
+    <div class="eyebrow">Arrange · Drag &amp; Drop</div>
+    <h2 class="sec-title"><span class="num">★</span>可拖拽行程编排</h2>
+    <p class="planner-intro">左侧是这趟旅行的全部候选景点与体验。默认计划已按不赶路排好；把候选项拖到右侧时段，或拖动已安排项目换位置。点击时间可直接修改时间段。</p>
+    <div class="planner-layout" id="plannerApp">
+      <aside class="planner-catalog" aria-label="候选景点与体验">
+        <div class="planner-label"><span>候选清单</span><span class="planner-hint">拖入右侧</span></div>
+        <div class="catalog-list">
+          <div class="catalog-item" draggable="true" data-plan="粘粘瀑布"><b>💧 粘粘瀑布</b><small>半天至一天 · 城北约 60 km</small></div>
+          <div class="catalog-item" draggable="true" data-plan="Zabb E Lee 烹饪课"><b>🍳 Zabb E Lee 烹饪课</b><small>半天 · 含做饭与午餐</small></div>
+          <div class="catalog-item" draggable="true" data-plan="奶奶厨房烹饪课"><b>🍲 奶奶厨房烹饪课</b><small>半天 · 与 Zabb 二选一</small></div>
+          <div class="catalog-item" draggable="true" data-plan="周六夜市"><b>🏮 周六夜市</b><small>Wualai 路 · 9/12 晚</small></div>
+          <div class="catalog-item" draggable="true" data-plan="周日夜市"><b>🎐 周日夜市</b><small>塔佩门一带 · 9/13 晚</small></div>
+          <div class="catalog-item" draggable="true" data-plan="宁曼喝一杯"><b>☕ 宁曼喝一杯</b><small>轻松备选 · 不与瀑布同日</small></div>
+          <div class="catalog-item" draggable="true" data-plan="泰式按摩"><b>💆 泰式按摩</b><small>60–90 分钟 · 雨天备选</small></div>
+          <div class="catalog-item" draggable="true" data-plan="瓦洛洛市场"><b>🛍️ 瓦洛洛市场</b><small>伴手礼 · 可替换自由时段</small></div>
+          <div class="catalog-item" draggable="true" data-plan="双龙寺（可选）"><b>🛕 双龙寺（可选）</b><small>只在删掉其他半天项目时加入</small></div>
+        </div>
+        <div class="planner-trash" id="plannerTrash">把已安排项目拖到这里移除</div>
+      </aside>
+      <section class="planner-board" aria-label="行程时间表">
+        <div class="planner-label"><span>默认计划</span><span class="planner-hint">点击时间可编辑</span></div>
+        <div class="planner-days" role="tablist" aria-label="选择行程日">
+          <button class="planner-day active" type="button" data-planner-day="1">DAY 1 · 9/12</button>
+          <button class="planner-day" type="button" data-planner-day="2">DAY 2 · 9/13</button>
+          <button class="planner-day" type="button" data-planner-day="3">DAY 3 · 9/14</button>
+          <button class="planner-day" type="button" data-planner-day="4">DAY 4 · 9/15</button>
+        </div>
+        <div class="planner-slots" data-planner-panel="1">
+          <div class="planner-slot"><button class="slot-time" type="button">08:45–10:30</button><div class="slot-content"><span class="plan-item" draggable="true">你抵达清迈</span><span class="plan-item" draggable="true">出关 / 取行李 / Grab 去酒店</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="butto
+n">10:30–13:00</button><div class="slot-content"><span class="plan-item" draggable="true">寄存行李</span><span class="plan-item" draggable="true">酒店附近早午餐 / 咖啡</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">13:00–15:30</button><div class="slot-content"><span class="plan-item" draggable="true">酒店午睡 / 泳池休息</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">15:10–17:00</button><div class="slot-content"><span class="plan-item" draggable="true">她抵达清迈</span><span class="plan-item" draggable="true">入境 / 前往酒店</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">17:00–18:00</button><div class="slot-content"><span class="plan-item" draggable="true">酒店会合 / 简单洗漱</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">18:00–21:00</button><div class="slot-content"><span class="plan-item" draggable="true">周六夜市</span></div></div>
+        </div>
+        <div class="planner-slots" data-planner-panel="2" hidden>
+          <div class="planner-slot"><button class="slot-time" type="button">07:30–08:00</button><div class="slot-content"><span class="plan-item" draggable="true">酒店早餐 / 换涉水鞋</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">08:00–09:30</button><div class="slot-content"><span class="plan-item" draggable="true">包车前往粘粘瀑布</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">09:30–12:30</button><div class="slot-content"><span class="plan-item" draggable="true">粘粘瀑布玩水 / 攀爬</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">12:30–15:30</button><div class="slot-content"><span class="plan-item" draggable="true">返程</span><span class="plan-item" draggable="true">顺路简餐</span><span class="plan-item" draggable="true">回酒店冲澡</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">16:00–18:00</button><div class="slot-content"><span class="plan-item" draggable="true">酒店午休</span><span class="plan-item" draggable="true">泰式按摩（可选）</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">19:00–22:00</button><div class="slot-content"><span class="plan-item" draggable="true">周日夜市</span></div></div>
+        </div>
+        <div class="planner-slots" data-planner-panel="3" hidden>
+          <div class="planner-slot"><button class="slot-time" type="button">08:00–08:30</button><div class="slot-content"><span class="plan-item" draggable="true">退房 / 你的行李寄存</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">08:30–09:30</button><div class="slot-content"><span class="plan-item" draggable="true">烹饪课接送 / 市场集合</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">09:30–14:00</button><div class="slot-content"><span class="plan-item" draggable="true">Zabb E Lee 烹饪课</span><span class="plan-item" draggable="true">自己做午餐</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">14:30–16:30</button><div class="slot-content"><span class="plan-item" draggable="true">回酒店午休</span><span class="plan-item" draggable="true">她自由休息</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">16:30–19:00</button><div class="slot-content"><span class="plan-item" draggable="true">收拾行李 / 酒店附近咖啡</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">19:15–19:45</button><div class="slot-content"><span class="plan-item" draggable="true">你前往机场</span></div></div>
+        </div>
+        <div class="planner-slots" data-planner-panel="4" hidden>
+          <div class="planner-slot"><button class="slot-time" type="button">09:00–10:30</button><div class="slot-content"><span class="plan-item" draggable="true">她睡到自然醒</span><span class="plan-item" draggable="true">酒店早餐</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">10:30–11:30</button><div class="slot-content"><span class="plan-item" draggable="true">收拾行李 / 退房</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">11:30–12:30</button><div class="slot-content"><span class="plan-item" draggable="true">酒店附近买水果 / 零食</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">12:30–12:45</button><div class="slot-content"><span class="plan-item" draggable="true">她前往机场</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">15:40</button><div class="slot-content"><span class="plan-item" draggable="true">她返吉隆坡</span></div></div>
+        </div>
+        <div class="planner-actions"><button type="button" class="planner-reset" id="plannerReset">恢复默认计划</button><span class="planner-status" id="plannerStatus" aria-live="polite">自动保存到当前浏览器</span></div>
+      </section>
+    </div>
   </div>
 
   <!-- 行程总览 -->
@@ -630,18 +742,23 @@
       <tr><th>日期</th><th>时段</th><th>安排</th><th>亮点</th></tr>
       <tr>
         <td><b>9/12 周六</b></td><td>上午 — 晚</td>
-        <td>抵达 → 酒店寄存行李 → 古城漫游（柴迪龙寺、塔佩门、三王纪念碑）→ <b>周六夜市</b></td>
-        <td>周六夜市就在酒店旁 Wualai 路，走路就到</td>
+        <td>抵达 → 酒店寄存行李 → 咖啡 / 按摩 / 午睡三选一 → <b>周六夜市</b></td>
+        <td>不再塞古城寺庙；把第一天完整留给会合、休息和夜市小吃</td>
       </tr>
       <tr>
         <td><b>9/13 周日</b></td><td>上午 — 晚</td>
-        <td>素贴山双龙寺半日 → 午后宁曼路/清迈大学 → <b>周日夜市</b></td>
-        <td>周日夜市是清迈最大夜市，古城内</td>
+        <td>粘粘瀑布半日 → 回城午休 → <b>周日夜市</b></td>
+        <td>把远距离自然体验独占一天；寺庙不再硬塞进本次行程</td>
       </tr>
       <tr>
         <td><b>9/14 周一</b></td><td>上午 — 晚</td>
-        <td>退房 → 一起逛瓦洛洛市场 → 午餐 → 对象按已订航班前往机场 → 你下午自由慢享 → 晚间返程</td>
-        <td>上午一起买伴手礼；返程按实际起飞时间弹性收尾</td>
+        <td>Zabb E Lee / 奶奶厨房烹饪课（二选一） → 回酒店休息 → 你晚间返程</td>
+        <td>把她最感兴趣的烹饪体验留作当天唯一主项目；你 19:15 去机场，她继续住一晚</td>
+      </tr>
+      <tr>
+        <td><b>9/15 周二</b></td><td>上午 — 下午</td>
+        <td>她睡到自然醒 → 早午餐 / 酒店附近散步 → 12:30–12:45 前往机场 → <b>15:40 返吉隆坡</b></td>
+        <td>不再安排景点，留足收拾与国际航班余量</td>
       </tr>
     </table>
     <div class="tip">🕐 每天只安排 2~3 个核心点，留足休息和「走到哪逛到哪」的余地，符合「不紧凑」的需求。</div>
@@ -652,7 +769,7 @@
     <div class="eyebrow">Stay</div>
     <h2 class="sec-title"><span class="num">3</span>酒店推荐（Smile Lanna 附近 · 双档预算）</h2>
     <p class="sec-sub">
-      参考基准：<b>微笑兰纳酒店（Smile Lanna Hotel）</b>位于老城南侧的 Chang Lor 路，紧邻清迈门（Chiang Mai Gate）与周六夜市所在的 Wualai 路。这一带是古城南门外最热闹、夜路明亮、餐饮密集的区域，也是银器手作街所在地，安全性较好、治安口碑良好。按两晚预算分两档，点击切换：<b>800 元档</b>（小红书口碑款）与 <b>1000 元档</b>（经典舒适款）。
+      参考基准：<b>微笑兰纳酒店（Smile Lanna Hotel）</b>位于老城南侧的 Chang Lor 路，紧邻清迈门（Chiang Mai Gate）与周六夜市所在的 Wualai 路。这一带是古城南门外最热闹、夜路明亮、餐饮密集的区域，也是银器手作街所在地，安全性较好、治安口碑良好。预算先按你们共同入住的两晚计算；她因 9/15 返程，需额外加住 <b>9/14 一晚</b>（按页面每晚价另加），点击切换：<b>800 元档</b>（小红书口碑款）与 <b>1000 元档</b>（经典舒适款）。
     </p>
 
     <div class="tabs" role="tablist" aria-label="酒店预算档位">
@@ -806,10 +923,10 @@
       <div class="ev">
         <span class="marker"></span>
         <div class="time">10:30 – 13:00</div>
-        <div class="ev-title">早午餐 + 轻松散步（只选一处）</div>
+        <div class="ev-title">早午餐 + 咖啡馆缓冲</div>
         <ul>
-          <li>体力充足时从 <b>帕辛寺</b> 与 <b>柴迪龙寺</b> 中二选一；不要第一天就赶两座寺庙。</li>
-          <li>更推荐沿护城河走一小段、进咖啡馆歇脚，为傍晚夜市保留体力。</li>
+          <li>第一天不安排寺庙：沿护城河走一小段、进咖啡馆歇脚，为傍晚夜市保留体力。</li>
+          <li>若昨晚没睡好，直接把这段改为酒店泳池 / 午睡；比赶景点更值得。</li>
         </ul>
       </div>
 
@@ -828,8 +945,8 @@
         <div class="time">15:30 – 17:30</div>
         <div class="ev-title">按对象抵达时间会合 / 自由休息</div>
         <ul>
-          <li>对象早到：在酒店附近会合，沿清迈门到 Wualai 路慢慢走即可。</li>
-          <li>对象午到或晚到：你回酒店休息 / 游泳 / 喝咖啡；塔佩门与三王纪念碑留给 DAY 2 周日夜市前顺路经过。</li>
+          <li>按截图航班，预计 15:10 落地；考虑入境和车程，建议以 <b>17:00 后酒店或夜市会合</b> 为准。</li>
+          <li>你回酒店休息 / 游泳 / 喝咖啡即可，不用为了会合新增任何景点。</li>
         </ul>
       </div>
 
@@ -855,57 +972,55 @@
         <span class="day-lbl">Sun · 9月13日</span>
       </div>
       <div class="day-when">
-        <b>素贴山半日 + 宁曼路 + 周日夜市</b><br>
-        <span class="kw">自然清迈</span><span class="kw">文艺街区</span><span class="kw">清迈最大夜市</span>
+        <b>粘粘瀑布 + 周日夜市</b><br>
+        <span class="kw">自然体验</span><span class="kw">不赶路</span><span class="kw">清迈最大夜市</span>
       </div>
     </div>
     <div class="dayline">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
       <div class="rule"></div>
-      <span class="cap">mountain dawn to the big night market</span>
+      <span class="cap">a waterfall day, then the big night market</span>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
     </div>
 
     <div class="events">
       <div class="ev">
         <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3.5V6M12 18v2.5M3.5 12H6M18 12h2.5M5.6 5.6L7.4 7.4M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/></svg></span>
-        <div class="time">08:30</div>
-        <div class="ev-title">早餐后出发去素贴山</div>
+        <div class="time">08:00</div>
+        <div class="ev-title">包车出发去粘粘瀑布（Bua Tong Sticky Waterfall）</div>
         <ul>
-          <li>酒店前台叫双条车包车往返（约 ¥150–¥200 / 车），或 Grab 打车单程约 ¥50。</li>
-          <li>山路约 45 分钟，途中可远眺清迈全景。</li>
+          <li>瀑布在清迈城北约 60 公里处，单程约 1–1.5 小时；建议提前订包车往返并约定司机等候，不临时拼车。</li>
+          <li>穿防滑凉鞋 / 可涉水的鞋，带换洗衣物、防水袋、毛巾和驱蚊；下雨或水量异常就不要勉强攀爬。</li>
         </ul>
       </div>
 
       <div class="ev">
         <span class="marker"></span>
-        <div class="time">09:30 – 12:00</div>
-        <div class="ev-title">素贴山双龙寺（Wat Phra That Doi Suthep）</div>
+        <div class="time">09:30 – 12:30</div>
+        <div class="ev-title">粘粘瀑布玩水 / 攀爬石灰岩瀑布</div>
         <ul>
-          <li>清迈最神圣的寺庙，山顶金塔 + 观景平台俯瞰整个清迈。</li>
-          <li>可坐电梯上山或爬 306 级双龙阶梯，仪式感拉
-满。</li>
-          <li>建议早去避人流与日晒，备好遮阳帽与水。</li>
+          <li>石灰岩表面有抓地感，可以赤脚或穿涉水鞋缓慢上爬；不追求全程登顶，觉得累就停。</li>
+          <li>园区通常白天开放；以出发前当天公告为准，雷雨时直接改为酒店休息或按摩。</li>
         </ul>
       </div>
 
       <div class="ev">
         <span class="marker"></span>
-        <div class="time">12:30 – 14:30</div>
-        <div class="ev-title">下山午餐 + 回酒店休息</div>
+        <div class="time">12:30 – 15:30</div>
+        <div class="ev-title">返程 + 简单午餐 + 回酒店冲澡午休</div>
         <ul>
-          <li>山下或回古城午餐，午后回酒店午休，为夜市养精神。</li>
+          <li>午餐只选返程顺路的一家，不额外绕去宁曼；回酒店先冲澡、晾衣服、补眠。</li>
+          <li>这个缓冲会决定晚上逛周日夜市是否舒服，宁曼小酌可留到不玩水的下次。</li>
         </ul>
       </div>
 
       <div class="ev">
         <span class="marker"></span>
-        <div class="time">15:00 – 18:00</div>
-        <div class="ev-title">宁曼路（Nimmanhaemin）慢逛</div>
+        <div class="time">16:00 – 18:00</div>
+        <div class="ev-title">酒店休息 / 团购马杀鸡（二选一）</div>
         <ul>
-          <li>宁曼路：文艺街区，独立咖啡馆、设计小店、网红甜品，适合慢逛拍照。</li>
-          <li>不再叠加清迈大学：把时间留给咖啡、甜品和回酒店整理一下，更适合晚上继续逛夜市。</li>
-          <li>傍晚回古城吃晚餐，或直接把胃口留给周日夜市小吃。</li>
+          <li>玩水后最推荐直接休息；如果体力仍好，再预约酒店附近 60–90 分钟泰式按摩。</li>
+          <li>18:00 左右从酒店出发去夜市即可，晚餐直接留给周日夜市。</li>
         </ul>
       </div>
 
@@ -930,80 +1045,109 @@
         <span class="day-num">03</span>
         <span class="day-lbl">Mon · 9月14日</span>
       </div>
-      <div class="day-when">
-        <b>伴手礼 + 按航班弹性返程</b><br>
-        <span class="kw">上午一起逛</span><span class="kw">对象按实时时刻出发</span><span class="kw">你晚上再飞</span>
+      <div cla
+ss="day-when">
+        <b>收藏体验 + 你的晚班返程</b><br>
+        <span class="kw">泰餐烹饪课</span><span class="kw">自己做午餐</span><span class="kw">体验优先</span>
       </div>
     </div>
     <div class="dayline">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
       <div class="rule"></div>
-        <span class="cap">shop together, then leave plenty of airport buffer</span>
+        <span class="cap">one cooking class, one slow afternoon, then your flight home</span>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
     </div>
 
     <div class="events">
       <div class="ev">
         <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3.5V6M12 18v2.5M3.5 12H6M18 12h2.5M5.6 5.6L7.4 7.4M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/></svg></span>
-        <div class="time">09:00 – 10:30</div>
-        <div class="ev-title">酒店早餐 + 收拾行李</div>
+        <div class="time">08:30 左右</div>
+        <div class="ev-title">烹饪课接送 / 市场集合</div>
         <ul>
-          <li>睡到自然醒，退房（一般 12:00 前），行李寄放前台。</li>
-          <li>退房前先把两人行李分好：对象只带随身包去机场，你的一起带上。</li>
+          <li><b>Zabb E Lee 与奶奶厨房二选一</b>：都先向课程方确认 9/14 是否开课、接送范围、语言和取消规则。</li>
+          <li>你的行李先寄放酒店；今天不再补寺庙、动物园或跨城项目。</li>
         </ul>
       </div>
 
       <div class="ev">
         <span class="marker"></span>
-        <div class="time">10:30 – 12:30</div>
-        <div class="ev-title">瓦洛洛市场（Warorot Market）+ 花市（一起逛）</div>
+        <div class="time">09:30 – 14:00</div>
+        <div class="ev-title">泰餐烹饪体验 + 自己做的午餐</div>
         <ul>
-          <li>本地人最爱的日杂/果蔬/干货市场，买果干、香料、泰式调料当伴手礼。</li>
-          <li>Grab 过去约 ¥25–¥35（古城东侧）。</li>
-          <li>最后一站大采购，两人一起把伴手礼买齐。</li>
+          <li><b>优先 Zabb E Lee</b>：她明确喜欢的“小红书体验”；通常会包含市场认识食材、下厨和吃饭，整段约半天。</li>
+          <li><b>奶奶厨房作备选</b>：若更想要中文讲解或 Zabb E Lee 无位，再选它；只订其中一家。</li>
         </ul>
       </div>
 
       <div class="ev">
         <span class="marker"></span>
-        <div class="time">12:30 – 14:00</div>
-        <div class="ev-title">午餐（告别餐）</div>
+        <div class="time">14:30 – 16:30</div>
+        <div class="ev-title">回酒店午休 / 她自由休息</div>
         <ul>
-          <li>在酒店附近吃顿清淡的泰餐，或再来一份清迈招牌咖喱面。</li>
-          <li>对象在此与你去机场前好好吃完午餐，留出充裕送行时间。</li>
+          <li>烹饪课已经是当天的正餐和主体验，不再加“网红餐厅”赶场。</li>
+          <li>若需要伴手礼，只在酒店附近买零食即可；你们保留体力给送机前的缓冲。</li>
         </ul>
       </div>
 
       <div class="ev">
         <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></span>
-        <div class="time">按已订航班倒推</div>
-        <div class="ev-title">对象从容前往机场</div>
+        <div class="time">16:30 – 19:00</div>
+        <div class="ev-title">慢慢收拾 / 送你去机场前的留白</div>
         <ul>
-          <li>国际航班建议预留 <b>起飞前 2.5–3 小时到机场</b>；再加上酒店到机场约 20–30 分钟的车程和雨天余量。</li>
-          <li>若起飞早于 16:00：午餐后直接去机场；16:00 后起飞：可以回酒店短暂休息再出发。</li>
-          <li>你的行李仍在酒店前台寄存，返程不急。</li>
-        </ul>
-      </div>
-
-      <div class="ev">
-        <span class="marker"></span>
-        <div class="time">15:00 – 18:00</div>
-        <div class="ev-title">下午自由时光（你不赶时间，慢享清迈）</div>
-        <ul>
-          <li><b>清迈门咖啡馆</b>：送走对象后，回古城南门找家河景咖啡馆，点杯泰奶/手冲，慢坐发呆。</li>
-          <li><b>银庙 Wat Srisuphan</b>：Wualai 路银器街上的全银寺庙，午后去正好避开人流，离酒店步行就到。</li>
-          <li>或回酒店泳池游个泳、睡个午觉，怎么舒服怎么来——你的航班是晚上。</li>
+          <li>可在酒店泳池、咖啡馆或附近按摩中选一项；不要再预约第二个付费体验。</li>
+          <li>她 9/15 才返程，晚上仍住酒店；你取行李后 19:15 出发去机场。</li>
         </ul>
       </div>
 
       <div class="ev">
         <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></span>
-        <div class="time">20:00</div>
+        <div class="time">19:15</div>
         <div class="ev-title">你出发前往机场（赶 22:20 航班）</div>
         <ul>
-          <li><b>你的航班 9C8934 清迈→广州 22:20 起飞</b>，国际航班建议提前约 2 小时到，<b>20:30 前到机场</b>。</li>
-          <li>酒店到机场约 15–20 分钟，<b>20:00 出发从容</b>，取回寄存行李，Grab 约 ¥30–¥40。</li>
+          <li><b>你的航班 9C8934 清迈→广州 22:20 起飞</b>，国际航班建议提前约 2.5–3 小时到，<b>19:45 前到机场</b>。</li>
+          <li>酒店到机场约 15–20 分钟，<b>19:15 出发更稳妥</b>，取回寄存行李，Grab 约 ¥30–¥40。</li>
           <li>到机场后值机托运，可在出发层吃顿简餐等登机。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 · 她的返程日 -->
+  <div class="card" id="day4">
+    <div class="eyebrow">Day Four · Her Departure</div>
+    <div class="day-head">
+      <div class="day-id">
+        <span class="day-num">04</span>
+        <span class="day-lbl">Tue · 9月15日</span>
+      </div>
+      <div class="day-when">
+        <b>她的缓冲返程日</b><br>
+        <span class="kw">不赶景点</span><span class="kw">睡到自然醒</span><span class="kw">15:40 返吉隆坡</span>
+      </div>
+    </div>
+    <div class="dayline">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+      <div class="rule"></div>
+      <span class="cap">one last slow morning, then an easy airport run</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
+    </div>
+    <div class="events">
+      <div class="ev">
+        <span class="marker"></span>
+        <div class="time">09:00 – 11:00</div>
+        <div class="ev-title">睡到自然醒 + 酒店早餐</div>
+        <ul>
+          <li>不再安排寺庙、远距离咖啡馆或市场；这半天只留给洗漱、收拾和最后一顿轻松早餐。</li>
+          <li>若想出门，仅在酒店附近买水果、零食或补伴手礼，11:30 前回酒店办理退房。</li>
+        </ul>
+      </div>
+      <div class="ev">
+        <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></span>
+        <div class="time">12:30 – 12:45</div>
+        <div class="ev-title">前往清迈机场（CNX）</div>
+        <ul>
+          <li><b>15:40 清迈 → 吉隆坡 T2</b>：按国际航班预留约 3 小时；酒店到机场约 15–20 分钟，雨天再多留一点余量。</li>
+          <li>到机场后再吃午餐、办理托运和退税即可，节奏最稳。</li>
         </ul>
       </div>
     </div>
@@ -1048,6 +1192,12 @@
       <li><b>Mango Tango</b>：芒果甜品专门店，糯米饭、杨枝甘露、芒果圣代一应俱全。</li>
     </ul>
 
+    <h3 style="font-weight:700;color:var(--gold-deep);font-size:14px;margin-top:26px;">🔥 你们最近收藏的清迈餐厅</h3>
+    <ul style="margin-top:8px;padding-left:18px;">
+      <li><b>Zabb E Lee / 奶奶厨房</b>：两家都是泰餐烹饪体验，不是需要再额外安排的一顿餐厅；DAY 3 只选一家，课程做好的饭就是当天午餐。</li>
+      <li><b>“人均六十吃到扶墙” / “连吃两顿”</b>：保留为夜市之外的备选餐厅线索；若确认完整店名，可拖进编排器的空闲时段，不建议同一天再加多家。</li>
+    </ul>
+
     <div class="tip">🍽️ 觅食小贴士：① 优先选「本地人排长队」的摊子，好吃又有保障；② 夜市摊建议备小额现金；③ 怕辣的话点餐时说「Mai Phet」（不辣）/「Phet Nit Noi」（微辣）；④ 肠胃较弱可自备肠胃药，选择食材新鲜的档口。</div>
   </div>
 
@@ -1058,9 +1208,9 @@
     <table class="tbl">
       <tr><th>项目</th><th>估算</th><th>说明</th></tr>
       <tr><td>住宿（2 晚）</td><td>¥500 – ¥800</td><td>微笑兰纳或周边备选，见上文</td></tr>
-      <tr><td>交通（机场 + 素贴山 + 市区 Grab）</td><td>¥200 – ¥300</td><td>素贴山往返包车占大头</td></tr>
+      <tr><td>交通（机场 + 粘粘瀑布包车 + 市区 Grab）</td><td>¥300 – ¥500</td><td>粘粘瀑布往返包车占大头</td></tr>
       <tr><td>餐饮</td><td>¥300 – ¥500</td><td>一天约 ¥100–¥160，夜市小吃更省</td></tr>
-      <tr><td>门票</td><td>¥60 – ¥80</td><td>双龙寺约 ¥20–¥30，古城寺庙少量门票</td></tr>
+      <tr><td>体验 / 门票</td><td>¥250 – ¥450</td><td>烹饪课为主要体验成本；瀑布以现场规则为准</td></tr>
       <tr><td>电话卡 / 杂费</td><td>¥40 – ¥80</td><td>机场买卡约 ¥30 起</td></tr>
       <tr class="total"><td>合计（不含机票）</td><td>约 ¥1100 – ¥1760</td><td>按吃住行标准水平估算</td></tr>
     </table>
@@ -1078,6 +1228,19 @@
 
   <div class="foot">Chiang Mai · 3-Day Relaxed Itinerary · Sabai sabai สบายๆ · 规划生成于 2026-08</div>
 </div>
+
+  <div class="time-modal" id="timeModal" hidden role="dialog" aria-modal="true" aria-labelledby="timeModalTitle">
+    <form class="time-modal-dialog" id="timeModalForm">
+      <div class="time-modal-kicker">Arrange time</div>
+      <h3 id="timeModalTitle">调整时间段</h3>
+      <p>输入如「09:30–12:00」或「19:15」。保存后只更新当前这个时段。</p>
+      <input id="timeModalInput" type="text" inputmode="text" autocomplete="off" aria-label="时间段">
+      <div class="time-modal-actions">
+        <button class="time-modal-cancel" type="button" id="timeModalCancel">取消</button>
+        <button class="time-modal-save" type="submit">保存时间</button>
+      </div>
+    </form>
+  </div>
 
 <script>
   document.documentElement.classList.add('js');
@@ -1172,6 +1335,151 @@
         }
       });
     });
+
+    /* 可拖拽行程编排器：候选项拖入时复制，时间轴中的项目可移动或移除 */
+    var planner = document.getElementById('plannerApp');
+    if(planner){
+      var dragData = null;
+      var status = document.getElementById('plannerStatus');
+      var trash = document.getElementById('plannerTrash');
+      var timeModal = document.getElementById('timeModal');
+      var timeForm = document.getElementById('timeModalForm');
+      var timeInput = document.getElementById('timeModalInput');
+      var timeCancel = document.getElementById('timeModalCancel');
+      var activeTime = null;
+      var storageKey = 'chiangmai-itinerary-planner-v2';
+      function say(message){ if(status){ status.textContent = message; } }
+      function plannerSnapshot(){
+        var days = {};
+        planner.querySelectorAll('[data-planner-panel]').forEach(function(panel){
+          var slots = [];
+          panel.querySelectorAll('.planner-slot').forEach(function(slot){
+            slots.push({
+              time:slot.querySelector('.slot-time').textContent.trim(),
+              items:Array.prototype.map.call(slot.querySelectorAll('.plan-item'), function(item){ return item.textContent; })
+            });
+          });
+          days[panel.getAttribute('data-planner-panel')] = slots;
+        });
+        var active = planner.querySelector('.planner-day.active');
+        return {days:days, activeDay:active ? active.getAttribute('data-planner-day') : '1'};
+      }
+      function savePlanner(){
+        try {
+          window.localStorage.setItem(storageKey, JSON.stringify(plannerSnapshot()));
+          say('已自动保存在当前浏览器');
+        } catch(err) { say('本次编排已更新，但浏览器未允许保存'); }
+      }
+      function restorePlanner(){
+        try {
+          var raw = window.localStorage.getItem(storageKey);
+          if(!raw){ return; }
+          var saved = JSON.parse(raw);
+          if(!saved || !saved.days){ return; }
+          Object.keys(saved.days).forEach(function(day){
+            var panel = planner.querySelector('[data-planner-panel="' + day + '"]');
+            var savedSlots = saved.days[day];
+            if(!panel || !Array.isArray(savedSlots)){ return; }
+            panel.querySelectorAll('.planner-slot').forEach(function(slot, index){
+              var savedSlot = savedSlots[index];
+              if(!savedSlot){ return; }
+              slot.querySelector('.slot-time').textContent = savedSlot.time;
+              var content = slot.querySelector('.slot-content');
+              content.innerHTML = '';
+              savedSlot.items.forEach(function(label){ content.appendChild(createPlanItem(label)); });
+            });
+          });
+          var day = saved.activeDay || '1';
+          var selected = planner.querySelector('.planner-day[data-planner-day="' + day + '"]');
+          if(selected){ selected.click(); }
+          say('已恢复上次编排');
+        } catch(err) { /* 旧数据损坏时继续使用默认计划 */ }
+      }
+      function closeTimeModal(){
+        if(timeModal){ timeModal.hidden = true; }
+        activeTime = null;
+      }
+      function openTimeModal(time){
+        activeTime = time;
+        if(timeInput){ timeInput.value = time.textContent.trim(); }
+        if(timeModal){ timeModal.hidden = false; }
+        window.setTimeout(function(){ if(timeInput){ timeInput.focus(); timeInput.select(); } }, 0);
+      }
+      function wirePlanItem(item){
+        item.addEventListener('dragstart', function(){
+          dragData = {kind:'scheduled', item:item};
+          item.classList.add('is-dragging');
+        });
+        item.addEventListener('dragend', function(){ item.classList.remove('is-dragging'); dragData = null; });
+      }
+      function createPlanItem(label){
+        var item = document.createElement('span');
+        item.className = 'plan-item'; item.draggable = true; item.textContent = label;
+        wirePlanItem(item); return item;
+      }
+      planner.querySelectorAll('.plan-item').forEach(wirePlanItem);
+      planner.querySelectorAll('.catalog-item').forEach(function(item){
+        item.addEventListener('dragstart', function(){ dragData = {kind:'catalog', label:item.getAttribute('data-plan')}; });
+        item.addEventListener('dragend', function(){ dragData = null; });
+      });
+      planner.querySelectorAll('.planner-slot'
+).forEach(function(slot){
+        slot.addEventListener('dragover', function(e){ e.preventDefault(); slot.classList.add('drag-over'); });
+        slot.addEventListener('dragleave', function(){ slot.classList.remove('drag-over'); });
+        slot.addEventListener('drop', function(e){
+          e.preventDefault(); slot.classList.remove('drag-over');
+          if(!dragData){ return; }
+          var target = slot.querySelector('.slot-content');
+          if(dragData.kind === 'catalog'){
+            target.appendChild(createPlanItem(dragData.label));
+            say('已加入：' + dragData.label);
+          } else {
+            target.appendChild(dragData.item);
+            say('已调整时段');
+          }
+          savePlanner();
+          dragData = null;
+        });
+      });
+      if(trash){
+        trash.addEventListener('dragover', function(e){ e.preventDefault(); trash.classList.add('drag-over'); });
+        trash.addEventListener('dragleave', function(){ trash.classList.remove('drag-over'); });
+        trash.addEventListener('drop', function(e){
+          e.preventDefault(); trash.classList.remove('drag-over');
+          if(dragData && dragData.kind === 'scheduled'){ dragData.item.remove(); say('已从计划移除'); savePlanner(); }
+          dragData = null;
+        });
+      }
+      planner.querySelectorAll('.planner-day').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var day = btn.getAttribute('data-planner-day');
+          planner.querySelectorAll('.planner-day').forEach(function(b){ b.classList.toggle('active', b === btn); });
+          planner.querySelectorAll('[data-planner-panel]').forEach(function(panel){ panel.hidden = panel.getAttribute('data-planner-panel') !== day; });
+          say('已切换到 DAY ' + day); savePlanner();
+        });
+      });
+      planner.querySelectorAll('.slot-time').forEach(function(time){ time.addEventListener('click', function(){ openTimeModal(time); }); });
+      if(timeForm){
+        timeForm.addEventListener('submit', function(e){
+          e.preventDefault();
+          if(activeTime && timeInput && timeInput.value.trim()){
+            activeTime.textContent = timeInput.value.trim();
+            say('时间已更新'); savePlanner(); closeTimeModal();
+          }
+        });
+      }
+      if(timeCancel){ timeCancel.addEventListener('click', closeTimeModal); }
+      if(timeModal){
+        timeModal.addEventListener('click', function(e){ if(e.target === timeModal){ closeTimeModal(); } });
+        document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !timeModal.hidden){ closeTimeModal(); } });
+      }
+      var reset = document.getElementById('plannerReset');
+      if(reset){ reset.addEventListener('click', function(){
+        try { window.localStorage.removeItem(storageKey); } catch(err) {}
+        window.location.reload();
+      }); }
+      restorePlanner();
+    }
 
     /* 导航随阅读位置轻点亮，方便长页面快速定位 */
     var navLinks = document.querySelectorAll('.nav a');
