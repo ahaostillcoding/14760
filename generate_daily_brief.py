@@ -10,8 +10,10 @@ BRIEFS_DIR = REPO / "briefs"
 ASSETS_DIR = REPO / "assets"
 REPORTS_DIR = ASSETS_DIR / "reports"
 
-CURRENT_DATE = "2026-06-30"
+CURRENT_DATE = "2026-08-17"
 ARCHIVE_DATES = [
+    "2026-08-17",
+    "2026-08-14",
     "2026-06-30",
     "2026-06-26",
     "2026-06-25",

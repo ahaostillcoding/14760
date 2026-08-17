@@ -1,0 +1,41 @@
+window.DAILY_REPORT = {
+  date: "2026-08-14",
+  title: "每日 GitHub + 科技新闻热点简报",
+  summary: "截至 2026 年 8 月 14 日，开发者生态最强的共振不是“又一个模型”，而是 agent 开始被装进工作台、运行时、自动化与成本治理；宏观层面则显示，AI 资本开支仍在托底增长，但能源、通胀和地缘风险正在抬高落地门槛。",
+  heroNote: "今天的关键信号：先把 agent 的任务边界、成本和权限管好，再扩大它能执行的工作流。",
+  stats: [{ value: "7", label: "GitHub 项目" }, { value: "6", label: "科技热点" }, { value: "6", label: "新闻热点" }, { value: "4", label: "Vibe 建议" }],
+  githubProjects: [
+    { name: "openclaw/openclaw", url: "https://github.com/openclaw/openclaw", stars: "386k+", source: "GitHub 仓库活跃度 | 2026-08-14", tags: ["Personal AI", "Agent", "TypeScript"], purpose: "可自托管的个人 AI 助手，面向跨平台任务和个人数据控制。", highlight: "把个人助手定位为可部署、可扩展的软件资产，而非单一聊天产品。", whyNow: "高星且持续活跃，说明开发者正在寻找可控、可定制的 agent 入口。" },
+    { name: "n8n-io/n8n", url: "https://github.com/n8n-io/n8n", stars: "200k+", source: "GitHub 仓库活跃度 | 2026-08-14", tags: ["Automation", "MCP", "Workflow"], purpose: "开源工作流自动化平台，提供 400+ 集成并支持 AI 节点。", highlight: "低代码编排与自定义代码共存，适合把 agent 接入已有业务系统。", whyNow: "工作流而非聊天框正在成为 AI 价值兑现的主要载体。" },
+    { name: "OpenHands/OpenHands", url: "https://github.com/OpenHands/OpenHands", stars: "84k+", source: "GitHub 仓库活跃度 | 2026-08-14", tags: ["AI Coding", "Agent", "DevTools"], purpose: "让 AI 处理代码库、终端与多步骤软件任务。", highlight: "核心价值是可执行的工程闭环，而不是代码片段生成。", whyNow: "它仍是观察编码 agent 稳定性、沙箱和任务收敛的代表性开源样本。" },
+    { name: "omnigent-ai/omnigent", url: "https://github.com/omnigent-ai/omnigent", stars: "8.8k+", source: "GitHub 近期增长项目 | 2026-08-14", tags: ["Orchestration", "Policy", "Multi-agent"], purpose: "编排 Codex、Claude Code、Cursor 等多类编码 agent，并提供策略与沙箱控制。", highlight: "把“换模型/换 agent”从产品重构变成运行时配置问题。", whyNow: "企业不愿被单一 agent 锁定，控制层的需求正在快速浮现。" },
+    { name: "junhoyeo/tokscale", url: "https://github.com/junhoyeo/tokscale", stars: "4.9k+", source: "GitHub 近期增长项目 | 2026-08-14", tags: ["Observability", "Cost", "CLI"], purpose: "在终端追踪多个 AI 编码 agent 的 token 用量。", highlight: "把最容易被忽略的 AI 成本变成可比较、可治理的工程指标。", whyNow: "从试用走向团队化后，成本可见性会比模型排行榜更直接影响采购与架构。" },
+    { name: "docker/docker-agent", url: "https://github.com/docker/docker-agent", stars: "3.2k+", source: "GitHub 仓库活跃度 | 2026-08-14", tags: ["Runtime", "Docker", "Agent"], purpose: "Docker 工程团队推出的 AI agent 构建器与运行时。", highlight: "把 agent 的交付、环境与隔离直接放回开发者最熟悉的容器体系。", whyNow: "生产化 agent 的关键问题正从提示词转向部署一致性和运行边界。" },
+    { name: "metalbear-co/mirrord", url: "https://github.com/metalbear-co/mirrord", stars: "5.3k+", source: "GitHub 仓库活跃度 | 2026-08-14", tags: ["Kubernetes", "Debug", "Local Dev"], purpose: "让本地进程或 agent 像在 Kubernetes Pod 内一样使用真实环境、DNS、网络和流量。", highlight: "用真实服务上下文缩短云原生调试与 agent 验证的距离。", whyNow: "AI 编码进入复杂微服务后，能否安全碰到真实环境是下一道工程门槛。" }
+  ],
+  projectTrends: ["agent 竞争从“谁更会写”转向“谁能在受控环境里完成任务”：编排、容器运行时、真实环境调试同时升温。", "成本与可观测性不再是后置运维项；tokscale 这类工具反映团队开始把 token 当作一等工程成本。", "个人助手、低代码工作流和企业开发工具正在共享 MCP、权限、记忆与集成层，生态边界加速融合。"],
+  techHotspots: [
+    { title: "AMD 推进韩国主权 AI 生态合作", source: "AMD Newsroom | 2026-07-27", url: "https://newsroom.amd.com/", tags: ["AI", "Chips", "Sovereign AI"], summary: "AMD 与韩国科学和信息通信技术部门推进主权 AI 生态合作，涵盖算力、开放软件与技术协作。", impact: "AI 基础设施采购正从性能竞争延伸到区域供给、软件栈和数据主权；硬件厂商需要更深地绑定本地生态。", audience: "云与芯片团队、公共部门 IT、AI 基础设施投资者" },
+    { title: "AMD 发布开放机器人伙伴网络", source: "AMD Newsroom | 2026-07-23", url: "https://newsroom.amd.com/", tags: ["Robotics", "Physical AI", "Open Ecosystem"], summary: "AMD 扩展开放机器人合作网络，连接模型、软件、机器人技术与硬件伙伴。", impact: "具身智能的商业化不只取决于单一机器人本体，兼容的开发与部署生态正在成为真正的规模杠杆。", audience: "机器人创业者、边缘 AI 团队、制造业数字化负责人" },
+    { title: "Qualcomm 完成对 Modular 的收购", source: "Qualcomm News | 2026-07-29", url: "https://www.qualcomm.com/news", tags: ["Edge AI", "Compiler", "Mobile"], summary: "Qualcomm 公布完成对 Modular 的收购，后者以高性能 AI 编程与编译技术著称。", impact: "端侧 AI 的差异化越来越依赖编译器和运行时效率；模型能否落在有限功耗设备上，取决于软件栈。", audience: "端侧开发者、芯片生态伙伴、AI 推理工程师" },
+    { title: "Google I/O 2026：Gemini 3.5 Flash 进入开发者工具链", source: "Google 官方博客 | 2026-06", url: "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/", tags: ["Developer Tools", "Gemini", "Agent"], summary: "Google 把 Gemini 3.5 Flash 接入 AI Studio、Android Studio 与企业 agent 平台等入口。", impact: "模型厂商的竞争已从 API 参数扩展为 IDE、企业系统与创作工具的分发网络。", audience: "应用开发者、平台产品经理、企业 AI 团队" },
+    { title: "Dell 押注企业自建与混合 AI 基础设施", source: "Dell 官方博客 | 近期", url: "https://www.dell.com/en-us/blog/dell-technologies-world-2026-enterprise-ai-announcements-this-week/", tags: ["Enterprise AI", "Data Center", "Hybrid Cloud"], summary: "Dell 在年度技术大会集中展示面向企业 AI 部署的硬件、管理与合作能力。", impact: "受数据、合规与时延驱动，部分企业 AI 负载会回流本地或混合环境，基础设施选择将更碎片化。", audience: "CIO、数据中心团队、企业软件厂商" },
+    { title: "LG 将内部聊天机器人演化为企业级 agent 平台", source: "LG Newsroom | 近期", url: "https://www.lg.com/global/newsroom/news/corporate/lg-electronics-ceo-sets-strategic-direction-for-profit-driven-growth-prioritizing-speed-and-action/", tags: ["Enterprise Software", "AI Agent", "Workflow"], summary: "LG 表示其内部机器人 LGenie 正向基于 EXAONE、并连接外部生成式 AI 的企业 agent 平台演进。", impact: "传统制造企业也开始从“内部问答”迁移到跨系统的任务执行，agent 价值将更多由流程改造决定。", audience: "企业数字化负责人、制造业 CIO、AI 产品团队" }
+  ],
+  generalNews: [
+    { title: "IMF：全球经济在战争与技术周期的交叉影响下保持不均衡增长", source: "IMF《世界经济展望》更新 | 2026-07-08", url: "https://www.imf.org/en/publications/weo/issues/2026/07/08/world-economic-outlook-update-july-2026", tags: ["Macro", "AI Investment", "Growth"], summary: "IMF 预计 2026 年全球经济增长 3.0%、2027 年 3.4%；技术投资抵消部分战争冲击，但地区分化明显。", impact: "AI CAPEX 仍是增长缓冲器，却不能抹平能源进口国和技术供应链外国家的压力；企业应按区域重估需求。" },
+    { title: "IMF：全球去通胀进程停滞，2026 年通胀预期升至 4.7%", source: "IMF《世界经济展望》更新 | 2026-07-08", url: "https://www.imf.org/en/publications/weo/issues/2026/07/08/world-economic-outlook-update-july-2026", tags: ["Inflation", "Energy", "Markets"], summary: "IMF 指出能源与食品价格推升通胀，多个主要经济体的核心通胀回归目标仍需时间。", impact: "融资和估值不应假设快速降息；高耗能、硬件采购和长供应链业务需留出更大成本缓冲。" },
+    { title: "霍尔木兹海峡恢复节奏仍是全球能源与物流变量", source: "IMF 新闻发布会 | 2026-07-08", url: "https://www.imf.org/en/news/articles/2026/07/08/tr070826-weo-press-briefing-transcript-july-8-2026", tags: ["Energy", "Shipping", "Risk"], summary: "IMF 基线假设海峡自 7 月中旬开始恢复开放、至 2027 年 3 月回归常态。", impact: "这是一项预测前提而非既成事实；航运、保险与能源采购仍应保留情景预案。", note: "待进一步确认：通航、冲突与油价可能快速变化。" },
+    { title: "技术供应链受益经济体与能源进口国的增长差异扩大", source: "IMF《世界经济展望》更新 | 2026-07", url: "https://www.imf.org/-/media/files/publications/weo/2026/update/july/english/text.pdf", tags: ["Trade", "Semiconductors", "Asia"], summary: "IMF 认为深度参与 AI 硬件出口的经济体获得上行，而能源成本和地缘暴露带来相反压力。", impact: "企业选址、采购和渠道策略需要同时考虑技术周期收益与能源、物流风险，不能只看劳动力成本。" },
+    { title: "AI 投资繁荣同时成为宏观金融的潜在重估风险", source: "IMF《世界经济展望》更新 | 2026-07", url: "https://www.imf.org/en/publications/weo/issues/2026/07/08/world-economic-outlook-update-july-2026", tags: ["Capital Markets", "AI", "Risk"], summary: "IMF 将 AI 盈利预期被重新评估列为下行风险之一，同时承认更快采用 AI 也可能提升增长。", impact: "对企业而言，应将 AI 项目按可量化现金流和单位成本管理，避免只用叙事支撑预算扩张。" },
+    { title: "全球贸易增速预计放缓，技术相关贸易仍相对强劲", source: "IMF《世界经济展望》更新 | 2026-07", url: "https://www.imf.org/-/media/files/publications/weo/2026/update/july/english/text.pdf", tags: ["Trade", "Supply Chain", "Policy"], summary: "IMF 预计世界贸易量增长从 2025 年的 5.0% 放缓至 2026 年的 3.5%，关税与链路重组构成拖累。", impact: "硬件与 AI 供应链仍有结构性机会，但跨境产品需要更早做好产地、库存和合规的替代方案。" }
+  ],
+  vibeIdeas: [
+    { title: "Agent 成本与任务看板", tags: ["React", "SQLite", "tokscale"], what: "做一个团队级 agent 控制台，统一展示任务成功率、token、耗时、工具调用与重试原因。", stack: "React + Vite、Node.js、SQLite/Postgres、Chart.js；可接入 tokscale 导出的数据。", mvp: "先导入 CSV/JSON，完成项目筛选、单任务日志和“每次成功成本”排行榜。" },
+    { title: "可审计的 n8n Agent 工作流模板", tags: ["n8n", "MCP", "Postgres"], what: "把客服、竞品监测或日报生成做成带审批与回滚的自动化模板。", stack: "n8n、Postgres、Webhook、MCP 工具；前端用轻量 React 管理审批。", mvp: "先实现“采集→摘要→人工批准→发送”四步，所有输入输出写入审计表。" },
+    { title: "多 Agent 任务路由器", tags: ["Python", "Docker", "OpenHands"], what: "按任务类型、预算和风险把需求路由给不同编码 agent，并给出统一结果。", stack: "FastAPI、Docker、队列、OpenHands/CLI 适配器、策略 JSON。", mvp: "先支持代码解释、单文件修复、测试失败分析三类任务，加上预算上限和人工接管按钮。" },
+    { title: "云原生真实环境调试助手", tags: ["mirrord", "Kubernetes", "React"], what: "为开发者生成安全的本地到集群调试会话，并解释流量、权限和环境差异。", stack: "mirrord、Kubernetes API、Node.js、小型 React 面板。", mvp: "先做命名空间选择、只读流量镜像、会话过期提示和一键生成命令。" }
+  ],
+  totalTrend: "今天的共同趋势是：AI 从“能力展示”进入“组织执行”。GitHub 的热点集中在 agent 编排、工作流、运行时、真实环境接入与成本可见性；科技侧则把竞争推进到芯片、端侧编译器、企业混合部署和机器人生态；宏观侧提醒所有投入都必须经受能源、通胀、供应链与估值重估的检验。最值得行动的方向不是盲目扩大 agent 权限，而是用明确任务边界、可观测成本和人工可接管的流程，把它接入一个真实业务闭环。",
+  footer: "数据来源：GitHub 仓库页、AMD、Qualcomm、Google、Dell、LG、IMF 等公开信息 | 页面生成时间：2026-08-14"
+};
