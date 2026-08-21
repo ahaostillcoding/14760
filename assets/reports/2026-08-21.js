@@ -1,0 +1,38 @@
+window.DAILY_REPORT = {
+  date: "2026-08-21",
+  title: "每日 GitHub + 科技新闻热点简报",
+  summary: "截至 2026 年 8 月 21 日，开源热度明显集中在“让 AI 真正动手”的浏览器控制、工作台、规范化开发与本地生成工具；与此同时，数据中心的电力、透明度合规和全球增长分化正成为技术扩张的共同约束。",
+  heroNote: "今天的行动建议：把 agent 的浏览器权限、任务规范和成本/合规日志作为产品能力，而非上线后的补丁。",
+  stats: [{ value: "6", label: "GitHub 项目" }, { value: "5", label: "科技热点" }, { value: "5", label: "新闻热点" }, { value: "4", label: "Vibe 建议" }],
+  githubProjects: [
+    { name: "citrolabs/ego-lite", url: "https://github.com/citrolabs/ego-lite", stars: "20.9k", source: "GitHub Trending | 今日 +3.3k stars", tags: ["Browser", "Agent", "Automation"], purpose: "为 AI agent 提供高速浏览器自动化，并可复用已登录的浏览器状态。", highlight: "把“人在浏览器里的会话”和“agent 的执行能力”连接起来，减少重复登录与环境配置。", whyNow: "它直接命中 agent 落地最难的网页操作环节；但必须把账号隔离、权限边界和审计放在首位。" },
+    { name: "holaboss-ai/holaOS", url: "https://github.com/holaboss-ai/holaOS", stars: "10.4k", source: "GitHub Trending | 今日 +528 stars", tags: ["Workspace", "MCP", "Multi-agent"], purpose: "开源的全能 AI agent 工作区，连接工具、应用、浏览器和文件，并支持共享记忆。", highlight: "把多模型、100+ 集成和 MCP 放进同一工作台，适合作为 agent 操作系统的参考实现。", whyNow: "团队需求正从单个聊天窗口转向跨工具协作；它可帮助快速评估“统一入口”的产品边界。" },
+    { name: "github/spec-kit", url: "https://github.com/github/spec-kit", stars: "7.3k", source: "GitHub Trending | 今日 +639 stars", tags: ["Spec-driven", "CLI", "Developer Tool"], purpose: "帮助团队以规范驱动方式启动与推进软件开发。", highlight: "把需求、计划与实现工件拉回可审阅的规范，降低 vibe coding 的返工率。", whyNow: "模型能写代码之后，最稀缺的是正确的问题定义和验收标准；它是轻量可借鉴的流程模板。" },
+    { name: "lightningpixel/modly", url: "https://github.com/lightningpixel/modly", stars: "128.6k", source: "GitHub Trending | 今日 +11.5k stars", tags: ["3D", "Local AI", "GPU"], purpose: "在本地 GPU 上由图片或提示词生成 3D 模型的桌面应用。", highlight: "把 3D 资产生成做成离线、可控的创作流程，降低原型与电商可视化门槛。", whyNow: "超高日增说明生成式 3D 已从演示走向大众工具；先在单品建模或游戏原型中验证比做通用平台更务实。" },
+    { name: "aquasecurity/trivy", url: "https://github.com/aquasecurity/trivy", stars: "68.6k", source: "GitHub Trending | 今日 +255 stars", tags: ["Security", "SBOM", "Cloud Native"], purpose: "扫描容器、Kubernetes、代码库和云环境中的漏洞、配置问题、密钥与 SBOM。", highlight: "覆盖从源码到部署面的安全检查，适合嵌入 AI 辅助开发的发布闸门。", whyNow: "agent 获得更多执行权限后，安全扫描要从可选工具变为流水线默认步骤。" },
+    { name: "OpenBB-finance/OpenBB", url: "https://github.com/OpenBB-finance/OpenBB", stars: "105.2k", source: "GitHub Trending | 今日 +76 stars", tags: ["Data", "Finance", "Agents"], purpose: "面向分析师、量化团队与 AI agent 的金融数据平台。", highlight: "将多源金融数据和分析接口产品化，适合构建可追溯的研究型 agent。", whyNow: "当宏观与产业变量快速变化，具备引用来源和数据血缘的研究工具比“给一个观点”更有价值。" }
+  ],
+  projectTrends: ["浏览器与工作区成为 agent 的新入口：热度从模型本身转到权限、状态、工具和多人协作。", "规范驱动开发正在为 vibe coding 补上需求与验收层，开发过程将更像可复盘的生产系统。", "本地 3D 生成与安全扫描同样走热，说明“创作资产”和“安全边界”正在同时成为 AI 原生应用的基础设施。"],
+  techHotspots: [
+    { title: "OpenAI 参与 PORTS-Pike 约 8GW 数据中心园区", source: "OpenAI | 2026-08-17", url: "https://openai.com/index/openai-joins-ports-pike-project/", tags: ["AI Infra", "Data Center", "Energy"], summary: "OpenAI 宣布与 SB Energy、NVIDIA 及美国合作方推进俄亥俄州 PORTS-Pike 技术园区，规划约 8GW IT 容量。", impact: "前沿模型竞争正进一步转化为电力、选址和建设执行竞争；应用团队应预期算力供给更集中，同时把多云与成本治理纳入架构。", audience: "AI 基础设施、云采购、数据中心与企业架构团队" },
+    { title: "GitHub Trending 显示 Agent 浏览器自动化强势上升", source: "GitHub Trending | 当日页面", url: "https://github.com/trending", tags: ["Agent", "Browser", "Developer Tools"], summary: "ego-lite、holaOS、spec-kit 等项目同时进入当日热门，覆盖浏览器执行、统一工作区与规范驱动开发。", impact: "“模型会回答”正在让位给“模型能在受控环境完成任务”；竞争重点变为状态管理、权限控制、失败恢复和可审计性。", audience: "开发者工具、AI 产品、自动化平台团队" },
+    { title: "欧盟 AI Act 透明度规则进入可执行阶段", source: "欧盟委员会 | 2026-07-31", url: "https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august", tags: ["Regulation", "AI", "Compliance"], summary: "欧盟自 8 月 2 日起开始执行部分 AI Act 规则；特定 AI 交互、深度伪造和生成/篡改内容需要告知、标记或可检测标识。", impact: "面向欧盟的产品应将 AI 身份提示、内容标签和日志留存产品化。既有系统的个别标记义务存在过渡安排，具体适用范围待法务确认。", audience: "出海 SaaS、内容平台、法务与产品负责人", note: "待进一步确认：行业豁免及具体业务适用范围需结合最终指南与法务意见。" },
+    { title: "IEA：数据中心与 AI 推高电力需求和接网瓶颈", source: "IEA | 2026-07-23", url: "https://www.iea.org/news/global-electricity-demand-growth-set-to-accelerate-as-power-systems-adjust-to-recent-shocks", tags: ["Power", "Data Center", "Cloud"], summary: "IEA 预计 2026、2027 年全球用电量分别增长 3.6% 和 3.8%，工业、制冷、电动车和数据中心共同拉动需求。", impact: "算力扩张的交付周期不再只由芯片决定，电网接入和电价波动会进入云容量与产品毛利模型。", audience: "云平台、FinOps、数据中心、工业与能源团队" },
+    { title: "OpenAI：GPT-5.6 的竞争点转向价格—性能", source: "OpenAI | 2026-07-30", url: "https://openai.com/news/company-announcements/", tags: ["Models", "Cost", "Enterprise AI"], summary: "OpenAI 在官方新闻页披露 GPT-5.6 的价格性能进展，延续将前沿能力导向实际部署效率的信号。", impact: "模型选型应从单一排行榜转向任务成功率、延迟、工具调用成本与回退机制；这是产品工程问题而非采购口号。", audience: "AI 应用工程师、平台负责人、采购与 FinOps 团队" }
+  ],
+  generalNews: [
+    { title: "IMF：全球经济由战争冲击与技术动能共同塑造", source: "IMF《世界经济展望》更新 | 2026-07-08", url: "https://www.imf.org/en/publications/weo/issues/2026/07/08/world-economic-outlook-update-july-2026", tags: ["Macro", "AI Investment", "Growth"], summary: "IMF 预计 2026 年全球增长 3.0%、2027 年 3.4%；AI 相关技术动能与中东战争带来的供给冲击并存。", impact: "企业不能只用“AI 拉动增长”做年度假设：技术价值链位置、能源暴露和区域市场差异会决定实际受益程度。" },
+    { title: "IMF：全球去通胀进程停滞", source: "IMF 新闻发布会 | 2026-07-08", url: "https://www.imf.org/en/news/articles/2026/07/08/tr070826-weo-press-briefing-transcript-july-8-2026", tags: ["Inflation", "Rates", "Budget"], summary: "IMF 将 2026 年全球总体通胀预测上调至 4.7%，并称此前的去通胀趋势已停滞。", impact: "预算不宜押注资金成本迅速下行；硬件采购、长约云资源和库存策略都需要为价格波动留缓冲。" },
+    { title: "IEA：AI 数据中心用电量预计到 2030 年翻倍", source: "IEA | 2026-04-16", url: "https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions", tags: ["Energy", "AI", "Infrastructure"], summary: "IEA 指出数据中心用电量 2025 年增长 17%，AI 导向数据中心增速更快；在效率提升的同时，使用规模与 agent 等重度场景抬升总需求。", impact: "电力、变压器、燃机和接网审批将成为 AI 投资的真实约束，供应链规划应与算力路线图同步。" },
+    { title: "欧盟 AI 透明度要求抬升跨境内容与企业软件门槛", source: "欧盟委员会 FAQ | 2026-08", url: "https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act", tags: ["Policy", "Content", "Enterprise Software"], summary: "Article 50 要求范围内的提供者和部署者落实透明度义务；相关罚款最高可达 1,500 万欧元或全球营业额的 3%。", impact: "这会把“内容来源、AI 提示与审计轨迹”从合规附件变成产品采购要件，尤其影响国际化内容和协作软件。", note: "待进一步确认：处罚与责任取决于主体角色、市场投放时间和具体使用场景。" },
+    { title: "科技资本开支的焦点从 GPU 延伸到能源资产", source: "IEA《Energy and AI》分析 | 2026-04-16", url: "https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions", tags: ["Capex", "Power", "Supply Chain"], summary: "IEA 称五家大型科技公司 2025 年资本开支超过 4,000 亿美元，2026 年预计继续大幅增加；可再生能源协议和先进核能/地热方案受到推动。", impact: "AI 投资回报的决定变量正在从服务器采购扩大到长期电力合同与接网能力；投资者与经营者都应观察能源资产的兑现速度。" }
+  ],
+  vibeIdeas: [
+    { title: "可审计浏览器 Agent", tags: ["React", "Playwright", "Postgres"], what: "让 agent 在隔离浏览器中完成网页操作，并把每一步、截图、权限与结果归档。", stack: "React + Vite、Playwright、FastAPI、Postgres、对象存储；借鉴 ego-lite 的状态复用思路。", mvp: "只做“供应商门户采集”一个流程：人工授权一次，agent 提取表格并生成可回放的执行记录。" },
+    { title: "规范驱动的 PR 助手", tags: ["GitHub API", "Node.js", "LLM"], what: "将 issue 中的验收条件转为 PR 检查清单，并提示缺失的测试、边界和文档。", stack: "GitHub App、Node.js、JSON Schema、LLM；流程参考 spec-kit。", mvp: "在 PR 创建时读取 Markdown 模板，输出“已覆盖/待补充”的 8 项检查，而不自动改代码。" },
+    { title: "AI 内容透明度发布器", tags: ["Next.js", "C2PA", "Policy"], what: "在发布图文或视频前生成 AI 交互告知、可见标签和机器可读元数据检查单。", stack: "Next.js、规则 JSON、Postgres、C2PA/水印元数据可选集成。", mvp: "以地区和内容类型为输入，输出标签文案、人工审核状态与不可篡改发布日志。" },
+    { title: "算力—电力成本看板", tags: ["Python", "Timescale", "Charts"], what: "将模型调用量、GPU 使用率和电价/碳强度放入一个面板，找出成本异常时段。", stack: "Python 采集器、TimescaleDB、React 图表、云账单导入。", mvp: "先接一份 API 调用 CSV 和一条电价数据源，按模型/时段显示单位成功任务成本。" }
+  ],
+  totalTrend: "今天的共同趋势是：AI 正从软件功能走向受物理与制度约束的执行系统。开源侧最热的是浏览器控制、统一工作台和规范化开发，说明 agent 开始接管真实流程；另一侧，数据中心电力、价格性能和内容透明度正在重写规模化门槛。对团队最实用的选择，是从一个高频、低风险流程开始，把权限、验收、日志与成本指标先做成默认能力，再扩大自动化范围。",
+  footer: "数据来源：GitHub Trending、OpenAI、欧盟委员会、IEA、IMF 等公开信息 | 页面生成时间：2026-08-21"
+};
