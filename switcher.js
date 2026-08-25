@@ -1,6 +1,7 @@
 (() => {
   const DAYS = [
-    { date: "2026-08-21", href: "/14760/" },
+    { date: "2026-08-25", href: "/14760/" },
+    { date: "2026-08-21", href: "/14760/briefs/2026-08-21.html" },
     { date: "2026-08-18", href: "/14760/briefs/2026-08-18.html" },
     { date: "2026-08-17", href: "/14760/briefs/2026-08-17.html" },
     { date: "2026-08-14", href: "/14760/briefs/2026-08-14.html" },
@@ -8,8 +9,7 @@
     { date: "2026-06-26", href: "/14760/briefs/2026-06-26.html" },
     { date: "2026-06-25", href: "/14760/briefs/2026-06-25.html" },
     { date: "2026-06-24", href: "/14760/briefs/2026-06-24.html" },
-    { date: "2026-06-23", href: "/14760/briefs/2026-06-23.html" },
-    { date: "2026-06-22", href: "/14760/briefs/2026-06-22.html" }
+    { date: "2026-06-23", href: "/14760/briefs/2026-06-23.html" }
   ];
   const currentDate = document.body.getAttribute("data-brief-date");
   const mount = document.querySelector("[data-brief-switcher]");
