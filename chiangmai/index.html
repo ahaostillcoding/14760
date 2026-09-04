@@ -397,8 +397,7 @@
   html.js .card.in .foods .food:nth-child(2){transition-delay:.05s;}
   html.js .card.in .foods .food:nth-child(3){transition-delay:.08s;}
   html.js .card.in .foods .food:nth-child(4){transition-delay:.11s;}
-  html.js .card.in .foods .food:nth-child(5){transition-delay:.1
-4s;}
+  html.js .card.in .foods .food:nth-child(5){transition-delay:.14s;}
   html.js .card.in .foods .food:nth-child(6){transition-delay:.17s;}
   html.js .hotel{opacity:0;transform:translateY(10px);transition:opacity .3s ease,transform .3s var(--ease-out);}
   html.js .card.in .hotel{opacity:1;transform:none;transition-delay:calc(var(--i,0)*.05s + .03s);}
@@ -623,7 +622,7 @@
   <div class="card" id="flights">
     <div class="eyebrow">Flights</div>
     <h2 class="sec-title"><span class="num">1</span>航班信息</h2>
-    <p class="sec-sub">我的航班已订；对象大概率选择截图中的亚航直飞。航班时刻已按截图更新；但截图返程日期为 9/15（周二），与本页我的 9/14（周一）返程不同，订票前请再确认两人的实际同行日期。</p>
+    <p class="sec-sub">两人航班均已订：你 9/12 广州直飞、9/14 深夜返；对象 9/12 吉隆坡直飞、9/15 下午返吉隆坡。以下时刻已按正式订单落定。</p>
 
     <div class="flight-grid">
       <!-- 我的航班 -->
@@ -648,14 +647,14 @@
       </div>
 
       <!-- 对象航班 -->
-      <div class="flight-card pending">
+      <div class="flight-card mine">
         <div class="fc-head">
-          <span class="fc-label">对象航班 · 大概率锁定</span>
-          <span class="fc-airline">亚航直飞 · 截图所示时刻</span>
+          <span class="fc-label">对象航班 · 已订</span>
+          <span class="fc-airline">亚洲航空 · 吉隆坡直飞</span>
         </div>
         <div class="fc-route">
           <div class="fc-city"><b>09/12 周六</b><span class="fc-code">KUL → CNX</span></div>
-          <div class="fc-fnum">去程 · 亚航直飞 <span class="fc-alt">（以出票为准）</span></div>
+          <div class="fc-fnum">AK856 · 亚航直飞</div>
           <div class="fc-time"><b>13:30</b> 起飞 <em>→</em> <b>15:10</b> 到达</div>
           <div class="fc-note">KUL2 → CNX · 直飞约 2h40m；落地后直接去酒店，晚上 18:00 从容衔接周六夜市，不用清早赶机场。</div>
           <div class="flight-choice recommend">
@@ -665,19 +664,19 @@
         </div>
         <div class="fc-route">
           <div class="fc-city"><b>09/15 周二</b><span class="fc-code">CNX → KUL · 截图所选日期</span></div>
-          <div class="fc-fnum">回程 · 亚航直飞 <span class="fc-alt">（以出票为准）</span></div>
-          <div class="fc-time"><b>15:40</b> 起飞 <em>→</em> <b>19:35</b> 到达</div>
-          <div class="fc-note">CNX → KUL2 · 直飞约 2h55m；建议 12:30–12:45 从酒店出发，早上仍可悠闲吃早餐、收拾行李。</div>
+          <div class="fc-fnum">AK857 · 亚航直飞</div>
+          <div class="fc-time"><b>16:40</b> 起飞 <em>→</em> <b>19:35</b> 到达</div>
+          <div class="fc-note">CNX → KUL2 · 直飞约 2h55m；建议 13:15–13:30 从酒店出发，早上仍可悠闲吃早餐、收拾行李。</div>
           <div class="flight-choice recommend">
-            <span class="primary"><b>✓ 15:40 → 19:35</b>下午返程最舒适，离开前不用早起赶路。</span>
-            <span><b>注意日期差异</b>：截图是 9/15 周二；若你仍乘 9/14 周一晚班返广，她将会在清迈多住一晚。</span>
+            <span class="primary"><b>✓ 16:40 → 19:35</b>下午返程最舒适，离开前不用早起赶路。</span>
+            <span><b>两人错峰返程</b>：你 9/14 周一晚班返广；她 9/15 周二 16:40 返吉隆坡，在清迈多住一晚。</span>
           </div>
         </div>
-        <div class="fc-tip">💡 大概率组合：<b>9/12 13:30 → 15:10（去）+ 9/15 15:40 → 19:35（回）</b>。请出票前核对航班号、日期、行李额和航站楼；本页暂不假设你会更改 9/14 晚班返程。</div>
+        <div class="fc-tip">💡 已确认行程：<b>9/12 AK856 13:30 → 15:10（去）+ 9/15 AK857 16:40 → 19:35（回）</b>。无免费托运行李额，建议在亚航 App 提前购买行李并在线值机。</div>
       </div>
     </div>
 
-    <div class="tip">✈️ 落地时间参考：你 08:45 落地后，出关、取行李与到酒店约需 60–90 分钟。对象航班未定时，不预设会合时刻：中午抵达就午休后会合，傍晚抵达则直接在周六夜市碰面。</div>
+    <div class="tip">✈️ 落地时间参考：你 08:45 落地，出关、取行李与到酒店约 60–90 分钟；对象 AK856 预计 15:10 落地，出关与车程约 60–90 分钟，<b>17:00 后酒店会合</b>，傍晚直接进周六夜市。</div>
   </div>
 
   <!-- 可拖拽行程编排器 -->
@@ -693,8 +692,7 @@
           <div class="catalog-item" draggable="true" data-plan="粘粘瀑布" data-emoji="💧"><b>💧 粘粘瀑布</b><small>半天至一天 · 城北约 60 km</small></div>
           <div class="catalog-item" draggable="true" data-plan="Zabb E Lee 烹饪课" data-emoji="🍳"><b>🍳 Zabb E Lee 烹饪课</b><small>半天 · 含做饭与午餐</small></div>
           <div class="catalog-item" draggable="true" data-plan="奶奶厨房烹饪课" data-emoji="🍲"><b>🍲 奶奶厨房烹饪课</b><small>半天 · 与 Zabb 二选一</small></div>
-          <div class="catalog-item" draggable="true" data-plan="周六夜市" data-emoji="🏮"
-><b>🏮 周六夜市</b><small>Wualai 路 · 9/12 晚</small></div>
+          <div class="catalog-item" draggable="true" data-plan="周六夜市" data-emoji="🏮"><b>🏮 周六夜市</b><small>Wualai 路 · 9/12 晚</small></div>
           <div class="catalog-item" draggable="true" data-plan="周日夜市" data-emoji="🎐"><b>🎐 周日夜市</b><small>塔佩门一带 · 9/13 晚</small></div>
           <div class="catalog-item" draggable="true" data-plan="宁曼喝一杯" data-emoji="☕"><b>☕ 宁曼喝一杯</b><small>轻松备选 · 不与瀑布同日</small></div>
           <div class="catalog-item" draggable="true" data-plan="泰式按摩" data-emoji="💆"><b>💆 泰式按摩</b><small>60–90 分钟 · 雨天备选</small></div>
@@ -738,9 +736,9 @@
         <div class="planner-slots" data-planner-panel="4" hidden>
           <div class="planner-slot"><button class="slot-time" type="button">09:00–10:30</button><div class="slot-content"><span class="plan-item" draggable="true">她睡到自然醒</span><span class="plan-item" draggable="true">酒店早餐</span></div></div>
           <div class="planner-slot"><button class="slot-time" type="button">10:30–11:30</button><div class="slot-content"><span class="plan-item" draggable="true">收拾行李 / 退房</span></div></div>
-          <div class="planner-slot"><button class="slot-time" type="button">11:30–12:30</button><div class="slot-content"><span class="plan-item" draggable="true">酒店附近买水果 / 零食</span></div></div>
-          <div class="planner-slot"><button class="slot-time" type="button">12:30–12:45</button><div class="slot-content"><span class="plan-item" draggable="true">她前往机场</span></div></div>
-          <div class="planner-slot"><button class="slot-time" type="button">15:40</button><div class="slot-content"><span class="plan-item" draggable="true">她返吉隆坡</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">11:30–13:00</button><div class="slot-content"><span class="plan-item" draggable="true">附近午餐 / 买水果零食</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">13:15–13:30</button><div class="slot-content"><span class="plan-item" draggable="true">她前往机场</span></div></div>
+          <div class="planner-slot"><button class="slot-time" type="button">16:40</button><div class="slot-content"><span class="plan-item" draggable="true">她返吉隆坡</span></div></div>
         </div>
         <div class="planner-actions"><button type="button" class="planner-reset" id="plannerReset">恢复默认计划</button><span class="planner-status" id="plannerStatus" aria-live="polite">自动保存到当前浏览器</span></div>
       </section>
@@ -770,7 +768,7 @@
       </tr>
       <tr>
         <td><b>9/15 周二</b></td><td>上午 — 下午</td>
-        <td>她睡到自然醒 → 早午餐 / 酒店附近散步 → 12:30–12:45 前往机场 → <b>15:40 返吉隆坡</b></td>
+        <td>她睡到自然醒 → 早午餐 / 酒店附近散步 → 13:15–13:30 前往机场 → <b>16:40 返吉隆坡</b></td>
         <td>不再安排景点，留足收拾与国际航班余量</td>
       </tr>
     </table>
@@ -958,7 +956,7 @@
         <div class="time">15:30 – 17:30</div>
         <div class="ev-title">按对象抵达时间会合 / 自由休息</div>
         <ul>
-          <li>按截图航班，预计 15:10 落地；考虑入境和车程，建议以 <b>17:00 后酒店或夜市会合</b> 为准。</li>
+          <li>对象 AK856 预计 15:10 落地；考虑入境和车程，建议以 <b>17:00 后酒店或夜市会合</b> 为准。</li>
           <li>你回酒店休息 / 游泳 / 喝咖啡即可，不用为了会合新增任何景点。</li>
         </ul>
       </div>
@@ -1002,8 +1000,7 @@
         <div class="time">08:00</div>
         <div class="ev-title">包车出发去粘粘瀑布（Bua Tong Sticky Waterfall）</div>
         <ul>
-          <li>瀑布在清迈城北约 60 公里处，单程约 1–1.5 
-小时；建议提前订包车往返并约定司机等候，不临时拼车。</li>
+          <li>瀑布在清迈城北约 60 公里处，单程约 1–1.5 小时；建议提前订包车往返并约定司机等候，不临时拼车。</li>
           <li>穿防滑凉鞋 / 可涉水的鞋，带换洗衣物、防水袋、毛巾和驱蚊；下雨或水量异常就不要勉强攀爬。</li>
         </ul>
       </div>
@@ -1135,7 +1132,7 @@
       </div>
       <div class="day-when">
         <b>她的缓冲返程日</b><br>
-        <span class="kw">不赶景点</span><span class="kw">睡到自然醒</span><span class="kw">15:40 返吉隆坡</span>
+        <span class="kw">不赶景点</span><span class="kw">睡到自然醒</span><span class="kw">16:40 返吉隆坡</span>
       </div>
     </div>
     <div class="dayline">
@@ -1151,15 +1148,15 @@
         <div class="ev-title">睡到自然醒 + 酒店早餐</div>
         <ul>
           <li>不再安排寺庙、远距离咖啡馆或市场；这半天只留给洗漱、收拾和最后一顿轻松早餐。</li>
-          <li>若想出门，仅在酒店附近买水果、零食或补伴手礼，11:30 前回酒店办理退房。</li>
+          <li>若想出门，仅在酒店附近买水果、零食或补伴手礼，<b>12:30 前回酒店办理退房</b>，随后在附近吃个简餐再出发。</li>
         </ul>
       </div>
       <div class="ev">
         <span class="marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></span>
-        <div class="time">12:30 – 12:45</div>
+        <div class="time">13:15 – 13:30</div>
         <div class="ev-title">前往清迈机场（CNX）</div>
         <ul>
-          <li><b>15:40 清迈 → 吉隆坡 T2</b>：按国际航班预留约 3 小时；酒店到机场约 15–20 分钟，雨天再多留一点余量。</li>
+          <li><b>16:40 清迈 → 吉隆坡 T2（AK857）</b>：按国际航班预留约 3 小时，<b>13:40 前到机场</b>；酒店到机场约 15–20 分钟，雨天再多留一点余量。</li>
           <li>到机场后再吃午餐、办理托运和退税即可，节奏最稳。</li>
         </ul>
       </div>
@@ -1385,8 +1382,7 @@
       var status = document.getElementById('plannerStatus');
       var trash = document.getElementById('plannerTrash');
       var timeModal = document.getElementById('timeModal');
-      var timeForm = 
-document.getElementById('timeModalForm');
+      var timeForm = document.getElementById('timeModalForm');
       var timeInput = document.getElementById('timeModalInput');
       var timeCancel = document.getElementById('timeModalCancel');
       var activeTime = null;
@@ -1651,4 +1647,3 @@ document.getElementById('timeModalForm');
 
 </body>
 </html>
-
